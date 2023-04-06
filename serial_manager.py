@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+'''
+This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets. By sending data back and forth:
+-> Data can be requested from sensors
+-> Sensor-specific settings can be changed
+-> Microcontroller operations can be changed (e.g., sleep mode)
+'''
 from mappings import *
 import serial
 # print ("serial.VERSION:",serial.VERSION)
