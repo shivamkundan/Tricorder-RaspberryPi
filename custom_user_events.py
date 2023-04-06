@@ -1,5 +1,6 @@
 '''
-This file contains my custom defined events
+Communication with the microcontroller is event based.
+This file contains my custom defined events.
 '''
 from pygame.event import Event
 from pygame import USEREVENT
