@@ -17,7 +17,7 @@ import threading
 from mappings import *
 from serial_manager import ser,get_battery, my_flush
 
-
+import logging
 
 
 # ----- plotting libs ----- #
