@@ -333,7 +333,7 @@ def set_tsl_gain(new_gain):
 	ser.write(new_gain.encode('utf-8'))
 	ser.readline()
 
-# -------------------------------------------------
+# ------------------- PM25 ------------------------- #
 def set_pm25_power_off():
 	ser.write(PM25_PWR_OFF_CODE.encode('utf-8'))
 	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
@@ -351,7 +351,7 @@ def set_geiger_power_on():
 	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
 
 # -------------------------------------------------
-# # this one is only used for battery. other pages have their own get_serial_vals
+# # this one is only used for battery and sleep. other pages have their own get_serial_vals
 def get_serial_vals(send_msg,dict_names_list):
 		recv_msg={}
 
@@ -387,5 +387,5 @@ def get_serial_vals(send_msg,dict_names_list):
 
 def my_flush():
 	while (len(ser.readline())>0):
-		print ('dumping serial vals')
+		logging.warning ('dumping serial vals')
 

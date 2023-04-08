@@ -271,8 +271,8 @@ class ExitPage(PageTemplate):
 
 	def next_frame(self,screen,curr_events,**kwargs):
 		#  Disbale fullscreen
-		if pygame.display.get_window_size()==(720,720):
-			print ('disabling full screen')
+		if pygame.display.get_window_size()==FULL_SCREEN_RES:
+			logging.info ('disabling full screen')
 			pygame.display.toggle_fullscreen()
 
 		self.wrap_up()
@@ -283,7 +283,7 @@ class ExitPage(PageTemplate):
 
 	def wrap_up(self):
 		print ('\nLive long & prosper... bye!')
-		# t=elapsed_time()
+		t=elapsed_time(print_res=True)
 		# outstr='snum,time,frame_count,wr_count\n'
 		# outstr+=str(snum)+','
 		# outstr+=str(t)+','
@@ -325,6 +325,7 @@ class SleepPage(PageTemplate):
 		self.backlight_restore_level=PIGPIO.get_PWM_dutycycle(BACKLIGHT_PIN)
 
 	def wake_from_sleep(self):
+		logging.info("WAKE_FROM_SLEEP")
 		PIGPIO.set_PWM_dutycycle(BACKLIGHT_PIN, self.backlight_restore_level)
 		ser.write(MCU_RESET_CODE.encode('utf-8'))
 		time.sleep(5)
@@ -1124,6 +1125,7 @@ class WindowManager():
 
 		# Retrieve backlight level
 		self.DeviceInfo.curr_brightness=self.screen_dict['slider_test_page'].get_current_brightness()
+
 		# For restoring backlight level after wake from sleep
 		if self.DeviceInfo.curr_brightness==0:
 			self.backlight_restore_level=128
@@ -1140,13 +1142,8 @@ class WindowManager():
 		self.override=False
 		self.take_screenshot=False
 
-
-		s=pygame.Surface((720, 720))
-		s.set_alpha(128)
-		s.fill((255,255,255))
-		self.screenshot_overlay=s
-
-		self.sensor_dict=SENSOR_DICT
+		self.screenshot_overlay=self.init_screenshot_overlay()
+		self.sensor_dict=SENSOR_DICT	# used for home_page
 
 
 		# # Start bluetooth search in new thread
@@ -1180,12 +1177,11 @@ class WindowManager():
 		# print(modes)
 		# print(pygame.display.get_wm_info())
 		# print (pygame.display.mode_ok(modes[0]))
-		self.full_res=modes[0]
-		self.res=(680,640)
+		# self.full_res=modes[0]
+		self.full_res=FULL_SCREEN_RES
 		self.color_depth=pygame.display.mode_ok(modes[0])
-		print ('color_depth:',self.color_depth)
 		if not self.fullscreen_en:
-			screen=pygame.display.set_mode(self.res,   pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
+			screen=pygame.display.set_mode(STARTING_RES,   pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
 		else:
 			screen=pygame.display.set_mode(self.full_res, pygame.FULLSCREEN |  pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
 		starfleet_logo.convert()
@@ -1240,6 +1236,13 @@ class WindowManager():
 			scr.bluetooth_connected=False
 
 		return screen_dict,screen_dict['mobile_home_page_1']
+
+	def init_screenshot_overlay(self):
+		s=pygame.Surface(FULL_SCREEN_RES)
+		s.set_alpha(128) # half of max opacity
+		s.fill(WHITE)	 # white color
+		# self.screenshot_overlay=s
+		return s
 
 	def handle_generic_events(self,curr_events):
 		screen=self.screen
@@ -1306,14 +1309,6 @@ class WindowManager():
 				ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 				ser.readline()
 
-			if event==WAKE_FROM_SLEEP:
-				logging.info ('WAKE_FROM_SLEEP!!!')
-				MODE='normal'
-				self.screen_dict['slider_test_page'].set_brightness(255)
-				# self.screen_dict['slider_test_page'].set_brightness(self.backlight_restore_level)
-				# my_flush()
-				curr_events.remove(event)
-
 			if event==SET_BACKLIGHT:
 				# print('SET_BACKLIGHT')
 				c=self.screen_dict['slider_test_page'].get_current_brightness()
@@ -1327,7 +1322,7 @@ class WindowManager():
 
 			if event == SCREENSHOT_EVENT:
 				curr_events.remove(event)
-				print ('SCREENSHOT_EVENT')
+				logging.warning ('SCREENSHOT_EVENT')
 				self.take_screenshot=True
 
 			if event.type==pygame.VIDEOEXPOSE:
@@ -1608,7 +1603,7 @@ class WindowManager():
 		x={}
 
 		for char in msg.rstrip(' ').split(' '):
-			logging.info ('char:',char)
+			logging.info (f'char:{char}')
 
 
 			ser.write(msg.encode('utf-8'))
@@ -1717,11 +1712,10 @@ class WindowManager():
 		rect = pygame.Rect(0, 0, self.screen.get_width(), self.screen.get_height())
 		sub = self.screen.subsurface(rect)
 		dd=get_date_time()
-		print (dd)
 
 		kk='screenshots/'+self.curr_screen.name
 		name= kk+f'_{dd[0]} {dd[1]} {dd[2]}.png'.replace(':','_').replace(' ','_')
-		print ('screenshot:',name)
+		logging.warning (f'screenshot:{name}')
 
 		pygame.image.save(sub,name)
 		self.screen.blit(camera,(20,160))
@@ -1731,7 +1725,7 @@ def elapsed_time(print_res=False):
 		end_time=round(time.time()-start_time_overall,2)
 		elapsed_time=(datetime.timedelta(seconds=round(end_time)))
 		if (print_res):
-			print (f'time elapsed: {elapsed_time} s')
+			logging.info (f'time elapsed: {elapsed_time} s')
 		return elapsed_time
 
 if __name__=='__main__':
@@ -1742,14 +1736,12 @@ if __name__=='__main__':
 	global PIGPIO
 	global BACKLIGHT_PIN
 
-	# logging.info("Here!")
-
+	# following vars are for backlight
 	PIGPIO=pigpio.pi()
 	BACKLIGHT_PIN=19
 
 	MODE='normal'
 	start_time_overall=time.time()
-
 
 	clock=pygame.time.Clock()
 
@@ -1764,7 +1756,7 @@ if __name__=='__main__':
 			pygame.display.update()
 
 			if MODE=='sleep':
-				clock.tick(1)
+				clock.tick(1)	# slow down execution. if too slow -> wake from touch also slow
 			else:
 				# pygame.display.update()
 				# clock.tick_busy_loop()
@@ -1777,7 +1769,7 @@ if __name__=='__main__':
 		logging.warning ('KeyboardInterrupt exiting')
 		# ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 	except Exception as e:
-		logging.error ('Caught exception')
+		logging.error ('Caught exception:'+str(e))
 
 		x=PIGPIO.get_PWM_dutycycle(BACKLIGHT_PIN)
 		logging.error (f'BACKLIGHT: {x}')

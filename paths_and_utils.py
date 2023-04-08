@@ -2,6 +2,9 @@ HOME_DIR='/home/pi/Sensor_Scripts/pygame_code/tricorder/'
 MAX_BYTES=1016				# for bluetooth serial connection this is the max per
 PERIPHERAL_MODE='serial'	# options: serial, bluetooth
 
+STARTING_RES=(680,640)
+FULL_SCREEN_RES=(720,720)
+
 # For recording sensor values to file
 LOGS_DIR='/home/pi/Sensor_Scripts/logs/'
 header_row='day,date,time,lux,infrared,visible,full_spectrum,uvs,light,gain,uvi,ltr_lux,channel_415nm,channel_445nm,channel_480nm,channel_515nm,channel_555nm,channel_590nm,channel_630nm,channel_680nm,temperature,relative_humidity,pressure,bmp_temperature,03um,05um,10um,25um,50um,100um,eCO2,TVOC,baseline_eCO2,baseline_TVOC\n'

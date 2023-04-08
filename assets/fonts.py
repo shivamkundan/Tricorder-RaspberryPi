@@ -6,8 +6,6 @@ import time,datetime
 HOME_DIR='/home/pi/Sensor_Scripts/pygame_code/tricorder/'
 pygame.init()
 
-
-
 number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,pygame.K_5,pygame.K_6,pygame.K_7,pygame.K_8,pygame.K_9]
 
 
@@ -27,6 +25,7 @@ LIGHT_BLUE=pygame.Color('#4c9ea7')
 # YELLOW = (255, 255, 0)
 YELLOW=(255, 153, 0)
 DARK_YELLOW=(178, 107, 0)
+WHITE=(255,255,255)
 LIGHT_GREY=(128,128,128)
 GREY=(96,96,96)
 DARK_GREY=(63,63,63)
