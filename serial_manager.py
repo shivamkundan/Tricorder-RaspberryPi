@@ -4,10 +4,16 @@ This file contains functions for communicating over a serial usb/bluetooth link 
 -> Data can be requested from sensors
 -> Sensor-specific settings can be changed
 -> Microcontroller operations can be changed (e.g., sleep mode)
+-> Each of the above involve specific mapping from mappings.py
 '''
 from mappings import *
 import serial
+from my_logging import *
 # print ("serial.VERSION:",serial.VERSION)
+
+# set up logging
+shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
+logging.info (f'\n')
 
 port_name="/dev/my_esp32"
 try:
@@ -21,12 +27,11 @@ try:
 	)
 	# ser.write(MCU_RESET_CODE.encode('utf-8'))
 	ser.write(MCU_IND_MODE_DISABLE.encode('utf-8'))
-	# ser.readline()
 	ser.flush()
-	print (f'\nmcu connected on {port_name}!')
+	logging.info (f'mcu connected on {port_name}!')
 
 except serial.serialutil.SerialException:
-	print (f'mcu not connected on {port_name}!')
+	logging.error (f'mcu not connected on {port_name}!')
 	ser=None
 
 # -------------------------------------------------
@@ -341,7 +346,7 @@ def set_geiger_power_on():
 	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
 
 # -------------------------------------------------
-def get_serial_vals(msg,dict_names_list):
+def get_serial_vals(send_msg,dict_names_list):
 		# ==========================================
 		# serial.serialutil.SerialException:
 	# try:
@@ -351,12 +356,12 @@ def get_serial_vals(msg,dict_names_list):
 
 		# ser.flush()
 
-		x={}
+		recv_msg={}
 
-		for char in msg.rstrip(' ').split(' '):
+		for char in send_msg.rstrip(' ').split(' '):
 			# print ('char:',char)
 
-			ser.write(msg.encode('utf-8'))
+			ser.write(send_msg.encode('utf-8'))
 
 
 			curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
@@ -377,9 +382,10 @@ def get_serial_vals(msg,dict_names_list):
 				except IndexError:
 					val=-1
 				# print (val)
-				x[name]=val
-			print (msg,":",x)
-		return x
+				recv_msg[name]=val
+			print (send_msg,":",recv_msg)
+
+		return recv_msg
 	# except:
 	# # except serial.serialutil.SerialException:
 	# 	pass
@@ -390,3 +396,4 @@ def get_serial_vals(msg,dict_names_list):
 def my_flush():
 	while (len(ser.readline())>0):
 		print ('dumping serial vals')
+

@@ -13,13 +13,6 @@ import math
 import trace
 import threading
 
-# from pwmled.driver.gpio import GpioDriver
-from mappings import *
-from serial_manager import ser,get_battery, my_flush
-
-import logging
-
-
 # ----- plotting libs ----- #
 import matplotlib as mpl
 mpl.use("Agg")
@@ -39,6 +32,10 @@ from paths_and_utils import *
 sys.path.insert(1,HOME_DIR+'freqshow_code/')
 sys.path.insert(1,HOME_DIR+'assets/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
+
+# from pwmled.driver.gpio import GpioDriver
+from mappings import *
+from serial_manager import ser,get_battery, my_flush
 
 from image_assets import *
 from aa_arc_gauge import *
@@ -72,7 +69,7 @@ from object_detection_page import *
 from fly_page import *
 
 from home_page import *
-
+# from my_logging import *
 
 import signal
 
@@ -907,6 +904,12 @@ class MobileHomePage2(PageTemplate):
 		blit_some_stats(screen,self.sw,day,date,hour_sec,self.fps,self.cpu_pct,self.cpu_temp,self.wifi_name,'I',self.b_img)
 		self.blit_page_num(screen)
 		pygame.display.flip()
+
+	def on_exit(self):
+		pass
+		
+	def on_enter(self):
+		pass
 
 class QuickMenuPage(PageTemplate):
 	def __init__(self,name):
@@ -1761,6 +1764,8 @@ if __name__=='__main__':
 	global MODE
 	global PIGPIO
 	global BACKLIGHT_PIN
+
+	# logging.info("Here!")
 
 	PIGPIO=pigpio.pi()
 	BACKLIGHT_PIN=19
