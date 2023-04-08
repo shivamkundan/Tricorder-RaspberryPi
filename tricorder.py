@@ -271,6 +271,7 @@ class ExitPage(PageTemplate):
 			logging.info ('disabling full screen')
 			pygame.display.toggle_fullscreen()
 
+		wrap_up()
 		pygame.quit()
 		sys.exit()
 
