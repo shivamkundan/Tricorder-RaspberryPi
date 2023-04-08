@@ -271,14 +271,8 @@ class ExitPage(PageTemplate):
 			logging.info ('disabling full screen')
 			pygame.display.toggle_fullscreen()
 
-		# self.wrap_up()
-		wrap_up()
 		pygame.quit()
 		sys.exit()
-
-	# def wrap_up(self):
-	# 	print ('\nLive long & prosper... bye!')
-	# 	t=elapsed_time(print_res=True)
 
 class SleepPage(PageTemplate):
 	def __init__(self,name):
@@ -1611,11 +1605,9 @@ if __name__=='__main__':
 	global start_time_overall
 	global MODE
 	global PIGPIO
-	# global BACKLIGHT_PIN
 
 	# following vars are for backlight
 	PIGPIO=pigpio.pi()
-	# BACKLIGHT_PIN=19
 
 	MODE='normal'
 	start_time_overall=time.time()
