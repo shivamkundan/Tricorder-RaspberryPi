@@ -2,6 +2,7 @@
 Communication with the microcontroller is event based.
 This file contains my custom defined events.
 '''
+
 from pygame.event import Event
 from pygame import USEREVENT
 
@@ -18,12 +19,7 @@ BLUETOOTH_CONNECTED=Event(USEREVENT, attr1='BLUETOOTH_CONNECTED')
 BLUETOOTH_DISCONNECTED=Event(USEREVENT, attr1='BLUETOOTH_DISCONNECTED')
 
 # ---------------------------- Page navigation ---------------------------- #
-# ENTERING_FILES_PAGE=Event(USEREVENT, attr1='ENTERING_FILES_PAGE')
-# ENTERING_THERMAL_PAGE=Event(USEREVENT, attr1='ENTERING_THERMAL_PAGE')
 ENTERING_HOME_PAGE=Event(USEREVENT, attr1='ENTERING_HOME_PAGE')
-# LEAVING_FILES_PAGE=Event(USEREVENT, attr1='LEAVING_FILES_PAGE')
-# LEAVING_THERMAL_PAGE=Event(USEREVENT, attr1='LEAVING_THERMAL_PAGE')
-# LEAVING_HOME_PAGE=Event(USEREVENT, attr1='LEAVING_HOME_PAGE')
 
 FILE_LOG_EVENT= USEREVENT + 1
 

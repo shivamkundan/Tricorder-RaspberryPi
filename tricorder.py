@@ -253,8 +253,6 @@ class SliderClass():
 		else:
 			log_val=int(round(math.log(pct),0))
 
-
-
 		return round(pct,2),num_val,log_val
 
 	def map(self,x):
@@ -276,25 +274,12 @@ class ExitPage(PageTemplate):
 			pygame.display.toggle_fullscreen()
 
 		self.wrap_up()
-		# t1.kill()
-		# print ('t1.is_alive(): ',t1.is_alive())
 		pygame.quit()
 		sys.exit()
 
 	def wrap_up(self):
 		print ('\nLive long & prosper... bye!')
 		t=elapsed_time(print_res=True)
-		# outstr='snum,time,frame_count,wr_count\n'
-		# outstr+=str(snum)+','
-		# outstr+=str(t)+','
-		# outstr+'\n'
-
-		# print (f'end of session #{snum}')
-		# print (f'time taken: {t}')
-
-		# with open('/home/pi/Sensor_Scripts/pygame_code/session_logs/session_'+str(snum)+'.csv','w+') as f:
-		# 	f.write(outstr)
-		# f.close()
 
 class SleepPage(PageTemplate):
 	def __init__(self,name):
