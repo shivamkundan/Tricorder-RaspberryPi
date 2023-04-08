@@ -1537,110 +1537,110 @@ class WindowManager():
 		self.frame_count+=1
 		return self.screen
 
-	# ------------------------ #
-	def connect_bluetooth(self):
+	# # ------------------------ #
+	# def connect_bluetooth(self):
 
-		print ('finding service...')
+	# 	print ('finding service...')
 
-		print("Searching for SampleServer on %s" % addr)
+	# 	print("Searching for SampleServer on %s" % addr)
 
-		# search for the SampleServer service
-		uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
-		connected=False
-		while connected==False:
-			try:
-				service_matches=''
-				service_matches = find_service( uuid = uuid, address = addr )
+	# 	# search for the SampleServer service
+	# 	uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
+	# 	connected=False
+	# 	while connected==False:
+	# 		try:
+	# 			service_matches=''
+	# 			service_matches = find_service( uuid = uuid, address = addr )
 
-				if len(service_matches) != 0:
-					first_match = service_matches[0]
-					port = first_match["port"]
-					name = first_match["name"]
-					host = first_match["host"]
-					# Create the client socket
-					print("Waiting for connection on RFCOMM channel %d" % port)
-					sock=BluetoothSocket( RFCOMM )
-					sock.connect((host, port))
-					connected=True
-			except btcommon.BluetoothError as error:
-					print( "Caught BluetoothError: ", error)
-					time.sleep(2)
-		pygame.event.post(BLUETOOTH_CONNECTED)
-		print("connected.  type stuff")
-		self.client_sock=sock
-		# return sock
+	# 			if len(service_matches) != 0:
+	# 				first_match = service_matches[0]
+	# 				port = first_match["port"]
+	# 				name = first_match["name"]
+	# 				host = first_match["host"]
+	# 				# Create the client socket
+	# 				print("Waiting for connection on RFCOMM channel %d" % port)
+	# 				sock=BluetoothSocket( RFCOMM )
+	# 				sock.connect((host, port))
+	# 				connected=True
+	# 		except btcommon.BluetoothError as error:
+	# 				print( "Caught BluetoothError: ", error)
+	# 				time.sleep(2)
+	# 	pygame.event.post(BLUETOOTH_CONNECTED)
+	# 	print("connected.  type stuff")
+	# 	self.client_sock=sock
+	# 	# return sock
 
-	def get_serial_vals(self,msg,dict_names_list):
-		# ==========================================
+	# # def get_serial_vals(self,msg,dict_names_list):
+	# # 	# ==========================================
 
-		while (len(ser.readline())>0):
-			logging.warning ('dumping serial vals')
-
-
-		# ser.flush()
-
-		x={}
-
-		for char in msg.rstrip(' ').split(' '):
-			logging.info (f'char:{char}')
+	# # 	while (len(ser.readline())>0):
+	# # 		logging.warning ('dumping serial vals')
 
 
-			ser.write(msg.encode('utf-8'))
+	# # 	# ser.flush()
+
+	# # 	x={}
+
+	# # 	for char in msg.rstrip(' ').split(' '):
+	# # 		logging.info (f'char:{char}')
 
 
-			curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
-			# print (curr_line)
+	# # 		ser.write(msg.encode('utf-8'))
 
-			for item,name in zip(curr_line.split(' '),dict_names_list):
-				try:
-					val=item.split(":")[1]
-				except IndexError:
-					val=-1
-				# print (val)
-				x[name]=val
-			logging.info (msg,":",x)
-		return x
 
-		# ==========================================
+	# # 		curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
+	# # 		# print (curr_line)
 
-	def get_bluetooth_vals(self,msg):
-		try:
-			if len(msg)<MAX_BYTES:
-				msg=msg.rstrip(' ')
-				for kk in range(len(msg),MAX_BYTES):
-					msg+='*'
-			self.client_sock.send(msg)
-			self.recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
+	# # 		for item,name in zip(curr_line.split(' '),dict_names_list):
+	# # 			try:
+	# # 				val=item.split(":")[1]
+	# # 			except IndexError:
+	# # 				val=-1
+	# # 			# print (val)
+	# # 			x[name]=val
+	# # 		logging.info (msg,":",x)
+	# # 	return x
 
-			self.recv_data=self.recv_data.replace(' ','').replace('{','').replace('}','').replace('*','').replace("'", "").replace('\x00','')
+	# # 	# ==========================================
 
-			splitup=self.recv_data.split(',')
+	# def get_bluetooth_vals(self,msg):
+	# 	try:
+	# 		if len(msg)<MAX_BYTES:
+	# 			msg=msg.rstrip(' ')
+	# 			for kk in range(len(msg),MAX_BYTES):
+	# 				msg+='*'
+	# 		self.client_sock.send(msg)
+	# 		self.recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
 
-			for item1 in splitup:
-				# print (item1)
-				z=item1.strip().split(':')
-				k,v=z[0],z[1]
-				self.sensor_dict[k]=v
-			self.bluetooth_count+=1
-			return self.sensor_dict
+	# 		self.recv_data=self.recv_data.replace(' ','').replace('{','').replace('}','').replace('*','').replace("'", "").replace('\x00','')
 
-		except IndexError:
-			return SENSOR_DICT
-		except btcommon.BluetoothError:
-			pygame.event.post(BLUETOOTH_DISCONNECTED)
-		except Exception as e:
-			raise(e)
+	# 		splitup=self.recv_data.split(',')
 
-	def get_sensor_vals(self,msg,dict_names_list):
-		if PERIPHERAL_MODE=='bluetooth':
-			x=self.get_bluetooth_vals(msg)
-		if PERIPHERAL_MODE=='serial':
-			try:
-				x=self.get_serial_vals(msg, dict_names_list)
-			except Exception as e:
-				logging.error ("get_sensor_vals:"+str(e))
+	# 		for item1 in splitup:
+	# 			# print (item1)
+	# 			z=item1.strip().split(':')
+	# 			k,v=z[0],z[1]
+	# 			self.sensor_dict[k]=v
+	# 		self.bluetooth_count+=1
+	# 		return self.sensor_dict
 
-		return x
+	# 	except IndexError:
+	# 		return SENSOR_DICT
+	# 	except btcommon.BluetoothError:
+	# 		pygame.event.post(BLUETOOTH_DISCONNECTED)
+	# 	except Exception as e:
+	# 		raise(e)
+
+	# def get_sensor_vals(self,msg,dict_names_list):
+	# 	if PERIPHERAL_MODE=='bluetooth':
+	# 		x=self.get_bluetooth_vals(msg)
+	# 	if PERIPHERAL_MODE=='serial':
+	# 		try:
+	# 			x=self.get_serial_vals(msg, dict_names_list)
+	# 		except Exception as e:
+	# 			logging.error ("get_sensor_vals:"+str(e))
+
+	# 	return x
 	# ------------------------ #
 	def check_make_file(self):
 		#Check if log file exists
@@ -1684,6 +1684,7 @@ class WindowManager():
 			return('wr')
 
 	def minimize(self):
+		logging.info("minimizing")
 		pygame.display.set_icon(starfleet_logo)
 		pygame.display.iconify()
 
