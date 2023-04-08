@@ -61,7 +61,7 @@ class HomePage(PageTemplate):
         # Drawing functions stored here
         self.my_display_funcs=[self.blit_vis_ir,self.blit_uv,self.blit_temp,self.blit_humid,self.display_particulate_matter,self.blit_tvoc_eco2,self.blit_pressure,self.blit_spectrometer]
 
-        self.prev_page_name='mobile_home_page_1'
+        self.prev_page_name='MenuHomePage'
 
     def on_enter(self):
         e.post(POWER_TSL_ON)

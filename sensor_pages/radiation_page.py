@@ -13,7 +13,7 @@ import numpy as np
 class GeigerCounterPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
-		self.prev_page_name='mobile_home_page_1'
+		self.prev_page_name='MenuHomePage'
 		self.wind_out=0
 		self.frame_count=0
 		self.cpm=0

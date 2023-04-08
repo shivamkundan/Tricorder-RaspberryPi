@@ -119,3 +119,4 @@ def adjust_gauge_lims(curr_val,gauge):
     for low,up in zip(lower_lims,upper_lims):
         if low<=curr_val<up:
             gauge.in_max=up
+

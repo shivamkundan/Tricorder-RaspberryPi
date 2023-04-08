@@ -66,7 +66,7 @@ class ThermalCamPage(PageTemplate):
 
         self.init_plotting_stuff()
         self.client_sock=None
-        self.prev_page_name='mobile_home_page_1'
+        self.prev_page_name='MenuHomePage'
 
         self.absolute_scale=False
         self.f_num=0

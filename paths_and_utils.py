@@ -4,6 +4,7 @@ PERIPHERAL_MODE='serial'	# options: serial, bluetooth
 
 STARTING_RES=(680,640)
 FULL_SCREEN_RES=(720,720)
+BACKLIGHT_PIN=19
 
 # For recording sensor values to file
 LOGS_DIR='/home/pi/Sensor_Scripts/logs/'

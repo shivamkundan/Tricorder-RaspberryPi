@@ -41,10 +41,6 @@ from serial_manager import ser,get_battery, my_flush
 from image_assets import *
 from aa_arc_gauge import *
 from custom_user_events import *
-
-# from communicator import *
-# PERIPHERAL_MODE='serial'
-
 from global_functions import *
 from plotting_functions import *
 
@@ -275,13 +271,14 @@ class ExitPage(PageTemplate):
 			logging.info ('disabling full screen')
 			pygame.display.toggle_fullscreen()
 
-		self.wrap_up()
+		# self.wrap_up()
+		wrap_up()
 		pygame.quit()
 		sys.exit()
 
-	def wrap_up(self):
-		print ('\nLive long & prosper... bye!')
-		t=elapsed_time(print_res=True)
+	# def wrap_up(self):
+	# 	print ('\nLive long & prosper... bye!')
+	# 	t=elapsed_time(print_res=True)
 
 class SleepPage(PageTemplate):
 	def __init__(self,name):
@@ -297,7 +294,7 @@ class SleepPage(PageTemplate):
 							pygame.MOUSEBUTTONUP,
 							# pygame.MOUSEWHEEL,
 						]
-		self.prev_page_name='mobile_home_page_1'
+		self.prev_page_name='MenuHomePage'
 		self.backlight_restore_level=255
 
 	def handle_events(self,screen,curr_events):
@@ -345,7 +342,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		self.pg_id=0
 		# self.kwargs={} #reset kwargs
 		# self.button_list+=self.init_buttons()
-		self.prev_page_name='mobile_home_page_1'
+		self.prev_page_name='MenuHomePage'
 
 	def update_cpu_stats(self,dt=None):
 		process = Popen(['vcgencmd', 'measure_temp'], stdout=PIPE)
@@ -484,7 +481,7 @@ class SettingsPage(PageTemplate):
 		super().__init__(name)
 		self.button_list+=self.init_buttons()
 		self.button_mapping={
-							'home_button':'mobile_home_page_1',
+							'home_button':'MenuHomePage',
 							'Num Pad':'numpad_page',
 							'Exit':'exit'}
 
@@ -654,7 +651,7 @@ class SliderTestPage(PageTemplate):
 
 	# ==================================================================== #
 
-class MobileHomePage2(PageTemplate):
+class MenuHomePageClass(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
 		self.bluetooth_connected=False
@@ -724,8 +721,7 @@ class MobileHomePage2(PageTemplate):
 			screen.blit(self.page_dots[self.curr_subpage],self.page_dots_pos)   # page dots
 
 		except Exception as e:
-			# pass
-			print (e)
+			logging.error(f"{e}")
 		pressed_button=self.handle_events(screen,curr_events)
 		if pressed_button!=None:
 			if pressed_button.name in self.button_mapping.keys():
@@ -887,7 +883,8 @@ class MobileHomePage2(PageTemplate):
 		day,date,hour_sec=get_date_time()
 		blit_some_stats(screen,self.sw,day,date,hour_sec,self.fps,self.cpu_pct,self.cpu_temp,self.wifi_name,'I',self.b_img)
 		self.blit_page_num(screen)
-		pygame.display.flip()
+		# pygame.display.flip()
+		pygame.display.update()
 
 class QuickMenuPage(PageTemplate):
 	def __init__(self,name):
@@ -948,7 +945,7 @@ class FileBrowserPage(PageTemplate):
 		self.refresh_files_list()
 
 		self.button_list+=self.file_button_list
-		self.prev_page_name='mobile_home_page_1'
+		self.prev_page_name='MenuHomePage'
 		self.p=pygame.Surface((0,0))
 
 		self.bg=pygame.Surface((320,320))
@@ -990,7 +987,6 @@ class FileBrowserPage(PageTemplate):
 		for b in self.button_list:
 			if b!=self.curr_butt:
 				b.selected=False
-
 
 	def next_frame(self,screen,curr_events,**kwargs):
 		self.next_screen_name=self.name
@@ -1086,7 +1082,6 @@ class FileBrowserPage(PageTemplate):
 
 	def blit_title(self,screen):
 		FONT_FEDERATION.render_to(screen, (150, 67), 'Files', ORANGE,style=0,size=44)
-		# FONT_FEDERATION.render_to(screen, (150, 117), 'SGP30', DARK_YELLOW,style=0,size=34)
 
 # ==================================================================== #
 
@@ -1159,23 +1154,24 @@ class WindowManager():
 		pygame.event.post(BLUETOOTH_CONNECTED)
 
 	def init_screen(self):
-		# print ('init_screen')
+		print ('init_screen')
 		modes = pygame.display.list_modes()
-		# print(modes)
+		print(f"mode:{modes}")
 		# print(pygame.display.get_wm_info())
 		# print (pygame.display.mode_ok(modes[0]))
 		# self.full_res=modes[0]
-		self.full_res=FULL_SCREEN_RES
 		self.color_depth=pygame.display.mode_ok(modes[0])
 		if not self.fullscreen_en:
 			screen=pygame.display.set_mode(STARTING_RES,   pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
 		else:
-			screen=pygame.display.set_mode(self.full_res, pygame.FULLSCREEN |  pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
+			screen=pygame.display.set_mode(FULL_SCREEN_RES, pygame.FULLSCREEN |  pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
 		starfleet_logo.convert()
 		pygame.display.set_icon(starfleet_logo_small)
 		pygame.display.set_caption("Tricorder")
 		# print(modes)
-		# print(pygame.display.get_wm_info())
+		print (f"screen: {screen}")
+		print (f"pygame.display: {pygame.display}")
+		print(pygame.display.get_wm_info())
 		# print (pygame.display.mode_ok(modes[0]))
 
 		self.screen_dict['quick_menu_page'].fullscreen_en=self.fullscreen_en
@@ -1204,7 +1200,7 @@ class WindowManager():
 					 MultimeterPage('multimeter_page'),
 					 ObjectDetectionPage('object_detection_page'),
 					 FlyPage('fly_page'),
-					 MobileHomePage2('mobile_home_page_1')]
+					 MenuHomePageClass('MenuHomePage')]
 
 		screen_list=self.sensor_pages_list+[HomePage('home_page'),
 											 QuickMenuPage('quick_menu_page'),
@@ -1222,7 +1218,7 @@ class WindowManager():
 			screen_dict[scr.name]=scr
 			scr.bluetooth_connected=False
 
-		return screen_dict,screen_dict['mobile_home_page_1']
+		return screen_dict,screen_dict['MenuHomePage']
 
 	def init_screenshot_overlay(self):
 		s=pygame.Surface(FULL_SCREEN_RES)
@@ -1241,14 +1237,14 @@ class WindowManager():
 					self.screen_dict['exit'].next_frame('','',kwargs={'prev_page_name':self.curr_screen.name})
 
 				if (event.key==ord('m')):
-					self.next_screen=self.screen_dict['mobile_home_page_1']
+					self.next_screen=self.screen_dict['MenuHomePage']
 
 				if (event.key==ord('h')):
 					self.next_screen=self.screen_dict['home_page']
 
 				if (event.key==ord('f')):
 					self.fullscreen_en= not self.fullscreen_en
-					self.init_screen()
+					self.screen=self.init_screen()
 					logging.info (self.screen.get_size())
 					curr_events.remove(event)
 
@@ -1284,7 +1280,8 @@ class WindowManager():
 			if event==TOGGLE_SCREEN:
 				curr_events.remove(event)
 				self.fullscreen_en=not self.fullscreen_en
-				self.init_screen()
+				self.screen=self.init_screen()
+				print (self.screen)
 
 			if event==GO_TO_SLEEP:
 				logging.info ('GO_TO_SLEEP!!!')
@@ -1539,110 +1536,6 @@ class WindowManager():
 		self.frame_count+=1
 		return self.screen
 
-	# # ------------------------ #
-	# def connect_bluetooth(self):
-
-	# 	print ('finding service...')
-
-	# 	print("Searching for SampleServer on %s" % addr)
-
-	# 	# search for the SampleServer service
-	# 	uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
-	# 	connected=False
-	# 	while connected==False:
-	# 		try:
-	# 			service_matches=''
-	# 			service_matches = find_service( uuid = uuid, address = addr )
-
-	# 			if len(service_matches) != 0:
-	# 				first_match = service_matches[0]
-	# 				port = first_match["port"]
-	# 				name = first_match["name"]
-	# 				host = first_match["host"]
-	# 				# Create the client socket
-	# 				print("Waiting for connection on RFCOMM channel %d" % port)
-	# 				sock=BluetoothSocket( RFCOMM )
-	# 				sock.connect((host, port))
-	# 				connected=True
-	# 		except btcommon.BluetoothError as error:
-	# 				print( "Caught BluetoothError: ", error)
-	# 				time.sleep(2)
-	# 	pygame.event.post(BLUETOOTH_CONNECTED)
-	# 	print("connected.  type stuff")
-	# 	self.client_sock=sock
-	# 	# return sock
-
-	# # def get_serial_vals(self,msg,dict_names_list):
-	# # 	# ==========================================
-
-	# # 	while (len(ser.readline())>0):
-	# # 		logging.warning ('dumping serial vals')
-
-
-	# # 	# ser.flush()
-
-	# # 	x={}
-
-	# # 	for char in msg.rstrip(' ').split(' '):
-	# # 		logging.info (f'char:{char}')
-
-
-	# # 		ser.write(msg.encode('utf-8'))
-
-
-	# # 		curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
-	# # 		# print (curr_line)
-
-	# # 		for item,name in zip(curr_line.split(' '),dict_names_list):
-	# # 			try:
-	# # 				val=item.split(":")[1]
-	# # 			except IndexError:
-	# # 				val=-1
-	# # 			# print (val)
-	# # 			x[name]=val
-	# # 		logging.info (msg,":",x)
-	# # 	return x
-
-	# # 	# ==========================================
-
-	# def get_bluetooth_vals(self,msg):
-	# 	try:
-	# 		if len(msg)<MAX_BYTES:
-	# 			msg=msg.rstrip(' ')
-	# 			for kk in range(len(msg),MAX_BYTES):
-	# 				msg+='*'
-	# 		self.client_sock.send(msg)
-	# 		self.recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
-
-	# 		self.recv_data=self.recv_data.replace(' ','').replace('{','').replace('}','').replace('*','').replace("'", "").replace('\x00','')
-
-	# 		splitup=self.recv_data.split(',')
-
-	# 		for item1 in splitup:
-	# 			# print (item1)
-	# 			z=item1.strip().split(':')
-	# 			k,v=z[0],z[1]
-	# 			self.sensor_dict[k]=v
-	# 		self.bluetooth_count+=1
-	# 		return self.sensor_dict
-
-	# 	except IndexError:
-	# 		return SENSOR_DICT
-	# 	except btcommon.BluetoothError:
-	# 		pygame.event.post(BLUETOOTH_DISCONNECTED)
-	# 	except Exception as e:
-	# 		raise(e)
-
-	# def get_sensor_vals(self,msg,dict_names_list):
-	# 	if PERIPHERAL_MODE=='bluetooth':
-	# 		x=self.get_bluetooth_vals(msg)
-	# 	if PERIPHERAL_MODE=='serial':
-	# 		try:
-	# 			x=self.get_serial_vals(msg, dict_names_list)
-	# 		except Exception as e:
-	# 			logging.error ("get_sensor_vals:"+str(e))
-
-	# 	return x
 	# ------------------------ #
 	def check_make_file(self):
 		#Check if log file exists
@@ -1702,6 +1595,9 @@ class WindowManager():
 		pygame.image.save(sub,name)
 		self.screen.blit(camera,(20,160))
 # ==================================================================== #
+def wrap_up():
+		print ('\nLive long & prosper... bye!')
+		t=elapsed_time(print_res=True)
 
 def elapsed_time(print_res=False):
 		end_time=round(time.time()-start_time_overall,2)
@@ -1715,11 +1611,11 @@ if __name__=='__main__':
 	global start_time_overall
 	global MODE
 	global PIGPIO
-	global BACKLIGHT_PIN
+	# global BACKLIGHT_PIN
 
 	# following vars are for backlight
 	PIGPIO=pigpio.pi()
-	BACKLIGHT_PIN=19
+	# BACKLIGHT_PIN=19
 
 	MODE='normal'
 	start_time_overall=time.time()
@@ -1732,7 +1628,7 @@ if __name__=='__main__':
 
 	try:
 		while True:
-			scr=W.next_frame_main()
+			W.screen=W.next_frame_main()
 			# scr.blit(pygame.transform.rotate(scr, 270), (0, 0))
 			pygame.display.update()
 
@@ -1748,9 +1644,10 @@ if __name__=='__main__':
 		# ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 	except KeyboardInterrupt:
 		logging.warning ('KeyboardInterrupt exiting')
+		wrap_up()
 		# ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 	except Exception as e:
-		logging.error ('Caught exception:'+str(e))
+		logging.error (f'Caught exception: {e}')
 
 		x=PIGPIO.get_PWM_dutycycle(BACKLIGHT_PIN)
 		logging.error (f'BACKLIGHT: {x}')

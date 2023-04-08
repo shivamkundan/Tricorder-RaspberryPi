@@ -4,7 +4,7 @@
 # class NoiseSensorPage(PageTemplate):
 #     def __init__(self,name):
 #         super().__init__(name)
-#         self.prev_page_name='mobile_home_page_1'
+#         self.prev_page_name='MenuHomePage'
 
 #     def next_frame(self,screen,curr_events,**kwargs):
 #         self.next_screen_name=self.name
@@ -32,7 +32,7 @@ import numpy as np
 class NoiseSensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='mobile_home_page_1'
+        self.prev_page_name='MenuHomePage'
         self.noise_out=0
         self.frame_count=0
         self.color_list=['noise']

@@ -1,4 +1,5 @@
 import pygame.event as e
+import logging
 from image_assets import ButtonClass
 from aa_arc_gauge import *
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN, SLATE, ORANGE, WHITE, DARK_GREY
@@ -11,7 +12,7 @@ from serial_manager import get_temp_humid, ser
 class TempHumidPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='mobile_home_page_1'
+        self.prev_page_name='MenuHomePage'
         self.bluetooth_connected=False
         self.c_temp=-1
         self.humid=-1
@@ -198,8 +199,8 @@ class TempHumidPage(PageTemplate):
             self.humid_gauge_img.set_colorkey((0,0,0))
             screen.blit(self.temp_gauge_img,self.temp_gauge_origin)
             screen.blit(self.humid_gauge_img,self.humid_gauge_origin)
-        except:
-            logging.error ("temp_humid_page: aa_arc_gauge error")
+        except Exception as e:
+            logging.error (f"aa_arc_gauge error: {e}")
 
 
         self.frame_count+=1
