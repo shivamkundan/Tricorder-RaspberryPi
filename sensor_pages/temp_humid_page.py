@@ -182,10 +182,10 @@ class TempHumidPage(PageTemplate):
             # s=ser.inWaiting()
             # print ("ser.inWaiting():",s)
             # if (s>0):
-            ts = time.time()
+            # ts = time.time()
             self.c_temp,self.humid,_,_=get_temp_humid()
-            te = time.time()
-            print (te-ts)
+            # te = time.time()
+            # print (te-ts)
 
 
         f_temp=str(round(32+(float(self.c_temp)*1.8),2))+"°F"
@@ -199,7 +199,7 @@ class TempHumidPage(PageTemplate):
             screen.blit(self.temp_gauge_img,self.temp_gauge_origin)
             screen.blit(self.humid_gauge_img,self.humid_gauge_origin)
         except:
-            print ("temp_humid_page: aa_arc_gauge error")
+            logging.error ("temp_humid_page: aa_arc_gauge error")
 
 
         self.frame_count+=1

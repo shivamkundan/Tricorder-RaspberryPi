@@ -1492,13 +1492,7 @@ class WindowManager():
 		curr_events=self.handle_bluetooth_events(pygame.event.get())
 
 		# ---- screen specific ---- #
-		# print ('main: ',self.kwargs)
-		# try:
 		next_screen_name,self.kwargs=self.curr_screen.next_frame(self.screen,curr_events,**self.kwargs)
-		# except Exception as e:
-		# 	print (e)
-		# 	print()
-
 		self.next_screen=self.screen_dict[next_screen_name]
 
 		if next_screen_name!=self.curr_screen.name:
