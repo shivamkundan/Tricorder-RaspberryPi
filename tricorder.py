@@ -12,6 +12,7 @@ from bluetooth import *
 import math
 import trace
 import threading
+import signal
 
 # ----- plotting libs ----- #
 import matplotlib as mpl
@@ -41,12 +42,14 @@ from image_assets import *
 from aa_arc_gauge import *
 from custom_user_events import *
 
+# from communicator import *
+# PERIPHERAL_MODE='serial'
+
 from global_functions import *
 from plotting_functions import *
-from page_templates import *
 
-from communicator import *
-# PERIPHERAL_MODE='serial'
+# ============== import pages ==============#
+from page_templates import *
 from sdr_page import *
 from thermal_cam_page import *
 from pm25_page import *
@@ -67,14 +70,7 @@ from battery_page import *
 from multimeter_page import *
 from object_detection_page import *
 from fly_page import *
-
 from home_page import *
-# from my_logging import *
-
-import signal
-
-
-
 
 # ===================== Helper Classes =============================== #
 class thread_with_trace(threading.Thread):
@@ -905,12 +901,6 @@ class MobileHomePage2(PageTemplate):
 		self.blit_page_num(screen)
 		pygame.display.flip()
 
-	def on_exit(self):
-		pass
-		
-	def on_enter(self):
-		pass
-
 class QuickMenuPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
@@ -1116,7 +1106,7 @@ class WindowManager():
 	def __init__(self,fullscreen_en=False):
 
 		self.ser=ser
-		# Periodic event for logging to file (in ms)
+		# # Set periodic event for logging to file (in ms)
 		# pygame.time.set_timer(FILE_LOG_EVENT, 20000)
 		pygame.event.set_blocked(pygame.VIDEOEXPOSE)
 
@@ -1269,7 +1259,7 @@ class WindowManager():
 				if (event.key==ord('f')):
 					self.fullscreen_en= not self.fullscreen_en
 					self.init_screen()
-					print (self.screen.get_size())
+					logging.info (self.screen.get_size())
 					curr_events.remove(event)
 
 				if (event.key==ord('z')):
@@ -1307,7 +1297,7 @@ class WindowManager():
 				self.init_screen()
 
 			if event==GO_TO_SLEEP:
-				print ('GO_TO_SLEEP!!!')
+				logging.info ('GO_TO_SLEEP!!!')
 				MODE='sleep'
 				self.backlight_restore_level=self.screen_dict['slider_test_page'].get_current_brightness()
 				self.screen_dict['slider_test_page'].set_brightness(0)
@@ -1317,7 +1307,7 @@ class WindowManager():
 				ser.readline()
 
 			if event==WAKE_FROM_SLEEP:
-				print ('WAKE_FROM_SLEEP!!!')
+				logging.info ('WAKE_FROM_SLEEP!!!')
 				MODE='normal'
 				self.screen_dict['slider_test_page'].set_brightness(255)
 				# self.screen_dict['slider_test_page'].set_brightness(self.backlight_restore_level)
@@ -1535,12 +1525,12 @@ class WindowManager():
 			try:
 				self.curr_screen.on_exit()
 			except  AttributeError:
-				print ("AttributeError on_exit:",self.curr_screen.name)
+				logging.error ("AttributeError on_exit:"+self.curr_screen.name)
 
 			try:
 				self.next_screen.on_enter()
 			except  AttributeError:
-				print ("AttributeError on_enter:",self.curr_screen.name)
+				logging.error ("AttributeError on_enter:"+self.curr_screen.name)
 
 
 		# ---- control power ---- #
@@ -1559,7 +1549,7 @@ class WindowManager():
 					if butt.cooldown_val>0:
 						butt.cooldown_val-=1
 			except Exception as e:
-				print (e)
+				logging.error (e)
 
 		self.DeviceInfo.update(self.screen,self.frame_count,self.bluetooth_count)
 
@@ -1610,7 +1600,7 @@ class WindowManager():
 		# ==========================================
 
 		while (len(ser.readline())>0):
-			print ('dumping serial vals')
+			logging.warning ('dumping serial vals')
 
 
 		# ser.flush()
@@ -1618,7 +1608,7 @@ class WindowManager():
 		x={}
 
 		for char in msg.rstrip(' ').split(' '):
-			print ('char:',char)
+			logging.info ('char:',char)
 
 
 			ser.write(msg.encode('utf-8'))
@@ -1634,7 +1624,7 @@ class WindowManager():
 					val=-1
 				# print (val)
 				x[name]=val
-			print (msg,":",x)
+			logging.info (msg,":",x)
 		return x
 
 		# ==========================================
@@ -1674,8 +1664,7 @@ class WindowManager():
 			try:
 				x=self.get_serial_vals(msg, dict_names_list)
 			except Exception as e:
-				print ("get_sensor_vals:")
-				print (e)
+				logging.error ("get_sensor_vals:"+str(e))
 
 		return x
 	# ------------------------ #
@@ -1716,7 +1705,7 @@ class WindowManager():
 				self.DeviceInfo.wr_count+=1
 				# print ('write to ',log_file.name)
 			except:
-				print ('no write')
+				logging.error ('no write')
 				return 'XX'
 			return('wr')
 
@@ -1737,18 +1726,6 @@ class WindowManager():
 		pygame.image.save(sub,name)
 		self.screen.blit(camera,(20,160))
 # ==================================================================== #
-def get_session_num():
-	#
-	with open('/home/pi/Sensor_Scripts/pygame_code/session_num','r') as f:
-		snum=str(f.read())
-	f.close()
-
-	snum=str(int(snum)+1)
-	with open('/home/pi/Sensor_Scripts/pygame_code/session_num','w') as f:
-		f.write(snum)
-	f.close()
-
-	return snum
 
 def elapsed_time(print_res=False):
 		end_time=round(time.time()-start_time_overall,2)
@@ -1772,7 +1749,7 @@ if __name__=='__main__':
 
 	MODE='normal'
 	start_time_overall=time.time()
-	# snum=get_session_num()
+
 
 	clock=pygame.time.Clock()
 
@@ -1793,19 +1770,17 @@ if __name__=='__main__':
 				# clock.tick_busy_loop()
 				clock.tick()
 
-
-
 	except SystemExit:
-		print ('exiting')
+		logging.info ('exiting')
 		# ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 	except KeyboardInterrupt:
-		print ('KeyboardInterrupt exiting')
+		logging.warning ('KeyboardInterrupt exiting')
 		# ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 	except Exception as e:
-		print ('Caught exception')
+		logging.error ('Caught exception')
 
 		x=PIGPIO.get_PWM_dutycycle(BACKLIGHT_PIN)
-		print (f'BACKLIGHT: {x}')
+		logging.error (f'BACKLIGHT: {x}')
 		if x<128:
 			PIGPIO.set_PWM_dutycycle(BACKLIGHT_PIN, 128)
 

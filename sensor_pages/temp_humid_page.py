@@ -34,6 +34,7 @@ class TempHumidPage(PageTemplate):
         self.button_dict['temperature'].selected=True
         self.show_menu=False
 
+    
     def init_buttons(self):
         menu_title_buttons=[]
         menu_buttons=[]

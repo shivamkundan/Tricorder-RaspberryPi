@@ -106,8 +106,6 @@ def set_up_logging(console_log_output, console_log_level, console_log_color, log
 	# Success
 	return True
 
-
-
 def shivams_logging(script_name="tricorder",console_log_level="debug",logfile_log_level="debug"):
 	if (not set_up_logging(console_log_output="stdout",
 						console_log_level=console_log_level,
@@ -116,7 +114,8 @@ def shivams_logging(script_name="tricorder",console_log_level="debug",logfile_lo
 						logfile_log_level=logfile_log_level,
 						logfile_log_color=False,
 						# log_line_template="%(color_on)s[%(created)d] [%(threadName)s] [%(levelname)-8s] %(message)s%(color_off)s")):
-						log_line_template="%(color_on)s[%(asctime)s] [%(threadName)s] [%(levelname)-8s] [mod:%(module)s] [fn:%(funcName)s] %(message)s%(color_off)s")):
+						# log_line_template="%(color_on)s[%(asctime)s] [%(threadName)s] [%(levelname)-8s] [mod:%(module)s] [fn:%(funcName)s] %(message)s%(color_off)s")):
+						log_line_template="%(color_on)s[%(asctime)s] [%(levelname)-8s] [fn:%(funcName)s] %(message)s%(color_off)s")):
 		print("Failed to set up logging, aborting.")
 		return 1
 

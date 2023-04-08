@@ -1,3 +1,8 @@
+'''
+This file contains templates for pages.
+PageTemplate is the base class which handles blitting the home button
+and other page-specific buttons, mouse/touch handling, enter and exit.
+'''
 
 import pygame
 from fonts import FONT_FEDERATION, FONT_BLUE
@@ -5,8 +10,10 @@ from image_assets import *
 import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
+
 # ===============================Page Templates======================= #
 class PageTemplate():
+    # This is the base class for all pages
     def __init__(self,name):
         self.name=name
         self.next_screen_name=self.name
@@ -48,6 +55,12 @@ class PageTemplate():
                 # print ('changing kwargs from ',self.kwargs['prev_page_name'], ' to ',pp)
                 self.kwargs['prev_page_name']=kwargs['prev_page_name']
 
+    def on_exit(self):
+        pass
+
+    def on_enter(self):
+        pass
+
     def handle_events(self,screen,curr_events):
 
         for event in curr_events:
@@ -85,6 +98,7 @@ class PageTemplate():
                 return None
 
 class PageWithoutGauge(PageTemplate):
+    # For more complex pages
     def __init__(self,name,color_list=[],names_list=[],EVENT=None):
         super().__init__(name)
         self.names_list=names_list
@@ -139,7 +153,7 @@ class PageWithoutGauge(PageTemplate):
         self.line_surf=pygame.Surface((1,1))
 
     def flip_button(self,pressed_button):
-
+        # For releasing the non selected buttons
         if pressed_button.selected:
             return
         else:
@@ -202,7 +216,7 @@ class PageWithoutGauge(PageTemplate):
         x_pos=120
         y_pos=375
 
-
+        # Handle both bluetooth and usb connections
         if (self.bluetooth_connected or self.PERIPHERAL_MODE=='serial'):
             if self.EVENT!=None:
                 # trim arrays to rolling_tics size
@@ -232,7 +246,7 @@ class PageWithoutGauge(PageTemplate):
                         screen.blit(self.line_surf, (120,150))
                 except Exception as e:
 
-                    print ('PageWithoutGauge.next_frame_base error:\n' ,e)
+                    logging.error ('PageWithoutGauge.next_frame_base error:'+str(e))
 
         else:
                 y_pos+=110

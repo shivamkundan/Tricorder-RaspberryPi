@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+'''
+Code to handle bluetooth and usb serial connections.
+'''
+
 from bluetooth import *
 from dataclasses import dataclass
 

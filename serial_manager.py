@@ -1,11 +1,15 @@
 #!/usr/bin/python3
+
 '''
-This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets. By sending data back and forth:
--> Data can be requested from sensors
--> Sensor-specific settings can be changed
--> Microcontroller operations can be changed (e.g., sleep mode)
--> Each of the above involve specific mapping from mappings.py
+-> This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets. By sending data back and forth:
+	-> Data can be requested from sensors
+	-> Sensor-specific settings can be changed
+	-> Microcontroller operations can be changed (e.g., sleep mode)
+	-> Both of the above involves sending specific mappings from mappings.py
+-> Each sensor page can import relevant functions for efficiency.
+-> Keeping all in one place in case of changes to how I communicate with sensors.
 '''
+
 from mappings import *
 import serial
 from my_logging import *
@@ -15,7 +19,8 @@ from my_logging import *
 shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
 logging.info (f'\n')
 
-port_name="/dev/my_esp32"
+port_name="/dev/my_esp32"	# this is the custom assigned port for esp32
+
 try:
 	ser = serial.Serial(
 	    port=port_name, # Change this according to connection methods, e.g. /dev/ttyUSB0
@@ -221,10 +226,10 @@ def get_battery():
 		return float(x['volt']),float(x['pct']),float(x['temp'])
 
 	except TypeError:
-		print ('type err: request battery')
+		logging.error ('type err: request battery')
 		return -1,-1,-1
 	except KeyError:
-		print ('key err: request battery')
+		logging.error ('key err: request battery')
 		return -1,-1,-1
 
 def get_radiation():
@@ -240,7 +245,7 @@ def get_radiation():
 		print ('key err: request radiation')
 		return -1
 
-# -------------------------------------------------
+# --------- Inertial measurement unit --------- #
 def get_imu_orientation():
 	try:
 		x=get_serial_vals(IMU_ORIENTATION_CODE,['Hd','Rl','Ph'])
@@ -315,7 +320,7 @@ def get_imu_grav():
 		print ('key err: request ')
 		return -1,-1,-1
 
-# -------------------------------------------------
+# -------------- VIS/IR light sensor  -------------- #
 def set_tsl_scl_disconnect():
 	ser.write(TSL_SCL_DISCONNECT_CODE.encode('utf-8'))
 	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
@@ -346,35 +351,22 @@ def set_geiger_power_on():
 	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
 
 # -------------------------------------------------
+# # this one is only used for battery. other pages have their own get_serial_vals
 def get_serial_vals(send_msg,dict_names_list):
-		# ==========================================
-		# serial.serialutil.SerialException:
-	# try:
-		# while (len(ser.readline())>0):
-		# 	print ('dumping serial vals')
-
-
-		# ser.flush()
-
 		recv_msg={}
 
 		for char in send_msg.rstrip(' ').split(' '):
-			# print ('char:',char)
-
 			ser.write(send_msg.encode('utf-8'))
-
-
 			curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
-			# print ("curr_line: ",curr_line)
+			logging.debug ("curr_line: "+str(curr_line))
 
+			# sometimes a blank line gets sent. brute force to remove.
 			if curr_line=="":
-
 				curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
-				# print ("curr_line 2: ",curr_line)
+				logging.debug ("curr_line 2: "+str(curr_line))
 
 			# if (ser.inWaiting() > 0):
 			# 	curr_line = ser.read(ser.inWaiting()).decode('ascii')
-
 
 			for item,name in zip(curr_line.split(' '),dict_names_list):
 				try:
@@ -383,7 +375,7 @@ def get_serial_vals(send_msg,dict_names_list):
 					val=-1
 				# print (val)
 				recv_msg[name]=val
-			print (send_msg,":",recv_msg)
+			logging.info (str(send_msg)+":"+str(recv_msg))
 
 		return recv_msg
 	# except:
