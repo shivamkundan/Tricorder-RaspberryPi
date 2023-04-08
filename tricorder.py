@@ -263,6 +263,8 @@ class SliderClass():
 		return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 # ====================== General Pages =============================== #
+
+# Faux page for clean exit
 class ExitPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
@@ -1229,7 +1231,7 @@ class WindowManager():
 		# self.screenshot_overlay=s
 		return s
 
-	def handle_generic_events(self,curr_events):
+	def generic_event_handler(self,curr_events):
 		screen=self.screen
 		for event in curr_events:
 
@@ -1315,7 +1317,7 @@ class WindowManager():
 
 			if event.type==FILE_LOG_EVENT:
 				# curr_events.remove(event)
-				print('FILE_LOG_EVENT')
+				logging.info('FILE_LOG_EVENT')
 
 			if event.type in [pygame.FINGERDOWN,pygame.FINGERUP,pygame.FINGERMOTION, pygame.MULTIGESTURE]:
 				if (self.show_mouse==True):
@@ -1329,7 +1331,7 @@ class WindowManager():
 
 		return(curr_events)
 
-	def handle_bluetooth_events(self,curr_events):
+	def sensor_event_handler(self,curr_events):
 
 		screen=self.screen
 		for event in curr_events:
@@ -1489,7 +1491,7 @@ class WindowManager():
 
 		self.screen.fill(BLACK)
 		self.screen.blit(lcars_bg,(0,0))
-		curr_events=self.handle_bluetooth_events(pygame.event.get())
+		curr_events=self.sensor_event_handler(pygame.event.get())
 
 		# ---- screen specific ---- #
 		next_screen_name,self.kwargs=self.curr_screen.next_frame(self.screen,curr_events,**self.kwargs)
@@ -1507,14 +1509,14 @@ class WindowManager():
 				logging.error ("AttributeError on_enter:"+self.curr_screen.name)
 
 
-		# ---- control power ---- #
-		if self.curr_screen.name=="radiation_sensor_page" and next_screen_name!="radiation_sensor_page":
-			ser.write(GEIGER_PWR_OFF_CODE.encode('utf-8'))
-		if self.curr_screen.name!="radiation_sensor_page" and next_screen_name=="radiation_sensor_page":
-			ser.write(GEIGER_PWR_ON_CODE.encode('utf-8'))
+		# # ---- control power brute force method ---- #
+		# if self.curr_screen.name=="radiation_sensor_page" and next_screen_name!="radiation_sensor_page":
+		# 	ser.write(GEIGER_PWR_OFF_CODE.encode('utf-8'))
+		# if self.curr_screen.name!="radiation_sensor_page" and next_screen_name=="radiation_sensor_page":
+		# 	ser.write(GEIGER_PWR_ON_CODE.encode('utf-8'))
 
 
-		curr_events=self.handle_generic_events(curr_events)
+		curr_events=self.generic_event_handler(curr_events)
 
 		for screen_name,screen in self.screen_dict.items():
 			# print (screen_name)
@@ -1711,7 +1713,6 @@ def elapsed_time(print_res=False):
 if __name__=='__main__':
 
 	global start_time_overall
-	global snum
 	global MODE
 	global PIGPIO
 	global BACKLIGHT_PIN
