@@ -5,3 +5,4 @@ test.txt
 *.log
 *.png
 logs*
+batt_*

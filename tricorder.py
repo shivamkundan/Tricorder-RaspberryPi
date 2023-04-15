@@ -13,6 +13,7 @@ import math
 import trace
 import threading
 import signal
+import csv
 
 # ----- plotting libs ----- #
 import matplotlib as mpl
@@ -112,9 +113,9 @@ class DeviceInfoClass():
 		self.wr_count=0
 
 		self.battery_stats_tics=600
-		self.battery_voltage=-1
-		self.battery_percent=-1
-		self.battery_temperature=-1
+		self.batt_volt=-1
+		self.batt_pct=-1
+		self.batt_temp=-1
 
 	def blit_bluetooth_status(self,screen,x_pos):
 		if self.bluetooth_connected==False:
@@ -129,6 +130,30 @@ class DeviceInfoClass():
 			b_img=bluetooth_img_not_connected
 		return b_img
 
+	def read_battery(self,screen,frame_count):
+		# ------ Battery ------ #
+		screen.blit(no_battery,(10,5))
+
+		batt_string=str(self.batt_pct)+"% / "+\
+					str(self.batt_volt)+"V / "+\
+					str(self.batt_temp)+"°C"
+
+		FONT_OKUDA.render_to(screen, (50, 11), batt_string, WHITE,style=1,size=26)
+
+		try:
+			if frame_count%self.battery_stats_tics==0:
+				# pygame.event.post(REQUEST_BATTERY)
+				self.batt_volt,self.batt_pct,self.batt_temp=get_battery()
+				# writing to csv file
+				now = datetime.datetime.now()
+				date=now.strftime('%m/%d/%y')
+				hour_min=now.strftime('%-I:%M:%S %p')
+				with open("batt_history.csv", 'a+') as csvfile:
+					csvfile.write(f"{date},{hour_min},{self.batt_volt},{self.batt_pct},{self.batt_temp}\n")
+				csvfile.close()
+		except Exception as e:
+			logging.error (e)
+
 	def update(self,screen,frame_count,bluetooth_count):
 
 		if frame_count%self.wifi_tics==0:
@@ -138,7 +163,7 @@ class DeviceInfoClass():
 
 		self.day,self.date,self.time=get_date_time()
 
-		width=screen.get_width()
+		width=screen.get_width()	# Used for aligning text
 
 		# Mouse pos
 		mouse_pos_txt=smallfont.render('(x,y): '+str(pygame.mouse.get_pos()), True , WHITE)
@@ -161,21 +186,7 @@ class DeviceInfoClass():
 		FONT_OKUDA.render_to(screen, (500+28, 11), str(curr_brightness_pct), WHITE,style=1,size=26)
 		screen.blit(brightness_icon,(500,6))
 
-		# ------ Battery ------ #
-		screen.blit(no_battery,(10,5))
-
-		batt_string=str(self.battery_percent)+"% / "+\
-					str(self.battery_voltage)+"V / "+\
-					str(self.battery_temperature)+"°C"
-
-		FONT_OKUDA.render_to(screen, (50, 11), batt_string, WHITE,style=1,size=26)
-
-		try:
-			if frame_count%self.battery_stats_tics==0:
-				# pygame.event.post(REQUEST_BATTERY)
-				self.battery_voltage,self.battery_percent,self.battery_temperature=get_battery()
-		except Exception:
-			pass
+		self.read_battery(screen,frame_count)
 
 class SliderClass():
 	def __init__(self,start_x,y_pos,button_width,button_height,length=100,min_val=0,max_val=249,start_val=None):
@@ -712,11 +723,12 @@ class MenuHomePageClass(PageTemplate):
 		self.transition_events(screen,curr_events)                          # check for dragging/scrolling
 		self.blit_all_buttons(screen)
 		self.blit_page_num(screen)                                          # page num
+
 		try:
 			screen.blit(self.page_dots[self.curr_subpage],self.page_dots_pos)   # page dots
-
 		except Exception as e:
-			logging.error(f"{self.__class__.__name__}: {e}")
+			logging.error(f"{self.__class__.__name__}: KeyError page_dots pg:{e}")
+
 		pressed_button=self.handle_events(screen,curr_events)
 		if pressed_button!=None:
 			if pressed_button.name in self.button_mapping.keys():
@@ -1146,7 +1158,7 @@ class WindowManager():
 		# 		bytesize=serial.EIGHTBITS,
 		# 		timeout=1
 		# 	)
-		pygame.event.post(BLUETOOTH_CONNECTED)
+		# pygame.event.post(BLUETOOTH_CONNECTED)
 
 	def init_screen(self):
 		modes = pygame.display.list_modes()
