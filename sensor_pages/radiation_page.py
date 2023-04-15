@@ -10,6 +10,8 @@ from serial_manager import get_radiation,set_geiger_power_off,set_geiger_power_o
 
 import numpy as np
 
+import logging
+
 class GeigerCounterPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
@@ -33,7 +35,9 @@ class GeigerCounterPage(PageTemplate):
 		self.button_list+=[RESET_BUTTON,RESET5_BUTTON]
 
 	def on_enter(self):
-	    set_geiger_power_on()
+		logging.info(f"entering {self.__class__.__name__}")
+		set_geiger_power_on()
+
 
 	def on_exit(self):
 	    set_geiger_power_off()

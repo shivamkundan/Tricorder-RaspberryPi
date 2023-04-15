@@ -20,8 +20,7 @@ TSL_SCL_CONNECT_CODE='A'
 PM25_PWR_ON_CODE='F'
 PM25_PWR_OFF_CODE='H'
 
-IMU_ORIENTATION_CODE="O"
-
+d['IMU_ORIENTATION_CODE']="O"
 d['IMU_ANG_VEL_CODE'] = 'Q'
 d['IMU_LIN_ACC_CODE'] = 'W'
 d['IMU_MAG_CODE'] = 'X'
@@ -58,11 +57,10 @@ SET_LTR390_RESOLUTION_16BIT='0'
 SET_LTR390_RESOLUTION_13BIT='!'
 # -------------------------------- #
 
+# this makes logging easier
 d_inv={}
 for key, val in d.items():
 	d_inv[val]=key
-
-print (d_inv)
 
 # --- SENSOR CODES --- #
 # Light        = L

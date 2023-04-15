@@ -5,7 +5,7 @@ import os
 from image_assets import NAV_BUTTONS
 
 from serial_manager import set_tsl_scl_disconnect,get_imu_orientation,get_imu_ang_vel,get_imu_lin_acc,get_imu_acc, get_imu_mag,get_imu_grav
-
+import logging
 img_path=('/home/pi/Sensor_Scripts/pics/')
 
 compass=pygame.image.load(os.path.join(img_path+'compass_custom.png'))
@@ -103,6 +103,7 @@ class IMUSensorPage(PageTemplate):
         self.arrow = pygame.image.load(os.path.join(img_path,'arrow.png'))
 
     def on_enter(self):
+        logging.info(f"entering {self.__class__.__name__}")
         set_tsl_scl_disconnect()
 
     def blit_page_num(self,screen):

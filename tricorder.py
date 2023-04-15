@@ -558,7 +558,7 @@ class SliderTestPage(PageTemplate):
 		self.length=400
 		self.x_pos=200
 		self.end_pos=self.x_pos+self.length
-		self.prev_page_name='settings_page'
+		self.prev_page_name='MenuHomePage'
 
 		self.slider=SliderClass(200,290,20,50,length=320,min_val=7,max_val=250,start_val=200)
 		# def __init__(self,start_x,y_pos,button_width,button_height,length=100,min_val=0,max_val=250,start_val=None):
@@ -716,7 +716,7 @@ class MenuHomePageClass(PageTemplate):
 			screen.blit(self.page_dots[self.curr_subpage],self.page_dots_pos)   # page dots
 
 		except Exception as e:
-			logging.error(f"{e}")
+			logging.error(f"{self.__class__.__name__}: {e}")
 		pressed_button=self.handle_events(screen,curr_events)
 		if pressed_button!=None:
 			if pressed_button.name in self.button_mapping.keys():
@@ -1149,9 +1149,8 @@ class WindowManager():
 		pygame.event.post(BLUETOOTH_CONNECTED)
 
 	def init_screen(self):
-		print ('init_screen')
 		modes = pygame.display.list_modes()
-		print(f"mode:{modes}")
+		# print(f"mode:{modes}")
 		# print(pygame.display.get_wm_info())
 		# print (pygame.display.mode_ok(modes[0]))
 		# self.full_res=modes[0]
@@ -1164,9 +1163,9 @@ class WindowManager():
 		pygame.display.set_icon(starfleet_logo_small)
 		pygame.display.set_caption("Tricorder")
 		# print(modes)
-		print (f"screen: {screen}")
-		print (f"pygame.display: {pygame.display}")
-		print(pygame.display.get_wm_info())
+		# print (f"screen: {screen}")
+		# print (f"pygame.display: {pygame.display}")
+		# print(pygame.display.get_wm_info())
 		# print (pygame.display.mode_ok(modes[0]))
 
 		self.screen_dict['quick_menu_page'].fullscreen_en=self.fullscreen_en
@@ -1517,7 +1516,7 @@ class WindowManager():
 					if butt.cooldown_val>0:
 						butt.cooldown_val-=1
 			except Exception as e:
-				logging.error (e)
+				logging.error (f"{self.__class__.__name__}:{e}")
 
 		self.DeviceInfo.update(self.screen,self.frame_count,self.bluetooth_count)
 

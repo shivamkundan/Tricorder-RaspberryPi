@@ -31,6 +31,7 @@ class LightSensorPage(PageTemplate):
     def on_enter(self):
         set_tsl_scl_connect()
         self.frame_count=0
+        logging.info(f"entering {self.__class__.__name__}")
 
     def on_exit(self):
         set_tsl_scl_disconnect()

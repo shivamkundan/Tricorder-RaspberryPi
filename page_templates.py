@@ -10,7 +10,7 @@ from image_assets import *
 import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
-
+from my_logging import *
 # ===============================Page Templates======================= #
 class PageTemplate():
     # This is the base class for all pages
@@ -59,7 +59,7 @@ class PageTemplate():
         pass
 
     def on_enter(self):
-        pass
+        logging.info(f"entering {self.__class__.__name__}")
 
     def handle_events(self,screen,curr_events):
 

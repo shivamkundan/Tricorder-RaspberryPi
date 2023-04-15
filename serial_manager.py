@@ -19,11 +19,11 @@ from my_logging import *
 shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
 logging.info (f'\n')
 
-port_name="/dev/my_esp32"	# this is the custom assigned port for esp32
+PORT_NAME="/dev/my_esp32"	# this is the custom assigned port for esp32
 
 try:
 	ser = serial.Serial(
-	    port=port_name, # Change this according to connection methods, e.g. /dev/ttyUSB0
+	    port=PORT_NAME, # Change this according to connection methods, e.g. /dev/ttyUSB0
 	    baudrate = 115200,
 	    parity=serial.PARITY_NONE,
 	    stopbits=serial.STOPBITS_ONE,
@@ -33,10 +33,10 @@ try:
 	# ser.write(MCU_RESET_CODE.encode('utf-8'))
 	ser.write(MCU_IND_MODE_DISABLE.encode('utf-8'))
 	ser.flush()
-	logging.info (f'mcu connected on {port_name}!')
+	logging.info (f'mcu connected on {PORT_NAME}!')
 
 except serial.serialutil.SerialException:
-	logging.error (f'mcu not connected on {port_name}!')
+	logging.error (f'mcu not connected on {PORT_NAME}!')
 	ser=None
 
 # -------------------------------------------------
@@ -272,13 +272,10 @@ def get_serial_vals(send_msg,dict_names_list):
 				except IndexError as e:
 					val=-1
 					logging.error(f"{e} sent:{d_inv[send_msg]} [{send_msg}] recvd:{curr_line}")
-				# print (val)
 				recv_msg[name]=val
 			logging.debug (str(send_msg)+":"+str(recv_msg))
 
 		return recv_msg
-
-		# ==========================================
 
 def my_flush():
 	while (len(ser.readline())>0):

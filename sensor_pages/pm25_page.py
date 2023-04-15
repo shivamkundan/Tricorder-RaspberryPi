@@ -5,6 +5,7 @@ from global_functions import get_text_dimensions
 import pygame.event as e
 from math import log
 from serial_manager import get_pm25,set_pm25_power_off,set_pm25_power_on
+import logging
 
 class pm25page(PageWithoutGauge):
     def __init__(self,name):
@@ -51,6 +52,7 @@ class pm25page(PageWithoutGauge):
         set_pm25_power_off()
 
     def on_enter(self):
+        logging.info(f"entering {self.__class__.__name__}")
         set_pm25_power_on()
 
     def next_frame(self,screen,curr_events,**kwargs):
