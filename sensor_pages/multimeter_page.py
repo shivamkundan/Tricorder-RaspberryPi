@@ -39,9 +39,9 @@ class MultimeterPage(PageTemplate):
         self.current,self.voltage,self.power=get_multimeter()
         #     e.post(REQUEST_CURRENT)
 
-        self.selected_font.render_to(screen, (200, 320), f"I:{self.current}", self.selected_font_color,style=1,size=self.selected_font_size)
-        self.selected_font.render_to(screen, (200, 350), f"V:{self.voltage}", self.selected_font_color,style=1,size=self.selected_font_size)
-        self.selected_font.render_to(screen, (200, 380), f"P:{self.power}", self.selected_font_color,style=1,size=self.selected_font_size)
+        self.selected_font.render_to(screen, (200, 320), f"I:{self.current} mA", self.selected_font_color,style=1,size=self.selected_font_size)
+        self.selected_font.render_to(screen, (200, 350), f"V:{self.voltage} mV", self.selected_font_color,style=1,size=self.selected_font_size)
+        self.selected_font.render_to(screen, (200, 380), f"P:{self.power} mW", self.selected_font_color,style=1,size=self.selected_font_size)
 
         self.frame_count+=1
 
