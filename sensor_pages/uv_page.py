@@ -24,7 +24,7 @@ class UVSensorPage(PageTemplate):
 
         self.uvs=-1
         self.light=-1
-        self.uvi=-1
+        self.uvi=0
         self.ltr_lux=-1
         self.ltr_gain=-1
         self.ltr_resolution=-1
@@ -197,32 +197,33 @@ class UVSensorPage(PageTemplate):
 
         x_pos=138
         y_pos=375
-        if self.bluetooth_connected==True:
+        # if self.bluetooth_connected==True:
 
-            try:
-                self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=get_uv()
-            except Exception as e:
-                self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=-1,-1,-1,-1,-1,-1,-1,-1
+        try:
+            self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=get_uv()
+            # print (self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay)
+        except Exception as e:
+            self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=-1,-1,-1,-1,-1,-1,-1,-1
 
-            self.uv_gauge_img=self.uv_gauge.blit_gauge(self.uvs)
+        self.uv_gauge_img=self.uv_gauge.blit_gauge(self.uvs)
 
-            try:
-                UVI=round(float(self.uvi),2)
-            except ValueError:
-                UVI=-1
-            self.uvi_gauge_img=self.uvi_gauge.blit_gauge(UVI)
-            self.uv_gauge_img.set_colorkey((0,0,0))
-            self.uvi_gauge_img.set_colorkey((0,0,0))
+        try:
+            UVI=round(float(self.uvi),2)
+        except ValueError:
+            UVI=0
+        self.uvi_gauge_img=self.uvi_gauge.blit_gauge(UVI)
+        self.uv_gauge_img.set_colorkey((0,0,0))
+        self.uvi_gauge_img.set_colorkey((0,0,0))
 
-            screen.blit(self.uv_gauge_img,self.uv_gauge_origin)
-            screen.blit(self.uvi_gauge_img,self.uvi_gauge_origin)
+        screen.blit(self.uv_gauge_img,self.uv_gauge_origin)
+        screen.blit(self.uvi_gauge_img,self.uvi_gauge_origin)
 
-            if self.show_menu==False:
+        if self.show_menu==False:
 
-                self.blit_current_settings(screen)
+            self.blit_current_settings(screen)
 
-        else:
-            y_pos+=110
-            FONT_FEDERATION.render_to(screen, (x_pos, y_pos+35), 'NO BLUETOOTH', WHITE, size=28)
+        # else:
+        #     y_pos+=110
+        #     FONT_FEDERATION.render_to(screen, (x_pos, y_pos+35), 'NO BLUETOOTH', WHITE, size=28)
 
         return self.next_screen_name,self.kwargs
