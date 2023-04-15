@@ -1,20 +1,14 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, HELVETICA, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK
-from image_assets import IMG_PATH,icons_path
+from image_assets import IMG_PATH,ICONS_PATH
 from global_functions import get_text_dimensions, blitRotate2, my_map
 import pygame
 import pygame.gfxdraw
 from image_assets import lcars_bg
-
 from serial_manager import *
-
 import os
 import time
-
-# IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
-# lcars_path=IMG_PATH+'LCARS_pics'
-# icons_path=lcars_path+'/Picard/mobile_style_icons/'
 
 # ------ horizon params ------ #
 START_Y=130
@@ -58,7 +52,7 @@ x0=SPEED_RECT_X_POS
 x1=ALTITUDE_RECT_X_POS
 
 # ------ horizon icon ------ #
-art_horizon=pygame.image.load(os.path.join(icons_path+'artificial-horizon.png'))
+art_horizon=pygame.image.load(os.path.join(ICONS_PATH+'artificial-horizon.png'))
 art_horizon_markings=pygame.image.load(os.path.join(IMG_PATH+'artificial-horizon_markings.png'))
 ART_HORIZON_MARKINGS_POS=(START_X+WIDTH//2-art_horizon_markings.get_rect().size[0]//2,START_Y+HEIGHT//2-art_horizon_markings.get_rect().size[1]//2)
 

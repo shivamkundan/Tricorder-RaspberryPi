@@ -8,8 +8,8 @@ import math
 pygame.init()
 # -------------------------- Images -------------------------- #
 IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
-lcars_path=IMG_PATH+'LCARS_pics'
-icons_path=lcars_path+'/Picard/mobile_style_icons/'
+LCARS_PATH=IMG_PATH+'LCARS_pics'
+ICONS_PATH=LCARS_PATH+'/Picard/mobile_style_icons/'
 
 # -----------------------------------------------------------------------------
 class ButtonClass():
@@ -139,31 +139,31 @@ simp_button_selected.fill((255,255,255))
 
 
 # Background image
-lcars_bg= pygame.image.load(os.path.join(lcars_path,'Picard/PIcard_LCARS_square_accent_7_resized.png'))
-# lcars_bg= pygame.image.load(os.path.join(lcars_path,'Picard/pieces.png'))
+lcars_bg= pygame.image.load(os.path.join(LCARS_PATH,'Picard/PIcard_LCARS_square_accent_7_resized.png'))
+# lcars_bg= pygame.image.load(os.path.join(LCARS_PATH,'Picard/pieces.png'))
 
 # ------------------------------------ misc buttons ------------------------------------------------------ #
-button_long_simple=pygame.image.load(icons_path+'long_button.png')
-button_long_simple_alt=pygame.image.load(icons_path+'long_button_pressed.png')
+button_long_simple=pygame.image.load(ICONS_PATH+'long_button.png')
+button_long_simple_alt=pygame.image.load(ICONS_PATH+'long_button_pressed.png')
 
-simple_button_short=pygame.image.load(icons_path+'simple_short_button.png')
-simple_button_short_alt=pygame.image.load(icons_path+'simple_short_button_pressed.png')
+simple_button_short=pygame.image.load(ICONS_PATH+'simple_short_button.png')
+simple_button_short_alt=pygame.image.load(ICONS_PATH+'simple_short_button_pressed.png')
 
-simple_button=pygame.image.load(icons_path+'simple_button.png')
-simple_button_alt=pygame.image.load(icons_path+'simple_button_pressed.png')
+simple_button=pygame.image.load(ICONS_PATH+'simple_button.png')
+simple_button_alt=pygame.image.load(ICONS_PATH+'simple_button_pressed.png')
 
-quarter_button=pygame.image.load(lcars_path+'/Picard/quarter_button.png')
-quarter_button_alt=pygame.image.load(lcars_path+'/Picard/quarter_button_selected.png')
+quarter_button=pygame.image.load(LCARS_PATH+'/Picard/quarter_button.png')
+quarter_button_alt=pygame.image.load(LCARS_PATH+'/Picard/quarter_button_selected.png')
 
-long_button_blue=pygame.image.load(icons_path+'long_button_blue.png')
-long_button_blue_pressed=pygame.image.load(icons_path+'long_button_blue_pressed.png')
+long_button_blue=pygame.image.load(ICONS_PATH+'long_button_blue.png')
+long_button_blue_pressed=pygame.image.load(ICONS_PATH+'long_button_blue_pressed.png')
 
-slide_switch_blank=pygame.image.load(icons_path+'slide_switch_blank.png')
+slide_switch_blank=pygame.image.load(ICONS_PATH+'slide_switch_blank.png')
 
 
 # ----
 pref_buttons=[]
-path=lcars_path+'/Picard/'
+path=LCARS_PATH+'/Picard/'
 for color_name in ['_blue','_orange']:
 	prefix=path+'preferences'+color_name
 	pref_buttons.append(pygame.transform.scale(pygame.image.load(prefix+'.png'),(97,97)))
@@ -171,8 +171,8 @@ for color_name in ['_blue','_orange']:
 
 PREF_BUTTON=ButtonClass(0,pref_buttons[0],pref_buttons[1],585,60,name='preferences',selected_img=pref_buttons[2],selected_alt_img=pref_buttons[3])
 
-edit_icon=pygame.image.load(os.path.join(lcars_path,'Picard/mobile_style_icons/edit_icon.png'))
-edit_icon_pressed=pygame.image.load(os.path.join(lcars_path,'Picard/mobile_style_icons/edit_icon_pressed.png'))
+edit_icon=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/edit_icon.png'))
+edit_icon_pressed=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/edit_icon_pressed.png'))
 EDIT_BUTTON=ButtonClass(0,edit_icon,edit_icon_pressed,385,200,name='edit')
 
 # numpad_blue_pressed.png
@@ -189,7 +189,7 @@ play_pause=['reset','reset_pressed','reset5','reset5_pressed','play_orange','pla
 play_pause_dict={}
 for name in play_pause:
 	pat='Picard/mobile_style_icons/'+name+'.png'
-	play_pause_dict[name]=pygame.transform.scale(pygame.image.load(os.path.join(lcars_path,pat)), (70, 70))
+	play_pause_dict[name]=pygame.transform.scale(pygame.image.load(os.path.join(LCARS_PATH,pat)), (70, 70))
 
 start_y=230
 x_pos=610
@@ -200,7 +200,7 @@ RESET_BUTTON=ButtonClass(0,play_pause_dict['reset'],play_pause_dict['reset_press
 RESET5_BUTTON=ButtonClass(0,play_pause_dict['reset5'],play_pause_dict['reset5_pressed'],x_pos,start_y+100,name='reset5',selected_img=play_pause_dict['reset5'],selected_alt_img=play_pause_dict['reset5_pressed'])
 COLOR_PALETTE_BUTTON=ButtonClass(0,play_pause_dict['color_palette_blue'],play_pause_dict['color_palette_blue_pressed'],x_pos,start_y+300,name='color_palette',selected_img=play_pause_dict['color_palette_orange'],selected_alt_img=play_pause_dict['color_palette_orange_pressed'])
 # ------------------------------------ mini buttons ------------------------------------------------------ #
-mini_buttons_path=lcars_path+'/Picard/mini_buttons/'
+mini_buttons_path=LCARS_PATH+'/Picard/mini_buttons/'
 
 new_res=(80,80)
 MINI_BUTTON_NAMES=['bar_chart','pie_chart','line_plot','info']#,'numpad']
@@ -261,8 +261,8 @@ for page_num in range(NUM_PAGES):
 i=0
 ICON_BUTTONS=[]
 for b_name in icon_button_names:
-	button_img=pygame.image.load(os.path.join(icons_path,b_name+'.png'))
-	button_alt_img=pygame.image.load(os.path.join(icons_path,b_name+'_pressed.png'))
+	button_img=pygame.image.load(os.path.join(ICONS_PATH,b_name+'.png'))
+	button_alt_img=pygame.image.load(os.path.join(ICONS_PATH,b_name+'_pressed.png'))
 
 	# print(button_img)
 	# print(button_alt_img)
@@ -273,24 +273,24 @@ for b_name in icon_button_names:
 # ----
 
 
-page1_dot=pygame.image.load(os.path.join(lcars_path,'Picard/mobile_style_icons/pdots_1.png'))
-page2_dot=pygame.image.load(os.path.join(lcars_path,'Picard/mobile_style_icons/pdots_2.png'))
-page3_dot=pygame.image.load(os.path.join(lcars_path,'Picard/mobile_style_icons/pdots_3.png'))
-page_dots_blank=pygame.image.load(os.path.join(lcars_path,'Picard/mobile_style_icons/pdots_blank.png'))
+page1_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_1.png'))
+page2_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_2.png'))
+page3_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_3.png'))
+page_dots_blank=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_blank.png'))
 
 PAGE_DOTS={-1:page_dots_blank,1:page1_dot,2:page2_dot,3:page3_dot}
 
 # =====================================================================================================
 
 # Blank buttons for home-buttons and top-left button
-button_selected_3=pygame.image.load(os.path.join(lcars_path,'Picard/button_selected_3.png'))
-button_selected_3_blank=pygame.image.load(os.path.join(lcars_path,'Picard/button_selected_3_blank.png'))
+button_selected_3=pygame.image.load(os.path.join(LCARS_PATH,'Picard/button_selected_3.png'))
+button_selected_3_blank=pygame.image.load(os.path.join(LCARS_PATH,'Picard/button_selected_3_blank.png'))
 
-top_button_selected=pygame.image.load(os.path.join(lcars_path,'Picard/top_button_selected.png'))
+top_button_selected=pygame.image.load(os.path.join(LCARS_PATH,'Picard/top_button_selected.png'))
 
-button=pygame.image.load(os.path.join(lcars_path,'Picard/button.png'))
-button_alt=pygame.image.load(os.path.join(lcars_path,'Picard/button_alt.png'))
-button_selected=pygame.image.load(os.path.join(lcars_path,'Picard/button_selected.png'))
+button=pygame.image.load(os.path.join(LCARS_PATH,'Picard/button.png'))
+button_alt=pygame.image.load(os.path.join(LCARS_PATH,'Picard/button_alt.png'))
+button_selected=pygame.image.load(os.path.join(LCARS_PATH,'Picard/button_selected.png'))
 
 camera=pygame.image.load(os.path.join(IMG_PATH,'camera.png'))
 rolling_tics_icon=pygame.image.load(os.path.join(IMG_PATH,'rolling_tics_icon.png'))
@@ -328,7 +328,7 @@ for i in range(8):
 
 i=0
 for b_name in quick_menu_button_names:
-	x=lcars_path+prefix+b_name
+	x=LCARS_PATH+prefix+b_name
 	button=pygame.image.load(x+'.png')
 	button_alt=pygame.image.load(x+'_pressed.png')
 
@@ -347,8 +347,8 @@ nav_button_names=['left_arrow','right_arrow']
 NAV_BUTTONS=[]
 i=0
 for b_name in nav_button_names:
-	button_img=pygame.image.load(os.path.join(lcars_path,b_name+'.png'))
-	button_alt_img=pygame.image.load(os.path.join(lcars_path,b_name+'_pressed.png'))
+	button_img=pygame.image.load(os.path.join(LCARS_PATH,b_name+'.png'))
+	button_alt_img=pygame.image.load(os.path.join(LCARS_PATH,b_name+'_pressed.png'))
 
 	NAV_BUTTONS.append(ButtonClass(i,button_img,button_alt_img,positions[i][0],positions[i][1],name=b_name))
 	i+=1
@@ -369,10 +369,10 @@ nav_button_vertical_names=['page_up','up','down','page_down']
 NAV_BUTTONS_VERTICAL=[]
 i=0
 for b_name in nav_button_vertical_names:
-	a=os.path.join(icons_path,b_name+'_blue.png')
+	a=os.path.join(ICONS_PATH,b_name+'_blue.png')
 	# print (a)
 	button_img=pygame.image.load(a)
-	b=os.path.join(icons_path,b_name+'.png')
+	b=os.path.join(ICONS_PATH,b_name+'.png')
 	# print (b)
 	button_alt_img=pygame.image.load(b)
 	NAV_BUTTONS_VERTICAL.append(ButtonClass(i,button_img,button_alt_img,x_pos,y[i],name=b_name))
