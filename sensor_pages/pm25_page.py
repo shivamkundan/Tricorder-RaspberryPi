@@ -1,4 +1,5 @@
-from fonts import FONT_FEDERATION, FONT_DIN, ORANGE, DARK_YELLOW, WHITE, FONT_HELVETICA_NEUE
+from fonts import FONT_FEDERATION, FONT_DIN, FONT_HELVETICA_NEUE
+from colors import ORANGE, DARK_YELLOW, WHITE
 from page_templates import PageWithoutGauge
 from custom_user_events import REQUEST_PM25,POWER_PM25_ON,POWER_PM25_OFF
 from global_functions import get_text_dimensions

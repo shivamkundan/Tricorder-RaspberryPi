@@ -2,7 +2,8 @@ import pygame.event as e
 import logging
 from image_assets import ButtonClass
 from aa_arc_gauge import *
-from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN, SLATE, ORANGE, WHITE, DARK_GREY
+from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
+from colors import SLATE, ORANGE, WHITE, DARK_GREY
 from page_templates import PageTemplate
 from custom_user_events import REQUEST_TEMP_HUMID, SET_TEMP_SETTINGS
 

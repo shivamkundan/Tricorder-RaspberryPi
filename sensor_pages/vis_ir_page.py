@@ -1,7 +1,8 @@
 import pygame.event as e
 from image_assets import ButtonClass
 from aa_arc_gauge import *
-from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN, DARK_GREY, ORANGE, SLATE, DARK_YELLOW, WHITE
+from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
+from colors import DARK_GREY, ORANGE, SLATE, DARK_YELLOW, WHITE
 from page_templates import PageTemplate
 from custom_user_events import REQUEST_VIS_IR, SET_LIGHT_SENSOR_GAIN, POWER_TSL_ON,POWER_TSL_OFF
 from serial_manager import get_vis_ir,set_tsl_scl_connect,set_tsl_scl_disconnect, set_tsl_gain,ser

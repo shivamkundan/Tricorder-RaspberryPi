@@ -3,6 +3,7 @@ import pygame
 import os, sys
 import time,datetime
 from fonts import *
+from colors import *
 import math
 pygame.init()
 

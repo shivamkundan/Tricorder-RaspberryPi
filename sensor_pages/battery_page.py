@@ -1,5 +1,6 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, ORANGE, DARK_YELLOW
+from fonts import FONT_FEDERATION
+from colors import ORANGE, DARK_YELLOW
 
 class BatterySensorPage(PageTemplate):
     def __init__(self,name):

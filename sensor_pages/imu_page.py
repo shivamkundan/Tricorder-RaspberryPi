@@ -1,5 +1,6 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,ORANGE, DARK_YELLOW, FONT_DIN,WHITE,SLATE
+from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
+from colors import DARK_YELLOW,SLATE,WHITE,ORANGE
 import pygame
 import os
 from image_assets import NAV_BUTTONS

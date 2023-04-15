@@ -1,3 +1,6 @@
+import pygame
+pygame.init()
+
 d={}
 
 HELP_CODE ='H'

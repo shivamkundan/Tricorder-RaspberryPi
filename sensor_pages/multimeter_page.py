@@ -1,5 +1,6 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, ORANGE, DARK_YELLOW, LIGHT_GREY, WHITE
+from fonts import FONT_FEDERATION
+from colors import ORANGE, DARK_YELLOW, LIGHT_GREY, WHITE
 from custom_user_events import REQUEST_CURRENT
 import matplotlib.pyplot as plt
 from plotting_functions import *

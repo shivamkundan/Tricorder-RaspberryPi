@@ -1,5 +1,6 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK, HELVETICA, FONT_HELVETICA_NEUE
+from fonts import FONT_FEDERATION, HELVETICA, FONT_HELVETICA_NEUE
+from colors import ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK
 from image_assets import img_path,icons_path
 from global_functions import get_text_dimensions, blitRotate2, my_map
 import pygame

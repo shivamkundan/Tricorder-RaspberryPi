@@ -4,6 +4,7 @@ from subprocess import PIPE, Popen, check_output
 import psutil
 
 from fonts import *
+from colors import *
 # ================ Global functions ================================= #
 
 def my_map(x,in_min,in_max,out_min,out_max):

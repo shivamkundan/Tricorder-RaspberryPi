@@ -1,5 +1,6 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, ORANGE, DARK_YELLOW, ORANGE
+from fonts import FONT_FEDERATION
+from colors import ORANGE, DARK_YELLOW, ORANGE
 import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg

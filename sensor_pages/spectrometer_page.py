@@ -1,4 +1,5 @@
-from fonts import FONT_FEDERATION,ORANGE,DARK_YELLOW,FONT_DIN,WHITE
+from fonts import FONT_FEDERATION, FONT_DIN
+from colors import ORANGE,DARK_YELLOW,WHITE
 from page_templates import PageWithoutGauge
 from custom_user_events import REQUEST_SPECTROMETER
 from global_functions import get_text_dimensions

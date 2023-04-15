@@ -5,7 +5,8 @@ and other page-specific buttons, mouse/touch handling, enter and exit.
 '''
 
 import pygame
-from fonts import FONT_FEDERATION, FONT_BLUE
+from fonts import FONT_FEDERATION
+from colors import FONT_BLUE
 from image_assets import *
 import matplotlib.pyplot as plt
 from plotting_functions import *
