@@ -1,6 +1,6 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
-from colors import ORANGE, DARK_YELLOW, ORANGE
+from colors import ORANGE, DARK_YELLOW, ORANGE, WHITE
 import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
@@ -95,8 +95,8 @@ class GeigerCounterPage(PageTemplate):
 		try:
 			FONT_FEDERATION.render_to(screen, (193, 574+30), str(int(round(self.x[-1],0))), WHITE,style=0,size=23)
 			FONT_FEDERATION.render_to(screen, (415, 574+30), str(int(round(self.avg_array[-1],0))), WHITE,style=0,size=23)
-		except:
-			pass
+		except Exception as e:
+			logging.error (e)
 
 		self.frame_count+=1
 
