@@ -679,7 +679,7 @@ class MenuHomePageClass(PageTemplate):
 		self.prev_x,self.prev_y=pygame.mouse.get_pos()
 
 		self.page_dots=PAGE_DOTS
-		self.page_dots_pos=(330,640)
+		self.page_dots_pos=(330,645)
 
 		# Button stuff
 		self.icon_buttons_list=ICON_BUTTONS

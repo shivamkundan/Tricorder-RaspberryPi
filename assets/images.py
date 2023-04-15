@@ -229,9 +229,13 @@ for b_name in MINI_BUTTON_NAMES:
 icon_button_names=['home','noise','pm25',
 'pressure','spectrometer','temp_humid',
 'uv','vis_ir','wind',
-'thermal_cam','object','imu_2','SDR',
-'voc','gps','radiation','lidar','weigh_scale','multimeter','battery','drive','fly','walk','device_stats_2','settings',
-'files','sleep','plot_button','new_page_button','exit_button']
+'thermal_cam','object','imu_2',
+'SDR','voc','gps',
+'radiation','lidar','weigh_scale',
+'multimeter','battery','drive',
+'fly','walk','device_stats_2',
+'settings','files','sleep',
+'plot_button','new_page_button','exit_button']
 
 ICON_BUTTON_H=148
 ICON_BUTTON_W=135
@@ -276,9 +280,10 @@ for b_name in icon_button_names:
 page1_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_1.png'))
 page2_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_2.png'))
 page3_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_3.png'))
+page4_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_4.png'))
 page_dots_blank=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_blank.png'))
 
-PAGE_DOTS={-1:page_dots_blank,1:page1_dot,2:page2_dot,3:page3_dot}
+PAGE_DOTS={-1:page_dots_blank,1:page1_dot,2:page2_dot,3:page3_dot,4:page4_dot}
 
 # =====================================================================================================
 
