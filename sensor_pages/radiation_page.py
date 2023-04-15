@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
 from pygame import gfxdraw
-from image_assets import RESET_BUTTON, RESET5_BUTTON
+from images import RESET_BUTTON, RESET5_BUTTON
 
 from serial_manager import get_radiation,set_geiger_power_off,set_geiger_power_on
 

@@ -2,7 +2,7 @@ import pygame
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE
-from image_assets import NAV_BUTTONS
+from images import NAV_BUTTONS
 
 # -------------- Freqshow code -------------- #
 import controller

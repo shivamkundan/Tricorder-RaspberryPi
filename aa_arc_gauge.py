@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-
 import pygame,sys,time
 from enum import Enum
 from pygame.sprite import Sprite
 import pygame.gfxdraw
 import pygame.freetype
-from image_assets import *
+from images import *
 from fonts import *
 import numpy as np
 import logging

@@ -39,7 +39,7 @@ sys.path.insert(1,HOME_DIR+'sensor_pages/')
 from mappings import *
 from serial_manager import ser,get_battery, my_flush
 
-from image_assets import *
+from images import *
 from aa_arc_gauge import *
 from custom_user_events import *
 from global_functions import *

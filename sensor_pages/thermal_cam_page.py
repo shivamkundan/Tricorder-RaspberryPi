@@ -6,7 +6,7 @@ import numpy as np
 from page_templates import PageTemplate
 from custom_user_events import *
 from paths_and_utils import MAX_BYTES
-from image_assets import *
+from images import *
 from plotting_functions import *
 from global_functions import flip_buttons
 from mappings import d

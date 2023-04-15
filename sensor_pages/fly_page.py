@@ -1,11 +1,10 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, HELVETICA, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK
-from image_assets import IMG_PATH,ICONS_PATH
+from images import IMG_PATH,ICONS_PATH,lcars_bg
 from global_functions import get_text_dimensions, blitRotate2, my_map
 import pygame
 import pygame.gfxdraw
-from image_assets import lcars_bg
 from serial_manager import *
 import os
 import time
