@@ -274,10 +274,10 @@ class AA_Gauge():
                 txt_surf,w,h=get_text_dimensions(text=self.title,font_style=self.title_font,font_color=self.title_font_color,style=1,font_size=self.title_font_size)
                 surf.blit(txt_surf,(self.bounding_rect[0]+radius+self.weight//2-w//2,self.bounding_rect[1]+r_div_2+self.weight//2-h//2))
         except Exception as e:
-            print (e)
+            logging.error (e)
             surf = pygame.Surface(size)
             txt_surf,w,h=get_text_dimensions(text="XX",font_style=self.title_font,font_color=self.title_font_color,style=1,font_size=self.title_font_size)
-            surf.blit(txt_surf,(self.bounding_rect[0]+radius+self.weight//2-w//2,self.bounding_rect[1]+r_div_2+self.weight//2-h//2))
+            surf.blit(txt_surf,(self.bounding_rect[0]+radius+self.weight//2-w//2,self.bounding_rect[1]+(radius//2)+self.weight//2-h//2))
 
         return surf
 

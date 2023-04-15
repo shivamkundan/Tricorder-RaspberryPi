@@ -21,6 +21,8 @@
 import os
 import sys
 import logging
+from datetime import date
+
 
 # Logging formatter supporting colorized output
 class LogFormatter(logging.Formatter):
@@ -107,10 +109,12 @@ def set_up_logging(console_log_output, console_log_level, console_log_color, log
 	return True
 
 def shivams_logging(script_name="tricorder",console_log_level="debug",logfile_log_level="debug"):
+
+	curr_date=date.today().strftime("%b-%d-%Y")
 	if (not set_up_logging(console_log_output="stdout",
 						console_log_level=console_log_level,
 						console_log_color=True,
-						logfile_file=script_name + ".log",
+						logfile_file=f"logs/{script_name}_{curr_date}.log",
 						logfile_log_level=logfile_log_level,
 						logfile_log_color=False,
 						# log_line_template="%(color_on)s[%(created)d] [%(threadName)s] [%(levelname)-8s] %(message)s%(color_off)s")):
