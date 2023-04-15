@@ -1,7 +1,7 @@
 
 from pygame import image
 import numpy as np
-
+from colors import BLACK
 
 # ----- plotting libs ----- #
 import matplotlib as mpl

@@ -111,7 +111,7 @@ class PageWithoutGauge(PageTemplate):
         self.bluetooth_connected=False
         self.pause=False
         self.b_names=MINI_BUTTON_NAMES
-        self.PERIPHERAL_MODE=None
+        self.PERIPHERAL_MODE='serial'
 
         self.menu_buttons=MINI_BUTTONS
         self.button_list+=self.menu_buttons+ [PREF_BUTTON,EDIT_BUTTON,PLAY_BUTTON,PAUSE_BUTTON,SCALE_BUTTON,RESET_BUTTON]
@@ -246,7 +246,7 @@ class PageWithoutGauge(PageTemplate):
                             self.line_surf = line_plot(self.fig3,self.ax3,self.canvas3,self.color_list,self.x,self.array_dict)
                         screen.blit(self.line_surf, (120,150))
                 except Exception as e:
-
+                    raise (e)
                     logging.error ('PageWithoutGauge.next_frame_base error:'+str(e))
 
         else:
