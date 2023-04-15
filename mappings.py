@@ -1,16 +1,18 @@
+d={}
+
 HELP_CODE ='H'
 VERBOSE_CODE ='B'
 
-VIS_IR_CODE      ='L'
-UV_CODE          ='U'
-SPEC_CODE        ='S'
-TEMP_HUMID_CODE  ='T'
-PRESSURE_CODE    ='P'
-PM25_CODE        ='M'
-TVOC_CODE        ='V'
-THERMAL_CAM_CODE ='R'
+d['VIS_IR_CODE']      ='L'
+d['UV_CODE']          ='U'
+d['SPEC_CODE']        ='S'
+d['TEMP_HUMID_CODE']  ='T'
+d['PRESSURE_CODE']    ='P'
+d['PM25_CODE']        ='M'
+d['TVOC_CODE']        ='V'
+d['THERMAL_CAM_CODE'] ='R'
 WIND_CODE        ='#'
-NOISE_CODE       ='$'
+d['NOISE_CODE']       ='$'
 
 TSL_SCL_DISCONNECT_CODE='&'
 TSL_SCL_CONNECT_CODE='A'
@@ -20,19 +22,19 @@ PM25_PWR_OFF_CODE='H'
 
 IMU_ORIENTATION_CODE="O"
 
-IMU_ANG_VEL_CODE = 'Q'
-IMU_LIN_ACC_CODE = 'W'
-IMU_MAG_CODE = 'X'
-IMU_ACC_CODE = 'Y'
-IMU_GRAV_CODE = 'Z'
+d['IMU_ANG_VEL_CODE'] = 'Q'
+d['IMU_LIN_ACC_CODE'] = 'W'
+d['IMU_MAG_CODE'] = 'X'
+d['IMU_ACC_CODE'] = 'Y'
+d['IMU_GRAV_CODE'] = 'Z'
 
-RADIATION_CODE = 'g'
+d['RADIATION_CODE'] = 'g'
 GEIGER_PWR_ON_CODE='I'
 GEIGER_PWR_OFF_CODE='J'
 
-GPS_CODE='G'
-BATTERY_CODE='B'
-CURRENT_CODE='c'
+d['GPS_CODE']='G'
+d['BATTERY_CODE']='B'
+d['CURRENT_CODE']='c'
 
 
 MCU_SLEEP_CODE='^'
@@ -56,6 +58,11 @@ SET_LTR390_RESOLUTION_16BIT='0'
 SET_LTR390_RESOLUTION_13BIT='!'
 # -------------------------------- #
 
+d_inv={}
+for key, val in d.items():
+	d_inv[val]=key
+
+print (d_inv)
 
 # --- SENSOR CODES --- #
 # Light        = L

@@ -9,7 +9,7 @@ from paths_and_utils import MAX_BYTES
 from image_assets import *
 from plotting_functions import *
 from global_functions import flip_buttons
-
+from mappings import d
 # ----- plotting libs ----- #
 import matplotlib as mpl
 mpl.use("Agg")
@@ -225,7 +225,7 @@ class ThermalCamPage(PageTemplate):
         temp_str=""
         xxx=np.ndarray(shape=(32,24))
         frame = [0] * 768
-        ser.write('R'.encode('utf-8'))
+        ser.write(d['THERMAL_CAM_CODE'].encode('utf-8'))
         curr_char="p"
         while (curr_char!='F'):
             curr_char=(ser.read()).decode('utf-8')
