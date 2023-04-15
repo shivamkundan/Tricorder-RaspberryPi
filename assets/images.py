@@ -234,8 +234,9 @@ icon_button_names=['home','noise','pm25',
 'radiation','lidar','weigh_scale',
 'multimeter','battery','drive',
 'fly','walk','device_stats_2',
-'settings','files','sleep',
-'plot_button','new_page_button','exit_button']
+'settings','files','developer',
+'sleep','plot_button','new_page_button',
+'exit_button']
 
 ICON_BUTTON_H=148
 ICON_BUTTON_W=135
