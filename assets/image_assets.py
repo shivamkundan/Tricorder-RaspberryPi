@@ -6,6 +6,10 @@ from fonts import *
 from colors import *
 import math
 pygame.init()
+# -------------------------- Images -------------------------- #
+IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
+lcars_path=IMG_PATH+'LCARS_pics'
+icons_path=lcars_path+'/Picard/mobile_style_icons/'
 
 # -----------------------------------------------------------------------------
 class ButtonClass():
@@ -132,10 +136,7 @@ simp_button_selected.set_alpha(20)
 simp_button_selected.fill((255,255,255))
 
 
-# -------------------------- Images -------------------------- #
-img_path=('/home/pi/Sensor_Scripts/pics/')
-lcars_path=img_path+'LCARS_pics'
-icons_path=lcars_path+'/Picard/mobile_style_icons/'
+
 
 # Background image
 lcars_bg= pygame.image.load(os.path.join(lcars_path,'Picard/PIcard_LCARS_square_accent_7_resized.png'))
@@ -291,18 +292,18 @@ button=pygame.image.load(os.path.join(lcars_path,'Picard/button.png'))
 button_alt=pygame.image.load(os.path.join(lcars_path,'Picard/button_alt.png'))
 button_selected=pygame.image.load(os.path.join(lcars_path,'Picard/button_selected.png'))
 
-camera=pygame.image.load(os.path.join(img_path,'camera.png'))
-rolling_tics_icon=pygame.image.load(os.path.join(img_path,'rolling_tics_icon.png'))
+camera=pygame.image.load(os.path.join(IMG_PATH,'camera.png'))
+rolling_tics_icon=pygame.image.load(os.path.join(IMG_PATH,'rolling_tics_icon.png'))
 
-starfleet_logo=pygame.image.load(os.path.join(img_path,'starfleet_logo.png'))
-brightness_icon=pygame.image.load(os.path.join(img_path,'brightness_icon.png'))
+starfleet_logo=pygame.image.load(os.path.join(IMG_PATH,'starfleet_logo.png'))
+brightness_icon=pygame.image.load(os.path.join(IMG_PATH,'brightness_icon.png'))
 starfleet_logo_small=pygame.transform.scale(starfleet_logo, (25, 25))
 
-wifi_img = pygame.image.load(os.path.join(img_path,'wifi4.png'))
-bluetooth_img = pygame.image.load(os.path.join(img_path,'bluetooth_icon.png'))
-bluetooth_img_not_connected = pygame.image.load(os.path.join(img_path,'bluetooth_icon_not_connected.png'))
+wifi_img = pygame.image.load(os.path.join(IMG_PATH,'wifi4.png'))
+bluetooth_img = pygame.image.load(os.path.join(IMG_PATH,'bluetooth_icon.png'))
+bluetooth_img_not_connected = pygame.image.load(os.path.join(IMG_PATH,'bluetooth_icon_not_connected.png'))
 
-no_battery = pygame.image.load(os.path.join(img_path,'battery.png'))
+no_battery = pygame.image.load(os.path.join(IMG_PATH,'battery.png'))
 
 no_battery=pygame.transform.scale(no_battery, (30, 30))
 

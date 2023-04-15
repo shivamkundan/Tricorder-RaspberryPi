@@ -1,7 +1,7 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, HELVETICA, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK
-from image_assets import img_path,icons_path
+from image_assets import IMG_PATH,icons_path
 from global_functions import get_text_dimensions, blitRotate2, my_map
 import pygame
 import pygame.gfxdraw
@@ -12,8 +12,8 @@ from serial_manager import *
 import os
 import time
 
-# img_path=('/home/pi/Sensor_Scripts/pics/')
-# lcars_path=img_path+'LCARS_pics'
+# IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
+# lcars_path=IMG_PATH+'LCARS_pics'
 # icons_path=lcars_path+'/Picard/mobile_style_icons/'
 
 # ------ horizon params ------ #
@@ -59,25 +59,25 @@ x1=ALTITUDE_RECT_X_POS
 
 # ------ horizon icon ------ #
 art_horizon=pygame.image.load(os.path.join(icons_path+'artificial-horizon.png'))
-art_horizon_markings=pygame.image.load(os.path.join(img_path+'artificial-horizon_markings.png'))
+art_horizon_markings=pygame.image.load(os.path.join(IMG_PATH+'artificial-horizon_markings.png'))
 ART_HORIZON_MARKINGS_POS=(START_X+WIDTH//2-art_horizon_markings.get_rect().size[0]//2,START_Y+HEIGHT//2-art_horizon_markings.get_rect().size[1]//2)
 
 
 
 # ------ compass/heading ------ #
-heading_indicator=pygame.image.load(os.path.join(img_path+'compass_avionic.png'))
-ent_top=pygame.image.load(os.path.join(img_path+'enterprise_top2.png'))
+heading_indicator=pygame.image.load(os.path.join(IMG_PATH+'compass_avionic.png'))
+ent_top=pygame.image.load(os.path.join(IMG_PATH+'enterprise_top2.png'))
 HEADING_INDICATOR_POS=(340,445)
 ENT_TOP_POS=(400,500)
 
 # ------ wind icon ------ #
-wind_sock=pygame.image.load(os.path.join(img_path+'wind_sock.png'))
+wind_sock=pygame.image.load(os.path.join(IMG_PATH+'wind_sock.png'))
 wind_sock=pygame.transform.scale(wind_sock, (50, 50))
 WIND_SOCK_POS=(550,66)
 WIND_TXT_POS=(WIND_SOCK_POS[0]+50+5,WIND_SOCK_POS[1]+20)
 
 # ------ satellite icon ------ #
-satellite=pygame.image.load(os.path.join(img_path+'satellite.png'))
+satellite=pygame.image.load(os.path.join(IMG_PATH+'satellite.png'))
 satellite=pygame.transform.scale(satellite, (40, 40))
 SATELLITE_POS=(450,WIND_SOCK_POS[1])
 SATELLITE_TXT_POS=(SATELLITE_POS[0]+50+5,SATELLITE_POS[1]+20)
@@ -99,36 +99,36 @@ info_col2=info_col1+col_increment
 info_col3=info_col2+col_increment
 
 # ------ thermometer icon ------ #
-thermometer=pygame.image.load(os.path.join(img_path+'thermometer_plain.png'))
+thermometer=pygame.image.load(os.path.join(IMG_PATH+'thermometer_plain.png'))
 THERM_POS=(info_col1,info_row1_title)
 TEMP_TXT_POS=(info_col1+30,info_row1_value)
 
 
 # ------ humidity icon ------ #
-humidity_icon=pygame.image.load(os.path.join(img_path+'humidity_icon.png'))
+humidity_icon=pygame.image.load(os.path.join(IMG_PATH+'humidity_icon.png'))
 HUMID_ICON_POS=(info_col2,info_row1_title)
 HUMID_TXT_POS=(info_col2+30,info_row1_value)
 
 # ------ pressure icon ------ #
-pressure_icon=pygame.image.load(os.path.join(img_path+'pressure_icon2.png'))
+pressure_icon=pygame.image.load(os.path.join(IMG_PATH+'pressure_icon2.png'))
 PRESSURE_ICON_POS=(info_col3,info_row1_title)
 PRESSURE_TXT_POS=(info_col3+30,info_row1_value)
 
 # ------ light icon ------ #
-# light_icon=pygame.image.load(os.path.join(img_path+'light_icon2.png'))
-light_icon=pygame.image.load(os.path.join(img_path+'vis_icon.png'))
+# light_icon=pygame.image.load(os.path.join(IMG_PATH+'light_icon2.png'))
+light_icon=pygame.image.load(os.path.join(IMG_PATH+'vis_icon.png'))
 LIGHT_ICON_POS=(info_col1-2,info_row2_title)
 LIGHT_TXT_POS=(info_col1+38,info_row2_value)
 
 
 # ------ UV icon ------ #
-uv_icon=pygame.image.load(os.path.join(img_path+'uvi_icon.png'))
+uv_icon=pygame.image.load(os.path.join(IMG_PATH+'uvi_icon.png'))
 UV_ICON_POS=(info_col2-2,info_row2_title)
 UV_TXT_POS=(info_col2+38,info_row2_value)
 
 
 # ------ IR icon ------ #
-ir_icon=pygame.image.load(os.path.join(img_path+'ir_icon.png'))
+ir_icon=pygame.image.load(os.path.join(IMG_PATH+'ir_icon.png'))
 IR_ICON_POS=(info_col3-2,info_row2_title)
 IR_TXT_POS=(info_col3+38,info_row2_value)
 
@@ -136,7 +136,7 @@ IR_TXT_POS=(info_col3+38,info_row2_value)
 
 
 ent_back=pygame.image.load(
-os.path.join(img_path+'ent_back_trace.png'))
+os.path.join(IMG_PATH+'ent_back_trace.png'))
 
 ent_size_x=ent_back.get_rect().size[0]
 ent_size_y=ent_back.get_rect().size[1]
@@ -154,7 +154,7 @@ LONG_TXT_POS=(390,WIND_SOCK_POS[1]+5+LAT_LNG_TXT_SIZE)
 
 
 
-roll_indicator=pygame.image.load(os.path.join(img_path+'roll_indicator.png'))
+roll_indicator=pygame.image.load(os.path.join(IMG_PATH+'roll_indicator.png'))
 
 
 class FlyPage(PageTemplate):

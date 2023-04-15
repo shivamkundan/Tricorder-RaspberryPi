@@ -3,35 +3,34 @@ from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
 from colors import DARK_YELLOW,SLATE,WHITE,ORANGE
 import pygame
 import os
-from image_assets import NAV_BUTTONS
+from image_assets import NAV_BUTTONS, IMG_PATH
 
 from serial_manager import set_tsl_scl_disconnect,get_imu_orientation,get_imu_ang_vel,get_imu_lin_acc,get_imu_acc, get_imu_mag,get_imu_grav
 import logging
-img_path=('/home/pi/Sensor_Scripts/pics/')
 
-compass=pygame.image.load(os.path.join(img_path+'compass_custom.png'))
+compass=pygame.image.load(os.path.join(IMG_PATH+'compass_custom.png'))
 compass=pygame.transform.scale(compass, (200, 200))
 compass_pos=(275,190)
 
 ent_back=pygame.image.load(
-os.path.join(img_path+'ent_back.png'))
+os.path.join(IMG_PATH+'ent_back.png'))
 ent_back=pygame.transform.scale(ent_back, (200, 75))
 roll_pos=(150,535)
 
 
 ent_side=pygame.image.load(
-    os.path.join(img_path+'ent_side_small.png'))
+    os.path.join(IMG_PATH+'ent_side_small.png'))
 
 dot=pygame.image.load(
-    os.path.join(img_path+'dot.png'))
+    os.path.join(IMG_PATH+'dot.png'))
 
 xyz_rotation=pygame.image.load(
-    os.path.join(img_path+'xyz_rotation.png'))
+    os.path.join(IMG_PATH+'xyz_rotation.png'))
 
 xyz_3D_rot=pygame.image.load(
-    os.path.join(img_path+'xyz_3D_rot.png'))
+    os.path.join(IMG_PATH+'xyz_3D_rot.png'))
 xyz_3D=pygame.image.load(
-    os.path.join(img_path+'xyz_3D.png'))
+    os.path.join(IMG_PATH+'xyz_3D.png'))
 
 scale=1.5
 ent_side=pygame.transform.scale(ent_side, (int(111*scale), int(35*scale)))
@@ -97,11 +96,11 @@ class IMUSensorPage(PageTemplate):
         self.grav_y=-1
         self.grav_z=-1
 
-        self.axes_3d = pygame.image.load(os.path.join(img_path,'axes.png'))
-        self.axes_alt = pygame.image.load(os.path.join(img_path,'axes_alt.png'))
-        # self.compass_rose = pygame.image.load(os.path.join(img_path,'compass_rose_32_point small.png'))
-        self.compass_rose = pygame.image.load(os.path.join(img_path,'compass rose.png'))
-        self.arrow = pygame.image.load(os.path.join(img_path,'arrow.png'))
+        self.axes_3d = pygame.image.load(os.path.join(IMG_PATH,'axes.png'))
+        self.axes_alt = pygame.image.load(os.path.join(IMG_PATH,'axes_alt.png'))
+        # self.compass_rose = pygame.image.load(os.path.join(IMG_PATH,'compass_rose_32_point small.png'))
+        self.compass_rose = pygame.image.load(os.path.join(IMG_PATH,'compass rose.png'))
+        self.arrow = pygame.image.load(os.path.join(IMG_PATH,'arrow.png'))
 
     def on_enter(self):
         logging.info(f"entering {self.__class__.__name__}")
