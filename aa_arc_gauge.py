@@ -8,6 +8,7 @@ import pygame.freetype
 from image_assets import *
 from fonts import *
 import numpy as np
+import logging
 
 
 # ---- arc parameters ---- #
@@ -136,136 +137,146 @@ class AA_Gauge():
 
     def blit_gauge(self,new_val,print_val=None):
 
-        # ----------------- arc params ----------------- #
-        radius=self.radius
-        # j=int((self.offset/360)*(radius))
-        size=((self.d+self.weight),(self.d+self.weight*2))
-        surf = pygame.Surface(size)
-        # surf.fill(BLUE)
-        # ----------------- draw background ----------------- #
-        if (self.solid_bg):
-            pygame.draw.rect(surf, self.solid_bg_color, self.bounding_rect)
-            surf.fill(self.solid_bg_color)
+        try:
+            # ----------------- arc params ----------------- #
+            radius=self.radius
+            # j=int((self.offset/360)*(radius))
+            size=((self.d+self.weight),(self.d+self.weight*2))
+            surf = pygame.Surface(size)
+            # surf.fill(BLUE)
+            # ----------------- draw background ----------------- #
+            if (self.solid_bg):
+                pygame.draw.rect(surf, self.solid_bg_color, self.bounding_rect)
+                surf.fill(self.solid_bg_color)
 
-        # ------------- Empty Arc Params ------------- #
-        # draw empty arc
-        # arc(surface, x, y, r, start_angle, stop_angle, color)
+            # ------------- Empty Arc Params ------------- #
+            # draw empty arc
+            # arc(surface, x, y, r, start_angle, stop_angle, color)
 
-        x=size[0]//2
-        y=size[1]//2-self.weight//2
-        start_angle=(180-self.offset)
-        end_angle=(360+self.offset)
+            x=size[0]//2
+            y=size[1]//2-self.weight//2
+            start_angle=(180-self.offset)
+            end_angle=(360+self.offset)
 
-        # rangee=np.linspace(0,255,self.weight//2)
-
-
-        empty_radius_range=range(radius-self.weight//4,radius+self.weight//4)
-        radius_range=range(radius-self.weight//2,radius+self.weight//2)
-
-       # ------------- Draw Arc ------------- #
-        if new_val is not None:
-            try:
-                new_val=float(new_val)
-            except Exception as e:
-                new_val=-2
-                print ('aa_arc_gauge: ',e)
-
-            if print_val!=None:
-                orig=print_val
-            else:
-                orig=round(new_val,2)
-
-            # print ('new_val: ',new_val)
-            # print(type(new_val))
-            self.update_val(new_val)
-            curr_val_scaled=my_map(self.curr_val,self.in_min,self.in_max,start_angle,end_angle)
-
-            # --- draw empty arc --- #
-            if (self.draw_empty_arc):
-                for curr_r in empty_radius_range:
-                    try:
-                        pygame.gfxdraw.arc(surf, x,y, curr_r,int(round(curr_val_scaled,2)), end_angle, self.empty_arc_color)
-                    except OverflowError as e:
-                        print (e)
-                        print (curr_val_scaled)
-                    except ValueError as e:
-                        print (e)
-                        print (curr_val_scaled)
-
-            jj=np.linspace(start_angle, curr_val_scaled, 255)
-            alpha_vals=np.linspace(20,255,len(jj))
-            
-            arc_angles=[]
-            if (len(jj)>2):
-                for index in range((len(jj)-1)):
-                    start_ang=int(jj[index])
-                    end_ang=int(jj[index+1])
-                    ccooll=(self.color[0], self.color[1], self.color[2], int(alpha_vals[index+1]))
-                    arc_angles.append([start_ang,end_ang,ccooll])
-
-            for item in arc_angles:
-                s=item[0]
-                e=item[1]
-                c=item[2]
-                for curr_r in radius_range:
-                    try:
-                        pygame.gfxdraw.arc(surf, x, y , curr_r,s, e, c)
-                    except OverflowError as o:
-                        print (o)
-                        print (curr_val_scaled)
-
-        # ------------- Print Range ------------- #
-        if (self.print_range):
-            r_div_2=radius//2
-            range_y_pos=(radius*2+self.weight//2)
-
-            txt_surf,w,h=get_text_dimensions(f'{self.in_min:,}',font_style=self.range_font,font_color=self.range_color,style=0,font_size=self.range_font_size)
-            surf.blit(txt_surf,(10,range_y_pos-h))
-
-            txt_surf,w,h=get_text_dimensions(f'{self.in_max:,}',font_style=self.range_font,font_color=self.range_color,style=0,font_size=self.range_font_size)
-            surf.blit(txt_surf,(int(size[0]-self.weight-w),range_y_pos-h))
+            # rangee=np.linspace(0,255,self.weight//2)
 
 
-        # ------------- Print Curr Value 
+            empty_radius_range=range(radius-self.weight//4,radius+self.weight//4)
+            radius_range=range(radius-self.weight//2,radius+self.weight//2)
 
-        if (self.print_num):
-            if len(str(orig).split('.'))>1:
-                t0=str(orig).split('.')[0]
-                t1=str(orig).split('.')[1]
-                if t1=='0':
-                    t1=''
+           # ------------- Draw Arc ------------- #
+            if new_val is not None:
+                try:
+                    new_val=float(new_val)
+                except Exception as e:
+                    new_val=-2
+                    print ('aa_arc_gauge: ',e)
+
+                if print_val!=None:
+                    orig=print_val
                 else:
-                    t1='.'+t1
-            else:
-                t0=orig
-                t1=''
+                    orig=round(new_val,2)
 
-            curr_val_surf,w,h=get_text_dimensions(text="{}".format(t0),font_style=self.CURR_FONT,font_color=WHITE,style=0,font_size=self.main_font_size)
-            decimal_surf,w2,h2=get_text_dimensions(text=f'{t1}',font_style=self.CURR_FONT,font_color=WHITE,style=0,font_size=self.main_font_size//2-1)
-            suffix_surf,w3,h3=get_text_dimensions(text="{}".format(self.suffix),font_style=self.CURR_FONT,font_color=WHITE,style=0,font_size=self.main_font_size//2-1)
+                # print ('new_val: ',new_val)
+                # print(type(new_val))
+                self.update_val(new_val)
+                curr_val_scaled=my_map(self.curr_val,self.in_min,self.in_max,start_angle,end_angle)
 
-            total_len=w+max(w2,w3)
+                # --- draw empty arc --- #
+                if (self.draw_empty_arc):
+                    for curr_r in empty_radius_range:
+                        try:
+                            pygame.gfxdraw.arc(surf, x,y, curr_r,int(round(curr_val_scaled,2)), end_angle, self.empty_arc_color)
+                        except OverflowError as e:
+                            print (e)
+                            print (curr_val_scaled)
+                        except ValueError as e:
+                            print (e)
+                            print (curr_val_scaled)
 
-            if t1=='':
-                h_correction= -h3
-            else:
-                h_correction=0
+                jj=np.linspace(start_angle, curr_val_scaled, 255)
+                alpha_vals=np.linspace(20,255,len(jj))
 
-            curr_x=self.bounding_rect[0]+radius+self.weight//2-total_len//2
-            curr_y=self.bounding_rect[1]+radius+self.weight//2-h//2
-            surf.blit(curr_val_surf,(curr_x,curr_y))
+                try:
+                    arc_angles=[]
+                    if (len(jj)>2):
+                        for index in range((len(jj)-1)):
+                            start_ang=int(jj[index])
+                            end_ang=int(jj[index+1])
+                            ccooll=(self.color[0], self.color[1], self.color[2], int(alpha_vals[index+1]))
+                            arc_angles.append([start_ang,end_ang,ccooll])
+                except Exception as e:
+                    print (e)
+                    print (curr_val_scaled)
 
-            space=5
+                for item in arc_angles:
+                    s=item[0]
+                    e=item[1]
+                    c=item[2]
+                    for curr_r in radius_range:
+                        try:
+                            pygame.gfxdraw.arc(surf, x, y , curr_r,s, e, c)
+                        except OverflowError as o:
+                            print (o)
+                            print (curr_val_scaled)
 
-            surf.blit(decimal_surf,(curr_x+w+space,self.bounding_rect[1]+radius+self.weight//2-h//2))
+            # ------------- Print Range ------------- #
+            if (self.print_range):
+                r_div_2=radius//2
+                range_y_pos=(radius*2+self.weight//2)
+
+                txt_surf,w,h=get_text_dimensions(f'{self.in_min:,}',font_style=self.range_font,font_color=self.range_color,style=0,font_size=self.range_font_size)
+                surf.blit(txt_surf,(10,range_y_pos-h))
+
+                txt_surf,w,h=get_text_dimensions(f'{self.in_max:,}',font_style=self.range_font,font_color=self.range_color,style=0,font_size=self.range_font_size)
+                surf.blit(txt_surf,(int(size[0]-self.weight-w),range_y_pos-h))
 
 
-            surf.blit(suffix_surf,(curr_x+w+space,self.bounding_rect[1]+radius+self.weight//2-h//2+h2+1+h_correction))
+            # ------------- Print Curr Value
 
-        # ------------- Print Title
-        if (self.print_title) and self.title!='':
-            # self.title='VIS'
-            txt_surf,w,h=get_text_dimensions(text=self.title,font_style=self.title_font,font_color=self.title_font_color,style=1,font_size=self.title_font_size)
+            if (self.print_num):
+                if len(str(orig).split('.'))>1:
+                    t0=str(orig).split('.')[0]
+                    t1=str(orig).split('.')[1]
+                    if t1=='0':
+                        t1=''
+                    else:
+                        t1='.'+t1
+                else:
+                    t0=orig
+                    t1=''
+
+                curr_val_surf,w,h=get_text_dimensions(text="{}".format(t0),font_style=self.CURR_FONT,font_color=WHITE,style=0,font_size=self.main_font_size)
+                decimal_surf,w2,h2=get_text_dimensions(text=f'{t1}',font_style=self.CURR_FONT,font_color=WHITE,style=0,font_size=self.main_font_size//2-1)
+                suffix_surf,w3,h3=get_text_dimensions(text="{}".format(self.suffix),font_style=self.CURR_FONT,font_color=WHITE,style=0,font_size=self.main_font_size//2-1)
+
+                total_len=w+max(w2,w3)
+
+                if t1=='':
+                    h_correction= -h3
+                else:
+                    h_correction=0
+
+                curr_x=self.bounding_rect[0]+radius+self.weight//2-total_len//2
+                curr_y=self.bounding_rect[1]+radius+self.weight//2-h//2
+                surf.blit(curr_val_surf,(curr_x,curr_y))
+
+                space=5
+
+                surf.blit(decimal_surf,(curr_x+w+space,self.bounding_rect[1]+radius+self.weight//2-h//2))
+
+
+                surf.blit(suffix_surf,(curr_x+w+space,self.bounding_rect[1]+radius+self.weight//2-h//2+h2+1+h_correction))
+
+            # ------------- Print Title
+            if (self.print_title) and self.title!='':
+                # self.title='VIS'
+                txt_surf,w,h=get_text_dimensions(text=self.title,font_style=self.title_font,font_color=self.title_font_color,style=1,font_size=self.title_font_size)
+                surf.blit(txt_surf,(self.bounding_rect[0]+radius+self.weight//2-w//2,self.bounding_rect[1]+r_div_2+self.weight//2-h//2))
+        except Exception as e:
+            print (e)
+            surf = pygame.Surface(size)
+            txt_surf,w,h=get_text_dimensions(text="XX",font_style=self.title_font,font_color=self.title_font_color,style=1,font_size=self.title_font_size)
             surf.blit(txt_surf,(self.bounding_rect[0]+radius+self.weight//2-w//2,self.bounding_rect[1]+r_div_2+self.weight//2-h//2))
 
         return surf

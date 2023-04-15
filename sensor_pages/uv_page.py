@@ -198,10 +198,18 @@ class UVSensorPage(PageTemplate):
         y_pos=375
         if self.bluetooth_connected==True:
 
-            self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=get_uv()
+            try:
+                self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=get_uv()
+            except Exception as e:
+                self.uvs,self.light,self.uvi,self.ltr_lux,self.ltr_gain,self.ltr_resolution,self.ltr_window_factor,self.ltr_measurement_delay=-1,-1,-1,-1,-1,-1,-1,-1
 
             self.uv_gauge_img=self.uv_gauge.blit_gauge(self.uvs)
-            self.uvi_gauge_img=self.uvi_gauge.blit_gauge(round(float(self.uvi),2))
+
+            try:
+                UVI=round(float(self.uvi),2)
+            except ValueError:
+                UVI=-1
+            self.uvi_gauge_img=self.uvi_gauge.blit_gauge(UVI)
             self.uv_gauge_img.set_colorkey((0,0,0))
             self.uvi_gauge_img.set_colorkey((0,0,0))
 
