@@ -286,6 +286,17 @@ class ExitPage(PageTemplate):
 		pygame.quit()
 		sys.exit()
 
+
+class DeveloperPage(PageTemplate):
+	def __init__(self,name):
+		super().__init__(name)
+		self.prev_page_name="menu_home_page"
+
+	def next_frame(self,screen,curr_events,**kwargs):
+		self.next_screen_name=self.name
+		pressed_button=self.handle_events(screen,curr_events)
+		return self.next_screen_name,{}
+
 class SleepPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
@@ -300,7 +311,7 @@ class SleepPage(PageTemplate):
 							pygame.MOUSEBUTTONUP,
 							# pygame.MOUSEWHEEL,
 						]
-		self.prev_page_name='MenuHomePage'
+		self.prev_page_name='menu_home_page'
 		self.backlight_restore_level=255
 
 	def handle_events(self,screen,curr_events):
@@ -348,7 +359,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		self.pg_id=0
 		# self.kwargs={} #reset kwargs
 		# self.button_list+=self.init_buttons()
-		self.prev_page_name='MenuHomePage'
+		self.prev_page_name='menu_home_page'
 
 	def update_cpu_stats(self,dt=None):
 		process = Popen(['vcgencmd', 'measure_temp'], stdout=PIPE)
@@ -487,7 +498,7 @@ class SettingsPage(PageTemplate):
 		super().__init__(name)
 		self.button_list+=self.init_buttons()
 		self.button_mapping={
-							'home_button':'MenuHomePage',
+							'home_button':'menu_home_page',
 							'Num Pad':'numpad_page',
 							'Exit':'exit'}
 
@@ -569,7 +580,7 @@ class SliderTestPage(PageTemplate):
 		self.length=400
 		self.x_pos=200
 		self.end_pos=self.x_pos+self.length
-		self.prev_page_name='MenuHomePage'
+		self.prev_page_name='menu_home_page'
 
 		self.slider=SliderClass(200,290,20,50,length=320,min_val=7,max_val=250,start_val=200)
 		# def __init__(self,start_x,y_pos,button_width,button_height,length=100,min_val=0,max_val=250,start_val=None):
@@ -709,6 +720,7 @@ class MenuHomePageClass(PageTemplate):
 							'multimeter':'multimeter_page',
 							'object':'object_detection_page',
 							'fly':'fly_page',
+							'developer':'developer_page',
 							'exit_button':'exit',
 							}
 
@@ -952,7 +964,7 @@ class FileBrowserPage(PageTemplate):
 		self.refresh_files_list()
 
 		self.button_list+=self.file_button_list
-		self.prev_page_name='MenuHomePage'
+		self.prev_page_name='menu_home_page'
 		self.p=pygame.Surface((0,0))
 
 		self.bg=pygame.Surface((320,320))
@@ -1206,7 +1218,8 @@ class WindowManager():
 					 MultimeterPage('multimeter_page'),
 					 ObjectDetectionPage('object_detection_page'),
 					 FlyPage('fly_page'),
-					 MenuHomePageClass('MenuHomePage')]
+					 DeveloperPage('developer_page'),
+					 MenuHomePageClass('menu_home_page')]
 
 		screen_list=self.sensor_pages_list+[HomePage('home_page'),
 											 QuickMenuPage('quick_menu_page'),
@@ -1224,7 +1237,7 @@ class WindowManager():
 			screen_dict[scr.name]=scr
 			scr.bluetooth_connected=False
 
-		return screen_dict,screen_dict['MenuHomePage']
+		return screen_dict,screen_dict['menu_home_page']
 
 	def init_screenshot_overlay(self):
 		s=pygame.Surface(FULL_SCREEN_RES)
@@ -1243,7 +1256,7 @@ class WindowManager():
 					self.screen_dict['exit'].next_frame('','',kwargs={'prev_page_name':self.curr_screen.name})
 
 				if (event.key==ord('m')):
-					self.next_screen=self.screen_dict['MenuHomePage']
+					self.next_screen=self.screen_dict['menu_home_page']
 
 				if (event.key==ord('h')):
 					self.next_screen=self.screen_dict['home_page']

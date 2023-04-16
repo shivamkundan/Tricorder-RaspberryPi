@@ -1,6 +1,6 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
-from colors import ORANGE, DARK_YELLOW
+from colors import ORANGE, DARK_YELLOW, WHITE
 import pygame.event as e
 from custom_user_events import REQUEST_WIND
 import matplotlib.pyplot as plt

@@ -129,11 +129,11 @@ simp_button.fill(BLACK)
 
 simp_button_alt=pygame.Surface((width, height))
 simp_button_alt.set_alpha(128)
-simp_button_alt.fill((255,255,255))
+simp_button_alt.fill(WHITE)
 
 simp_button_selected=pygame.Surface((width, height))
 simp_button_selected.set_alpha(20)
-simp_button_selected.fill((255,255,255))
+simp_button_selected.fill(WHITE)
 
 
 
