@@ -1,5 +1,5 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, FONT_DIN
+from fonts import FONT_FEDERATION, FONT_DIN,FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW,  WHITE
 import pygame.event as e
 # from custom_user_events import REQUEST_GPS
@@ -32,14 +32,14 @@ class GPSSensorPage(PageTemplate):
 
         row=260
         col=195
-        FONT_DIN.render_to(screen, (col,row), f'lat: {self.lat}', WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'lat: {self.lat}', WHITE,style=0,size=26)
         row+=30
-        FONT_DIN.render_to(screen, (col,row), f'long: {self.long}', WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'long: {self.long}', WHITE,style=0,size=26)
         row+=30
-        FONT_DIN.render_to(screen, (col,row), f'alt: {self.alt}m', WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'alt: {self.alt}m', WHITE,style=0,size=26)
         row+=30
-        FONT_DIN.render_to(screen, (col,row), f'spd: {self.spd}m/s', WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'spd: {self.spd}m/s', WHITE,style=0,size=26)
         row+=30
-        FONT_DIN.render_to(screen, (col,row), f'#sat: {self.sat}', WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'#sat: {self.sat}', WHITE,style=0,size=26)
 
         return self.next_screen_name,self.kwargs
