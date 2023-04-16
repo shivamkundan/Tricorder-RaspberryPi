@@ -10,7 +10,7 @@ from serial_manager import get_uv
 class UVSensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
         self.gain_codes_dict={'1x':'U_G_0','3x':'U_G_1','6x':'U_G_2','9x':'U_G_3','18x':'U_G_4'}
         self.gain_name_dict={-1:'xx','-1':'xx','0':'1x','1':'3x','2':'6x','3':'9x','4':'18x'}
 

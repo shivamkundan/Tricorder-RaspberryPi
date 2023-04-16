@@ -16,7 +16,7 @@ import sys
 class ObjectDetectionPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
 
         model="/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages/efficientdet_lite0.tflite"
         camera_id=0

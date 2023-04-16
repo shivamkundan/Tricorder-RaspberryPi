@@ -12,7 +12,7 @@ import ui
 class SoftwareDefinedRadioPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
 
         self.button_list+=NAV_BUTTONS
         self.init_freq=433.0

@@ -105,7 +105,7 @@ class PageWithoutGauge(PageTemplate):
         self.names_list=names_list
         self.color_list=color_list
         self.EVENT=EVENT
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
         self.rolling_tics=30
         self.array_dict={}
         self.bluetooth_connected=False

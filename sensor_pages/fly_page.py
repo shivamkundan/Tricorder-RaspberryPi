@@ -153,7 +153,7 @@ roll_indicator=pygame.image.load(os.path.join(IMG_PATH+'roll_indicator.png'))
 class FlyPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
 
         self.wind_speed=0.1
 

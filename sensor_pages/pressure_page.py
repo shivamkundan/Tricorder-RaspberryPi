@@ -14,7 +14,7 @@ PERIPHERAL_MODE='serial'
 class PressureSensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
         self.bluetooth_connected=False
 
         # Button stuff

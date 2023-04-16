@@ -11,7 +11,7 @@ PERIPHERAL_MODE='serial'
 class LightSensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
         self.gain_buttons=self.init_buttons()
         self.button_list+=self.gain_buttons
         self.frame_count=0

@@ -5,7 +5,7 @@ from colors import ORANGE, DARK_YELLOW
 class WeightSensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
 
         self.lat=420
         self.long=420

@@ -8,7 +8,7 @@ from serial_manager import get_gps
 class GPSSensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
 
         self.lat=-1
         self.long=-1

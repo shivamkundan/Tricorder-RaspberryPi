@@ -13,7 +13,7 @@ from serial_manager import get_multimeter
 class MultimeterPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
-        self.prev_page_name='MenuHomePage'
+        self.prev_page_name='menu_home_page'
 
         self.selected_font_size=24
         self.selected_font=FONT_FEDERATION
