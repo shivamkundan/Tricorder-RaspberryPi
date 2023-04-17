@@ -34,6 +34,7 @@ from paths_and_utils import *
 sys.path.insert(1,HOME_DIR+'freqshow_code/')
 sys.path.insert(1,HOME_DIR+'assets/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
+sys.path.insert(1,HOME_DIR+'general_pages/')
 
 # from pwmled.driver.gpio import GpioDriver
 from mappings import *
@@ -67,6 +68,7 @@ from battery_page import *
 from multimeter_page import *
 from object_detection_page import *
 from fly_page import *
+from developer_page import *
 from home_page import *
 
 # ===================== Helper Classes =============================== #
@@ -287,15 +289,15 @@ class ExitPage(PageTemplate):
 		pygame.quit()
 		sys.exit()
 
-class DeveloperPage(PageTemplate):
-	def __init__(self,name):
-		super().__init__(name)
-		self.prev_page_name="menu_home_page"
+# class DeveloperPage(PageTemplate):
+# 	def __init__(self,name):
+# 		super().__init__(name)
+# 		self.prev_page_name="menu_home_page"
 
-	def next_frame(self,screen,curr_events,**kwargs):
-		self.next_screen_name=self.name
-		pressed_button=self.handle_events(screen,curr_events)
-		return self.next_screen_name,{}
+# 	def next_frame(self,screen,curr_events,**kwargs):
+# 		self.next_screen_name=self.name
+# 		pressed_button=self.handle_events(screen,curr_events)
+# 		return self.next_screen_name,{}
 
 class SleepPage(PageTemplate):
 	def __init__(self,name):
