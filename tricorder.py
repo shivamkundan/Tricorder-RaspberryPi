@@ -145,7 +145,7 @@ class DeviceInfoClass():
 				# pygame.event.post(REQUEST_BATTERY)
 				self.batt_volt,self.batt_pct,self.batt_temp=get_battery()
 				# writing to csv file
-				if (self.batt_volt>0)
+				if (self.batt_volt>0):
 					now = datetime.datetime.now()
 					date=now.strftime('%m/%d/%y')
 					hour_min=now.strftime('%-I:%M:%S %p')
