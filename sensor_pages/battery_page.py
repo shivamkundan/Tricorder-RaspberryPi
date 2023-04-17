@@ -23,6 +23,9 @@ class BatterySensorPage(PageTemplate):
 
     def on_enter(self):
         logging.info(f"entering {self.__class__.__name__}")
+        self.make_plot()
+
+    def make_plot(self):
         df = pd.read_csv(BATT_HIST_FILE)#, usecols=columns)
 
         batt_voltage=df.iloc[:, 2]
