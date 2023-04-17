@@ -2,6 +2,10 @@ from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
 
+import matplotlib.pyplot as plt
+from plotting_functions import *
+import matplotlib.backends.backend_agg as agg
+
 class BatterySensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
