@@ -6,10 +6,24 @@ import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
 
+import pandas as pd
+import logging
+
+BATT_HIST_FILE="batt_history.csv"
+
 class BatterySensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
+
+    def on_enter(self):
+        logging.info(f"entering {self.__class__.__name__}")
+        df = pd.read_csv(BATT_HIST_FILE)#, usecols=columns)
+        print (df)
+        print (df.iloc[:, 2])
+        # print("Contents in csv file:", df)
+        # plt.plot(df.Name, df.Marks)
+        # plt.show()
 
 
     def next_frame(self,screen,curr_events,**kwargs):
