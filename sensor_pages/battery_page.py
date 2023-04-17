@@ -42,12 +42,6 @@ class BatterySensorPage(PageTemplate):
         self.ax.set_ylim(bottom=3.7,top=4.3)
         self.line_surf=plot2img(self.fig,self.ax,self.canvas)
 
-
-
-
-
-
-
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
         self.kwarg_handler(kwargs)
