@@ -135,10 +135,7 @@ simp_button_selected=pygame.Surface((width, height))
 simp_button_selected.set_alpha(20)
 simp_button_selected.fill(WHITE)
 
-
-
-
-# Background image
+# ------------------------------------ Background image ------------------------------------ #
 lcars_bg= pygame.image.load(os.path.join(LCARS_PATH,'Picard/PIcard_LCARS_square_accent_7_resized.png'))
 # lcars_bg= pygame.image.load(os.path.join(LCARS_PATH,'Picard/pieces.png'))
 
@@ -161,7 +158,7 @@ long_button_blue_pressed=pygame.image.load(ICONS_PATH+'long_button_blue_pressed.
 slide_switch_blank=pygame.image.load(ICONS_PATH+'slide_switch_blank.png')
 
 
-# ----
+# =====================================================================================================
 pref_buttons=[]
 path=LCARS_PATH+'/Picard/'
 for color_name in ['_blue','_orange']:
@@ -199,6 +196,7 @@ SCALE_BUTTON=ButtonClass(0,play_pause_dict['scale_blue'],play_pause_dict['scale_
 RESET_BUTTON=ButtonClass(0,play_pause_dict['reset'],play_pause_dict['reset_pressed'],x_pos,start_y+210,name='reset',selected_img=play_pause_dict['reset'],selected_alt_img=play_pause_dict['reset_pressed'])
 RESET5_BUTTON=ButtonClass(0,play_pause_dict['reset5'],play_pause_dict['reset5_pressed'],x_pos,start_y+100,name='reset5',selected_img=play_pause_dict['reset5'],selected_alt_img=play_pause_dict['reset5_pressed'])
 COLOR_PALETTE_BUTTON=ButtonClass(0,play_pause_dict['color_palette_blue'],play_pause_dict['color_palette_blue_pressed'],x_pos,start_y+300,name='color_palette',selected_img=play_pause_dict['color_palette_orange'],selected_alt_img=play_pause_dict['color_palette_orange_pressed'])
+
 # ------------------------------------ mini buttons ------------------------------------------------------ #
 mini_buttons_path=LCARS_PATH+'/Picard/mini_buttons/'
 
@@ -224,8 +222,6 @@ for b_name in MINI_BUTTON_NAMES:
 	col+=x_spacing
 
 # -------------------------------- Icon Buttons ---------------------------------------------------------- #
-
-# -----------------------------------------------
 icon_button_names=['home','noise','pm25',
 'pressure','spectrometer','temp_humid',
 'uv','vis_ir','wind',
@@ -275,8 +271,8 @@ for b_name in icon_button_names:
 	ICON_BUTTONS.append(ButtonClass(i,button_img,button_alt_img,pos_list[i][0],pos_list[i][1],name=b_name))
 	i+=1
 
-# ----
 
+# =====================================================================================================
 
 page1_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_1.png'))
 page2_dot=pygame.image.load(os.path.join(LCARS_PATH,'Picard/mobile_style_icons/pdots_2.png'))
