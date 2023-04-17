@@ -14,9 +14,6 @@ class NoiseSensorPage(PageTemplate):
         self.prev_page_name='menu_home_page'
         self.noise_out=0
         self.frame_count=0
-        self.color_list=['noise']
-        self.color_labels=['noise']
-
 
         self.rolling_tics=50
         self.x=[]
@@ -46,7 +43,6 @@ class NoiseSensorPage(PageTemplate):
 
             self.noise_out=get_noise()
             self.x.append(self.noise_out)
-            # self.line_surf = line_plot(self.fig3,self.ax3,self.canvas3,self.color_list,self.x,self.array_dict)
 
             self.ax.clear()
             self.ax.cla()

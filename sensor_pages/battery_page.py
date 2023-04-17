@@ -15,15 +15,31 @@ class BatterySensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
+        self.fig = plt.figure(figsize=[5,4])
+        self.ax = self.fig.add_subplot(111)
+        self.canvas = agg.FigureCanvasAgg(self.fig)
+        self.ax.set_frame_on(False)
+        self.line_surf=pygame.Surface((1,1))
 
     def on_enter(self):
         logging.info(f"entering {self.__class__.__name__}")
         df = pd.read_csv(BATT_HIST_FILE)#, usecols=columns)
         print (df)
-        print (df.iloc[:, 2])
+        batt_voltage=df.iloc[:, 2]
+        times=df.iloc[:, 1]
+        # print ()
         # print("Contents in csv file:", df)
         # plt.plot(df.Name, df.Marks)
         # plt.show()
+
+        self.ax.clear()
+        self.ax.cla()
+        self.ax.plot(batt_voltage,color='g')
+        # self.ax.set_ylim(bottom=min(self.x),top=max(self.x))
+        self.line_surf=plot2img(self.fig,self.ax,self.canvas)
+
+
+
 
 
     def next_frame(self,screen,curr_events,**kwargs):
@@ -34,5 +50,7 @@ class BatterySensorPage(PageTemplate):
 
         FONT_FEDERATION.render_to(screen, (150, 67), 'Battery', ORANGE,style=0,size=40)
         FONT_FEDERATION.render_to(screen, (150, 117), 'LC709203', DARK_YELLOW,style=0,size=34)
+
+        screen.blit(self.line_surf, (120,150))
 
         return self.next_screen_name,self.kwargs
