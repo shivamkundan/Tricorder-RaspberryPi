@@ -145,12 +145,13 @@ class DeviceInfoClass():
 				# pygame.event.post(REQUEST_BATTERY)
 				self.batt_volt,self.batt_pct,self.batt_temp=get_battery()
 				# writing to csv file
-				now = datetime.datetime.now()
-				date=now.strftime('%m/%d/%y')
-				hour_min=now.strftime('%-I:%M:%S %p')
-				with open("batt_history.csv", 'a+') as csvfile:
-					csvfile.write(f"{date},{hour_min},{self.batt_volt},{self.batt_pct},{self.batt_temp}\n")
-				csvfile.close()
+				if (self.batt_volt>0)
+					now = datetime.datetime.now()
+					date=now.strftime('%m/%d/%y')
+					hour_min=now.strftime('%-I:%M:%S %p')
+					with open("batt_history.csv", 'a+') as csvfile:
+						csvfile.write(f"{date},{hour_min},{self.batt_volt},{self.batt_pct},{self.batt_temp}\n")
+					csvfile.close()
 		except Exception as e:
 			logging.error (e)
 
@@ -285,7 +286,6 @@ class ExitPage(PageTemplate):
 		wrap_up()
 		pygame.quit()
 		sys.exit()
-
 
 class DeveloperPage(PageTemplate):
 	def __init__(self,name):
