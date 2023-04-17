@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
 
+from serial_manager import get_battery
+
 import pandas as pd
 import logging
 
