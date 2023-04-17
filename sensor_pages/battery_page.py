@@ -24,19 +24,20 @@ class BatterySensorPage(PageTemplate):
     def on_enter(self):
         logging.info(f"entering {self.__class__.__name__}")
         df = pd.read_csv(BATT_HIST_FILE)#, usecols=columns)
-        print (df)
+
         batt_voltage=df.iloc[:, 2]
         times=df.iloc[:, 1]
-        # print ()
-        # print("Contents in csv file:", df)
-        # plt.plot(df.Name, df.Marks)
-        # plt.show()
 
         self.ax.clear()
         self.ax.cla()
         self.ax.plot(batt_voltage,color='g')
-        # self.ax.set_ylim(bottom=min(self.x),top=max(self.x))
+        self.ax.set_xticklabels(times)
+        plt.xlabel('Time')
+        plt.ylabel('Voltage')
+        self.ax.set_ylim(bottom=3.7,top=4.3)
         self.line_surf=plot2img(self.fig,self.ax,self.canvas)
+
+
 
 
 
