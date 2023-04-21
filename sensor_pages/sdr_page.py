@@ -9,25 +9,32 @@ import controller
 import model
 import ui
 
+import logging
+
+INIT_FREQ=433.0
+WIN_SIZE=(680,720)
+
 class SoftwareDefinedRadioPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
 
         self.button_list+=NAV_BUTTONS
-        self.init_freq=433.0
+        self.init_freq=INIT_FREQ
         self.fscontroller,self.fsmodel=self.init_sdr()
 
         try:
             self.fsmodel.set_center_freq(self.init_freq)
         except:
-            pass
+            logging.error ('could not set freq')
+
+
     def init_sdr(self):
         try:
-            fsmodel = model.FreqShowModel(680,720)
+            fsmodel = model.FreqShowModel(WIN_SIZE[0],WIN_SIZE[1])
             fscontroller = controller.FreqShowController(fsmodel)
         except Exception as e:
-            print ('SDR not connected')
+            logging.error ('SDR not connected')
             fsmodel=None
             fscontroller =None
 
@@ -44,9 +51,7 @@ class SoftwareDefinedRadioPage(PageTemplate):
         pressed_button=self.handle_events(screen,curr_events)
 
         if pressed_button!=None:
-            print (pressed_button.name)
             if pressed_button.name=='right_arrow':
-                print ("right_arrow")
                 self.fscontroller.toggle_main()
 
         if self.fscontroller==None:
