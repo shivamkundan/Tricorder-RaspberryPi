@@ -15,10 +15,11 @@ class NoiseSensorPage(PageTemplate):
         self.noise_out=0
         self.frame_count=0
 
+
+
+        # --- graphing stuff --- #
         self.rolling_tics=50
         self.x=[]
-
-        # ---
         self.fig = plt.figure(figsize=[5,4])
         self.ax = self.fig.add_subplot(111)
         self.canvas = agg.FigureCanvasAgg(self.fig)
