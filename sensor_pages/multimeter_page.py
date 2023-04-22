@@ -14,11 +14,6 @@ class MultimeterPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
-
-        # self.selected_font_size=24
-        # self.selected_font=FONT_FEDERATION
-        # self.selected_font_color=WHITE
-
         self.num_tics=3
         self.current=-1
         self.voltage=-1
@@ -40,19 +35,14 @@ class MultimeterPage(PageTemplate):
         self.current,self.voltage,self.power=get_multimeter()
         #     e.post(REQUEST_CURRENT)
 
-        FONT_DIN.render_to           (screen, (200,220), "Current", DARK_YELLOW,style=0,size=30)
-        FONT_HELVETICA_NEUE.render_to(screen, (200,250), f"{self.current} mA", WHITE,style=0,size=26)
+        FONT_DIN.render_to           (screen, (200,220),  "Current",           DARK_YELLOW, style=0,size=30)
+        FONT_HELVETICA_NEUE.render_to(screen, (200,250), f"{self.current} mA", WHITE,       style=0,size=26)
 
-        FONT_DIN.render_to           (screen, (200,380), "Voltage", DARK_YELLOW,style=0,size=30)
-        FONT_HELVETICA_NEUE.render_to(screen, (200,410), f"{self.voltage} mV", WHITE,style=0,size=26)
+        FONT_DIN.render_to           (screen, (200,380),  "Voltage",           DARK_YELLOW, style=0,size=30)
+        FONT_HELVETICA_NEUE.render_to(screen, (200,410), f"{self.voltage} mV", WHITE,       style=0,size=26)
 
-        FONT_DIN.render_to           (screen, (200,550), "Power", DARK_YELLOW,style=0,size=30)
-        FONT_HELVETICA_NEUE.render_to(screen, (200,580), f"{self.power} mW", WHITE,style=0,size=26)
-
-        # self.selected_font.render_to(screen, (200, 320), f"I:{self.current} mA", self.selected_font_color,style=1,size=self.selected_font_size)
-        # self.selected_font.render_to(screen, (200, 350), f"V:{self.voltage} mV", self.selected_font_color,style=1,size=self.selected_font_size)
-        # self.selected_font.render_to(screen, (200, 380), f"P:{self.power} mW", self.selected_font_color,style=1,size=self.selected_font_size)
+        FONT_DIN.render_to           (screen, (200,550),  "Power",             DARK_YELLOW, style=0,size=30)
+        FONT_HELVETICA_NEUE.render_to(screen, (200,580), f"{self.power} mW",   WHITE,       style=0,size=26)
 
         self.frame_count+=1
-
         return self.next_screen_name,self.kwargs
