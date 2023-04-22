@@ -6,11 +6,15 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 mpl.use("Agg")
 mpl.rcParams['font.size'] = 10
+COLOR = (0.75,0.75,0.75)
+mpl.rcParams['text.color'] = COLOR
+mpl.rcParams['axes.labelcolor'] = COLOR
+mpl.rcParams['xtick.color'] = COLOR
+mpl.rcParams['ytick.color'] = COLOR
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
 from pygame import gfxdraw
 import pygame.event as e
-# from tricorder import ser
 from serial_manager import get_multimeter
 
 class MultimeterPage(PageTemplate):
@@ -27,34 +31,32 @@ class MultimeterPage(PageTemplate):
         # --- graphing stuff --- #
         self.rolling_tics=50
         self.curr_array=[]
+        self.voltage_array=[]
+        self.power_array=[]
         self.fig = plt.figure(figsize=[6,1.3])
         self.ax = self.fig.add_subplot(111)
         self.canvas = agg.FigureCanvasAgg(self.fig)
         self.ax.set_frame_on(False)
+
         self.current_line_surf=pygame.Surface((1,1))
-
-
-        self.voltage_array=[]
-        self.fig2 = plt.figure(figsize=[6,1.3])
-        self.ax2 = self.fig2.add_subplot(111)
-        self.canvas2 = agg.FigureCanvasAgg(self.fig2)
-        self.ax2.set_frame_on(False)
         self.voltage_line_surf=pygame.Surface((1,1))
+        self.power_line_surf=pygame.Surface((1,1))
 
+    def on_enter(self):
+        self.curr_array=[]
+        self.voltage_array=[]
+        self.power_array=[]
 
-    def render_current_graph(self):
+    def render_generic_graph(self,plot_array,color='r'):
         self.ax.clear()
         self.ax.cla()
-        self.ax.plot(self.curr_array,color='r')
-        self.ax.set_ylim(bottom=min(self.curr_array),top=max(self.curr_array))
-        self.current_line_surf=plot2img(self.fig,self.ax,self.canvas)
-
-    def render_voltage_graph(self):
-        self.ax2.clear()
-        self.ax2.cla()
-        self.ax2.plot(self.voltage_array,color='g')
-        self.ax2.set_ylim(bottom=min(self.voltage_array),top=max(self.voltage_array))
-        self.voltage_line_surf=plot2img(self.fig2,self.ax2,self.canvas2)
+        self.ax.plot(plot_array,color=color)
+        try:
+            self.ax.set_ylim(bottom=min(plot_array),top=max(plot_array))
+        except:
+            pass
+        line_surf=plot2img(self.fig,self.ax,self.canvas)
+        return line_surf
 
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
@@ -68,34 +70,39 @@ class MultimeterPage(PageTemplate):
         if self.frame_count%self.num_tics:
             self.current,self.voltage,self.power=get_multimeter()
 
+            self.voltage=self.voltage/1000
+
             if len(self.curr_array)>self.rolling_tics:
                 self.curr_array=self.curr_array[1:]
                 self.voltage_array=self.voltage_array[1:]
+                self.power_array=self.power_array[1:]
 
             # self.noise_out=get_noise()
             self.curr_array.append(self.current)
             self.voltage_array.append(self.voltage)
+            self.power_array.append(self.power)
 
-            self.render_current_graph()
-            self.render_voltage_graph()
+            self.current_line_surf=self.render_generic_graph(self.curr_array,color='g')
+            self.voltage_line_surf=self.render_generic_graph(self.voltage_array,color='r')
+            self.power_line_surf=self.render_generic_graph(self.power_array,color='y')
 
 
         curr_row=80 #220
-        # increment_val=30
+        increment_val=215
 
         FONT_DIN.render_to           (screen, (155,curr_row),  "Current:",           DARK_YELLOW, style=0,size=30)
-        # curr_row+=increment_val
-        FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), f"{self.current} mA", WHITE,       style=0,size=35)
+        FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), f"{self.current} mA",  WHITE,       style=0,size=35)
         screen.blit(self.current_line_surf, (120,curr_row+40))
 
-        FONT_DIN.render_to           (screen, (200,380),  "Voltage",           DARK_YELLOW, style=0,size=30)
-        FONT_HELVETICA_NEUE.render_to(screen, (200,410), f"{self.voltage} mV", WHITE,       style=0,size=26)
-        screen.blit(self.voltage_line_surf, (120,450))
+        curr_row+=increment_val
+        FONT_DIN.render_to           (screen, (155,curr_row),  "Voltage:",           DARK_YELLOW, style=0,size=30)
+        FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), f"{self.voltage} V",  WHITE,       style=0,size=35)
+        screen.blit(self.voltage_line_surf, (120,curr_row+40))
 
-
-        FONT_DIN.render_to           (screen, (200,550),  "Power",             DARK_YELLOW, style=0,size=30)
-        FONT_HELVETICA_NEUE.render_to(screen, (200,580), f"{self.power} mW",   WHITE,       style=0,size=26)
-
+        curr_row+=increment_val
+        FONT_DIN.render_to           (screen, (155,curr_row),  "Power:",             DARK_YELLOW, style=0,size=30)
+        FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), f"{self.power} mW",   WHITE,       style=0,size=35)
+        screen.blit(self.power_line_surf, (120,curr_row+40))
 
 
         self.frame_count+=1
