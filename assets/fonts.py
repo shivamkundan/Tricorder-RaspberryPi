@@ -4,7 +4,8 @@ import time,datetime
 from paths_and_utils import HOME_DIR
 
 
-number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,pygame.K_5,pygame.K_6,pygame.K_7,pygame.K_8,pygame.K_9]
+number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,\
+                pygame.K_5,pygame.K_6,pygame.K_7,pygame.K_8,pygame.K_9]
 
 # ----------------- Fonts ----------------- #
 FONT = pygame.font.SysFont('HelveticaNeue', 12,bold=False)

@@ -1,5 +1,5 @@
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION
+from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, LIGHT_GREY, WHITE
 from custom_user_events import REQUEST_CURRENT
 import matplotlib.pyplot as plt
@@ -15,14 +15,14 @@ class MultimeterPage(PageTemplate):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
 
-        self.selected_font_size=24
-        self.selected_font=FONT_FEDERATION
-        self.selected_font_color=WHITE
+        # self.selected_font_size=24
+        # self.selected_font=FONT_FEDERATION
+        # self.selected_font_color=WHITE
 
         self.num_tics=3
-        self.current=420
-        self.voltage=420
-        self.power=420
+        self.current=-1
+        self.voltage=-1
+        self.power=-1
 
         self.frame_count=0
 
@@ -40,9 +40,13 @@ class MultimeterPage(PageTemplate):
         self.current,self.voltage,self.power=get_multimeter()
         #     e.post(REQUEST_CURRENT)
 
-        self.selected_font.render_to(screen, (200, 320), f"I:{self.current} mA", self.selected_font_color,style=1,size=self.selected_font_size)
-        self.selected_font.render_to(screen, (200, 350), f"V:{self.voltage} mV", self.selected_font_color,style=1,size=self.selected_font_size)
-        self.selected_font.render_to(screen, (200, 380), f"P:{self.power} mW", self.selected_font_color,style=1,size=self.selected_font_size)
+        FONT_HELVETICA_NEUE.render_to(screen, (200,320), f"I:{self.current} mA", WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (200,350), f"V:{self.voltage} mV", WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (200,380), f"P:{self.power} mW", WHITE,style=0,size=26)
+
+        # self.selected_font.render_to(screen, (200, 320), f"I:{self.current} mA", self.selected_font_color,style=1,size=self.selected_font_size)
+        # self.selected_font.render_to(screen, (200, 350), f"V:{self.voltage} mV", self.selected_font_color,style=1,size=self.selected_font_size)
+        # self.selected_font.render_to(screen, (200, 380), f"P:{self.power} mW", self.selected_font_color,style=1,size=self.selected_font_size)
 
         self.frame_count+=1
 
