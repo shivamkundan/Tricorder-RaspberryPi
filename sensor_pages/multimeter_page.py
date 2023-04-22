@@ -53,8 +53,8 @@ class MultimeterPage(PageTemplate):
         self.ax.plot(plot_array,color=color)
         try:
             self.ax.set_ylim(bottom=min(plot_array),top=max(plot_array))
-        except:
-            pass
+        except Exception as e:
+            logging.debug(e)
         line_surf=plot2img(self.fig,self.ax,self.canvas)
         return line_surf
 
