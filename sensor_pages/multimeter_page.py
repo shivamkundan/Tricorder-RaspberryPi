@@ -44,6 +44,7 @@ class MultimeterPage(PageTemplate):
 
 
     def render_generic_graph(self,plot_array,color='r'):
+    # returns line plot as img
         self.ax.clear()
         self.ax.cla()
         self.ax.plot(plot_array,color=color)
@@ -56,11 +57,11 @@ class MultimeterPage(PageTemplate):
 
     def blit_all(self,screen,line_surf,curr_row,title,val):
         increment_val=215
-        FONT_DIN.render_to           (screen, (155,curr_row),  "Current:",           DARK_YELLOW, style=0,size=30)
-        FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), f"{self.current} mA",  WHITE,       style=0,size=35)
+        FONT_DIN.render_to           (screen, (155,curr_row),  title,           DARK_YELLOW, style=0,size=30)
+        FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), val,  WHITE,       style=0,size=35)
         screen.blit(line_surf, (120,curr_row+40))
         curr_row+=increment_val
-        return curr_row,screen
+        return curr_row
 
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
@@ -93,9 +94,9 @@ class MultimeterPage(PageTemplate):
 
         curr_row=80 #220
 
-        curr_row,screen=self.blit_all(screen,self.current_line_surf,curr_row,"Current:",f"{self.current} mA")
-        curr_row,screen=self.blit_all(screen,self.voltage_line_surf,curr_row,"Voltage:",f"{self.voltage} V")
-        curr_row,screen=self.blit_all(screen,self.power_line_surf,curr_row,"Power:",f"{self.power} mW")
+        curr_row=self.blit_all(screen,self.current_line_surf,curr_row,"Current:",f"{self.current} mA")
+        curr_row=self.blit_all(screen,self.voltage_line_surf,curr_row,"Voltage:",f"{self.voltage} V")
+        curr_row=self.blit_all(screen,self.power_line_surf,curr_row,"Power:",f"{self.power} mW")
 
         self.frame_count+=1
         return self.next_screen_name,self.kwargs

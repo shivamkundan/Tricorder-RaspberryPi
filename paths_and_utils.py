@@ -1,5 +1,5 @@
 HOME_DIR='/home/pi/Sensor_Scripts/pygame_code/tricorder/'
-MAX_BYTES=1016				# for bluetooth serial connection this is the max per
+MAX_BYTES=1016				# for bluetooth serial connection this is the max per msg
 PERIPHERAL_MODE='serial'	# options: serial, bluetooth
 
 STARTING_RES=(680,640)
