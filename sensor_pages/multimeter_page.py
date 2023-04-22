@@ -41,11 +41,7 @@ class MultimeterPage(PageTemplate):
         self.current_line_surf=pygame.Surface((1,1))
         self.voltage_line_surf=pygame.Surface((1,1))
         self.power_line_surf=pygame.Surface((1,1))
-
-    def on_enter(self):
-        self.curr_array=[]
-        self.voltage_array=[]
-        self.power_array=[]
+        
 
     def render_generic_graph(self,plot_array,color='r'):
         self.ax.clear()
