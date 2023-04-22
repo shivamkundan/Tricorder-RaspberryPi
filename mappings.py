@@ -1,7 +1,7 @@
 import pygame
 pygame.init()
 
-d={}
+d={}	# this makes two-way referencing easier
 
 HELP_CODE ='H'
 VERBOSE_CODE ='B'
@@ -14,11 +14,11 @@ d['PRESSURE_CODE']    ='P'
 d['PM25_CODE']        ='M'
 d['TVOC_CODE']        ='V'
 d['THERMAL_CAM_CODE'] ='R'
-WIND_CODE        ='#'
+WIND_CODE             ='#'
 d['NOISE_CODE']       ='$'
 
-TSL_SCL_DISCONNECT_CODE='&'
-TSL_SCL_CONNECT_CODE='A'
+TSL_SCL_DISCONNECT_CODE ='&'
+TSL_SCL_CONNECT_CODE    ='A'
 
 PM25_PWR_ON_CODE='F'
 PM25_PWR_OFF_CODE='H'
