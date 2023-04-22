@@ -16,6 +16,7 @@ import matplotlib.backends.backend_agg as agg
 from pygame import gfxdraw
 import pygame.event as e
 from serial_manager import get_multimeter
+import logging
 
 class MultimeterPage(PageTemplate):
     def __init__(self,name):
@@ -63,6 +64,13 @@ class MultimeterPage(PageTemplate):
         curr_row+=increment_val
         return curr_row
 
+    def array_handler(self,arr,new_val,color):
+        if len(arr)>self.rolling_tics:
+            arr=arr[1:]
+        arr.append(new_val)
+        return arr,self.render_generic_graph(arr,color=color)
+
+
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
         self.kwarg_handler(kwargs)
@@ -77,20 +85,9 @@ class MultimeterPage(PageTemplate):
 
             self.voltage=self.voltage/1000
 
-            if len(self.curr_array)>self.rolling_tics:
-                self.curr_array=self.curr_array[1:]
-                self.voltage_array=self.voltage_array[1:]
-                self.power_array=self.power_array[1:]
-
-            # self.noise_out=get_noise()
-            self.curr_array.append(self.current)
-            self.voltage_array.append(self.voltage)
-            self.power_array.append(self.power)
-
-            self.current_line_surf=self.render_generic_graph(self.curr_array,color='g')
-            self.voltage_line_surf=self.render_generic_graph(self.voltage_array,color='r')
-            self.power_line_surf=self.render_generic_graph(self.power_array,color='y')
-
+            self.curr_array,self.current_line_surf=self.array_handler(self.curr_array,self.current,'g')
+            self.voltage_array,self.voltage_line_surf=self.array_handler(self.voltage_array,self.voltage,'r')
+            self.power_array,self.power_line_surf=self.array_handler(self.power_array,self.power,'y')
 
         curr_row=80 #220
 
