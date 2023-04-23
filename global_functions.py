@@ -1,10 +1,10 @@
 import pygame
-
+import datetime
 from subprocess import PIPE, Popen, check_output
 import psutil
 
-from fonts import *
-from colors import *
+from fonts import FONT_DIN,FONT_OKUDA,FONT_OKUDA_BOLD,WIFI_FONT
+from colors import WHITE, ORANGE, LIGHT_BLUE
 # ================ Global functions ================================= #
 
 def my_map(x,in_min,in_max,out_min,out_max):

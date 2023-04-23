@@ -1,8 +1,6 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN,FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW,  WHITE
-# import pygame.event as e
-# from custom_user_events import REQUEST_GPS
 from serial_manager import get_gps
 from images import satellite
 from paths_and_utils import IMG_PATH

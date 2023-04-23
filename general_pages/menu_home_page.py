@@ -6,8 +6,6 @@ from buttons import ICON_BUTTON_W, COLUMN_SPACING, COL1_POS,ROW1_POS,NUM_PAGES,P
 from global_functions import get_wifi_name, update_cpu_stats
 import pygame
 import logging
-# from colors import
-# from mappings import
 
 class MenuHomePageClass(PageTemplate):
 	def __init__(self,name):
@@ -84,7 +82,7 @@ class MenuHomePageClass(PageTemplate):
 
 		pressed_button=self.handle_events(screen,curr_events)
 		if pressed_button!=None:
-			logging.debug (f"{pressed_button.name}")
+			logging.debug (f"pressed icon: {pressed_button.name}")
 			if pressed_button.name in self.button_mapping.keys():
 				self.next_screen_name=self.button_mapping[pressed_button.name]
 			if pressed_button.name=='home_button':

@@ -123,6 +123,7 @@ def shivams_logging(script_name="tricorder",console_log_level="debug",logfile_lo
 		print("Failed to set up logging, aborting.")
 		return 1
 
+shivams_logging(script_name="tricorder",console_log_level="debug",logfile_log_level="info")
 
 # Call main function
 if (__name__ == "__main__"):

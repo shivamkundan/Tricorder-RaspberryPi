@@ -2,7 +2,6 @@
 import pygame
 import os
 from paths_and_utils import IMG_PATH,LCARS_PATH,ICONS_PATH
-# pygame.init()
 
 # ------------------------------------ Background image ------------------------------------ #
 lcars_bg= pygame.image.load(os.path.join(LCARS_PATH,'Picard/PIcard_LCARS_square_accent_7_resized.png'))

@@ -13,11 +13,6 @@
 from mappings import *
 import serial
 from my_logging import *
-logging.debug (f"serial.VERSION:{serial.VERSION}")
-
-# set up logging
-shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
-logging.info (f'\n')
 
 PORT_NAME="/dev/my_esp32"	# this is the custom assigned port for esp32
 

@@ -35,9 +35,17 @@ sys.path.insert(1,HOME_DIR+'assets/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
 sys.path.insert(1,HOME_DIR+'general_pages/')
 
+# from my_logging import *
+from my_logging import *
+# set up logging
+# shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
+logging.info (f'\n')
+
+from serial_manager import ser,get_battery, my_flush
+
 # from pwmled.driver.gpio import GpioDriver
 from mappings import *
-from serial_manager import ser,get_battery, my_flush
+
 from images import *
 from buttons import *
 from aa_arc_gauge import *

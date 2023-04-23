@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import pygame
-import time,datetime
 from paths_and_utils import HOME_DIR
 
 
@@ -47,7 +46,10 @@ TEMP_FONT=pygame.font.SysFont('Helvetica', 30)
 HELVETICA=pygame.font.SysFont('Helvetica', 30)
 FONT_UNITS=pygame.font.SysFont('Helvetica', 18)
 
-font_names=['wifi_font.ttf','Trekbats.ttf','Okuda Bold Italic.otf','Okuda Bold.otf','Okuda Italic.otf','Okuda.otf','Klingon.ttf','LCARS.ttf','din-condensed-light.otf','din-1451-fette-breitschrift-1936.ttf','Borg.ttf','Fabrini.ttf','Dominion.ttf','Ferengi.ttf','Cardassian.ttf','Bajoran.ttf','Federation.ttf','Romulan.ttf']
+font_names=['wifi_font.ttf','Trekbats.ttf','Okuda Bold Italic.otf','Okuda Bold.otf',\
+            'Okuda Italic.otf','Okuda.otf','Klingon.ttf','LCARS.ttf','din-condensed-light.otf',\
+            'din-1451-fette-breitschrift-1936.ttf','Borg.ttf','Fabrini.ttf','Dominion.ttf',\
+            'Ferengi.ttf','Cardassian.ttf','Bajoran.ttf','Federation.ttf','Romulan.ttf']
 
 star_trek_fonts={}
 
