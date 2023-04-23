@@ -1,6 +1,10 @@
 import pygame
 pygame.init()
 
+# following vars are for backlight
+import pigpio
+PIGPIO=pigpio.pi()
+
 d={}	# this makes two-way referencing easier
 
 HELP_CODE ='H'

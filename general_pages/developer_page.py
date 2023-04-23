@@ -2,7 +2,12 @@ from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
 
-
+# implement:
+# reset mcu
+# switch transistors
+# read transistor state
+# ind mode en/dis
+# help/reference/mappings
 class DeveloperPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
