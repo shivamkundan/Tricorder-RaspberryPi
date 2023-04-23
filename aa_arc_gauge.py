@@ -5,6 +5,7 @@ import pygame,sys,time
 import pygame.gfxdraw
 import pygame.freetype
 from colors import WHITE,RED,GREY,BLACK,DARK_GREY,LIGHT_GREY,YELLOW
+from global_functions import get_text_dimensions
 from fonts import FONT_DIN, FONT_HELVETICA_NEUE,FONT_FEDERATION
 import numpy as np
 import logging
@@ -14,14 +15,6 @@ radius=35
 # offset=75
 RAD_CONSTANT=0.0174533
 # RAD_CONSTANT=0.0175
-
-def get_text_dimensions(text='',font_style=FONT_DIN,font_color=WHITE,style=0,font_size=28):
-    val_txt=font_style.render(text,fgcolor=font_color,size=font_size)
-    x=list(val_txt)
-    w=x[1][2]
-    h=x[1][3]
-    surf=x[0]
-    return surf,w,h
 
 def my_map(x,in_min,in_max,out_min,out_max): 
   return (float(x) - in_min) * (out_max - out_min) / (in_max - in_min) + out_min

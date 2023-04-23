@@ -1,15 +1,12 @@
 import pygame.event as e
 from buttons import ButtonClass, slide_switch_blank,simple_button_short,simple_button_short_alt
-from aa_arc_gauge import *
+from aa_arc_gauge import AA_Gauge
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
-from colors import SLATE, ORANGE, WHITE, DARK_GREY, DARK_YELLOW
+from colors import SLATE, ORANGE, WHITE, DARK_GREY, DARK_YELLOW, YELLOW
 from page_templates import PageTemplate
 from custom_user_events import SET_PRESSURE
-
+from paths_and_utils import PERIPHERAL_MODE
 from serial_manager import get_pressure
-
-PERIPHERAL_MODE='serial'
-
 
 class PressureSensorPage(PageTemplate):
     def __init__(self,name):

@@ -45,10 +45,8 @@ from mappings import *
 
 from images import *
 from buttons import *
-from aa_arc_gauge import *
 from custom_user_events import *
 from global_functions import *
-# from plotting_functions import *
 
 # ============== import pages ==============#
 from page_templates import *
@@ -59,7 +57,7 @@ from noise_page import NoiseSensorPage
 from wind_page import WindSensorPage
 from spectrometer_page import SpecPage
 from temp_humid_page import TempHumidPage
-from pressure_page import *
+from pressure_page import PressureSensorPage
 from uv_page import *
 from vis_ir_page import *
 from voc_page import *

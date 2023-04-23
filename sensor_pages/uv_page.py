@@ -1,11 +1,13 @@
 import pygame.event as e
+from pygame import draw
 from buttons import ButtonClass, slide_switch_blank, simple_button_short, simple_button_short_alt
-from aa_arc_gauge import *
+from aa_arc_gauge import AA_Gauge
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
 from colors import PURPLE,DARK_GREY,BLACK,WHITE,ORANGE,DARK_YELLOW, SLATE
 from page_templates import PageTemplate
 from custom_user_events import SET_UV_GAIN
 from serial_manager import get_uv
+from global_functions import get_text_dimensions
 
 class UVSensorPage(PageTemplate):
     def __init__(self,name):
@@ -120,7 +122,7 @@ class UVSensorPage(PageTemplate):
     def blit_current_settings(self,screen):
 
         # Blit dividing line
-        pygame.draw.line(screen, SLATE, (410, 395), (410, 645),1)
+        draw.line(screen, SLATE, (410, 395), (410, 645),1)
 
         # --- Column #2 shows raw light, lux --- #
         x_pos=450
