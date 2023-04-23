@@ -43,7 +43,6 @@ class MultimeterPage(PageTemplate):
         self.voltage_line_surf=pygame.Surface((1,1))
         self.power_line_surf=pygame.Surface((1,1))
 
-
     def render_generic_graph(self,plot_array,color='r'):
     # returns line plot as img
         self.ax.clear()
@@ -69,7 +68,6 @@ class MultimeterPage(PageTemplate):
             arr=arr[1:]
         arr.append(new_val)
         return arr,self.render_generic_graph(arr,color=color)
-
 
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name

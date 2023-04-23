@@ -222,11 +222,11 @@ def get_imu_grav():
 # -------------- VIS/IR light sensor  -------------- #
 def set_tsl_scl_disconnect():
 	ser.write(TSL_SCL_DISCONNECT_CODE.encode('utf-8'))
-	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
+	curr_line=(ser.readline())
 
 def set_tsl_scl_connect():
 	ser.write(TSL_SCL_CONNECT_CODE.encode('utf-8'))
-	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
+	curr_line=(ser.readline())
 
 def set_tsl_gain(new_gain):
 	ser.write(new_gain.encode('utf-8'))
@@ -235,19 +235,19 @@ def set_tsl_gain(new_gain):
 # ------------------- PM25 ------------------------- #
 def set_pm25_power_off():
 	ser.write(PM25_PWR_OFF_CODE.encode('utf-8'))
-	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
+	curr_line=(ser.readline())
 
 def set_pm25_power_on():
 	ser.write(PM25_PWR_ON_CODE.encode('utf-8'))
-	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
+	curr_line=(ser.readline())
 
 def set_geiger_power_off():
 	ser.write(GEIGER_PWR_OFF_CODE.encode('utf-8'))
-	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
+	curr_line=(ser.readline())
 
 def set_geiger_power_on():
 	ser.write(GEIGER_PWR_ON_CODE.encode('utf-8'))
-	curr_line=(ser.readline())#.decode('utf-8').lstrip(' ').rstrip('\r\n')
+	curr_line=(ser.readline())
 
 # -------------------------------------------------
 def get_serial_vals(send_msg,dict_names_list):
