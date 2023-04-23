@@ -278,7 +278,7 @@ class SliderClass():
 
 # ====================== General Pages =============================== #
 
-class SliderTestPage(PageTemplate):
+class BrightnessSliderPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
 
@@ -624,7 +624,7 @@ class QuickMenuPage(PageTemplate):
 		self.backlight_lvl=-1
 		self.fullscreen_en=False
 
-		self.screen_dict={'backlight':'slider_test_page','device_stats':'device_stats_page',
+		self.screen_dict={'backlight':'brightness_slider_page','device_stats':'device_stats_page',
 							'home':'home_page','exit':'exit',
 							'sleep':'sleep_page','screenshot':self.prev_page_name,
 							'exit_fullscreen':self.prev_page_name,
@@ -835,7 +835,7 @@ class WindowManager():
 		self.DeviceInfo=DeviceInfoClass()
 
 		# Retrieve backlight level
-		self.DeviceInfo.curr_brightness=self.screen_dict['slider_test_page'].get_current_brightness()
+		self.DeviceInfo.curr_brightness=self.screen_dict['brightness_slider_page'].get_current_brightness()
 
 		# For restoring backlight level after wake from sleep
 		if self.DeviceInfo.curr_brightness==0:
@@ -937,7 +937,7 @@ class WindowManager():
 											 SettingsPage('settings_page'),
 											 DeviceStatsPage('device_stats_page'),
 											 NumPadPage('numpad_page'),
-											 SliderTestPage('slider_test_page'),
+											 BrightnessSliderPage('brightness_slider_page'),
 											 SleepPage('sleep_page'),
 											 ExitPage('exit')   #placeholder
 											]
@@ -1015,22 +1015,22 @@ class WindowManager():
 			if event==GO_TO_SLEEP:
 				logging.info ('GO_TO_SLEEP!!!')
 				MODE='sleep'
-				self.backlight_restore_level=self.screen_dict['slider_test_page'].get_current_brightness()
-				self.screen_dict['slider_test_page'].set_brightness(0)
-				self.DeviceInfo.curr_brightness=self.screen_dict['slider_test_page'].get_current_brightness()
+				self.backlight_restore_level=self.screen_dict['brightness_slider_page'].get_current_brightness()
+				self.screen_dict['brightness_slider_page'].set_brightness(0)
+				self.DeviceInfo.curr_brightness=self.screen_dict['brightness_slider_page'].get_current_brightness()
 				curr_events.remove(event)
 				ser.write(MCU_SLEEP_CODE.encode('utf-8'))
 				ser.readline()
 
 			if event==SET_BACKLIGHT:
 				# print('SET_BACKLIGHT')
-				c=self.screen_dict['slider_test_page'].get_current_brightness()
+				c=self.screen_dict['brightness_slider_page'].get_current_brightness()
 				self.DeviceInfo.curr_brightness=c
 				self.screen_dict['quick_menu_page'].backlight_lvl=c
 				curr_events.remove(event)
 
 			if event==GET_BACKLIGHT_QUICK_MENU:
-				self.screen_dict['quick_menu_page'].backlight_lvl=self.screen_dict['slider_test_page'].get_current_brightness()
+				self.screen_dict['quick_menu_page'].backlight_lvl=self.screen_dict['brightness_slider_page'].get_current_brightness()
 				curr_events.remove(event)
 
 			if event == SCREENSHOT_EVENT:
