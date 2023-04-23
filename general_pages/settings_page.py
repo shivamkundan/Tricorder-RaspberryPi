@@ -2,7 +2,8 @@ from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN
 from colors import ORANGE
 # from buttons import *
-from images import *
+# from images import *
+from buttons import ButtonClass,long_button_blue,long_button_blue_pressed
 
 class SettingsPage(PageTemplate):
 	def __init__(self,name):

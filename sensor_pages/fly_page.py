@@ -1,7 +1,8 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, HELVETICA, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK
-from images import IMG_PATH,ICONS_PATH,lcars_bg
+from images import lcars_bg
+from paths_and_utils import IMG_PATH,ICONS_PATH
 from global_functions import get_text_dimensions, blitRotate2, my_map
 import pygame
 import pygame.gfxdraw

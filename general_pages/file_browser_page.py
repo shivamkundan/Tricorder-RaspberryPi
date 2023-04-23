@@ -1,7 +1,7 @@
 import pygame
 import os
 from page_templates import PageTemplate
-from images import ButtonClass, NAV_BUTTONS_VERTICAL, simp_button, simp_button_alt, simp_button_selected
+from buttons import ButtonClass, NAV_BUTTONS_VERTICAL, simp_button, simp_button_alt, simp_button_selected
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
 from colors import ORANGE, WHITE
 

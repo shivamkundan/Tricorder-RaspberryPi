@@ -3,8 +3,8 @@ from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
 from colors import DARK_YELLOW,SLATE,WHITE,ORANGE
 import pygame
 import os
-from images import NAV_BUTTONS, IMG_PATH
-
+from buttons import NAV_BUTTONS
+from paths_and_utils import IMG_PATH
 from serial_manager import set_tsl_scl_disconnect,get_imu_orientation,get_imu_ang_vel,get_imu_lin_acc,get_imu_acc, get_imu_mag,get_imu_grav
 import logging
 

@@ -39,6 +39,7 @@ sys.path.insert(1,HOME_DIR+'general_pages/')
 from mappings import *
 from serial_manager import ser,get_battery, my_flush
 from images import *
+from buttons import *
 from aa_arc_gauge import *
 from custom_user_events import *
 from global_functions import *
@@ -198,7 +199,6 @@ class DeviceInfoClass():
 		self.read_battery(screen,frame_count)
 
 # ==================================================================== #
-
 class WindowManager():
 	def __init__(self,fullscreen_en=False):
 
@@ -708,6 +708,7 @@ class WindowManager():
 
 		pygame.image.save(sub,name)
 		self.screen.blit(camera,(20,160))
+
 # ==================================================================== #
 
 if __name__=='__main__':

@@ -1,6 +1,9 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
-from images import *
+from colors import SLATE
+from images import PAGE_DOTS
+from buttons import ICON_BUTTON_W, COLUMN_SPACING, COL1_POS,ROW1_POS,NUM_PAGES,PAGE_OFFSET,ICON_BUTTONS, NAV_BUTTONS
+from global_functions import get_wifi_name, update_cpu_stats
 import pygame
 import logging
 # from colors import

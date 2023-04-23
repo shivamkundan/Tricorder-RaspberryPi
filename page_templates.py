@@ -8,6 +8,7 @@ import pygame
 from fonts import FONT_FEDERATION
 from colors import FONT_BLUE
 from images import *
+from buttons import *
 import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg

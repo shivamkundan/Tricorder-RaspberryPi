@@ -1,4 +1,5 @@
 HOME_DIR='/home/pi/Sensor_Scripts/pygame_code/tricorder/'
+
 MAX_BYTES=1016				# for bluetooth serial connection this is the max per msg
 PERIPHERAL_MODE='serial'	# options: serial, bluetooth
 
@@ -10,6 +11,11 @@ BACKLIGHT_PIN=19 			# for software PWM pigpio
 LOGS_DIR='/home/pi/Sensor_Scripts/logs/'
 header_row='day,date,time,lux,infrared,visible,full_spectrum,uvs,light,gain,uvi,ltr_lux,channel_415nm,channel_445nm,channel_480nm,channel_515nm,channel_555nm,channel_590nm,channel_630nm,channel_680nm,temperature,relative_humidity,pressure,bmp_temperature,03um,05um,10um,25um,50um,100um,eCO2,TVOC,baseline_eCO2,baseline_TVOC\n'
 LOG_FILE_PREFIX='sensors_log_home_'
+
+# -------------------------- Images -------------------------- #
+IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
+LCARS_PATH=IMG_PATH+'LCARS_pics'
+ICONS_PATH=LCARS_PATH+'/Picard/mobile_style_icons/'
 
 # This dictionary used for home_page
 SENSOR_DICT={'lux':"-1",'infrared':"-1",'visible':"-1",'full_spectrum':"-1",'tsl2591_gain':"-1",

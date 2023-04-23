@@ -1,6 +1,6 @@
 import pygame.event as e
 import logging
-from images import ButtonClass
+from buttons import ButtonClass, slide_switch_blank,simple_button_short,simple_button_short_alt
 from aa_arc_gauge import *
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
 from colors import SLATE, ORANGE, WHITE, DARK_GREY

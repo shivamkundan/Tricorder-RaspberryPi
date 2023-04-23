@@ -1,5 +1,5 @@
 from page_templates import PageTemplate
-from images import QUICK_MENU_BUTTONS
+from buttons import QUICK_MENU_BUTTONS
 from fonts import FONT_FEDERATION
 from colors import ORANGE
 from custom_user_events import TOGGLE_SCREEN,GO_TO_SLEEP,SCREENSHOT_EVENT,SET_BACKLIGHT

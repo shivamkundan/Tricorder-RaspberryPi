@@ -1,5 +1,5 @@
 import pygame.event as e
-from images import ButtonClass
+from buttons import ButtonClass, quarter_button, quarter_button_alt
 from aa_arc_gauge import *
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
 from colors import DARK_GREY, ORANGE, SLATE, DARK_YELLOW, WHITE
