@@ -55,9 +55,9 @@ from page_templates import *
 from sdr_page import SoftwareDefinedRadioPage
 from thermal_cam_page import ThermalCamPage
 from pm25_page import PM25Page
-from noise_page import *
+from noise_page import NoiseSensorPage
 from wind_page import WindSensorPage
-from spectrometer_page import *
+from spectrometer_page import SpecPage
 from temp_humid_page import TempHumidPage
 from pressure_page import *
 from uv_page import *

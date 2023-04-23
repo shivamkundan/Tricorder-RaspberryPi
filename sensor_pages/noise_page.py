@@ -1,4 +1,4 @@
-import pygame
+from pygame import Surface
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
@@ -25,7 +25,7 @@ class NoiseSensorPage(PageTemplate):
         self.ax = self.fig.add_subplot(111)
         self.canvas = agg.FigureCanvasAgg(self.fig)
         self.ax.set_frame_on(False)
-        self.line_surf=pygame.Surface((1,1))
+        self.line_surf=Surface((1,1))
 
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
