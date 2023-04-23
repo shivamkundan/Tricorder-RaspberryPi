@@ -54,7 +54,7 @@ from global_functions import *
 from page_templates import *
 from sdr_page import SoftwareDefinedRadioPage
 from thermal_cam_page import ThermalCamPage
-from pm25_page import *
+from pm25_page import PM25Page
 from noise_page import *
 from wind_page import WindSensorPage
 from spectrometer_page import *
@@ -301,7 +301,7 @@ class WindowManager():
 		self.sensor_pages_list=[ThermalCamPage('thermal_cam_page'),
 					 LightSensorPage('light_sensor_page'),
 					 UVSensorPage('uv_sensor_page'),
-					 pm25page('pm25_sensor_page'),
+					 PM25Page('pm25_sensor_page'),
 					 PressureSensorPage('pressure_sensor_page'),
 					 SpecPage('spectrometer_page'),
 					 TempHumidPage('temp_humid_page'),

@@ -8,7 +8,7 @@ from math import log
 from serial_manager import get_pm25,set_pm25_power_off,set_pm25_power_on
 import logging
 
-class pm25page(PageWithoutGauge):
+class PM25Page(PageWithoutGauge):
     def __init__(self,name):
         self.aqdata=[1, 1, 1, 1, 1, 1]
         names_list=['>0.3μm','>0.5μm','>1.0μm','>2.5μm','>5.0μm','>10μm']
