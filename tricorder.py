@@ -44,12 +44,11 @@ from serial_manager import ser,get_battery, my_flush
 from mappings import *
 
 from images import *
-from buttons import *
 from custom_user_events import *
 from global_functions import *
 
 # ============== import pages ==============#
-from page_templates import *
+from page_templates import PageTemplate,PageWithoutGauge,DeviceStatsPageTemplate,NumPadPage
 from sdr_page import SoftwareDefinedRadioPage
 from thermal_cam_page import ThermalCamPage
 from pm25_page import PM25Page
@@ -58,10 +57,10 @@ from wind_page import WindSensorPage
 from spectrometer_page import SpecPage
 from temp_humid_page import TempHumidPage
 from pressure_page import PressureSensorPage
-from uv_page import *
-from vis_ir_page import *
-from voc_page import *
-from imu_page import *
+from uv_page import UVSensorPage
+from vis_ir_page import LightSensorPage
+from voc_page import VOCSensorPage
+from imu_page import IMUSensorPage
 from gps_page import *
 from radiation_page import *
 from weight_page import *
