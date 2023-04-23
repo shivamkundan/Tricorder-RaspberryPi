@@ -11,4 +11,7 @@ class DeveloperPage(PageTemplate):
 	def next_frame(self,screen,curr_events,**kwargs):
 		self.next_screen_name=self.name
 		pressed_button=self.handle_events(screen,curr_events)
+
+
+		FONT_FEDERATION.render_to(screen, (150, 67), 'Developer', ORANGE,style=0,size=40)
 		return self.next_screen_name,{}
