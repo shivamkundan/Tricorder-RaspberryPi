@@ -1,9 +1,10 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
-from colors import SLATE
-from images import PAGE_DOTS
+from colors import SLATE, BLACK
+from images import lcars_bg, PAGE_DOTS, bluetooth_img, bluetooth_img_not_connected
 from buttons import ICON_BUTTON_W, COLUMN_SPACING, COL1_POS,ROW1_POS,NUM_PAGES,PAGE_OFFSET,ICON_BUTTONS, NAV_BUTTONS
-from global_functions import get_wifi_name, update_cpu_stats
+from global_functions import get_wifi_name, update_cpu_stats, get_date_time, blit_some_stats
+from paths_and_utils import clock
 import pygame
 import logging
 
@@ -188,6 +189,7 @@ class MenuHomePageClass(PageTemplate):
 
 				# Start animation
 				self.get_sidebar_stats(screen)
+				# self.sw=screen.get_width()
 				while (butt.rectangle.left>(self.col1_pos)):
 					dx=min(dx_transition,(butt.rectangle.left-self.col1_pos))
 					for button in self.icon_buttons_list:
@@ -207,6 +209,7 @@ class MenuHomePageClass(PageTemplate):
 
 				# Start animation
 				self.get_sidebar_stats(screen)
+				# self.sw=screen.get_width()
 				while ((self.col1_pos)>butt.rectangle.left):
 					dx=min(dx_transition,(self.col1_pos-butt.rectangle.left))
 					for button in self.icon_buttons_list:

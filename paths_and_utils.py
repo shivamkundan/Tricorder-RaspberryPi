@@ -1,3 +1,6 @@
+import pygame
+clock=pygame.time.Clock()
+
 HOME_DIR='/home/pi/Sensor_Scripts/pygame_code/tricorder/'
 
 MAX_BYTES=1016				# for bluetooth serial connection this is the max per msg

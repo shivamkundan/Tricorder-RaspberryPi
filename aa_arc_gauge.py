@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import pygame,sys,time
-from enum import Enum
-from pygame.sprite import Sprite
+# from enum import Enum
+# from pygame.sprite import Sprite
 import pygame.gfxdraw
 import pygame.freetype
 from colors import WHITE,RED,GREY,BLACK,DARK_GREY,LIGHT_GREY,YELLOW

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import pygame
+
 import pygame.freetype
 import sys
 import os
 import time, datetime
 from subprocess import PIPE, Popen
 from threading import Thread
-# import psutil
 import pigpio
 # from bluetooth import *
 import trace
@@ -55,7 +55,7 @@ from plotting_functions import *
 
 # ============== import pages ==============#
 from page_templates import *
-from sdr_page import *
+from sdr_page import SoftwareDefinedRadioPage
 from thermal_cam_page import *
 from pm25_page import *
 from noise_page import *
@@ -638,7 +638,6 @@ class WindowManager():
 		curr_events=self.generic_event_handler(curr_events)
 
 		for screen_name,screen in self.screen_dict.items():
-			# print (screen_name)
 			try:
 				for butt in screen.button_list:
 					if butt.cooldown_val>0:
@@ -725,7 +724,7 @@ if __name__=='__main__':
 
 	MODE='normal'
 
-	clock=pygame.time.Clock()
+	# clock=pygame.time.Clock()
 
 	fullscreen_en=False
 
