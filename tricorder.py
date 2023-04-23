@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import pygame
-
 import pygame.freetype
 import sys
 import os
@@ -42,8 +41,6 @@ shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_lev
 logging.info (f'\n')   # newline for easier readability
 
 from serial_manager import ser,get_battery, my_flush
-
-# from pwmled.driver.gpio import GpioDriver
 from mappings import *
 
 from images import *
@@ -51,12 +48,12 @@ from buttons import *
 from aa_arc_gauge import *
 from custom_user_events import *
 from global_functions import *
-from plotting_functions import *
+# from plotting_functions import *
 
 # ============== import pages ==============#
 from page_templates import *
 from sdr_page import SoftwareDefinedRadioPage
-from thermal_cam_page import *
+from thermal_cam_page import ThermalCamPage
 from pm25_page import *
 from noise_page import *
 from wind_page import WindSensorPage

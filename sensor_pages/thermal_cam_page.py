@@ -4,13 +4,16 @@ import numpy as np
 
 # -------------- my libs -------------- #
 from page_templates import PageTemplate
-from custom_user_events import *
+from custom_user_events import BLUETOOTH_DISCONNECTED
 from paths_and_utils import MAX_BYTES
-from images import *
+from images import lcars_bg
+from fonts import FONT_DIN, FONT_FEDERATION
 from buttons import PREF_BUTTON,PLAY_BUTTON,PAUSE_BUTTON,SCALE_BUTTON,COLOR_PALETTE_BUTTON,NAV_BUTTONS
-from plotting_functions import *
+from colors import WHITE, ORANGE, DARK_YELLOW
+from plotting_functions import plot2img
 from global_functions import flip_buttons
 from mappings import d
+
 # ----- plotting libs ----- #
 import matplotlib as mpl
 mpl.use("Agg")
@@ -124,103 +127,103 @@ class ThermalCamPage(PageTemplate):
         cb.remove()
         return surf
 
-    def recv_frame_data(self,client_sock):
-        expected=''.join('#' for _ in range(MAX_BYTES))
+    # def recv_frame_data(self,client_sock):
+    #     expected=''.join('#' for _ in range(MAX_BYTES))
 
 
 
-        # print ('pos1')
-        PRE_MSG='7'+''.join('*' for m in range (1015))
-        self.client_sock.send(PRE_MSG)
-        # print ('pos2')
-        recv_data=''
-        m=1
-        try:
-            while recv_data!=expected:
-                # print ('msg#:',m)
-                # print(recv_data)
-                try:
-                    ready = select.select([self.client_sock], [], [], 3)
-                    if ready[0]:
-                        recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
-                    # recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
-                    self.client_sock.makefile().flush()
-                    # print ((recv_data))
-                    # if recv_data==expected:
-                        # print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-                except btcommon.BluetoothError:
-                    self.bluetooth_connected=False
-                    pygame.event.post(BLUETOOTH_DISCONNECTED)
-                m+=1
-                if (m>25):
-                    break
-        except KeyboardInterrupt:
-            print('interrupt')
-        except btcommon.BluetoothError:
-            self.bluetooth_connected=False
-            pygame.event.post(BLUETOOTH_DISCONNECTED)
-        # print ('pos3')
+    #     # print ('pos1')
+    #     PRE_MSG='7'+''.join('*' for m in range (1015))
+    #     self.client_sock.send(PRE_MSG)
+    #     # print ('pos2')
+    #     recv_data=''
+    #     m=1
+    #     try:
+    #         while recv_data!=expected:
+    #             # print ('msg#:',m)
+    #             # print(recv_data)
+    #             try:
+    #                 ready = select.select([self.client_sock], [], [], 3)
+    #                 if ready[0]:
+    #                     recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
+    #                 # recv_data = self.client_sock.recv(MAX_BYTES).decode("utf-8")
+    #                 self.client_sock.makefile().flush()
+    #                 # print ((recv_data))
+    #                 # if recv_data==expected:
+    #                     # print ('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    #             except btcommon.BluetoothError:
+    #                 self.bluetooth_connected=False
+    #                 pygame.event.post(BLUETOOTH_DISCONNECTED)
+    #             m+=1
+    #             if (m>25):
+    #                 break
+    #     except KeyboardInterrupt:
+    #         print('interrupt')
+    #     except btcommon.BluetoothError:
+    #         self.bluetooth_connected=False
+    #         pygame.event.post(BLUETOOTH_DISCONNECTED)
+    #     # print ('pos3')
 
-        MIN_MSG_LEN=4
-        START_MSG='STRT'+''.join('*' for i in range (1012))
-        ACK_MSG1='CONF'+''.join('*' for i in range (1012))
-        ACK_MSG2='RECV'+''.join('*' for i in range (1012))
-        END_MSG='DONE'+''.join('*' for i in range (1012))
+    #     MIN_MSG_LEN=4
+    #     START_MSG='STRT'+''.join('*' for i in range (1012))
+    #     ACK_MSG1='CONF'+''.join('*' for i in range (1012))
+    #     ACK_MSG2='RECV'+''.join('*' for i in range (1012))
+    #     END_MSG='DONE'+''.join('*' for i in range (1012))
 
-        # start
-        client_sock.send(START_MSG)
+    #     # start
+    #     client_sock.send(START_MSG)
 
-        # print ('pos4')
-        xxx=np.ndarray(shape=(32,24))
-        frame = [0] * 768
+    #     # print ('pos4')
+    #     xxx=np.ndarray(shape=(32,24))
+    #     frame = [0] * 768
 
 
 
-        # receive number of pieces
+    #     # receive number of pieces
 
-        try:
-            ready = select.select([self.client_sock], [], [], 3)
-            if ready[0]:
+    #     try:
+    #         ready = select.select([self.client_sock], [], [], 3)
+    #         if ready[0]:
 
-                recv_num_msgs = client_sock.recv(MAX_BYTES).decode("utf-8")
-                # print ('recv_num_msgs: ',recv_num_msgs)
-                recv_num_msgs = int(recv_num_msgs.replace('*','').replace('\x00','').replace(' ','').rstrip(' '))
-            # recv_num_msgs = client_sock.recv(MAX_BYTES).decode("utf-8")
-            # recv_num_msgs= int(recv_num_msgs.replace('*','').replace('\x00','').replace(' ','').rstrip(' '))
-            # print('number of pieces: ',recv_num_msgs)
-                client_sock.send(ACK_MSG1)
-                recv_str=''
-        except btcommon.BluetoothError:
-                self.bluetooth_connected=False
-                pygame.event.post(BLUETOOTH_DISCONNECTED)
-                return frame
-        # print ('pos5')
-        # receive all pieces of data
-        for i in range (int(recv_num_msgs)):
-        # for i in range (4):
-            ready = select.select([self.client_sock], [], [], 3)
-            if ready[0]:
-                recv_msg = client_sock.recv(MAX_BYTES).decode("utf-8").replace('*','').replace('\x00','').rstrip(' ')
-                # print ('len(recv_msg):',len(recv_msg))
-                recv_str+=recv_msg
-                client_sock.send(ACK_MSG2)
-        # print ('pos6')
-        client_sock.send(END_MSG)
-        # print (recv_str)
-        # print ('pos7')
-        # combine recv data
-        recv_str=recv_str.replace('*','').replace('\x00','').rstrip(' ')
-        num_list=recv_str.split(' ')
-        for rr in range(len(num_list)):
-            frame[rr]=float(num_list[rr])
+    #             recv_num_msgs = client_sock.recv(MAX_BYTES).decode("utf-8")
+    #             # print ('recv_num_msgs: ',recv_num_msgs)
+    #             recv_num_msgs = int(recv_num_msgs.replace('*','').replace('\x00','').replace(' ','').rstrip(' '))
+    #         # recv_num_msgs = client_sock.recv(MAX_BYTES).decode("utf-8")
+    #         # recv_num_msgs= int(recv_num_msgs.replace('*','').replace('\x00','').replace(' ','').rstrip(' '))
+    #         # print('number of pieces: ',recv_num_msgs)
+    #             client_sock.send(ACK_MSG1)
+    #             recv_str=''
+    #     except btcommon.BluetoothError:
+    #             self.bluetooth_connected=False
+    #             pygame.event.post(BLUETOOTH_DISCONNECTED)
+    #             return frame
+    #     # print ('pos5')
+    #     # receive all pieces of data
+    #     for i in range (int(recv_num_msgs)):
+    #     # for i in range (4):
+    #         ready = select.select([self.client_sock], [], [], 3)
+    #         if ready[0]:
+    #             recv_msg = client_sock.recv(MAX_BYTES).decode("utf-8").replace('*','').replace('\x00','').rstrip(' ')
+    #             # print ('len(recv_msg):',len(recv_msg))
+    #             recv_str+=recv_msg
+    #             client_sock.send(ACK_MSG2)
+    #     # print ('pos6')
+    #     client_sock.send(END_MSG)
+    #     # print (recv_str)
+    #     # print ('pos7')
+    #     # combine recv data
+    #     recv_str=recv_str.replace('*','').replace('\x00','').rstrip(' ')
+    #     num_list=recv_str.split(' ')
+    #     for rr in range(len(num_list)):
+    #         frame[rr]=float(num_list[rr])
 
-        # restructure recv vals
-        for h in range(24):
-            for w in range(32):
-                t = frame[h * 32 + w]
-                xxx[w][h]=t
+    #     # restructure recv vals
+    #     for h in range(24):
+    #         for w in range(32):
+    #             t = frame[h * 32 + w]
+    #             xxx[w][h]=t
 
-        return xxx
+    #     return xxx
 
     def recv_frame_data_usb_serial(self):
         temp_str=""
