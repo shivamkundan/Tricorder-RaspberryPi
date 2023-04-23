@@ -8,7 +8,7 @@ from colors import ORANGE, DARK_YELLOW
 # read transistor state
 # ind mode en/dis
 # help/reference/mappings
-# toggle
+# toggle mouse pos
 # terminal
 
 class DeveloperPage(PageTemplate):
