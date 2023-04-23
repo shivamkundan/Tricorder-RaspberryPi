@@ -713,7 +713,6 @@ class WindowManager():
 if __name__=='__main__':
 
 	global MODE
-	global PIGPIO
 
 	MODE='normal'
 
