@@ -550,7 +550,7 @@ class SliderTestPage(PageTemplate):
 		# ---- Set brightness --- #
 		if 63<mp<=255:
 			self.set_brightness(mp)
-		self.gpio.set_PWM_dutycycle(19, mp)  #0-255, so 64 is 1/4 duty cycle
+		self.gpio.set_PWM_dutycycle(BACKLIGHT_PIN, mp)  #0-255, so 64 is 1/4 duty cycle
 
 		FONT_DIN.render_to(screen, (200, 200),f'{pct}% {num_val} /255]'  , WHITE,style=0,size=40)
 		FONT_DIN.render_to(screen, (200, 360),f'{self.get_current_brightness()}'  , WHITE,style=0,size=40)
