@@ -1,9 +1,9 @@
 import pygame
-import os, sys
-import time,datetime
-from fonts import *
-from colors import *
-import math
+import os
+# import time,datetime
+from fonts import FONT_FEDERATION
+from colors import FONT_BLUE, LIGHT_BLUE, ORANGE, GREEN, BLACK, WHITE
+import math  #for calculating no. of pages
 from paths_and_utils import IMG_PATH,LCARS_PATH,ICONS_PATH
 
 class ButtonClass():

@@ -1,9 +1,16 @@
 import pygame.event as e
-from page_templates import *
-from aa_arc_gauge import *
-from custom_user_events import *
-from paths_and_utils import *
+import matplotlib.pyplot as plt
+import matplotlib.backends.backend_agg as agg
+import logging
+
+from math import log10
+from page_templates import PageTemplate
+from aa_arc_gauge import AA_Gauge
+from custom_user_events import POWER_TSL_ON,POWER_PM25_ON,POWER_PM25_OFF
+from paths_and_utils import PERIPHERAL_MODE, SENSOR_DICT
 from serial_manager import *
+from colors import BLUE, PURPLE, DARK_GREY, ORANGE, SLATE, WHITE, BLACK, GREEN, YELLOW, RED
+from fonts import FONT_DIN, star_trek_fonts
 
 
 class HomePage(PageTemplate):
@@ -66,11 +73,10 @@ class HomePage(PageTemplate):
     def on_enter(self):
         e.post(POWER_TSL_ON)
         e.post(POWER_PM25_ON)
-        print ("homepage enter")
+        logging.info ("homepage enter")
 
     def on_exit(self):
         e.post(POWER_PM25_OFF)
-        print ("homepage enter")
 
     def init_sensor_tics(self):
         scale=1
@@ -81,7 +87,6 @@ class HomePage(PageTemplate):
         self.spectrometer_tics=int(2*scale)
         self.particulate_tics=int(2*scale)
         self.voc_tics=int(5*scale)
-
 
     def init_gauges(self):
 
@@ -248,7 +253,7 @@ class HomePage(PageTemplate):
                 for val,label in zip(pm25_curr_vals,x_labels):
                     val=int(val)
                     if val!=0:
-                        log_val=int(round(math.log10(val),0))
+                        log_val=int(round(log10(val),0))
                         bar_vals.append(int(round((log_val/4.8)*x_len,0)))
                     else:
                         bar_vals.append(0)
@@ -281,7 +286,7 @@ class HomePage(PageTemplate):
 
 
         except Exception as e:
-            print (e)
+            logging.error (e)
             # raise (e)
 
     def scale(self,read_value):
@@ -324,7 +329,7 @@ class HomePage(PageTemplate):
                     for curr_func in self.my_display_funcs:
                         curr_func(screen)
                 else:
-                    print ('sensor_dict is None')
+                    logging.error ('sensor_dict is None')
 
 
 
@@ -332,7 +337,7 @@ class HomePage(PageTemplate):
             count_txt=FONT_18.render(str(self.bluetooth_count),1,WHITE)
             screen.blit(count_txt,(25,100))
         except Exception as e:
-            print(e)
+            logging.error(e)
 
         self.frame_count+=1
 

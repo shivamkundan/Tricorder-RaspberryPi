@@ -13,7 +13,7 @@
 from mappings import *
 import serial
 from my_logging import *
-# print ("serial.VERSION:",serial.VERSION)
+logging.debug (f"serial.VERSION:{serial.VERSION}")
 
 # set up logging
 shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
@@ -141,7 +141,7 @@ def get_wind():
 		curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n')
 		return int(curr_line)
 	except Exception as e:
-		print (f"{e}: wind error")
+		logging.error (f"{e}: wind error")
 		return -1
 
 # -------------------------------------------------

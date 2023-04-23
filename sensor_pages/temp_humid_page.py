@@ -3,7 +3,7 @@ import logging
 from buttons import ButtonClass, slide_switch_blank,simple_button_short,simple_button_short_alt
 from aa_arc_gauge import *
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
-from colors import SLATE, ORANGE, WHITE, DARK_GREY
+from colors import SLATE, ORANGE, WHITE, DARK_GREY, DARK_YELLOW
 from page_templates import PageTemplate
 from custom_user_events import REQUEST_TEMP_HUMID, SET_TEMP_SETTINGS
 

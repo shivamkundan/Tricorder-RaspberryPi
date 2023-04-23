@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 import pygame
-import os, sys
-import time,datetime
-from fonts import *
-from colors import *
-import math
+import os
 from paths_and_utils import IMG_PATH,LCARS_PATH,ICONS_PATH
-pygame.init()
+# pygame.init()
 
 # ------------------------------------ Background image ------------------------------------ #
 lcars_bg= pygame.image.load(os.path.join(LCARS_PATH,'Picard/PIcard_LCARS_square_accent_7_resized.png'))

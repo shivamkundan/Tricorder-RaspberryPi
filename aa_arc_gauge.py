@@ -4,8 +4,9 @@ from enum import Enum
 from pygame.sprite import Sprite
 import pygame.gfxdraw
 import pygame.freetype
-from images import *
-from fonts import *
+# from images import *
+from colors import WHITE,RED,GREY,BLACK,DARK_GREY,LIGHT_GREY,YELLOW
+from fonts import FONT_DIN, FONT_HELVETICA_NEUE,FONT_FEDERATION
 import numpy as np
 import logging
 
