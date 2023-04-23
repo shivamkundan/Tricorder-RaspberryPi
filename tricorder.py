@@ -8,7 +8,7 @@ from subprocess import PIPE, Popen
 from threading import Thread
 # import psutil
 import pigpio
-from bluetooth import *
+# from bluetooth import *
 import trace
 import threading
 import signal
@@ -35,11 +35,11 @@ sys.path.insert(1,HOME_DIR+'assets/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
 sys.path.insert(1,HOME_DIR+'general_pages/')
 
-# from my_logging import *
-from my_logging import *
+
 # set up logging
-# shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
-logging.info (f'\n')
+from my_logging import *
+shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
+logging.info (f'\n')   # newline for easier readability
 
 from serial_manager import ser,get_battery, my_flush
 

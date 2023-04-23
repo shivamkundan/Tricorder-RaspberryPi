@@ -2,7 +2,7 @@ import pygame.event as e
 from buttons import ButtonClass, slide_switch_blank, simple_button_short, simple_button_short_alt
 from aa_arc_gauge import *
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
-from colors import PURPLE,DARK_GREY,BLACK,WHITE,ORANGE,DARK_YELLOW
+from colors import PURPLE,DARK_GREY,BLACK,WHITE,ORANGE,DARK_YELLOW, SLATE
 from page_templates import PageTemplate
 from custom_user_events import SET_UV_GAIN
 from serial_manager import get_uv

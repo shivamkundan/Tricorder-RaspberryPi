@@ -12,7 +12,7 @@
 
 from mappings import *
 import serial
-from my_logging import *
+import logging
 
 PORT_NAME="/dev/my_esp32"	# this is the custom assigned port for esp32
 

@@ -12,7 +12,7 @@ from buttons import *
 import matplotlib.pyplot as plt
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
-from my_logging import *
+import logging
 # ===============================Page Templates======================= #
 class PageTemplate():
     # This is the base class for all pages
