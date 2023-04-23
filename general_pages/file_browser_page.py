@@ -31,7 +31,7 @@ class FileBrowserPage(PageTemplate):
 		for root, dirs, files in os.walk("screenshots/", topdown=True):
 			for name in files:
 				self.screenshot_files.append(os.path.join(root, name))
-		self.screenshot_files.sort(key=os.path.getctime,reverse=True)
+		self.screenshot_files.sort(key=os.path.getctime,reverse=True)	# sort by date added
 
 		self.file_button_list=[]
 		self.start_y=400
@@ -141,10 +141,6 @@ class FileBrowserPage(PageTemplate):
 					# print (hh)
 					for b in self.file_button_list:
 						b.rectangle.top-=65
-
-
-
-
 
 		return self.next_screen_name,self.kwargs
 
