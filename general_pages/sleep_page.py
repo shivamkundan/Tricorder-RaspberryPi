@@ -1,13 +1,12 @@
+import pygame as pg
+import time
+import logging
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
-import pygame as pg
 from mappings import PIGPIO, MCU_RESET_CODE, MCU_IND_MODE_DISABLE
 from paths_and_utils import BACKLIGHT_PIN
-import time
-import logging
 from serial_manager import ser, my_flush
-# import pigpio
 
 class SleepPage(PageTemplate):
 	def __init__(self,name):
@@ -29,7 +28,6 @@ class SleepPage(PageTemplate):
 	def handle_events(self,screen,curr_events):
 		for event in curr_events:
 			if event.type in self.event_list:
-				# print (event)
 				curr_events.remove(event)
 				return True
 		return False
@@ -51,6 +49,8 @@ class SleepPage(PageTemplate):
 
 		if 'prev_page_name' in kwargs.keys():
 			self.prev_page_name=kwargs['prev_page_name']
+
+		FONT_FEDERATION.render_to(screen, (150, 67), 'Sleeping...', ORANGE,style=0,size=40)
 
 		time.sleep(1)
 

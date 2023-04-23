@@ -309,7 +309,8 @@ no_battery = pygame.image.load(os.path.join(IMG_PATH,'battery.png'))
 
 no_battery=pygame.transform.scale(no_battery, (30, 30))
 
-
+satellite=pygame.image.load(os.path.join(IMG_PATH+'satellite.png'))
+satellite=pygame.transform.scale(satellite, (40, 40))
 
 
 
