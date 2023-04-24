@@ -3,13 +3,20 @@ from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
 
 # implement:
+
 # -> reset mcu
+# -> view mcu connected
+# -> re-cconnect mcu
+
 # -> switch transistors
 # -> read transistor state
 # -> ind mode en/dis
+
 # -> help/reference/mappings
+
 # -> toggle mouse pos
 # -> terminal
+
 # -> power off
 # -> restart
 

@@ -7,33 +7,11 @@ from buttons import NAV_BUTTONS
 from paths_and_utils import IMG_PATH
 from serial_manager import set_tsl_scl_disconnect,get_imu_orientation,get_imu_ang_vel,get_imu_lin_acc,get_imu_acc, get_imu_mag,get_imu_grav
 import logging
+from images import COMPASS, ENT_BACK, ENT_SIDE, DOT, XYZ_3D_ROT, XYZ_3D
 
-compass=pygame.image.load(os.path.join(IMG_PATH+'compass_custom.png'))
-compass=pygame.transform.scale(compass, (200, 200))
+
 compass_pos=(275,190)
-
-ent_back=pygame.image.load(
-os.path.join(IMG_PATH+'ent_back.png'))
-ent_back=pygame.transform.scale(ent_back, (200, 75))
 roll_pos=(150,535)
-
-
-ent_side=pygame.image.load(
-    os.path.join(IMG_PATH+'ent_side_small.png'))
-
-dot=pygame.image.load(
-    os.path.join(IMG_PATH+'dot.png'))
-
-xyz_rotation=pygame.image.load(
-    os.path.join(IMG_PATH+'xyz_rotation.png'))
-
-xyz_3D_rot=pygame.image.load(
-    os.path.join(IMG_PATH+'xyz_3D_rot.png'))
-xyz_3D=pygame.image.load(
-    os.path.join(IMG_PATH+'xyz_3D.png'))
-
-scale=1.5
-ent_side=pygame.transform.scale(ent_side, (int(111*scale), int(35*scale)))
 pitch_pos=(440,460)
 
 # -------------- #
@@ -96,12 +74,6 @@ class IMUSensorPage(PageTemplate):
         self.grav_y=-1
         self.grav_z=-1
 
-        self.axes_3d = pygame.image.load(os.path.join(IMG_PATH,'axes.png'))
-        self.axes_alt = pygame.image.load(os.path.join(IMG_PATH,'axes_alt.png'))
-        # self.compass_rose = pygame.image.load(os.path.join(IMG_PATH,'compass_rose_32_point small.png'))
-        self.compass_rose = pygame.image.load(os.path.join(IMG_PATH,'compass rose.png'))
-        self.arrow = pygame.image.load(os.path.join(IMG_PATH,'arrow.png'))
-
     def on_enter(self):
         logging.info(f"entering {self.__class__.__name__}")
         set_tsl_scl_disconnect()
@@ -117,9 +89,9 @@ class IMUSensorPage(PageTemplate):
         self.heading,self.pitch,self.roll=get_imu_orientation()
 
 
-        blitRotate2(screen, compass, compass_pos, -1*int(round(float(self.heading),0)))
-        blitRotate2(screen, ent_back, roll_pos, int(round(float(self.roll),0)))
-        blitRotate2(screen, ent_side, pitch_pos, -1*int(round(float(self.pitch),0)))
+        blitRotate2(screen, COMPASS, compass_pos, -1*int(round(float(self.heading),0)))
+        blitRotate2(screen, ENT_BACK, roll_pos, int(round(float(self.roll),0)))
+        blitRotate2(screen, ENT_SIDE, pitch_pos, -1*int(round(float(self.pitch),0)))
 
         FONT_DIN.render_to(screen, (260,160), f'Heading', DARK_YELLOW,style=0,size=26)
         FONT_DIN.render_to(screen, (525,530), f'Pitch', DARK_YELLOW,style=0,size=26)
@@ -144,8 +116,8 @@ class IMUSensorPage(PageTemplate):
         scale=10
         offset_x=int(round(float(self.lin_acc_x)*scale,0))
         offset_y=int(round(float(self.lin_acc_y)*scale,0))
-        screen.blit(dot,(DOT_POS_X-offset_x,DOT_POS_Y-offset_y))
-        # screen.blit(dot,(DOT_POS_X,DOT_POS_Y))
+        screen.blit(DOT,(DOT_POS_X-offset_x,DOT_POS_Y-offset_y))
+
 
     def blit_angular_velocity(self,screen):
 
@@ -156,7 +128,7 @@ class IMUSensorPage(PageTemplate):
         FONT_HELVETICA_NEUE.render_to(screen, POS_Z, f'{self.ang_vel_z}rad/s', WHITE,style=0,size=26)
 
 
-        screen.blit(xyz_3D_rot,(180,180))
+        screen.blit(XYZ_3D_ROT,(180,180))
 
     def blit_gravity(self,screen):
 
@@ -166,7 +138,7 @@ class IMUSensorPage(PageTemplate):
         FONT_HELVETICA_NEUE.render_to(screen, POS_X, f'{self.grav_x}m/s', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Y, f'{self.grav_y}m/s', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Z, f'{self.grav_z}m/s', WHITE,style=0,size=26)
-        screen.blit(xyz_3D, (180, 180))
+        screen.blit(XYZ_3D, (180, 180))
 
 
     def blit_accelerometer(self,screen):
@@ -176,7 +148,7 @@ class IMUSensorPage(PageTemplate):
         FONT_HELVETICA_NEUE.render_to(screen, POS_X, f'{self.acc_x}m/s', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Y, f'{self.acc_y}m/s', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Z, f'{self.acc_z}m/s', WHITE,style=0,size=26)
-        screen.blit(xyz_3D, (180, 180))
+        screen.blit(XYZ_3D, (180, 180))
 
     def blit_magnetometer(self,screen):
 
@@ -185,7 +157,7 @@ class IMUSensorPage(PageTemplate):
         FONT_HELVETICA_NEUE.render_to(screen, POS_X, f'{self.mag_x}μT', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Y, f'{self.mag_y}μT', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Z, f'{self.mag_z}μT', WHITE,style=0,size=26)
-        screen.blit(xyz_3D, (180, 180))
+        screen.blit(XYZ_3D, (180, 180))
 
 
     def increment_subpage(self):

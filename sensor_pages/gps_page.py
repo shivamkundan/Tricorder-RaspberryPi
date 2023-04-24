@@ -2,7 +2,7 @@ from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN,FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW,  WHITE
 from serial_manager import get_gps
-from images import satellite
+from images import SATELLITE
 from paths_and_utils import IMG_PATH
 
 class GPSSensorPage(PageTemplate):
@@ -13,7 +13,7 @@ class GPSSensorPage(PageTemplate):
         # ------ satellite icon ------ #
         # satellite=pygame.image.load(os.path.join(IMG_PATH+'satellite.png'))
         # self.satellite=pygame.transform.scale(satellite, (40, 40))
-        self.satellite=satellite
+        self.satellite=SATELLITE
         self.SATELLITE_POS=(170,190)
         self.SATELLITE_TXT_POS=(self.SATELLITE_POS[0]+55,self.SATELLITE_POS[1]+20)
 
