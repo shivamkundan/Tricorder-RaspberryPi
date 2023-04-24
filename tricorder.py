@@ -15,7 +15,10 @@ import signal
 import csv
 # from timeit import timeit
 
-from paths_and_utils import HOME_DIR, clock, STARTING_RES, FULL_SCREEN_RES, LOGS_DIR, LOG_FILE_PREFIX, BACKLIGHT_PIN
+from paths_and_utils import HOME_DIR, clock, \
+							STARTING_RES, FULL_SCREEN_RES, \
+							LOGS_DIR, LOG_FILE_PREFIX, \
+							BACKLIGHT_PIN
 sys.path.insert(1,HOME_DIR+'freqshow_code/')
 sys.path.insert(1,HOME_DIR+'assets/')
 sys.path.insert(1,HOME_DIR+'resources/')
