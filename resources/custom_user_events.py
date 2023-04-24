@@ -29,8 +29,7 @@ SET_PRESSURE=Event(USEREVENT, attr1='SET_PRESSURE')
 SET_UV_GAIN=Event(USEREVENT, attr1='SET_UV_GAIN')
 SET_TEMP_SETTINGS=Event(USEREVENT, attr1='SET_TEMP_SETTINGS')
 
-# # ---------------------------- Receive sensor vslues ---------------------------- #
-
+# # ---------------------------- Receive sensor vslues ---------------------------- #s
 POWER_TSL_ON=Event(USEREVENT, attr1='POWER_TSL_ON')
 POWER_TSL_OFF=Event(USEREVENT, attr1='POWER_TSL_OFF')
 POWER_PM25_ON=Event(USEREVENT, attr1='POWER_PM25_ON')
