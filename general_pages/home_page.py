@@ -11,9 +11,11 @@ from page_templates import PageTemplate
 from aa_arc_gauge import AA_Gauge
 from custom_user_events import POWER_TSL_ON,POWER_PM25_ON,POWER_PM25_OFF
 from paths_and_utils import PERIPHERAL_MODE, SENSOR_DICT
-from serial_manager import *
+from serial_manager import get_pressure, get_temp_humid, get_tvoc_eco2, get_vis_ir, get_uv, get_spectrometer, get_pm25
+
 from colors import BLUE, PURPLE, DARK_GREY, ORANGE, SLATE, WHITE, BLACK, GREEN, YELLOW, RED
 from fonts import FONT_DIN, star_trek_fonts
+from plotting_functions import pie_plot
 
 
 class HomePage(PageTemplate):
