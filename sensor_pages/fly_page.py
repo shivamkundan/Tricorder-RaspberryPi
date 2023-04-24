@@ -127,6 +127,11 @@ class FlyPage(PageTemplate):
         blitRotate2(screen, HEADING_INDICATOR, HEADING_INDICATOR_POS, int(round(float(self.heading),0)))
         return screen
 
+    def blit_env_data(self, screen, icon, icon_pos, txt_pos, txt, font_size=INFO_FONT_SIZE):
+        screen.blit(icon,icon_pos)
+        FONT_HELVETICA_NEUE.render_to(screen, txt_pos, txt, WHITE,style=0,size=font_size)
+        return screen
+
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
         self.kwarg_handler(kwargs)
@@ -157,33 +162,26 @@ class FlyPage(PageTemplate):
         screen.blit(WIND_SOCK,WIND_SOCK_POS)
         FONT_HELVETICA_NEUE.render_to(screen, WIND_TXT_POS, f"{self.wind_speed}mph", WHITE,style=0,size=INFO_FONT_SIZE-2)
 
-        screen.blit(THERMOMETER,THERM_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, TEMP_TXT_POS, f"{self.temperature}°C", WHITE,style=0,size=INFO_FONT_SIZE)
 
+        screen=self.blit_env_data(screen,WIND_SOCK,WIND_SOCK_POS,WIND_TXT_POS,f"{self.wind_speed}mph",font_size=INFO_FONT_SIZE-2)
+        screen=self.blit_env_data(screen,THERMOMETER,THERM_POS,TEMP_TXT_POS,f"{self.temperature}°C")
 
-
-        screen.blit(HUMIDITY_ICON,HUMID_ICON_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, HUMID_TXT_POS, f"{self.humidity}%", WHITE,style=0,size=INFO_FONT_SIZE)
-
-        screen.blit(PRESSURE_ICON,PRESSURE_ICON_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, PRESSURE_TXT_POS, f"{self.pressure}hPa", WHITE,style=0,size=INFO_FONT_SIZE)
-
-        screen.blit(LIGHT_ICON,LIGHT_ICON_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, LIGHT_TXT_POS, f"{self.vis}lux", WHITE,style=0,size=INFO_FONT_SIZE)
-
-        screen.blit(UV_ICON,UV_ICON_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, UV_TXT_POS, f"{self.uvi}", WHITE,style=0,size=INFO_FONT_SIZE)
-
-        screen.blit(IR_ICON,IR_ICON_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, IR_TXT_POS, f"{self.ir}", WHITE,style=0,size=INFO_FONT_SIZE)
+        screen=self.blit_env_data(screen,HUMIDITY_ICON,HUMID_ICON_POS,HUMID_TXT_POS,f"{self.humidity}%")
+        screen=self.blit_env_data(screen,PRESSURE_ICON,PRESSURE_ICON_POS,PRESSURE_TXT_POS,f"{self.pressure}hPa")
+        screen=self.blit_env_data(screen,LIGHT_ICON,LIGHT_ICON_POS,LIGHT_TXT_POS,f"{self.vis}lux")
+        screen=self.blit_env_data(screen,UV_ICON,UV_ICON_POS,UV_TXT_POS,f"{self.uvi}")
+        screen=self.blit_env_data(screen,IR_ICON,IR_ICON_POS,IR_TXT_POS,f"{self.ir}")
 
 
         screen.blit(ENT_TOP,ENT_TOP_POS)
 
         FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
 
-        screen.blit(SATELLITE,SATELLITE_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, SATELLITE_TXT_POS, f"{self.satellite_count}", WHITE,style=0,size=INFO_FONT_SIZE)
+        # screen.blit(SATELLITE,SATELLITE_POS)
+        # FONT_HELVETICA_NEUE.render_to(screen, SATELLITE_TXT_POS, f"{self.satellite_count}", WHITE,style=0,size=INFO_FONT_SIZE)
+
+        screen=self.blit_env_data(screen,SATELLITE,SATELLITE_POS,SATELLITE_TXT_POS,f"{self.satellite_count}")
+
         FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
         FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
 
