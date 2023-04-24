@@ -30,9 +30,11 @@ logging.info (f'\n')   # newline for easier readability
 from serial_manager import ser,get_battery, my_flush
 from mappings import *
 from fonts import smallfont
+from colors import BLACK
 
 from images import *
-from custom_user_events import TOGGLE_SCREEN,SET_BACKLIGHT,GET_BACKLIGHT_QUICK_MENU,GO_TO_SLEEP,SCREENSHOT_EVENT,ENTERING_HOME_PAGE,FILE_LOG_EVENT
+from custom_user_events import TOGGLE_SCREEN, SET_BACKLIGHT, GET_BACKLIGHT_QUICK_MENU, \
+								GO_TO_SLEEP, SCREENSHOT_EVENT, ENTERING_HOME_PAGE, FILE_LOG_EVENT
 from global_functions import *
 
 # ============== import pages ==============#
@@ -49,25 +51,25 @@ from uv_page import UVSensorPage
 from vis_ir_page import LightSensorPage
 from voc_page import VOCSensorPage
 from imu_page import IMUSensorPage
-from gps_page import *
-from radiation_page import *
-from weight_page import *
-from lidar_page import *
-from battery_page import *
-from multimeter_page import *
-from object_detection_page import *
-from fly_page import *
+from gps_page import GPSSensorPage
+from radiation_page import GeigerCounterPage
+from weight_page import WeightSensorPage
+from lidar_page import LidarSensorPage
+from battery_page import BatterySensorPage
+from multimeter_page import MultimeterPage
+from object_detection_page import ObjectDetectionPage
+from fly_page import FlyPage
 # ---
-from developer_page import *
-from home_page import *
-from sleep_page import *
-from exit_page import *
-from device_stats_page import *
-from settings_page import *
-from brightness_slider_page import *
-from menu_home_page import *
-from quick_menu_page import *
-from file_browser_page import *
+from developer_page import DeveloperPage
+from home_page import HomePage
+from sleep_page import SleepPage
+from exit_page import ExitPage, wrap_up
+from device_stats_page import DeviceStatsPage
+from settings_page import SettingsPage
+from brightness_slider_page import BrightnessSliderPage
+from menu_home_page import MenuHomePageClass
+from quick_menu_page import QuickMenuPage
+from file_browser_page import FileBrowserPage
 # ===================== Helper Classes =============================== #
 class thread_with_trace(threading.Thread):
 	def __init__(self, *args, **keywords):

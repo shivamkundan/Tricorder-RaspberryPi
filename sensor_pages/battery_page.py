@@ -12,8 +12,7 @@ from serial_manager import get_battery
 import pandas as pd
 import logging
 
-BATT_HIST_FILE="batt_history.csv"
-
+from paths_and_utils import BATT_HIST_FILE
 class BatterySensorPage(PageTemplate):
     def __init__(self,name):
         super().__init__(name)

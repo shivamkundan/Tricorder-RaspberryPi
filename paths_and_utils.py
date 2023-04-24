@@ -16,6 +16,8 @@ header_row='day,date,time,lux,infrared,visible,full_spectrum,uvs,light,gain,uvi,
 LOG_FILE_PREFIX='sensors_log_home_'
 
 FONTS_DIR=HOME_DIR+"assets/fonts/"
+
+BATT_HIST_FILE=HOME_DIR+"batt_history.csv"
 # -------------------------- Images -------------------------- #
 IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
 LCARS_PATH=IMG_PATH+'LCARS_pics'
