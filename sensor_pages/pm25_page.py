@@ -106,8 +106,6 @@ class PM25Page(PageWithoutGauge):
         self.blit_title(screen)
 
         if self.button_dict['info'].selected:
-            if (self.frame_count%5==0) and (not self.pause):
-                e.post(self.EVENT)
             self.info_subpage(screen,aqd)
 
         return self.next_screen_name,self.kwargs
