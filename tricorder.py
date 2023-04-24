@@ -28,6 +28,7 @@ logging.info (f'\n')   # newline for easier readability
 
 from serial_manager import ser,get_battery, my_flush
 from mappings import *
+from fonts import smallfont
 
 from images import *
 from custom_user_events import TOGGLE_SCREEN,SET_BACKLIGHT,GET_BACKLIGHT_QUICK_MENU,GO_TO_SLEEP,SCREENSHOT_EVENT,ENTERING_HOME_PAGE,FILE_LOG_EVENT

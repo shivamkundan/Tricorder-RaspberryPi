@@ -15,7 +15,7 @@ mpl.rcParams['ytick.color'] = COLOR
 
 from plotting_functions import plot2img
 import matplotlib.backends.backend_agg as agg
-from pygame import gfxdraw
+from pygame import gfxdraw, Surface
 import pygame.event as e
 from serial_manager import get_multimeter
 import logging
@@ -41,9 +41,9 @@ class MultimeterPage(PageTemplate):
         self.canvas = agg.FigureCanvasAgg(self.fig)
         self.ax.set_frame_on(False)
 
-        self.current_line_surf=pygame.Surface((1,1))
-        self.voltage_line_surf=pygame.Surface((1,1))
-        self.power_line_surf=pygame.Surface((1,1))
+        self.current_line_surf=Surface((1,1))
+        self.voltage_line_surf=Surface((1,1))
+        self.power_line_surf=Surface((1,1))
 
     def render_generic_graph(self,plot_array,color='r'):
     # returns line plot as img

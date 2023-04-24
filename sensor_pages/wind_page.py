@@ -3,7 +3,7 @@ from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW, WHITE
 import pygame.event as e
 import matplotlib.pyplot as plt
-from plotting_functions import *
+from plotting_functions import plot2img
 import matplotlib.backends.backend_agg as agg
 from pygame import gfxdraw
 

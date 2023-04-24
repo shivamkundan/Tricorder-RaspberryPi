@@ -17,8 +17,6 @@ mpl.rcParams['text.color'] = COLOR
 mpl.rcParams['axes.labelcolor'] = COLOR
 mpl.rcParams['xtick.color'] = COLOR
 mpl.rcParams['ytick.color'] = COLOR
-from plotting_functions import *
-
 
 class PM25Page(PageWithoutGauge):
     def __init__(self,name):

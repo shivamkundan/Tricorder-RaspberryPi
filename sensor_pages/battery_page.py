@@ -1,9 +1,10 @@
+import pygame
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
 
 import matplotlib.pyplot as plt
-from plotting_functions import *
+from plotting_functions import plot2img
 import matplotlib.backends.backend_agg as agg
 
 from serial_manager import get_battery

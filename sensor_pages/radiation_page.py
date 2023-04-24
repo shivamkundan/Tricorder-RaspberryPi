@@ -2,9 +2,9 @@ from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW, ORANGE, WHITE
 import matplotlib.pyplot as plt
-from plotting_functions import *
+from plotting_functions import plot2img
 import matplotlib.backends.backend_agg as agg
-from pygame import gfxdraw
+from pygame import gfxdraw, Surface
 from buttons import RESET_BUTTON, RESET5_BUTTON
 
 from serial_manager import get_radiation,set_geiger_power_off,set_geiger_power_on
@@ -31,7 +31,7 @@ class GeigerCounterPage(PageTemplate):
 		self.ax = self.fig.add_subplot(111)
 		self.canvas = agg.FigureCanvasAgg(self.fig)
 		self.ax.set_frame_on(False)
-		self.line_surf=pygame.Surface((1,1))
+		self.line_surf=Surface((1,1))
 
 		self.button_list+=[RESET_BUTTON,RESET5_BUTTON]
 

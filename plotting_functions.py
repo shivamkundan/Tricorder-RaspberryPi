@@ -18,8 +18,6 @@ mpl.rcParams['axes.labelcolor'] = COLOR
 mpl.rcParams['xtick.color'] = COLOR
 mpl.rcParams['ytick.color'] = COLOR
 
-from fonts import *
-
 # ==================== Plotting Functions ============================ #
 def plot2img(fig,ax,canvas):
     ax.set_facecolor('black')
