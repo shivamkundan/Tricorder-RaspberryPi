@@ -214,7 +214,6 @@ class WindowManager():
 		self.screen_dict,self.curr_screen=self.init_pages()
 		self.screen=self.init_screen()
 		self.next_screen=self.curr_screen
-		self.intermediate_screen=self.next_screen
 		lcars_bg.set_colorkey(BLACK)
 		# print ('pygame.display.get_allow_screensaver(): ',pygame.display.get_allow_screensaver())
 
@@ -270,24 +269,25 @@ class WindowManager():
 		# pygame.event.post(BLUETOOTH_CONNECTED)
 
 	def init_screen(self):
+		pygame.display.quit()
+		pygame.display.init()
+
 		modes = pygame.display.list_modes()
-		# print(f"mode:{modes}")
-		# print(pygame.display.get_wm_info())
-		# print (pygame.display.mode_ok(modes[0]))
-		# self.full_res=modes[0]
 		self.color_depth=pygame.display.mode_ok(modes[0])
+
 		if not self.fullscreen_en:
-			screen=pygame.display.set_mode(STARTING_RES,   pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
+			screen=pygame.display.set_mode(STARTING_RES,   pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, depth=self.color_depth)
 		else:
-			screen=pygame.display.set_mode(FULL_SCREEN_RES, pygame.FULLSCREEN |  pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, self.color_depth)
+			screen=pygame.display.set_mode(FULL_SCREEN_RES, pygame.FULLSCREEN |  pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT, depth=self.color_depth)
 		starfleet_logo.convert()
 		pygame.display.set_icon(starfleet_logo_small)
 		pygame.display.set_caption("Tricorder")
-		# print(modes)
-		# print (f"screen: {screen}")
-		# print (f"pygame.display: {pygame.display}")
-		# print(pygame.display.get_wm_info())
-		# print (pygame.display.mode_ok(modes[0]))
+		# logging.warning(modes)
+		# logging.warning (f"\nscreen: {screen}")
+		# # logging.warning (f"\nscreen.color_depth: {screen.color_depth}")
+		# logging.warning (f"\npygame.display: {pygame.display}")
+		# logging.warning(pygame.display.get_wm_info())
+		# logging.warning (f"\npygame.display.mode_ok(modes[0]): {pygame.display.mode_ok(modes[0])}")
 
 		self.screen_dict['quick_menu_page'].fullscreen_en=self.fullscreen_en
 
@@ -444,159 +444,6 @@ class WindowManager():
 
 		return(curr_events)
 
-	def sensor_event_handler(self,curr_events):
-
-		screen=self.screen
-		for event in curr_events:
-
-			if event==REQUEST_FLY_DATA:
-				curr_events.remove(event)
-
-				p=self.screen_dict['fly_page']
-
-				if p.frame_count%p.imu_tics==0:
-					try:
-						x=self.get_sensor_vals(IMU_ORIENTATION_CODE,['Hd','Rl','Ph'])
-						p.heading=x['Hd']
-						p.roll=(round(float(x['Rl']),1))
-						p.pitch=x['Ph']
-
-					except TypeError:
-						print ('type err: REQUEST_FLY_DATA request imu orientation')
-					except KeyError:
-						print ('key err: REQUEST_FLY_DATA request orientation')
-
-				if p.frame_count%p.temp_humid_tics==0:
-					x=self.get_sensor_vals(TEMP_HUMID_CODE,['temperature','relative_humidity','heater','h_res','t_res'])
-					try:
-						p.temperature=x['temperature']
-						p.humidity=x['relative_humidity']
-					except TypeError:
-						print ('type err: REQUEST_FLY_DATA request temp_humid')
-					except KeyError:
-						print ('key err: REQUEST_FLY_DATA request temp_humid')
-				if p.frame_count%p.gps_tics==0:
-					try:
-						x=self.get_sensor_vals(GPS_CODE,['lat','lng','alt','spd','sat'])
-
-						p.lat=float(x['lat'])
-						p.long=float(x['lng'])
-						p.altitude=float(x['alt'])
-						p.speed=float(x['spd'])
-						p.satellite_count=int(x['sat'])
-
-					except TypeError:
-						print ('type err: REQUEST_FLY_DATA request gps')
-					except KeyError:
-						print ('key err: REQUEST_FLY_DATA request gps')
-
-				if p.frame_count%p.pressure_tics==0:
-					try:
-						x=self.get_sensor_vals(PRESSURE_CODE,['pressure','bmp_temp','p_over','t_over','alt'])
-
-						p.bmp_alt=x['alt']
-						p.pressure=round(float(x['pressure']),1)
-
-					except TypeError:
-						print ('type err: REQUEST_FLY_DATA request pressure')
-					except KeyError:
-						print ('key err: REQUEST_FLY_DATA request pressure')
-
-				if p.frame_count%p.uv_tics==0:
-					x=self.get_sensor_vals(UV_CODE,['uvs','light','uvi','ltr_lux','ltr_gain','ltr_res','ltr_win_fac','ltr_mdelay'])
-
-					if len(x)>1:
-						try:
-							p.uv=x['uvs']
-						except TypeError:
-							print ('type err: REQUEST_FLY_DATA request uv')
-						except KeyError:
-							print ('key err: REQUEST_FLY_DATA request uv: ',x)
-
-				if p.frame_count%p.vis_ir_tics==0:
-					ser.write(TSL_SCL_CONNECT_CODE.encode('utf-8'))
-					time.sleep(1)
-
-					try:
-						x=self.get_sensor_vals(VIS_IR_CODE,['lux','infrared','visible','full_spectrum','tsl2591_gain'])
-						p.vis=x['lux']
-						p.ir=x['infrared']
-					except TypeError:
-						print ('type err: REQUEST_FLY_DATA request vis_ir')
-					except KeyError:
-						print ('key err: REQUEST_FLY_DATA request vis_ir')
-
-
-					ser.write(TSL_SCL_DISCONNECT_CODE.encode('utf-8'))
-
-				# vis_ir_tics
-				# imu_tics
-				# gps_tics
-				# temp_humid_tics
-				# pressure_tics
-
-			if event==REQUEST_BLUETOOTH:
-				curr_events.remove(event)
-				# try:
-				# 	msg=self.screen_dict['home_page'].compose_message()
-				# 	x=self.get_sensor_vals(msg,SENSOR_LIST)
-				# 	self.screen_dict['home_page'].sensor_dict=x
-				# 	self.screen_dict['home_page'].bluetooth_count+=1
-				# except TypeError:
-				# 	print ('type err: request_bluetooth')
-				# except KeyError:
-				# 	print ('key err: request ')
-
-			if event==SET_TEMP_SETTINGS:
-				curr_events.remove(event)
-				# print ('SET_TEMP_SETTINGS',self.screen_dict['temp_humid_page'].send_code)
-				# x=self.get_bluetooth_vals(self.screen_dict['temp_humid_page'].send_code)
-
-			if event==SET_UV_GAIN:
-				curr_events.remove(event)
-				print ('SET_UV_GAIN')
-				x=self.get_bluetooth_vals(self.screen_dict['uv_sensor_page'].send_code)
-
-			if event==SET_LIGHT_SENSOR_GAIN:
-				curr_events.remove(event)
-				print ('SET_LIGHT_SENSOR_GAIN')
-				x=self.get_bluetooth_vals(self.screen_dict['light_sensor_page'].new_gain)
-
-			if event==SET_PRESSURE:
-				curr_events.remove(event)
-				print ('SET_PRESSURE')
-				x=self.get_bluetooth_vals(self.screen_dict['pressure_sensor_page'].send_code)
-
-			if event==BLUETOOTH_CONNECTED:
-				curr_events.remove(event)
-				print ('BLUETOOTH_CONNECTED!!!')
-				self.DeviceInfo.bluetooth_connected=True
-				self.screen_dict['home_page'].client_sock=self.client_sock
-				self.screen_dict['thermal_cam_page'].client_sock=self.client_sock
-				for page in self.sensor_pages_list:
-					page.bluetooth_connected=True
-				# msg=self.screen_dict['home_page'].curr_msg
-				# x=self.get_bluetooth_vals(msg)
-				# self.screen_dict['home_page'].sensor_dict=x
-
-			if event==BLUETOOTH_DISCONNECTED:
-				curr_events.remove(event)
-				print ('BLUETOOTH_DISCONNECTED!!!')
-				self.DeviceInfo.bluetooth_connected=False
-				self.screen_dict['home_page'].client_sock=None
-				self.screen_dict['thermal_cam_page'].client_sock=None
-				for page in self.sensor_pages_list:
-					page.bluetooth_connected=False
-
-				try:
-					t1 = thread_with_trace(target =  self.connect_bluetooth)
-					t1.setName('connect_bluetooth')
-					t1.start()
-				except Exception as e:
-					raise(e)
-
-		return curr_events
-
 	def next_frame_main(self):
 
 		next_screen_name=self.curr_screen.name
@@ -604,7 +451,8 @@ class WindowManager():
 
 		self.screen.fill(BLACK)
 		self.screen.blit(lcars_bg,(0,0))
-		curr_events=self.sensor_event_handler(pygame.event.get())
+		# curr_events=self.sensor_event_handler(pygame.event.get())
+		curr_events=pygame.event.get()
 
 		# ---- screen specific ---- #
 		next_screen_name,self.kwargs=self.curr_screen.next_frame(self.screen,curr_events,**self.kwargs)
@@ -620,14 +468,6 @@ class WindowManager():
 				self.next_screen.on_enter()
 			except  AttributeError:
 				logging.error ("AttributeError on_enter:"+self.curr_screen.name)
-
-
-		# # ---- control power brute force method ---- #
-		# if self.curr_screen.name=="radiation_sensor_page" and next_screen_name!="radiation_sensor_page":
-		# 	ser.write(GEIGER_PWR_OFF_CODE.encode('utf-8'))
-		# if self.curr_screen.name!="radiation_sensor_page" and next_screen_name=="radiation_sensor_page":
-		# 	ser.write(GEIGER_PWR_ON_CODE.encode('utf-8'))
-
 
 		curr_events=self.generic_event_handler(curr_events)
 

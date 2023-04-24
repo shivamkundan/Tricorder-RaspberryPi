@@ -9,7 +9,7 @@ import pygame.gfxdraw
 from serial_manager import *
 import os
 import time
-
+import logging
 # ------ horizon params ------ #
 START_Y=130
 START_X=150
@@ -189,9 +189,6 @@ class FlyPage(PageTemplate):
 
         self.frame_count=0
 
-    # def draw_artitficial_horizon(self):
-
-
     def get_data(self):
         if self.frame_count%self.imu_tics==0:
             self.heading,self.roll,self.pitch=get_imu_orientation()
@@ -221,10 +218,10 @@ class FlyPage(PageTemplate):
         self.blit_all_buttons(screen)
         pressed_button=self.handle_events(screen,curr_events)
 
-        # e.post(REQUEST_FLY_DATA)
-
-
-        self.get_data()
+        try:
+            self.get_data()
+        except Exception as e:
+            logging.error(e)
 
 
         FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
