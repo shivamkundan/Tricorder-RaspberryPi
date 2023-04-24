@@ -9,7 +9,6 @@ import logging
 from subprocess import PIPE, Popen
 from threading import Thread
 import pigpio
-# from bluetooth import *
 import trace
 import threading
 import signal
