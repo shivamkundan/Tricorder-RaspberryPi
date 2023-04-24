@@ -51,7 +51,6 @@ class FlyPage(PageTemplate):
         self.temp_humid_tics=29
         self.pressure_tics=37
 
-
         self.frame_count=0
 
     def get_sensor_data(self):
@@ -132,21 +131,38 @@ class FlyPage(PageTemplate):
         FONT_HELVETICA_NEUE.render_to(screen, txt_pos, txt, WHITE,style=0,size=font_size)
         return screen
 
+    def blit_sensor_data(self,screen):
+        screen=self.blit_env_data(screen,WIND_SOCK,WIND_SOCK_POS,WIND_TXT_POS,f"{self.wind_speed}mph",font_size=INFO_FONT_SIZE-2)
+        screen=self.blit_env_data(screen,THERMOMETER,THERM_POS,TEMP_TXT_POS,f"{self.temperature}°C")
+
+        screen=self.blit_env_data(screen,HUMIDITY_ICON,HUMID_ICON_POS,HUMID_TXT_POS,f"{self.humidity}%")
+        screen=self.blit_env_data(screen,PRESSURE_ICON,PRESSURE_ICON_POS,PRESSURE_TXT_POS,f"{self.pressure}hPa")
+        screen=self.blit_env_data(screen,LIGHT_ICON,LIGHT_ICON_POS,LIGHT_TXT_POS,f"{self.vis}lux")
+        screen=self.blit_env_data(screen,UV_ICON,UV_ICON_POS,UV_TXT_POS,f"{self.uvi}")
+        screen=self.blit_env_data(screen,IR_ICON,IR_ICON_POS,IR_TXT_POS,f"{self.ir}")
+        screen=self.blit_env_data(screen,SATELLITE,SATELLITE_POS,SATELLITE_TXT_POS,f"{self.satellite_count}")
+        return screen
+
+    def blit_gps_pos_data(self,screen):
+        FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
+        FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
+        FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
+        return screen
+
     def next_frame(self,screen,curr_events,**kwargs):
         self.next_screen_name=self.name
         self.kwarg_handler(kwargs)
         self.blit_all_buttons(screen)
         pressed_button=self.handle_events(screen,curr_events)
 
+        FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
+
         try:
             self.get_sensor_data()
         except Exception as e:
             logging.error(e)
 
-
-        FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
-        self.uvi=self.uv
-
+        self.uvi=self.uv # temp fix
 
         # ----- artificial horizon ----- #
         screen=self.blit_art_horizon(screen)
@@ -157,34 +173,14 @@ class FlyPage(PageTemplate):
         # ----- speed indicator ----- #
         screen=self.blit_speed_column(screen)
 
-
         # ----- extras  ----- #
-        screen.blit(WIND_SOCK,WIND_SOCK_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, WIND_TXT_POS, f"{self.wind_speed}mph", WHITE,style=0,size=INFO_FONT_SIZE-2)
+        screen=self.blit_sensor_data(screen)
 
+        # ----- positioning ----- #
+        screen=self.blit_gps_pos_data(screen)
 
-        screen=self.blit_env_data(screen,WIND_SOCK,WIND_SOCK_POS,WIND_TXT_POS,f"{self.wind_speed}mph",font_size=INFO_FONT_SIZE-2)
-        screen=self.blit_env_data(screen,THERMOMETER,THERM_POS,TEMP_TXT_POS,f"{self.temperature}°C")
-
-        screen=self.blit_env_data(screen,HUMIDITY_ICON,HUMID_ICON_POS,HUMID_TXT_POS,f"{self.humidity}%")
-        screen=self.blit_env_data(screen,PRESSURE_ICON,PRESSURE_ICON_POS,PRESSURE_TXT_POS,f"{self.pressure}hPa")
-        screen=self.blit_env_data(screen,LIGHT_ICON,LIGHT_ICON_POS,LIGHT_TXT_POS,f"{self.vis}lux")
-        screen=self.blit_env_data(screen,UV_ICON,UV_ICON_POS,UV_TXT_POS,f"{self.uvi}")
-        screen=self.blit_env_data(screen,IR_ICON,IR_ICON_POS,IR_TXT_POS,f"{self.ir}")
-
-
+        # ----- ent img ----- #
         screen.blit(ENT_TOP,ENT_TOP_POS)
-
-        FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
-
-        # screen.blit(SATELLITE,SATELLITE_POS)
-        # FONT_HELVETICA_NEUE.render_to(screen, SATELLITE_TXT_POS, f"{self.satellite_count}", WHITE,style=0,size=INFO_FONT_SIZE)
-
-        screen=self.blit_env_data(screen,SATELLITE,SATELLITE_POS,SATELLITE_TXT_POS,f"{self.satellite_count}")
-
-        FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
-        FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
-
 
         self.frame_count+=1
 
