@@ -340,7 +340,6 @@ class WindowManager():
 		s=pygame.Surface(FULL_SCREEN_RES)
 		s.set_alpha(128) # half of max opacity
 		s.fill(WHITE)	 # white color
-		# self.screenshot_overlay=s
 		return s
 
 	def generic_event_handler(self,curr_events):
@@ -361,7 +360,6 @@ class WindowManager():
 				if (event.key==ord('f')):
 					self.fullscreen_en= not self.fullscreen_en
 					self.screen=self.init_screen()
-					logging.info (self.screen.get_size())
 					curr_events.remove(event)
 
 				if (event.key==ord('z')):
@@ -557,8 +555,6 @@ if __name__=='__main__':
 	global MODE
 
 	MODE='normal'
-
-	# clock=pygame.time.Clock()
 
 	fullscreen_en=False
 
