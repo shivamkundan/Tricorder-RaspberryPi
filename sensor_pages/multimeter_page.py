@@ -1,5 +1,6 @@
+import pygame
 from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
+from fonts import FONT_DIN, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, LIGHT_GREY, WHITE
 
 import matplotlib.pyplot as plt
@@ -12,7 +13,7 @@ mpl.rcParams['axes.labelcolor'] = COLOR
 mpl.rcParams['xtick.color'] = COLOR
 mpl.rcParams['ytick.color'] = COLOR
 
-from plotting_functions import *
+from plotting_functions import plot2img
 import matplotlib.backends.backend_agg as agg
 from pygame import gfxdraw
 import pygame.event as e
