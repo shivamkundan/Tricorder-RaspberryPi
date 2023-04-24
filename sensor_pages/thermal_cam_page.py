@@ -2,10 +2,14 @@ import select
 from bluetooth import *
 import numpy as np
 
+from pygame.image import frombuffer
+from pygame import KEYUP,K_RIGHT,K_LEFT
+import pygame.event as e
+
 # -------------- my libs -------------- #
 from page_templates import PageTemplate
 from custom_user_events import BLUETOOTH_DISCONNECTED
-from paths_and_utils import MAX_BYTES
+from paths_and_utils import MAX_BYTES, PERIPHERAL_MODE
 from images import lcars_bg
 from fonts import FONT_DIN, FONT_FEDERATION
 from buttons import PREF_BUTTON,PLAY_BUTTON,PAUSE_BUTTON,SCALE_BUTTON,COLOR_PALETTE_BUTTON,NAV_BUTTONS
@@ -29,12 +33,10 @@ mpl.rcParams['axes.labelcolor'] = COLOR
 mpl.rcParams['xtick.color'] = COLOR
 mpl.rcParams['ytick.color'] = COLOR
 
-PERIPHERAL_MODE='serial'
-
 import serial
 import signal
 
-from serial_manager import *
+from serial_manager import ser
 
 import picamera
 import io
@@ -264,13 +266,13 @@ class ThermalCamPage(PageTemplate):
         try:
             self.blit_all_buttons(screen)
             for event in curr_events:
-                 if event.type == pygame.KEYUP:
-                    if event.key==pygame.K_RIGHT:
+                 if event.type == KEYUP:
+                    if event.key==K_RIGHT:
                         self.increment_color_map()
                         # self.c_num+=1
                         # self.curr_cmap=self.default_cmaps[self.c_num%len(self.default_cmaps)]
                         curr_events.remove(event)
-                    elif event.key==pygame.K_LEFT:
+                    elif event.key==K_LEFT:
                         self.c_num-=1
                         self.curr_cmap=self.default_cmaps[self.c_num%len(self.default_cmaps)]
                         curr_events.remove(event)
@@ -310,7 +312,7 @@ class ThermalCamPage(PageTemplate):
                     stream.seek(0)
                     stream.readinto(rgb)
                     stream.close()
-                    img = pygame.image.frombuffer(rgb[0:
+                    img = frombuffer(rgb[0:
                           (camera.resolution[0] * camera.resolution[1] * 3)],
                            camera.resolution, 'RGB')
 
@@ -362,7 +364,7 @@ class ThermalCamPage(PageTemplate):
                 #     y_pos+=80
         except btcommon.BluetoothError:
             self.bluetooth_connected=False
-            pygame.event.post(BLUETOOTH_DISCONNECTED)
+            e.post(BLUETOOTH_DISCONNECTED)
         except ValueError:
             print ('thermal cam value error')
 

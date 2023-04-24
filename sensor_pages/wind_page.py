@@ -5,11 +5,11 @@ import pygame.event as e
 import matplotlib.pyplot as plt
 from plotting_functions import plot2img
 import matplotlib.backends.backend_agg as agg
-from pygame import gfxdraw
+from pygame import gfxdraw, Surface
 
 
 # from tricorder import ser
-from serial_manager import *
+from serial_manager import get_wind
 
 import numpy as np
 
@@ -32,7 +32,7 @@ class WindSensorPage(PageTemplate):
 		self.ax = self.fig.add_subplot(111)
 		self.canvas = agg.FigureCanvasAgg(self.fig)
 		self.ax.set_frame_on(False)
-		self.line_surf=pygame.Surface((1,1))
+		self.line_surf=Surface((1,1))
 
 	def next_frame(self,screen,curr_events,**kwargs):
 		self.next_screen_name=self.name
