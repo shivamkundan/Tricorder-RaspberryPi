@@ -3,7 +3,11 @@ __*
 ._.*
 .DS_Store
 ._.DS_Store
-test.txt
+assets/__*
+assets/._*
+assets/._.*
+assets/.DS_Store
+assets/._.DS_Store
 *.log
 screenshots/*
 logs*
