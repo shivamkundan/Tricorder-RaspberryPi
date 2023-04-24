@@ -1,4 +1,7 @@
 import pygame.event as e
+from pygame import Surface
+from pygame.draw import line
+
 import matplotlib.pyplot as plt
 import matplotlib.backends.backend_agg as agg
 import logging
@@ -36,16 +39,16 @@ class HomePage(PageTemplate):
 
         self.sensor_dict=SENSOR_DICT
         # Init surfaces for gauges
-        self.TempGauge_img=pygame.Surface((0,0))
-        self.HumidGauge_img=pygame.Surface((0,0))
-        self.PressureGauge_img=pygame.Surface((0,0))
-        self.eco2Gauge_img=pygame.Surface((0,0))
-        self.tvoc_gauge_img=pygame.Surface((0,0))
-        self.vis_gauge_img=pygame.Surface((0,0))
-        self.ir_gauge_img=pygame.Surface((0,0))
-        self.uv_gauge_img=pygame.Surface((0,0))
-        self.uvi_gauge_img=pygame.Surface((0,0))
-        self.spectrometer_img=pygame.Surface((0,0))
+        self.TempGauge_img=Surface((0,0))
+        self.HumidGauge_img=Surface((0,0))
+        self.PressureGauge_img=Surface((0,0))
+        self.eco2Gauge_img=Surface((0,0))
+        self.tvoc_gauge_img=Surface((0,0))
+        self.vis_gauge_img=Surface((0,0))
+        self.ir_gauge_img=Surface((0,0))
+        self.uv_gauge_img=Surface((0,0))
+        self.uvi_gauge_img=Surface((0,0))
+        self.spectrometer_img=Surface((0,0))
 
         # For bluetooth disconnect message
         with_dots='SEARCHING...'
@@ -280,8 +283,8 @@ class HomePage(PageTemplate):
             # print (bar_vals)
 
             for log_val in bar_vals:
-                pygame.draw.line(screen,DARK_GREY,(x_start,y_pos),(x_end,y_pos),5)
-                pygame.draw.line(screen,ORANGE,(x_start,y_pos),(x_start+log_val,y_pos),5)
+                line(screen,DARK_GREY,(x_start,y_pos),(x_end,y_pos),5)
+                line(screen,ORANGE,(x_start,y_pos),(x_start+log_val,y_pos),5)
                 y_pos+=27
 
 

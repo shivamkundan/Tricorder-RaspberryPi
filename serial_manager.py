@@ -10,7 +10,10 @@
 -> Keeping all in one place in case of changes to how I communicate with sensors.
 '''
 
-from mappings import *
+from mappings import d, WIND_CODE, MCU_IND_MODE_DISABLE, \
+					TSL_SCL_DISCONNECT_CODE, TSL_SCL_CONNECT_CODE, \
+					PM25_PWR_OFF_CODE, PM25_PWR_ON_CODE, \
+					GEIGER_PWR_OFF_CODE, GEIGER_PWR_ON_CODE
 import serial
 import logging
 
