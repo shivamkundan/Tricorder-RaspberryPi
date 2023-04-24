@@ -4,6 +4,8 @@ import pygame.freetype
 import sys
 import os
 import time, datetime
+import logging
+
 from subprocess import PIPE, Popen
 from threading import Thread
 import pigpio
@@ -23,13 +25,14 @@ sys.path.insert(1,HOME_DIR+'general_pages/')
 
 
 # set up logging
-from my_logging import *
+from my_logging import shivams_logging
 shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
 logging.info (f'\n')   # newline for easier readability
 
 from serial_manager import ser,get_battery, my_flush
-from fonts import smallfont
-from colors import BLACK
+from fonts import smallfont, FONT_OKUDA
+from colors import BLACK, WHITE
+from mappings import MCU_SLEEP_CODE, PIGPIO
 
 from images import lcars_bg, starfleet_logo, starfleet_logo_small, \
 					bluetooth_img, bluetooth_img_not_connected, \
@@ -38,7 +41,7 @@ from images import lcars_bg, starfleet_logo, starfleet_logo_small, \
 
 from custom_user_events import TOGGLE_SCREEN, SET_BACKLIGHT, GET_BACKLIGHT_QUICK_MENU, \
 								GO_TO_SLEEP, SCREENSHOT_EVENT, ENTERING_HOME_PAGE, FILE_LOG_EVENT
-from global_functions import *
+from global_functions import get_wifi_name, update_cpu_stats, get_date_time, blit_some_stats
 
 # ============== import pages ==============#
 from page_templates import PageTemplate,PageWithoutGauge,DeviceStatsPageTemplate,NumPadPage
