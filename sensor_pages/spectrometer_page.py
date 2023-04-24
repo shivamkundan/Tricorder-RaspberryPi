@@ -1,7 +1,6 @@
 from fonts import FONT_FEDERATION, FONT_DIN
 from colors import ORANGE,DARK_YELLOW,WHITE
 from page_templates import PageWithoutGauge
-from custom_user_events import REQUEST_SPECTROMETER
 from global_functions import get_text_dimensions
 import pygame.event as e
 from serial_manager import get_spectrometer
@@ -17,7 +16,7 @@ class SpecPage(PageWithoutGauge):
         self.flicker_detection_enabled='-1'
         self.channels=['c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','clear','nir']
         self.num_tics=5
-        super().__init__(name,color_list,color_labels,REQUEST_SPECTROMETER)
+        super().__init__(name,color_list,color_labels)
 
     def info_subpage(self,screen,curr_vals):
         col1=170

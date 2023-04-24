@@ -69,7 +69,6 @@ class GeigerCounterPage(PageTemplate):
 				self.avg_array=self.avg_array[1:]
 
 			# if self.frame_count%5==0:
-			# e.post(REQUEST_RADIATION)
 			self.cpm=get_radiation()
 			self.x.append(self.cpm)
 

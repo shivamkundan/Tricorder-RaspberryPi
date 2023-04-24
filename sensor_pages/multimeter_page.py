@@ -1,7 +1,7 @@
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, LIGHT_GREY, WHITE
-from custom_user_events import REQUEST_CURRENT
+
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 mpl.use("Agg")
@@ -11,6 +11,7 @@ mpl.rcParams['text.color'] = COLOR
 mpl.rcParams['axes.labelcolor'] = COLOR
 mpl.rcParams['xtick.color'] = COLOR
 mpl.rcParams['ytick.color'] = COLOR
+
 from plotting_functions import *
 import matplotlib.backends.backend_agg as agg
 from pygame import gfxdraw

@@ -1,12 +1,24 @@
 from fonts import FONT_FEDERATION, FONT_DIN, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, WHITE
 from page_templates import PageWithoutGauge
-from custom_user_events import REQUEST_PM25,POWER_PM25_ON,POWER_PM25_OFF
 from global_functions import get_text_dimensions
 import pygame.event as e
 from math import log
 from serial_manager import get_pm25,set_pm25_power_off,set_pm25_power_on
 import logging
+
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.backends.backend_agg as agg
+mpl.use("Agg")
+mpl.rcParams['font.size'] = 10
+COLOR = (0.75,0.75,0.75)
+mpl.rcParams['text.color'] = COLOR
+mpl.rcParams['axes.labelcolor'] = COLOR
+mpl.rcParams['xtick.color'] = COLOR
+mpl.rcParams['ytick.color'] = COLOR
+from plotting_functions import *
+
 
 class PM25Page(PageWithoutGauge):
     def __init__(self,name):
@@ -15,7 +27,7 @@ class PM25Page(PageWithoutGauge):
         color_list=['#471337','#b13254','#ff5349','#ff7249','#ff9248','orange']
         # self.aqdata=[0,0,0,0,0,0]
 
-        super().__init__(name,color_list,names_list,REQUEST_PM25)
+        super().__init__(name,color_list,names_list)
         self.aqdata=[1, 1, 1, 1, 1, 1]
         self.bluetooth_connected=False
         # self.names_list=['>0.3μm','>0.5μm','>1.0μm','>2.5μm','>5.0μm','>10μm']

@@ -5,7 +5,6 @@ from aa_arc_gauge import AA_Gauge
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE, FONT_DIN
 from colors import SLATE, ORANGE, WHITE, DARK_GREY, DARK_YELLOW, YELLOW
 from page_templates import PageTemplate
-from custom_user_events import REQUEST_TEMP_HUMID, SET_TEMP_SETTINGS
 
 import time
 from serial_manager import get_temp_humid, ser
@@ -150,45 +149,12 @@ class TempHumidPage(PageTemplate):
 
         pressed_button=self.handle_events(screen,curr_events)
 
-        # if pressed_button!=None:
-        #     # print ('pressed: ',pressed_button.name, pressed_button.text)
-        #     if pressed_button.name=='home_button':
-        #         self.show_menu=False
-
-        #     if pressed_button.name=='settings':
-        #         self.show_menu=not self.show_menu
-
-        #     self.flip_selection(pressed_button)
-
-        #     print(pressed_button.text)
-        #     if self.button_dict['temperature'].selected:
-        #         if pressed_button.text in self.temp_resolution_list:
-        #             self.send_code='T_T_'+pressed_button.text
-        #             print ('self.send_code: ',self.send_code)
-        #             e.post(SET_TEMP_SETTINGS)
-
-        #     if self.button_dict['humidity'].selected:
-        #         if pressed_button.text in self.humidity_resolution_list:
-        #             self.send_code='T_H_'+pressed_button.text
-        #             print ('self.send_code: ',self.send_code)
-        #             e.post(SET_TEMP_SETTINGS)
-
-        # e.post(SET_TEMP_SETTINGS)
         FONT_FEDERATION.render_to(screen, (150, 67), 'Temp/Humid Sensor', ORANGE,style=0,size=40)
         FONT_FEDERATION.render_to(screen, (150, 117), 'HTU31D', DARK_YELLOW,style=0,size=34)
 
-        # if self.bluetooth_connected:
-
         # read sensor values
         if self.frame_count%self.num_tics==0:
-            # s=ser.inWaiting()
-            # print ("ser.inWaiting():",s)
-            # if (s>0):
-            # ts = time.time()
             self.c_temp,self.humid,_,_=get_temp_humid()
-            # te = time.time()
-            # print (te-ts)
-
 
         f_temp=str(round(32+(float(self.c_temp)*1.8),2))+"°F"
         FONT_FEDERATION.render_to(screen, (200, 320), f_temp, SLATE,style=0,size=30)
