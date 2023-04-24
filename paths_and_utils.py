@@ -19,11 +19,8 @@ FONTS_DIR=HOME_DIR+"assets/saved_fonts/"
 
 BATT_HIST_FILE=HOME_DIR+"batt_history.csv"
 # -------------------------- Images -------------------------- #
-# IMG_PATH=("/home/pi/Sensor_Scripts/pics/")
 IMG_PATH=HOME_DIR+"assets/pics/"
-# LCARS_PATH=IMG_PATH+"LCARS_pics"
 BTN_PATH=IMG_PATH+"btn_pics/"
-# ICONS_PATH=LCARS_PATH+"/Picard/mobile_style_icons/"
 ICONS_PATH=BTN_PATH+"mobile_style_icons/"
 
 # This dictionary used for home_page

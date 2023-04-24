@@ -1,6 +1,5 @@
 import pygame
 import os
-# import time,datetime
 from fonts import FONT_FEDERATION
 from colors import FONT_BLUE, LIGHT_BLUE, ORANGE, GREEN, BLACK, WHITE
 import math  #for calculating no. of pages
