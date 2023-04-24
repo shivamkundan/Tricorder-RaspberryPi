@@ -7,7 +7,12 @@ and other page-specific buttons, mouse/touch handling, enter and exit.
 import pygame
 from fonts import FONT_FEDERATION
 from colors import FONT_BLUE
-from buttons import *
+from buttons import ButtonClass,\
+					button_selected_3, button_selected_3_blank, top_button_selected, \
+					MINI_BUTTONS, MINI_BUTTON_NAMES, \
+					PREF_BUTTON, EDIT_BUTTON, PLAY_BUTTON, PAUSE_BUTTON, SCALE_BUTTON, RESET_BUTTON, \
+					NAV_BUTTONS, NAV_BUTTONS_VERTICAL, \
+					numpad_button, numpad_button_alt
 import matplotlib.pyplot as plt
 from plotting_functions import bar_plot,pie_plot,line_plot
 import matplotlib.backends.backend_agg as agg
