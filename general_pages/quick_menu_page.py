@@ -5,6 +5,8 @@ from colors import ORANGE
 from custom_user_events import TOGGLE_SCREEN,GO_TO_SLEEP,SCREENSHOT_EVENT,SET_BACKLIGHT
 from pygame import event as ev
 
+# ADD: minimize window
+
 class QuickMenuPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)

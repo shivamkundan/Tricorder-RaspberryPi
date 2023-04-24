@@ -6,7 +6,7 @@ from paths_and_utils import IMG_PATH,ICONS_PATH
 from global_functions import get_text_dimensions, blitRotate2, my_map
 import pygame
 import pygame.gfxdraw
-from serial_manager import *
+from serial_manager import get_imu_orientation, get_temp_humid, get_gps, get_pressure, get_vis_ir, get_uv, set_tsl_scl_connect, set_tsl_scl_disconnect
 import os
 import time
 import logging

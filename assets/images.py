@@ -23,15 +23,16 @@ camera=pygame.image.load(os.path.join(IMG_PATH,'camera.png'))
 rolling_tics_icon=pygame.image.load(os.path.join(IMG_PATH,'rolling_tics_icon.png'))
 
 starfleet_logo=pygame.image.load(os.path.join(IMG_PATH,'starfleet_logo.png'))
-brightness_icon=pygame.image.load(os.path.join(IMG_PATH,'brightness_icon.png'))
 starfleet_logo_small=pygame.transform.scale(starfleet_logo, (25, 25))
 
+brightness_icon=pygame.image.load(os.path.join(IMG_PATH,'brightness_icon.png'))
+
 wifi_img = pygame.image.load(os.path.join(IMG_PATH,'wifi4.png'))
+
 bluetooth_img = pygame.image.load(os.path.join(IMG_PATH,'bluetooth_icon.png'))
 bluetooth_img_not_connected = pygame.image.load(os.path.join(IMG_PATH,'bluetooth_icon_not_connected.png'))
 
 no_battery = pygame.image.load(os.path.join(IMG_PATH,'battery.png'))
-
 no_battery=pygame.transform.scale(no_battery, (30, 30))
 
 satellite=pygame.image.load(os.path.join(IMG_PATH+'satellite.png'))

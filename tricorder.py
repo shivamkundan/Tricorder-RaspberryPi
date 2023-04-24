@@ -28,11 +28,14 @@ shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_lev
 logging.info (f'\n')   # newline for easier readability
 
 from serial_manager import ser,get_battery, my_flush
-from mappings import *
 from fonts import smallfont
 from colors import BLACK
 
-from images import *
+from images import lcars_bg, starfleet_logo, starfleet_logo_small, \
+					bluetooth_img, bluetooth_img_not_connected, \
+					brightness_icon, wifi_img, no_battery, \
+					camera
+
 from custom_user_events import TOGGLE_SCREEN, SET_BACKLIGHT, GET_BACKLIGHT_QUICK_MENU, \
 								GO_TO_SLEEP, SCREENSHOT_EVENT, ENTERING_HOME_PAGE, FILE_LOG_EVENT
 from global_functions import *
