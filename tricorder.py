@@ -444,13 +444,13 @@ class WindowManager():
 
 		self.screen.fill(BLACK)
 		self.screen.blit(lcars_bg,(0,0))
-		# curr_events=self.sensor_event_handler(pygame.event.get())
 		curr_events=pygame.event.get()
 
 		# ---- screen specific ---- #
 		next_screen_name,self.kwargs=self.curr_screen.next_frame(self.screen,curr_events,**self.kwargs)
 		self.next_screen=self.screen_dict[next_screen_name]
 
+		# Enter and exit funcctions for each pagw
 		if next_screen_name!=self.curr_screen.name:
 			try:
 				self.curr_screen.on_exit()
@@ -464,6 +464,7 @@ class WindowManager():
 
 		curr_events=self.generic_event_handler(curr_events)
 
+		# Handle button presses
 		for screen_name,screen in self.screen_dict.items():
 			try:
 				for butt in screen.button_list:
@@ -472,14 +473,14 @@ class WindowManager():
 			except Exception as e:
 				logging.error (f"{self.__class__.__name__}:{e}")
 
+		# Update information
 		self.DeviceInfo.update(self.screen,self.frame_count,self.bluetooth_count)
 
+		# Handle any screenshots
 		if self.take_screenshot:
 			self.take_screenshot=False
 			self.take_screenshot_func()
 			self.screen.blit(self.screenshot_overlay,(0,0))
-
-
 
 		self.frame_count+=1
 		return self.screen
