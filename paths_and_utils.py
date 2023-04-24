@@ -15,6 +15,7 @@ LOGS_DIR='/home/pi/Sensor_Scripts/logs/'
 header_row='day,date,time,lux,infrared,visible,full_spectrum,uvs,light,gain,uvi,ltr_lux,channel_415nm,channel_445nm,channel_480nm,channel_515nm,channel_555nm,channel_590nm,channel_630nm,channel_680nm,temperature,relative_humidity,pressure,bmp_temperature,03um,05um,10um,25um,50um,100um,eCO2,TVOC,baseline_eCO2,baseline_TVOC\n'
 LOG_FILE_PREFIX='sensors_log_home_'
 
+FONTS_DIR=HOME_DIR+"assets/fonts/"
 # -------------------------- Images -------------------------- #
 IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
 LCARS_PATH=IMG_PATH+'LCARS_pics'

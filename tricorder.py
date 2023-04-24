@@ -13,24 +13,10 @@ import threading
 import signal
 import csv
 
-# ----- plotting libs ----- #
-import matplotlib as mpl
-mpl.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.backends.backend_agg as agg
-from matplotlib import cm 	#color map
-from matplotlib.colors import ListedColormap, LinearSegmentedColormap
-# -------------- Plotting stuff -------------- #
-COLOR = (0.75,0.75,0.75)
-mpl.rcParams['font.size'] = 14
-mpl.rcParams['text.color'] = COLOR
-mpl.rcParams['axes.labelcolor'] = COLOR
-mpl.rcParams['xtick.color'] = COLOR
-mpl.rcParams['ytick.color'] = COLOR
-
 from paths_and_utils import *
 sys.path.insert(1,HOME_DIR+'freqshow_code/')
 sys.path.insert(1,HOME_DIR+'assets/')
+sys.path.insert(1,HOME_DIR+'resources/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
 sys.path.insert(1,HOME_DIR+'general_pages/')
 
@@ -44,7 +30,7 @@ from serial_manager import ser,get_battery, my_flush
 from mappings import *
 
 from images import *
-from custom_user_events import *
+from custom_user_events import TOGGLE_SCREEN,SET_BACKLIGHT,GET_BACKLIGHT_QUICK_MENU,GO_TO_SLEEP,SCREENSHOT_EVENT,ENTERING_HOME_PAGE,FILE_LOG_EVENT
 from global_functions import *
 
 # ============== import pages ==============#
@@ -153,7 +139,6 @@ class DeviceInfoClass():
 
 		try:
 			if frame_count%self.battery_stats_tics==0:
-				# pygame.event.post(REQUEST_BATTERY)
 				self.batt_volt,self.batt_pct,self.batt_temp=get_battery()
 				# writing to csv file
 				if (self.batt_volt>0):

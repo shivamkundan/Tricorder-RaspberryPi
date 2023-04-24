@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import pygame
-from paths_and_utils import HOME_DIR
+from paths_and_utils import FONTS_DIR
 
 
 number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,\
@@ -21,7 +21,7 @@ FONT_14 = pygame.font.SysFont('Helvetica', 14)
 FONT_15 = pygame.font.SysFont('Helvetica', 15)
 FONT_16 = pygame.font.SysFont('Helvetica', 16)
 FONT_18 = pygame.font.SysFont('Helvetica', 18)
-FONT_20 = pygame.font.SysFont('Helvetica', 20)
+# FONT_20 = pygame.font.SysFont('Helvetica', 20)
 FONT_22 = pygame.font.SysFont('Helvetica', 22)
 FONT_26 = pygame.font.SysFont('Helvetica', 26)
 FONT_30 = pygame.font.SysFont('Helvetica', 30)
@@ -54,7 +54,7 @@ font_names=['wifi_font.ttf','Trekbats.ttf','Okuda Bold Italic.otf','Okuda Bold.o
 star_trek_fonts={}
 
 for curr_font in font_names:
-    font=pygame.freetype.Font(HOME_DIR+"assets/fonts/"+curr_font)
+    font=pygame.freetype.Font(FONTS_DIR+curr_font)
     star_trek_fonts[curr_font.split('.')[0]]=font
 
 
@@ -64,4 +64,4 @@ FONT_OKUDA=star_trek_fonts['Okuda']
 FONT_OKUDA_BOLD=star_trek_fonts['Okuda Bold']
 FONT_DIN=star_trek_fonts['din-1451-fette-breitschrift-1936']
 
-FONT_HELVETICA_NEUE=pygame.freetype.Font(HOME_DIR+"assets/fonts/"+'HelveticaNeue.ttc')
+FONT_HELVETICA_NEUE=pygame.freetype.Font(FONTS_DIR+'HelveticaNeue.ttc')
