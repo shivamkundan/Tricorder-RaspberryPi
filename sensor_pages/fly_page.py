@@ -54,7 +54,7 @@ class FlyPage(PageTemplate):
 
         self.frame_count=0
 
-    def get_data(self):
+    def get_sensor_data(self):
         if self.frame_count%self.imu_tics==0:
             self.heading,self.roll,self.pitch=get_imu_orientation()
 
@@ -76,8 +76,13 @@ class FlyPage(PageTemplate):
             self.vis,self.ir,_,_,_ = get_vis_ir()
             set_tsl_scl_disconnect()
 
-
     def blit_altitude_column(self,screen):
+        pygame.gfxdraw.box(screen, pygame.Rect(ALTITUDE_RECT_X_POS, ALTITUDE_RECT_Y_POS, ALTITUDE_RECT_WIDTH, ALTITUDE_RECT_HEIGHT), INDICATOR_RECTS_COLOR)
+        surf,w,h=get_text_dimensions(text=str(self.altitude),font_style=FONT_FEDERATION,font_color=WHITE,style=0,font_size=24)
+        border_size=6
+        ALTITUDE_TXT_POS=(ALTITUDE_RECT_X_POS+ALTITUDE_RECT_WIDTH-w-border_size,MID_TXT_Y_POS)
+        pygame.draw.rect(screen, BLACK, pygame.Rect(ALTITUDE_TXT_POS[0]-border_size, ALTITUDE_TXT_POS[1]-border_size, w+border_size*2, h+border_size*2))
+
         FONT_FEDERATION.render_to(screen, ALTITUDE_TXT_POS, f"{self.altitude}", WHITE,style=0,size=24)
         FONT_FEDERATION.render_to(screen, (x1,h1), f"{self.altitude-40}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
         FONT_FEDERATION.render_to(screen, (x1,h2), f"{self.altitude-30}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
@@ -89,6 +94,11 @@ class FlyPage(PageTemplate):
         return screen
 
     def blit_speed_column(self,screen):
+        border_size=6
+        pygame.gfxdraw.box(screen, pygame.Rect(SPEED_RECT_X_POS, SPEED_RECT_Y_POS, SPEED_RECT_WIDTH, SPEED_RECT_HEIGHT), INDICATOR_RECTS_COLOR)
+        surf,w,h=get_text_dimensions(text=str(self.speed),font_style=FONT_FEDERATION,font_color=WHITE,style=0,font_size=24)
+        SPEED_TXT_POS=(SPEED_RECT_X_POS+border_size,MID_TXT_Y_POS)
+        pygame.draw.rect(screen, BLACK, pygame.Rect(SPEED_RECT_X_POS, SPEED_TXT_POS[1]-border_size, w+border_size*2, h+border_size*2))
 
         # blit current speed
         FONT_FEDERATION.render_to(screen, SPEED_TXT_POS, f"{self.speed}", WHITE,style=0,size=24)
@@ -103,23 +113,7 @@ class FlyPage(PageTemplate):
         FONT_FEDERATION.render_to(screen, (x0,h7), f"{int(self.speed+40)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
         return screen
 
-    def next_frame(self,screen,curr_events,**kwargs):
-        self.next_screen_name=self.name
-        self.kwarg_handler(kwargs)
-        self.blit_all_buttons(screen)
-        pressed_button=self.handle_events(screen,curr_events)
-
-        try:
-            self.get_data()
-        except Exception as e:
-            logging.error(e)
-
-
-        FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
-        self.uvi=self.uv
-
-
-        # ----- artificial horizon ----- #
+    def blit_art_horizon(self,screen):
         m=my_map(self.roll,0,45,START_Y,440)
         left_height=int(m)
         right_height=START_Y
@@ -130,41 +124,43 @@ class FlyPage(PageTemplate):
         screen.blit(ENT_BACK_TRACE,ENT_BACK_POS)
 
         blitRotate2(screen, ROLL_INDICATOR, ART_HORIZON_MARKINGS_POS, int(self.roll))
-
-
         blitRotate2(screen, HEADING_INDICATOR, HEADING_INDICATOR_POS, int(round(float(self.heading),0)))
+        return screen
 
+    def next_frame(self,screen,curr_events,**kwargs):
+        self.next_screen_name=self.name
+        self.kwarg_handler(kwargs)
+        self.blit_all_buttons(screen)
+        pressed_button=self.handle_events(screen,curr_events)
+
+        try:
+            self.get_sensor_data()
+        except Exception as e:
+            logging.error(e)
+
+
+        FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
+        self.uvi=self.uv
+
+
+        # ----- artificial horizon ----- #
+        screen=self.blit_art_horizon(screen)
 
         # ----- altitude indicator ----- #
-        pygame.gfxdraw.box(screen, pygame.Rect(ALTITUDE_RECT_X_POS, ALTITUDE_RECT_Y_POS, ALTITUDE_RECT_WIDTH, ALTITUDE_RECT_HEIGHT), INDICATOR_RECTS_COLOR)
-        surf,w,h=get_text_dimensions(text=str(self.altitude),font_style=FONT_FEDERATION,font_color=WHITE,style=0,font_size=24)
-        border_size=6
-        ALTITUDE_TXT_POS=(ALTITUDE_RECT_X_POS+ALTITUDE_RECT_WIDTH-w-border_size,MID_TXT_Y_POS)
-        pygame.draw.rect(screen, BLACK, pygame.Rect(ALTITUDE_TXT_POS[0]-border_size, ALTITUDE_TXT_POS[1]-border_size, w+border_size*2, h+border_size*2))
-
         screen=self.blit_altitude_column(screen)
 
-
         # ----- speed indicator ----- #
-        pygame.gfxdraw.box(screen, pygame.Rect(SPEED_RECT_X_POS, SPEED_RECT_Y_POS, SPEED_RECT_WIDTH, SPEED_RECT_HEIGHT), INDICATOR_RECTS_COLOR)
-        surf,w,h=get_text_dimensions(text=str(self.speed),font_style=FONT_FEDERATION,font_color=WHITE,style=0,font_size=24)
-        SPEED_TXT_POS=(SPEED_RECT_X_POS+border_size,MID_TXT_Y_POS)
-        pygame.draw.rect(screen, BLACK, pygame.Rect(SPEED_RECT_X_POS, SPEED_TXT_POS[1]-border_size, w+border_size*2, h+border_size*2))
-
         screen=self.blit_speed_column(screen)
-
-
-
 
 
         # ----- extras  ----- #
         screen.blit(WIND_SOCK,WIND_SOCK_POS)
         FONT_HELVETICA_NEUE.render_to(screen, WIND_TXT_POS, f"{self.wind_speed}mph", WHITE,style=0,size=INFO_FONT_SIZE-2)
+
         screen.blit(THERMOMETER,THERM_POS)
         FONT_HELVETICA_NEUE.render_to(screen, TEMP_TXT_POS, f"{self.temperature}°C", WHITE,style=0,size=INFO_FONT_SIZE)
 
-        screen.blit(SATELLITE,SATELLITE_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, SATELLITE_TXT_POS, f"{self.satellite_count}", WHITE,style=0,size=INFO_FONT_SIZE)
+
 
         screen.blit(HUMIDITY_ICON,HUMID_ICON_POS)
         FONT_HELVETICA_NEUE.render_to(screen, HUMID_TXT_POS, f"{self.humidity}%", WHITE,style=0,size=INFO_FONT_SIZE)
@@ -175,7 +171,6 @@ class FlyPage(PageTemplate):
         screen.blit(LIGHT_ICON,LIGHT_ICON_POS)
         FONT_HELVETICA_NEUE.render_to(screen, LIGHT_TXT_POS, f"{self.vis}lux", WHITE,style=0,size=INFO_FONT_SIZE)
 
-
         screen.blit(UV_ICON,UV_ICON_POS)
         FONT_HELVETICA_NEUE.render_to(screen, UV_TXT_POS, f"{self.uvi}", WHITE,style=0,size=INFO_FONT_SIZE)
 
@@ -185,16 +180,14 @@ class FlyPage(PageTemplate):
 
         screen.blit(ENT_TOP,ENT_TOP_POS)
 
-        FONT_HELVETICA_NEUE.render_to(screen, (380,150), f"{self.roll},{self.pitch},{self.heading}", WHITE,style=0,size=INFO_FONT_SIZE)
+        FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
 
+        screen.blit(SATELLITE,SATELLITE_POS)
+        FONT_HELVETICA_NEUE.render_to(screen, SATELLITE_TXT_POS, f"{self.satellite_count}", WHITE,style=0,size=INFO_FONT_SIZE)
         FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
         FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
 
 
         self.frame_count+=1
-
-        # if self.frame_count%3==0:
-        #     self.roll+=1
-
 
         return self.next_screen_name,self.kwargs

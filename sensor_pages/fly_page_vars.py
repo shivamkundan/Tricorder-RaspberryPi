@@ -32,7 +32,7 @@ LAT_TXT_POS=(390,WIND_SOCK_POS[1])
 LONG_TXT_POS=(390,WIND_SOCK_POS[1]+5+LAT_LNG_TXT_SIZE)
 
 # =========================================================== #
-# In alphabetical order
+# Precomputed vals in alphabetical order
 ALTITUDE_RECT_X_POS=        625
 ALTITUDE_TXT_POS=           (620, 355)
 ART_HORIZON_MARKINGS_POS=   (275, 215)
