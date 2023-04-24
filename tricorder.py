@@ -25,7 +25,6 @@ sys.path.insert(1,HOME_DIR+'resources/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
 sys.path.insert(1,HOME_DIR+'general_pages/')
 
-
 # set up logging
 from my_logging import shivams_logging
 shivams_logging(script_name="tricorder",console_log_level="info",logfile_log_level="info")
@@ -43,6 +42,7 @@ from images import lcars_bg, starfleet_logo, starfleet_logo_small, \
 
 from custom_user_events import TOGGLE_SCREEN, SET_BACKLIGHT, GET_BACKLIGHT_QUICK_MENU, \
 								GO_TO_SLEEP, SCREENSHOT_EVENT, ENTERING_HOME_PAGE, FILE_LOG_EVENT
+
 from global_functions import get_wifi_name, update_cpu_stats, get_date_time, blit_some_stats
 
 # ============== import pages ==============#

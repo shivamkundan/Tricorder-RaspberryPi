@@ -52,7 +52,7 @@ x0=SPEED_RECT_X_POS
 x1=ALTITUDE_RECT_X_POS
 
 # ------ horizon icon ------ #
-art_horizon=pygame.image.load(os.path.join(ICONS_PATH+'artificial-horizon.png'))
+# art_horizon=pygame.image.load(os.path.join(ICONS_PATH+'artificial-horizon.png'))
 art_horizon_markings=pygame.image.load(os.path.join(IMG_PATH+'artificial-horizon_markings.png'))
 ART_HORIZON_MARKINGS_POS=(START_X+WIDTH//2-art_horizon_markings.get_rect().size[0]//2,START_Y+HEIGHT//2-art_horizon_markings.get_rect().size[1]//2)
 

@@ -1,27 +1,30 @@
 import pygame
 clock=pygame.time.Clock()
 
-HOME_DIR='/home/pi/Sensor_Scripts/pygame_code/tricorder/'
+HOME_DIR="/home/pi/Sensor_Scripts/pygame_code/tricorder/"
 
 MAX_BYTES=1016				# for bluetooth serial connection this is the max per msg
-PERIPHERAL_MODE='serial'	# options: serial, bluetooth
+PERIPHERAL_MODE="serial"	# options: serial, bluetooth
 
 STARTING_RES=(680,640)
 FULL_SCREEN_RES=(720,720)
 BACKLIGHT_PIN=19 			# for software PWM pigpio
 
 # For recording sensor values to file
-LOGS_DIR='/home/pi/Sensor_Scripts/logs/'
-header_row='day,date,time,lux,infrared,visible,full_spectrum,uvs,light,gain,uvi,ltr_lux,channel_415nm,channel_445nm,channel_480nm,channel_515nm,channel_555nm,channel_590nm,channel_630nm,channel_680nm,temperature,relative_humidity,pressure,bmp_temperature,03um,05um,10um,25um,50um,100um,eCO2,TVOC,baseline_eCO2,baseline_TVOC\n'
-LOG_FILE_PREFIX='sensors_log_home_'
+LOGS_DIR="/home/pi/Sensor_Scripts/logs/"
+header_row="day,date,time,lux,infrared,visible,full_spectrum,uvs,light,gain,uvi,ltr_lux,channel_415nm,channel_445nm,channel_480nm,channel_515nm,channel_555nm,channel_590nm,channel_630nm,channel_680nm,temperature,relative_humidity,pressure,bmp_temperature,03um,05um,10um,25um,50um,100um,eCO2,TVOC,baseline_eCO2,baseline_TVOC\n"
+LOG_FILE_PREFIX="sensors_log_home_"
 
 FONTS_DIR=HOME_DIR+"assets/saved_fonts/"
 
 BATT_HIST_FILE=HOME_DIR+"batt_history.csv"
 # -------------------------- Images -------------------------- #
-IMG_PATH=('/home/pi/Sensor_Scripts/pics/')
-LCARS_PATH=IMG_PATH+'LCARS_pics'
-ICONS_PATH=LCARS_PATH+'/Picard/mobile_style_icons/'
+# IMG_PATH=("/home/pi/Sensor_Scripts/pics/")
+IMG_PATH=HOME_DIR+"assets/pics/"
+# LCARS_PATH=IMG_PATH+"LCARS_pics"
+BTN_PATH=IMG_PATH+"btn_pics/"
+# ICONS_PATH=LCARS_PATH+"/Picard/mobile_style_icons/"
+ICONS_PATH=BTN_PATH+"mobile_style_icons/"
 
 # This dictionary used for home_page
 SENSOR_DICT={'lux':"-1",'infrared':"-1",'visible':"-1",'full_spectrum':"-1",'tsl2591_gain':"-1",
@@ -32,10 +35,8 @@ SENSOR_DICT={'lux':"-1",'infrared':"-1",'visible':"-1",'full_spectrum':"-1",'tsl
 					 '03um':"-1",'05um':"-1",'10um':"-1",'25um':"-1",'50um':"-1",'100um':"-1",
 					 'eCO2':"-1",'TVOC':"-1",'baseline_eCO2':"-1",'baseline_TVOC':"-1",}
 
-SENSOR_LIST=['lux','infrared','visible','full_spectrum','tsl2591_gain','uvs','light','uvi','ltr_lux','ltr_gain','ltr_res','ltr_win_fac','ltr_mdelay','c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','spec_gain','FLICKER','temperature','relative_humidity','heater','h_res','t_res','pressure','bmp_temp','p_over','t_over','03um','05um','10um','25um','50um','100um','eCO2','TVOC','baseline_eCO2','baseline_TVOC']
-
-if __name__=='__main__':
-	outstr=''
+if __name__=="__main__":
+	outstr=""
 	for k,v in SENSOR_DICT.items():
-		outstr+=f'\'{k}\','
+		outstr+=f"\'{k}\',"
 	print (outstr)

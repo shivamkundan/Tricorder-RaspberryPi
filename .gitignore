@@ -5,6 +5,6 @@ __*
 ._.DS_Store
 test.txt
 *.log
-*.png
+screenshots/*
 logs*
 batt_*
