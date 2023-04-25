@@ -90,10 +90,10 @@ class GPSSensorPage(PageTemplate):
 
 
 
-        FONT_DIN.render_to(screen, (col3,row1), f'{round(self.alt,3)}m', WHITE,style=0,size=40)
+        FONT_DIN.render_to(screen, (col3,row1), f'{round(self.alt,3)}m', WHITE,style=0,size=36)
         FONT_DIN.render_to(screen, (col3,row2), f'{round(self.alt*3.281,1)}ft', SLATE,style=0,size=24)
 
-        FONT_DIN.render_to(screen, (col4,row1), f'{round(self.spd,3)}m/s', WHITE,style=0,size=40)
+        FONT_DIN.render_to(screen, (col4,row1), f'{round(self.spd,3)}m/s', WHITE,style=0,size=36)
         FONT_DIN.render_to(screen, (col4,row2), f'{round(self.spd*2.237,3)}mph', SLATE,style=0,size=24)
 
         screen.blit(WORLD_MAP,(PIC_LEFT,PIC_TOP))
@@ -110,13 +110,19 @@ class GPSSensorPage(PageTemplate):
 
 
 
-        FONT_DIN.render_to(screen, (col,row), f'{self.lat}', WHITE,style=0,size=34)
+        FONT_DIN.render_to(screen, (col,row), f'{self.lat}°', WHITE,style=0,size=34)
+
+        minutes=str(self.lat).split('.')[1]
+        minutes=int((int(minutes)/100)*60)
+
+        FONT_DIN.render_to(screen, (col,row+40), f'{int(self.lat)}° {minutes}\"', SLATE,style=0,size=24)
+
         y=round(my_map(self.lat,top_lim,bottom_lim,0,PIC_H),0)
         # FONT_HELVETICA_NEUE.render_to(screen, (col,row+40), f'lat px: {y}', WHITE,style=0,size=24)
 
 
 
-        FONT_DIN.render_to(screen, (col2,row), f'{self.long}', WHITE,style=0,size=34)
+        FONT_DIN.render_to(screen, (col2,row), f'{self.long}°', WHITE,style=0,size=34)
         x=round(my_map(self.long,left_lim,right_lim,0,PIC_W),0)
         # FONT_HELVETICA_NEUE.render_to(screen, (435,595), f'long px: {x}', WHITE,style=0,size=24)
 
