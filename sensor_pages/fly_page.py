@@ -52,7 +52,6 @@ def blit_column_txt(screen,x_val,curr_val):
 	for pos in l:
 		FONT_FEDERATION.render_to(screen, pos[0], pos[1], WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
 
-
 class FlyPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
@@ -117,8 +116,7 @@ class FlyPage(PageTemplate):
 
 		w,h=txt_dims(curr_val)
 
-		r2=pygame.Rect(txt_pos[0]-border_size, txt_pos[1]-border_size, \
-						w+border_size*2, h+border_size*2)
+		r2=pygame.Rect(txt_pos[0]-border_size, txt_pos[1]-border_size, w+border_size*2, h+border_size*2)
 		pygame.draw.rect(screen, BLACK, r2)
 
 		# blit current altitude
