@@ -2,8 +2,8 @@ from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN,FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW,  WHITE
 from serial_manager import get_gps
-from images import SATELLITE
-from paths_and_utils import IMG_PATH
+from images import SATELLITE, WORLD_MAP, ALT_ICON, SPD_ICON
+
 
 class GPSSensorPage(PageTemplate):
     def __init__(self,name):
@@ -11,10 +11,11 @@ class GPSSensorPage(PageTemplate):
         self.prev_page_name='menu_home_page'
 
         # ------ satellite icon ------ #
-        # satellite=pygame.image.load(os.path.join(IMG_PATH+'satellite.png'))
-        # self.satellite=pygame.transform.scale(satellite, (40, 40))
-        self.satellite=SATELLITE
         self.SATELLITE_POS=(170,190)
+        self.alt_pos=(335,190)
+        self.spd_pos=(535,190)
+
+
         self.SATELLITE_TXT_POS=(self.SATELLITE_POS[0]+55,self.SATELLITE_POS[1]+20)
 
         self.lat=-1
@@ -36,19 +37,21 @@ class GPSSensorPage(PageTemplate):
 
         self.lat,self.long,self.alt,self.spd,self.sat=get_gps()
 
-        screen.blit(self.satellite,self.SATELLITE_POS)
-        FONT_HELVETICA_NEUE.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=32)
+        screen.blit(SATELLITE,self.SATELLITE_POS)
+        screen.blit(ALT_ICON,self.alt_pos)
+        screen.blit(SPD_ICON,self.spd_pos)
 
-        row=260
+
+        FONT_HELVETICA_NEUE.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=32)
+        FONT_HELVETICA_NEUE.render_to(screen, (335+40,215), f'{self.alt}m', WHITE,style=0,size=26)
+        FONT_HELVETICA_NEUE.render_to(screen, (535+51,215), f'{self.spd}m/s', WHITE,style=0,size=26)
+
+        screen.blit(WORLD_MAP,(150,250))
+
+        row=555
         col=195
         FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'lat: {self.lat}', WHITE,style=0,size=26)
-        row+=30
-        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'long: {self.long}', WHITE,style=0,size=26)
-        row+=30
-        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'alt: {self.alt}m', WHITE,style=0,size=26)
-        row+=30
-        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'spd: {self.spd}m/s', WHITE,style=0,size=26)
-        row+=30
-        FONT_HELVETICA_NEUE.render_to(screen, (col,row), f'#sat: {self.sat}', WHITE,style=0,size=26)
+
+        FONT_HELVETICA_NEUE.render_to(screen, (435,555), f'long: {self.long}', WHITE,style=0,size=26)
 
         return self.next_screen_name,self.kwargs

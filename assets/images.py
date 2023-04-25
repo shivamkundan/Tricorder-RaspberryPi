@@ -87,3 +87,8 @@ ENT_BACK_TRACE=img_ld(IMG_PATH+'ent_back_trace.png')
 ROLL_INDICATOR=img_ld(IMG_PATH+'roll_indicator.png')
 
 # ======================================================================================================
+
+# ------------- These are for GPS page ------------- #
+WORLD_MAP=img_ld(IMG_PATH+'world_map.png')
+ALT_ICON=img_ld(IMG_PATH+'altitude.png')
+SPD_ICON=img_ld(IMG_PATH+'speed.png')
