@@ -1,3 +1,25 @@
+'''
+From dfrobot website:
+
+M4011 Geiger Tube
+- Operating Voltage: 380V ~ 450V
+- Background Counts: ≈25CPM
+- CPM Ratio: 153.8 CPM/(μSv/h)
+- Outline Size: Φ10mm x 88mm
+
+https://www.hackster.io/k-gray/ionizing-radiation-detector-a0a782?utm_campaign=published_project&utm_medium=email&utm_source=hackster
+https://github.com/Kgray44/Ionizing-Radiation-Detector
+
+uSvh = geiger.getuSvh();
+
+int values[] =             {    1,         2,        5,          10,         40,      100,       250,          400,          1000,      10000   };
+const char* equivalent[] = { "Normal", "Airport", "Dental", "Norm(1day)", "Flight", "X-Ray", "NPP(1year)", "Mammogram",  "Gov Limit", "CT Scan" };
+lcd.print(equivalent[nearestEqual(CPM)]);
+
+
+'''
+
+
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW, ORANGE, WHITE
