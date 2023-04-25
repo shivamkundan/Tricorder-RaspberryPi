@@ -5,6 +5,9 @@ from images import lcars_bg, PAGE_DOTS, bluetooth_img, bluetooth_img_not_connect
 from buttons import ICON_BUTTON_W, COLUMN_SPACING, COL1_POS,ROW1_POS,NUM_PAGES,PAGE_OFFSET,ICON_BUTTONS, NAV_BUTTONS
 from global_functions import get_wifi_name, update_cpu_stats, get_date_time, blit_some_stats
 from paths_and_utils import clock
+from custom_user_events import GO_TO_SLEEP
+from serial_manager import ser
+from mappings import MCU_SLEEP_CODE
 import pygame
 import logging
 
