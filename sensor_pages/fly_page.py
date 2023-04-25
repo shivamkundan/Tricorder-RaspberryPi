@@ -7,6 +7,7 @@ import os
 import time
 import logging
 
+# import my libs
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
 from colors import ORANGE, WHITE, SKY_BLUE, BROWN, BLACK
@@ -18,14 +19,14 @@ from serial_manager import get_imu_orientation, get_temp_humid, get_gps, \
 							get_pressure, get_vis_ir, get_uv, \
 							set_tsl_scl_connect, set_tsl_scl_disconnect
 
-# in roughly clockwise display order
+# listed in roughly clockwise display order
 from images import  SATELLITE, WIND_SOCK, \
 					ART_HORIZON_MARKINGS, ROLL_INDICATOR, \
 					HEADING_INDICATOR, ENT_TOP, ENT_BACK_TRACE, \
 					THERMOMETER, HUMIDITY_ICON, PRESSURE_ICON, \
 					LIGHT_ICON, UV_ICON, IR_ICON
 
-# pre-computed variables
+# import pre-computed variables
 from fly_page_vars import *
 
 R_ALT=pygame.Rect(ALTITUDE_RECT_X_POS, ALTITUDE_RECT_Y_POS, \
@@ -132,11 +133,13 @@ class FlyPage(PageTemplate):
 		left_height=int(m)
 		right_height=START_Y
 
+		# update pitch indicator rects
 		pygame.draw.rect(screen, SKY_BLUE, pygame.Rect(START_X, START_Y, WIDTH, HEIGHT))
 		pygame.draw.polygon(screen, BROWN, ((START_X,START_Y+left_height),(START_X,START_Y+HEIGHT),(START_X+WIDTH,START_Y+HEIGHT),(START_X+WIDTH,START_Y+right_height)))
 		screen.blit(ART_HORIZON_MARKINGS,ART_HORIZON_MARKINGS_POS)
 		screen.blit(ENT_BACK_TRACE,ENT_BACK_POS)
 
+		# rotate roll and heading indicators
 		blitRotate2(screen, ROLL_INDICATOR,    ART_HORIZON_MARKINGS_POS, int(self.roll))
 		blitRotate2(screen, HEADING_INDICATOR, HEADING_INDICATOR_POS,    int(round(float(self.heading),0)))
 		return screen
