@@ -61,6 +61,8 @@ scale=1.5
 ENT_SIDE=pygame.transform.scale(ENT_SIDE, (int(111*scale), int(35*scale)))
 
 DOT=img_ld(IMG_PATH+'dot.png')
+DOT2=pygame.transform.scale(DOT, (10, 10))
+
 XYZ_ROT=img_ld(IMG_PATH+'xyz_rotation.png')
 XYZ_3D_ROT=img_ld(IMG_PATH+'xyz_3D_rot.png')
 XYZ_3D=img_ld(IMG_PATH+'xyz_3D.png')
