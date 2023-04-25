@@ -46,7 +46,8 @@ def get_temp_humid():
 		h_res=float(x['h_res'])
 		t_res=float(x['t_res'])
 		return c_temp,humid,h_res,t_res
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1,-1
 
 def get_pressure():
@@ -58,7 +59,8 @@ def get_pressure():
 		p_oversampling=float(x['p_over'])
 		t_oversampling=float(x['t_over'])
 		return altitude,pressure,bmp_temp,p_oversampling,t_oversampling
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1,-1,-1
 
 def get_tvoc_eco2():
@@ -69,7 +71,8 @@ def get_tvoc_eco2():
 		baseline_eCO2=x['baseline_eCO2']
 		baseline_TVOC=x['baseline_TVOC']
 		return TVOC,eCO2,baseline_eCO2,baseline_TVOC
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1,-1
 
 # -------------------------------------------------
@@ -82,7 +85,8 @@ def get_vis_ir():
 		visible=float(x['visible'])
 		full_spectrum=float(x['full_spectrum'])
 		return lux,ir,gain,visible,full_spectrum
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1,-1,-1
 
 def get_uv():
@@ -99,7 +103,8 @@ def get_uv():
 			ltr_window_factor=x['ltr_win_fac']
 			ltr_measurement_delay=x['ltr_mdelay']
 			return uvs,light,uvi,ltr_lux,ltr_gain,ltr_resolution,ltr_window_factor,ltr_measurement_delay
-		except Exception:
+		except Exception as e:
+			logging.error(e)
 			return -1,-1,-1,-1,-1,-1,-1,-1
 
 def get_spectrometer():
@@ -107,8 +112,9 @@ def get_spectrometer():
 		channels=['c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','clear','nir']
 		x=get_serial_vals(d['SPEC_CODE'],channels)
 		return x
-	except Exception:
-		return [1,1,1,1,1,1,1,1,1,1]
+	except Exception as e:
+		logging.error(e)
+		return {'c_415nm':0,'c_445nm':0,'c_480nm':0,'c_515nm':0,'c_555nm':0,'c_590nm':0,'c_630nm':0,'c_680nm':0,'clear':0,'nir':0}
 
 # -------------------------------------------------
 def get_pm25():
@@ -122,14 +128,16 @@ def get_pm25():
 		aqdata.append(x['50um'])
 		aqdata.append(x['100um'])
 		return aqdata
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return [1, 1, 1, 1, 1, 1]
 
 def get_noise():
 	try:
 		x=get_serial_vals(d['NOISE_CODE'],['noise_out'])
 		return int(x['noise_out'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return 0
 
 def get_wind():
@@ -150,28 +158,32 @@ def get_multimeter():
 		curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n').split(' ')
 		curr_line=(ser.readline()).decode('utf-8').lstrip(' ').rstrip('\r\n').split(' ')
 		return float(curr_line[0]),float(curr_line[1]),float(curr_line[2])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_gps():
 	try:
 		x=get_serial_vals(d['GPS_CODE'],['lat','lng','alt','spd','sat'])
 		return float(x['lat']),float(x['lng']),float(x['alt']),float(x['spd']),int(x['sat'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1,-1,-1
 
 def get_battery():
 	try:
 		x=get_serial_vals(d['BATTERY_CODE'],['volt','pct','temp'])
 		return float(x['volt']),float(x['pct']),float(x['temp'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_radiation():
 	try:
 		x=get_serial_vals(d['RADIATION_CODE'],['CPM'])
 		return float(x['CPM'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1
 
 # --------- Inertial measurement unit --------- #
@@ -179,42 +191,48 @@ def get_imu_orientation():
 	try:
 		x=get_serial_vals(d['IMU_ORIENTATION_CODE'],['Hd','Rl','Ph'])
 		return float(x['Hd']),float(x['Rl']),float(x['Ph'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_imu_ang_vel():
 	try:
 		x=get_serial_vals(d['IMU_ANG_VEL_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_imu_lin_acc():
 	try:
 		x=get_serial_vals(d['IMU_LIN_ACC_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_imu_acc():
 	try:
 		x=get_serial_vals(d['IMU_ACC_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_imu_mag():
 	try:
 		x=get_serial_vals(d['IMU_MAG_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 def get_imu_grav():
 	try:
 		x=get_serial_vals(d['IMU_GRAV_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
-	except Exception:
+	except Exception as e:
+		logging.error(e)
 		return -1,-1,-1
 
 # -------------- VIS/IR light sensor  -------------- #

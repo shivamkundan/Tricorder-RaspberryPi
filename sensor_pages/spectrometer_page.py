@@ -4,6 +4,7 @@ from page_templates import PageWithoutGauge
 from global_functions import get_text_dimensions
 import pygame.event as e
 from serial_manager import get_spectrometer
+import logging
 
 class SpecPage(PageWithoutGauge):
     def __init__(self,name):
@@ -53,18 +54,20 @@ class SpecPage(PageWithoutGauge):
             for color_name,channel in zip(self.names_list,self.channels):
                 try:
                     val=x[channel]
-                except KeyError:
+                except Exception as e:
+                    logging.error(f"{e}: recvd: {x}")
                     val=0
-                    FONT_DIN.render_to(screen, (430, 185), f'KEY ERR: {channel}', WHITE,style=0,size=26)
+                    FONT_DIN.render_to(screen, (290, 240), f'ERR: {channel}', WHITE,style=0,size=26)
                 self.array_dict[color_name].append(int(float(val)))
 
             try:
                 self.clear=x['clear']
                 self.nir=x['nir']
-            except KeyError:
+            except Exception as e:
+                logging.error(e)
                 self.clear=-1
                 self.nir=-1
-                FONT_DIN.render_to(screen, (430, 185), f'KEY ERR: clear/nir', WHITE,style=0,size=26)
+                FONT_DIN.render_to(screen, (290, 305), f'ERR: clear/nir', WHITE,style=0,size=26)
 
         curr_vals=[]
         for name, color_array in self.array_dict.items():

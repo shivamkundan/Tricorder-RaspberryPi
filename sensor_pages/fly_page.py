@@ -1,187 +1,205 @@
-from page_templates import PageTemplate
-from fonts import FONT_FEDERATION, HELVETICA, FONT_HELVETICA_NEUE
-from colors import ORANGE, DARK_YELLOW, BLUE,GRID_BLUE,MISTY_BLUE,WHITE,SKY_BLUE,BROWN, BLACK
-from paths_and_utils import IMG_PATH,ICONS_PATH
-from global_functions import get_text_dimensions, blitRotate2, my_map
-import pygame
-import pygame.gfxdraw
-from serial_manager import get_imu_orientation, get_temp_humid, get_gps, get_pressure, get_vis_ir, get_uv, set_tsl_scl_connect, set_tsl_scl_disconnect
+'''
+This page mimics the avionics displays used in airplanes.
+Eg: garmin-xxxx
+'''
+
 import os
 import time
 import logging
 
-from images import lcars_bg, ART_HORIZON_MARKINGS, HEADING_INDICATOR, ENT_TOP, WIND_SOCK, \
-                    THERMOMETER, HUMIDITY_ICON, PRESSURE_ICON, LIGHT_ICON, \
-                    UV_ICON, IR_ICON, SATELLITE, ENT_BACK_TRACE, ROLL_INDICATOR
+from page_templates import PageTemplate
+from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
+from colors import ORANGE, WHITE, SKY_BLUE, BROWN, BLACK
+from paths_and_utils import IMG_PATH,ICONS_PATH
+from global_functions import get_text_dimensions, blitRotate2, my_map
+import pygame
+import pygame.gfxdraw
+from serial_manager import get_imu_orientation, get_temp_humid, get_gps, \
+							get_pressure, get_vis_ir, get_uv, \
+							set_tsl_scl_connect, set_tsl_scl_disconnect
 
+# in roughly clockwise display order
+from images import  SATELLITE, WIND_SOCK, \
+					ART_HORIZON_MARKINGS, ROLL_INDICATOR, \
+					HEADING_INDICATOR, ENT_TOP, ENT_BACK_TRACE, \
+					THERMOMETER, HUMIDITY_ICON, PRESSURE_ICON, \
+					LIGHT_ICON, UV_ICON, IR_ICON
+
+# pre-computed variables
 from fly_page_vars import *
 
+R_ALT=pygame.Rect(ALTITUDE_RECT_X_POS, ALTITUDE_RECT_Y_POS, \
+						ALTITUDE_RECT_WIDTH, ALTITUDE_RECT_HEIGHT)
+R_SPD=pygame.Rect(SPEED_RECT_X_POS, SPEED_RECT_Y_POS, \
+						SPEED_RECT_WIDTH, SPEED_RECT_HEIGHT)
+
+def txt_dims(txt):
+# wrapper fn
+	_,w,h=get_text_dimensions(text=str(txt), font_style=FONT_FEDERATION, font_color=WHITE, style=0, font_size=24)
+	return w,h
+
+def compute_positions(x_val,curr_val):
+	return [((x_val,h1), f"{curr_val-40}"),
+			((x_val,h2), f"{curr_val-30}"),
+			((x_val,h3), f"{curr_val-20}"),
+			((x_val,h4), f"{curr_val-10}"),
+			((x_val,h5), f"{curr_val+20}"),
+			((x_val,h6), f"{curr_val+30}"),
+			((x_val,h7), f"{curr_val+40}")]
+
+def blit_column_txt(screen,x_val,curr_val):
+	l=compute_positions(x_val,curr_val)
+	for pos in l:
+		FONT_FEDERATION.render_to(screen, pos[0], pos[1], WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
+
+
 class FlyPage(PageTemplate):
-    def __init__(self,name):
-        super().__init__(name)
-        self.prev_page_name='menu_home_page'
+	def __init__(self,name):
+		super().__init__(name)
+		self.prev_page_name='menu_home_page'
 
-        self.wind_speed=0.1
+		self.wind_speed=0.1
 
-        self.satellite_count=-1
-        self.altitude=50
-        self.speed=10
-        self.lat=0
-        self.long=0
+		self.satellite_count=-1
+		self.altitude=50
+		self.speed=10
+		self.lat=0
+		self.long=0
 
-        self.roll=0
-        self.pitch=0
-        self.heading=0
+		self.roll=0
+		self.pitch=0
+		self.heading=0
 
-        self.temperature=-1
-        self.humidity=-1
+		self.temperature=-1
+		self.humidity=-1
 
-        self.pressure=-1
-        self.bmp_alt=0
+		self.pressure=-1
+		self.bmp_alt=0
 
-        self.vis=-1
-        self.uv=-1
-        self.uvi=-1
-        self.ir=-1
+		self.vis=-1
+		self.uv=-1
+		self.uvi=-1
+		self.ir=-1
 
-        self.vis_ir_tics=17
-        self.uv_tics=13
-        self.imu_tics=3
-        self.gps_tics=5
-        self.temp_humid_tics=29
-        self.pressure_tics=37
+		self.vis_ir_tics=17
+		self.uv_tics=13
+		self.imu_tics=3
+		self.gps_tics=5
+		self.temp_humid_tics=29
+		self.pressure_tics=37
 
-        self.frame_count=0
+		self.frame_count=0
 
-    def get_sensor_data(self):
-        if self.frame_count%self.imu_tics==0:
-            self.heading,self.roll,self.pitch=get_imu_orientation()
+	def get_sensor_data(self):
+		if self.frame_count%self.imu_tics==0:
+			self.heading,self.roll,self.pitch=get_imu_orientation()
 
-        if self.frame_count%self.temp_humid_tics==0:
-            self.temperature,self.humidity,_,_=get_temp_humid()
+		if self.frame_count%self.temp_humid_tics==0:
+			self.temperature,self.humidity,_,_=get_temp_humid()
 
-        if self.frame_count%self.gps_tics==0:
-            self.lat,self.long,self.altitude,self.speed,self.satellite_count=get_gps()
+		if self.frame_count%self.gps_tics==0:
+			self.lat,self.long,self.altitude,self.speed,self.satellite_count=get_gps()
 
-        if self.frame_count%self.pressure_tics==0:
-            self.bmp_alt,self.pressure,_,_,_=get_pressure()
+		if self.frame_count%self.pressure_tics==0:
+			self.bmp_alt,self.pressure,_,_,_=get_pressure()
 
-        if self.frame_count%self.uv_tics==0:
-            self.uv,_,_,_,_,_,_,_=get_uv()
+		if self.frame_count%self.uv_tics==0:
+			self.uv,_,_,_,_,_,_,_=get_uv()
 
-        if self.frame_count%self.vis_ir_tics==0:
-            set_tsl_scl_connect()
-            time.sleep(1)
-            self.vis,self.ir,_,_,_ = get_vis_ir()
-            set_tsl_scl_disconnect()
+		if self.frame_count%self.vis_ir_tics==0:
+			set_tsl_scl_connect()
+			time.sleep(1)
+			self.vis,self.ir,_,_,_ = get_vis_ir()
+			set_tsl_scl_disconnect()
 
-    def blit_altitude_column(self,screen):
-        pygame.gfxdraw.box(screen, pygame.Rect(ALTITUDE_RECT_X_POS, ALTITUDE_RECT_Y_POS, ALTITUDE_RECT_WIDTH, ALTITUDE_RECT_HEIGHT), INDICATOR_RECTS_COLOR)
-        surf,w,h=get_text_dimensions(text=str(self.altitude),font_style=FONT_FEDERATION,font_color=WHITE,style=0,font_size=24)
-        border_size=6
-        ALTITUDE_TXT_POS=(ALTITUDE_RECT_X_POS+ALTITUDE_RECT_WIDTH-w-border_size,MID_TXT_Y_POS)
-        pygame.draw.rect(screen, BLACK, pygame.Rect(ALTITUDE_TXT_POS[0]-border_size, ALTITUDE_TXT_POS[1]-border_size, w+border_size*2, h+border_size*2))
+	def blit_vertical_column(self, screen, rectangle, curr_val, txt_pos, x_val):
+		pygame.gfxdraw.box(screen, rectangle, INDICATOR_RECTS_COLOR)
 
-        FONT_FEDERATION.render_to(screen, ALTITUDE_TXT_POS, f"{self.altitude}", WHITE,style=0,size=24)
-        FONT_FEDERATION.render_to(screen, (x1,h1), f"{self.altitude-40}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x1,h2), f"{self.altitude-30}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x1,h3), f"{self.altitude-20}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x1,h4), f"{self.altitude-10}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x1,h5), f"{self.altitude+20}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x1,h6), f"{self.altitude+30}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x1,h7), f"{self.altitude+40}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        return screen
+		w,h=txt_dims(curr_val)
 
-    def blit_speed_column(self,screen):
-        border_size=6
-        pygame.gfxdraw.box(screen, pygame.Rect(SPEED_RECT_X_POS, SPEED_RECT_Y_POS, SPEED_RECT_WIDTH, SPEED_RECT_HEIGHT), INDICATOR_RECTS_COLOR)
-        surf,w,h=get_text_dimensions(text=str(self.speed),font_style=FONT_FEDERATION,font_color=WHITE,style=0,font_size=24)
-        SPEED_TXT_POS=(SPEED_RECT_X_POS+border_size,MID_TXT_Y_POS)
-        pygame.draw.rect(screen, BLACK, pygame.Rect(SPEED_RECT_X_POS, SPEED_TXT_POS[1]-border_size, w+border_size*2, h+border_size*2))
+		r2=pygame.Rect(txt_pos[0]-border_size, txt_pos[1]-border_size, \
+						w+border_size*2, h+border_size*2)
+		pygame.draw.rect(screen, BLACK, r2)
 
-        # blit current speed
-        FONT_FEDERATION.render_to(screen, SPEED_TXT_POS, f"{self.speed}", WHITE,style=0,size=24)
+		# blit current altitude
+		FONT_FEDERATION.render_to(screen, txt_pos, f"{curr_val}", WHITE,style=0,size=24)
 
-        # blit other speeds
-        FONT_FEDERATION.render_to(screen, (x0,h1), f"{int(self.speed-40)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x0,h2), f"{int(self.speed-30)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x0,h3), f"{int(self.speed-20)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x0,h4), f"{int(self.speed-10)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x0,h5), f"{int(self.speed+20)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x0,h6), f"{int(self.speed+30)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        FONT_FEDERATION.render_to(screen, (x0,h7), f"{int(self.speed+40)}", WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
-        return screen
+		# blit other altitudes
+		blit_column_txt(screen,x_val,curr_val)
 
-    def blit_art_horizon(self,screen):
-        m=my_map(self.roll,0,45,START_Y,440)
-        left_height=int(m)
-        right_height=START_Y
+		return screen
 
-        pygame.draw.rect(screen, SKY_BLUE, pygame.Rect(START_X, START_Y, WIDTH, HEIGHT))
-        pygame.draw.polygon(screen, BROWN, ((START_X,START_Y+left_height),(START_X,START_Y+HEIGHT),(START_X+WIDTH,START_Y+HEIGHT),(START_X+WIDTH,START_Y+right_height)))
-        screen.blit(ART_HORIZON_MARKINGS,ART_HORIZON_MARKINGS_POS)
-        screen.blit(ENT_BACK_TRACE,ENT_BACK_POS)
+	def blit_art_horizon(self,screen):
+		m=my_map(self.roll,0,45,START_Y,440)  # for 0 to 45 degrees
+		left_height=int(m)
+		right_height=START_Y
 
-        blitRotate2(screen, ROLL_INDICATOR, ART_HORIZON_MARKINGS_POS, int(self.roll))
-        blitRotate2(screen, HEADING_INDICATOR, HEADING_INDICATOR_POS, int(round(float(self.heading),0)))
-        return screen
+		pygame.draw.rect(screen, SKY_BLUE, pygame.Rect(START_X, START_Y, WIDTH, HEIGHT))
+		pygame.draw.polygon(screen, BROWN, ((START_X,START_Y+left_height),(START_X,START_Y+HEIGHT),(START_X+WIDTH,START_Y+HEIGHT),(START_X+WIDTH,START_Y+right_height)))
+		screen.blit(ART_HORIZON_MARKINGS,ART_HORIZON_MARKINGS_POS)
+		screen.blit(ENT_BACK_TRACE,ENT_BACK_POS)
 
-    def blit_env_data(self, screen, icon, icon_pos, txt_pos, txt, font_size=INFO_FONT_SIZE):
-        screen.blit(icon,icon_pos)
-        FONT_HELVETICA_NEUE.render_to(screen, txt_pos, txt, WHITE,style=0,size=font_size)
-        return screen
+		blitRotate2(screen, ROLL_INDICATOR,    ART_HORIZON_MARKINGS_POS, int(self.roll))
+		blitRotate2(screen, HEADING_INDICATOR, HEADING_INDICATOR_POS,    int(round(float(self.heading),0)))
+		return screen
 
-    def blit_sensor_data(self,screen):
-        screen=self.blit_env_data(screen,WIND_SOCK,WIND_SOCK_POS,WIND_TXT_POS,f"{self.wind_speed}mph",font_size=INFO_FONT_SIZE-2)
-        screen=self.blit_env_data(screen,THERMOMETER,THERM_POS,TEMP_TXT_POS,f"{self.temperature}°C")
+	def blit_env_data(self, screen, icon, icon_pos, txt_pos, txt, font_size=INFO_FONT_SIZE):
+		screen.blit(icon,icon_pos)
+		FONT_HELVETICA_NEUE.render_to(screen, txt_pos, txt, WHITE,style=0,size=font_size)
+		return screen
 
-        screen=self.blit_env_data(screen,HUMIDITY_ICON,HUMID_ICON_POS,HUMID_TXT_POS,f"{self.humidity}%")
-        screen=self.blit_env_data(screen,PRESSURE_ICON,PRESSURE_ICON_POS,PRESSURE_TXT_POS,f"{self.pressure}hPa")
-        screen=self.blit_env_data(screen,LIGHT_ICON,LIGHT_ICON_POS,LIGHT_TXT_POS,f"{self.vis}lux")
-        screen=self.blit_env_data(screen,UV_ICON,UV_ICON_POS,UV_TXT_POS,f"{self.uvi}")
-        screen=self.blit_env_data(screen,IR_ICON,IR_ICON_POS,IR_TXT_POS,f"{self.ir}")
-        screen=self.blit_env_data(screen,SATELLITE,SATELLITE_POS,SATELLITE_TXT_POS,f"{self.satellite_count}")
-        return screen
+	def blit_sensor_data(self,screen):
+		for item in [
+					(WIND_SOCK,     WIND_SOCK_POS,     WIND_TXT_POS,      f"{self.wind_speed}mph",   INFO_FONT_SIZE-2),\
+					(THERMOMETER,   THERM_POS,         TEMP_TXT_POS,      f"{self.temperature}°C",   INFO_FONT_SIZE),  \
+					(HUMIDITY_ICON, HUMID_ICON_POS,    HUMID_TXT_POS,     f"{self.humidity}%",       INFO_FONT_SIZE),  \
+					(PRESSURE_ICON, PRESSURE_ICON_POS, PRESSURE_TXT_POS,  f"{self.pressure}hPa",     INFO_FONT_SIZE),  \
+					(LIGHT_ICON,    LIGHT_ICON_POS,    LIGHT_TXT_POS,     f"{self.vis}lux",          INFO_FONT_SIZE),  \
+					(UV_ICON,       UV_ICON_POS,       UV_TXT_POS,        f"{self.uvi}",             INFO_FONT_SIZE),  \
+					(IR_ICON,       IR_ICON_POS,       IR_TXT_POS,        f"{self.ir}",              INFO_FONT_SIZE),  \
+					(SATELLITE,     SATELLITE_POS,     SATELLITE_TXT_POS, f"{self.satellite_count}", INFO_FONT_SIZE)]:
+						screen=self.blit_env_data(screen,item[0],item[1],item[2],item[3],item[4])
+		return screen
 
-    def blit_gps_pos_data(self,screen):
-        FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
-        FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
-        FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
-        return screen
+	def blit_gps_pos_data(self,screen):
+		FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
+		FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
+		FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
+		return screen
 
-    def next_frame(self,screen,curr_events,**kwargs):
-        self.next_screen_name=self.name
-        self.kwarg_handler(kwargs)
-        self.blit_all_buttons(screen)
-        pressed_button=self.handle_events(screen,curr_events)
+	def next_frame(self,screen,curr_events,**kwargs):
+		self.next_screen_name=self.name
+		self.kwarg_handler(kwargs)
+		self.blit_all_buttons(screen)
+		pressed_button=self.handle_events(screen,curr_events)
 
-        FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
+		# ----- get sensor data ----- #
+		try:
+			self.get_sensor_data()
+		except Exception as e:
+			logging.error(e)
+		self.uvi=self.uv # temp fix
 
-        try:
-            self.get_sensor_data()
-        except Exception as e:
-            logging.error(e)
+		# ----- artificial horizon ----- #
+		screen=self.blit_art_horizon(screen)
 
-        self.uvi=self.uv # temp fix
+		# ----- altitude indicator ----- #
+		screen=self.blit_vertical_column(screen, R_ALT, self.altitude, ALTITUDE_TXT_POS, x1)
 
-        # ----- artificial horizon ----- #
-        screen=self.blit_art_horizon(screen)
+		# ----- speed indicator ----- #
+		screen=self.blit_vertical_column(screen, R_SPD, self.speed, SPEED_TXT_POS, x0)
 
-        # ----- altitude indicator ----- #
-        screen=self.blit_altitude_column(screen)
+		# ----- all other data  ----- #
+		screen=self.blit_sensor_data(screen)
 
-        # ----- speed indicator ----- #
-        screen=self.blit_speed_column(screen)
+		# ----- positioning data ----- #
+		screen=self.blit_gps_pos_data(screen)
 
-        # ----- extras  ----- #
-        screen=self.blit_sensor_data(screen)
+		# ----- ent img ----- #
+		screen.blit(ENT_TOP,ENT_TOP_POS)
 
-        # ----- positioning ----- #
-        screen=self.blit_gps_pos_data(screen)
+		# ----- blit title ----- #
+		FONT_FEDERATION.render_to(screen, (150, 76), 'Fly', ORANGE,style=0,size=42)
 
-        # ----- ent img ----- #
-        screen.blit(ENT_TOP,ENT_TOP_POS)
-
-        self.frame_count+=1
-
-        return self.next_screen_name,self.kwargs
+		self.frame_count+=1
+		return self.next_screen_name,self.kwargs

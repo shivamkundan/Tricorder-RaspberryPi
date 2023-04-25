@@ -1,37 +1,58 @@
 '''
-This file contains pre-computed vals for fly_page
+This file contains pre-computed vals for fly_page (to speed up execution).
+Source computation is in the comments at the end.
 '''
 
-# ------------ abs params ------------ #
-START_Y=130
-START_X=150
-WIDTH=530
-HEIGHT=450
+# ============================= abs params ============================= #
 
-INDICATOR_SMALL_FONT_SIZE=15
-INDICATOR_Y_DIFF=25
-INDICATOR_RECTS_COLOR=(0,0,0,127)
+# ---------------------------------------- #
+# vert gauge indicator params
+INDICATOR_RECTS_COLOR	  =(0,0,0,127)
+INDICATOR_SMALL_FONT_SIZE =15
+INDICATOR_Y_DIFF		  =25
+border_size      =6  # this is for alt and spd column drawings
 
-ALTITUDE_RECT_Y_POS=180
-ALTITUDE_RECT_WIDTH=40
-ALTITUDE_RECT_HEIGHT=300
+# vert gauge size
+ALTITUDE_RECT_WIDTH  =40
+ALTITUDE_RECT_HEIGHT =300
 
-INFO_FONT_SIZE=20
+# vert gauge pos
+ALTITUDE_RECT_Y_POS  =180
+
+# ---------------------------------------- #
+# screen safe-area params (i.e. blank area)
+START_Y =130
+START_X =150
+WIDTH   =530
+HEIGHT  =450
+
+# ---------------------------------------- #
+# bottom grid params
 info_row1_title=590
-row_spacing=55
-info_col1=170
-col_increment=170
+row_spacing    =55
+info_col1      =170
+col_increment  =170
 
-HEADING_INDICATOR_POS=(340,445)
-ENT_TOP_POS=(400,500)
-WIND_SOCK_POS=(550,66)
-SATELLITE_POS=(450,WIND_SOCK_POS[1])
+# bottom grid text size
+INFO_FONT_SIZE =20
 
-LAT_LNG_TXT_SIZE=18
-LAT_TXT_POS=(390,WIND_SOCK_POS[1])
-LONG_TXT_POS=(390,WIND_SOCK_POS[1]+5+LAT_LNG_TXT_SIZE)
+# ---------------------------------------- #
+# compass + enterprise heading indicator
+HEADING_INDICATOR_POS =(340,445)
+ENT_TOP_POS			  =(400,500)
 
-# =========================================================== #
+# ---------------------------------------- #
+# top grid icons position
+WIND_SOCK_POS		  =(550,66)
+SATELLITE_POS	      =(450,WIND_SOCK_POS[1])
+
+# gps related text pos
+LAT_LNG_TXT_SIZE =18
+LAT_TXT_POS  	 =(390,WIND_SOCK_POS[1])
+LONG_TXT_POS 	 =(390,WIND_SOCK_POS[1]+5+LAT_LNG_TXT_SIZE)
+
+
+# ====================================================================== #
 # Precomputed vals in alphabetical order
 ALTITUDE_RECT_X_POS=        625
 ALTITUDE_TXT_POS=           (620, 355)
