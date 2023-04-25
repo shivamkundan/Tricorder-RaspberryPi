@@ -61,7 +61,7 @@ scale=1.5
 ENT_SIDE=pygame.transform.scale(ENT_SIDE, (int(111*scale), int(35*scale)))
 
 DOT=img_ld(IMG_PATH+'dot.png')
-DOT2=pygame.transform.scale(DOT, (10, 10))
+DOT2=pygame.transform.scale(DOT, (20, 20))
 
 XYZ_ROT=img_ld(IMG_PATH+'xyz_rotation.png')
 XYZ_3D_ROT=img_ld(IMG_PATH+'xyz_3D_rot.png')
@@ -91,6 +91,7 @@ ROLL_INDICATOR=img_ld(IMG_PATH+'roll_indicator.png')
 # ======================================================================================================
 
 # ------------- These are for GPS page ------------- #
-WORLD_MAP=img_ld(IMG_PATH+'world_map.png')
+WORLD_MAP=img_ld(IMG_PATH+'world_map_orange.png')
 ALT_ICON=img_ld(IMG_PATH+'altitude.png')
 SPD_ICON=img_ld(IMG_PATH+'speed.png')
+LAT_ICON=img_ld(IMG_PATH+'latitude.png')
