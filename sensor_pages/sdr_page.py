@@ -8,7 +8,6 @@ from buttons import NAV_BUTTONS
 import controller
 import model
 import ui
-
 import logging
 
 INIT_FREQ=433.0
