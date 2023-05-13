@@ -110,6 +110,7 @@ def kill(self):
 	self.killed = True
 
 class DeviceInfoClass():
+# For holding information about the raspberry pi
 	def __init__(self):
 		self.wifi_name=get_wifi_name()
 		# self.day,self.date,self.time=get_date_time()
@@ -149,6 +150,7 @@ class DeviceInfoClass():
 
 		FONT_OKUDA.render_to(screen, (50, 11), batt_string, WHITE,style=1,size=26)
 
+		# Log battery level history
 		try:
 			if frame_count%self.battery_stats_tics==0:
 				self.batt_volt,self.batt_pct,self.batt_temp=get_battery()
@@ -266,6 +268,7 @@ class WindowManager():
 		# pygame.event.post(BLUETOOTH_CONNECTED)
 
 	def init_screen(self):
+	# Set up the display
 		pygame.display.quit()
 		pygame.display.init()
 
@@ -291,7 +294,7 @@ class WindowManager():
 		return screen
 
 	def init_pages(self):
-	# instantiate all pages
+	# Instantiate all pages
 		self.sensor_pages_list=[ThermalCamPage('thermal_cam_page'),
 					 LightSensorPage('light_sensor_page'),
 					 UVSensorPage('uv_sensor_page'),
@@ -334,12 +337,14 @@ class WindowManager():
 		return screen_dict,screen_dict['menu_home_page']
 
 	def init_screenshot_overlay(self):
+	# Give the flash effect when taking screenshots
 		s=pygame.Surface(FULL_SCREEN_RES)
 		s.set_alpha(128) # half of max opacity
 		s.fill(WHITE)	 # white color
 		return s
 
 	def generic_event_handler(self,curr_events):
+	# Handles everything apart from sensor events
 		screen=self.screen
 		for event in curr_events:
 
@@ -427,11 +432,13 @@ class WindowManager():
 				# curr_events.remove(event)
 				logging.info('FILE_LOG_EVENT')
 
+			# Hide mouse cursor if finger deteted
 			if event.type in [pygame.FINGERDOWN,pygame.FINGERUP,pygame.FINGERMOTION, pygame.MULTIGESTURE]:
 				if (self.show_mouse==True):
 					self.show_mouse=False
 					pygame.mouse.set_visible(self.show_mouse)
 
+			# Show mouse cursor if mouse deteted
 			if event.type in [pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP, pygame.MOUSEWHEEL, pygame.MOUSEMOTION]:
 				if (self.show_mouse==False):
 					self.show_mouse=True
@@ -440,7 +447,7 @@ class WindowManager():
 		return(curr_events)
 
 	def next_frame_main(self):
-
+	# The main main() function
 		next_screen_name=self.curr_screen.name
 		self.curr_screen=self.next_screen
 
@@ -489,7 +496,7 @@ class WindowManager():
 
 	# ------------------------ #
 	def check_make_file(self):
-		#Check if log file exists
+	# Check if log file exists
 		now = datetime.datetime.now()
 		date=now.strftime('%m/%d/%y')
 		hour_sec=now.strftime('%H:%M:%S')
@@ -505,6 +512,7 @@ class WindowManager():
 		return log_file
 
 	def log_to_file(self):
+	# For logging sensor data to file
 		sensor_dict=self.get_bluetooth_vals('L U T P M V S ')
 		# ser.flush()
 		# print (sensor_dict)
@@ -530,11 +538,13 @@ class WindowManager():
 			return('wr')
 
 	def minimize(self):
+	# Minimize window
 		logging.info("minimizing")
 		pygame.display.set_icon(starfleet_logo)
 		pygame.display.iconify()
 
 	def take_screenshot_func(self):
+	# Take (and save) a screenshot
 		rect = pygame.Rect(0, 0, self.screen.get_width(), self.screen.get_height())
 		sub = self.screen.subsurface(rect)
 		dd=get_date_time()
@@ -564,10 +574,8 @@ if __name__=='__main__':
 			pygame.display.update()
 
 			if MODE=='sleep':
-				clock.tick(1)	# slow down execution. if too slow -> wake from touch also slow
+				clock.tick(1)	# Slow down execution. if too slow -> wake from touch also slow
 			else:
-				# pygame.display.update()
-				# clock.tick_busy_loop()
 				clock.tick()
 
 	except SystemExit:
@@ -580,6 +588,7 @@ if __name__=='__main__':
 	except Exception as e:
 		logging.error (f'Caught exception: {e}')
 
+		# In case the program crashes and screen is dark: increase brightness to readable level
 		x=PIGPIO.get_PWM_dutycycle(BACKLIGHT_PIN)
 		logging.error (f'BACKLIGHT: {x}')
 		if x<128:
