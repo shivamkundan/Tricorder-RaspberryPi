@@ -60,9 +60,12 @@ class GPSSensorPage(PageTemplate):
 		self.spd=-1
 		self.sat=-1
 
-
-	def draw_location_lines(self,screen,x,y):
+	def draw_location_lines(self,screen):
 		if (self.sat>0):
+			# Map gps co-ords to world-map image co-ords
+			y=round(my_map(self.lat,top_lim,bottom_lim,0,PIC_H),0)
+			x=round(my_map(self.long,left_lim,right_lim,0,PIC_W),0)
+
 			lw=2
 			x_pos=PIC_LEFT+x-DOT2_W_DIV_2+lw/2
 			pdraw.line(screen, SLATE, (x_pos,PIC_TOP), (x_pos,PIC_BOTTOM), width=lw)
@@ -91,24 +94,27 @@ class GPSSensorPage(PageTemplate):
 		row=610
 		col=col1
 
-		# screen.blit(LAT_ICON, (col-50,row))
+		# Blit title/icon
 		FONT_FEDERATION.render_to(screen, (col,row-25), "LAT", ORANGE,style=1,size=20)
 		FONT_FEDERATION.render_to(screen, (col2,row-25), "LONG", ORANGE,style=1,size=20)
 
-
-		FONT_DIN.render_to(screen, (col,row), f'{self.lat}°', WHITE,style=0,size=34)
-
+		# Blit latitude
 		minutes=str(self.lat).split('.')[1]
 		minutes=int((int(minutes)/100)*60)
-
+		FONT_DIN.render_to(screen, (col,row), f'{self.lat}°', WHITE,style=0,size=34)
 		FONT_DIN.render_to(screen, (col,row+40), f'{int(self.lat)}° {minutes}\"', SLATE,style=0,size=24)
 
+		# Blit longitude
+		minutes=str(self.long).split('.')[1]
+		minutes=int((int(minutes)/100)*60)
 		FONT_DIN.render_to(screen, (col2,row), f'{self.long}°', WHITE,style=0,size=34)
-
-
+		FONT_DIN.render_to(screen, (col2,row+40), f'{int(self.long)}° {minutes}\"', SLATE,style=0,size=24)
 
 	def update_gps_data(self):
 		self.lat,self.long,self.alt,self.spd,self.sat=get_gps()
+
+	def blit_num_sats(self,screen):
+		FONT_DIN.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=40)
 
 	def next_frame(self,screen,curr_events,**kwargs):
 		self.next_screen_name=self.name
@@ -118,22 +124,11 @@ class GPSSensorPage(PageTemplate):
 
 		FONT_FEDERATION.render_to(screen, TITLE_POS, 'GPS', ORANGE,style=0,size=65)
 
-
 		self.update_gps_data()
-
 		self.blit_icons(screen)
 		self.blit_altitude_speed(screen)
 		self.blit_lat_long(screen)
-
-
-		FONT_DIN.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=40)
-
-
-		y=round(my_map(self.lat,top_lim,bottom_lim,0,PIC_H),0)
-		# FONT_HELVETICA_NEUE.render_to(screen, (col,row+40), f'lat px: {y}', WHITE,style=0,size=24)
-		x=round(my_map(self.long,left_lim,right_lim,0,PIC_W),0)
-		self.draw_location_lines(screen,x,y)
-
-
+		self.blit_num_sats(screen)
+		self.draw_location_lines(screen)
 
 		return self.next_screen_name,self.kwargs
