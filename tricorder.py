@@ -67,7 +67,7 @@ from battery_page import BatterySensorPage
 from multimeter_page import MultimeterPage
 from object_detection_page import ObjectDetectionPage
 from fly_page import FlyPage
-# ---
+# --- non sensor pages --- #
 from developer_page import DeveloperPage
 from home_page import HomePage
 from sleep_page import SleepPage

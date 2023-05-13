@@ -1,5 +1,6 @@
 '''
 Communication with the microcontroller is event based.
+Certain device controls are also event based.
 This file contains my custom defined events.
 '''
 
@@ -18,9 +19,8 @@ REQUEST_BLUETOOTH=Event(USEREVENT, attr1='REQUEST_BLUETOOTH')
 BLUETOOTH_CONNECTED=Event(USEREVENT, attr1='BLUETOOTH_CONNECTED')
 BLUETOOTH_DISCONNECTED=Event(USEREVENT, attr1='BLUETOOTH_DISCONNECTED')
 
-# ---------------------------- Page navigation ---------------------------- #
+# ---------------------------- File stuff ---------------------------- #
 ENTERING_HOME_PAGE=Event(USEREVENT, attr1='ENTERING_HOME_PAGE')
-
 FILE_LOG_EVENT= USEREVENT + 1
 
 # ---------------------------- Send sensor settings  ---------------------------- #
