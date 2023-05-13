@@ -8,7 +8,7 @@ import pygame
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE
-from buttons import NAV_BUTTONS, BLANK_BTN, BLANK_SQUARE_BTN
+from buttons import NAV_BUTTONS, BLANK_BTN, NUMPAD_BTN
 
 # -------------- Freqshow code -------------- #
 import controller
@@ -16,8 +16,8 @@ import model
 import ui
 import logging
 
-INIT_FREQ=433.0
-WIN_SIZE=(680,720)	# leave some border for text and buttons
+INIT_FREQ=433.0 	# Starting frequency
+WIN_SIZE=(680,720)	# Leave some top & bottom border for text and buttons
 
 class SoftwareDefinedRadioPage(PageTemplate):
 	def __init__(self,name):
@@ -25,7 +25,7 @@ class SoftwareDefinedRadioPage(PageTemplate):
 		self.prev_page_name='menu_home_page'
 
 		self.button_list+=NAV_BUTTONS
-		self.button_list+=[BLANK_BTN,BLANK_SQUARE_BTN]
+		self.button_list+=[BLANK_BTN,NUMPAD_BTN]
 		self.init_freq=INIT_FREQ
 		self.fscontroller,self.fsmodel=self.init_sdr()
 
@@ -33,7 +33,6 @@ class SoftwareDefinedRadioPage(PageTemplate):
 			self.fsmodel.set_center_freq(self.init_freq)
 		except:
 			logging.error ('could not set freq')
-
 
 	def init_sdr(self):
 		try:
@@ -46,15 +45,19 @@ class SoftwareDefinedRadioPage(PageTemplate):
 
 		return fscontroller, fsmodel
 
-
+	def set_freq_manual(self,new_freq):
+		try:
+			# For some reason it is off by 1.2MHz
+			self.fsmodel.set_center_freq(float(new_freq)+1.2)
+		except ValueError:
+			logging.error(f"error tried to set: {new_freq}")
 
 	def next_frame(self,screen,curr_events,**kwargs):
 
+
 		if ("text" in kwargs.keys()):
 			print (kwargs)
-
-			# For some reason it is off by 1.2MHz
-			self.fsmodel.set_center_freq(float(kwargs["text"])+1.2)
+			self.set_freq_manual(kwargs["text"])
 
 		self.next_screen_name=self.name
 		self.kwarg_handler(kwargs)
@@ -65,8 +68,9 @@ class SoftwareDefinedRadioPage(PageTemplate):
 		if pressed_button!=None:
 			if pressed_button.name=='blank':
 				self.fscontroller.toggle_main()
+
 		if pressed_button!=None:
-			if pressed_button.name=='blank_square':
+			if pressed_button.name=='numpad':
 				self.next_screen_name='numpad_page'
 				self.kwargs['prev_page_name']=self.name
 

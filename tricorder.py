@@ -46,7 +46,7 @@ from custom_user_events import TOGGLE_SCREEN, SET_BACKLIGHT, GET_BACKLIGHT_QUICK
 from global_functions import get_wifi_name, update_cpu_stats, get_date_time, blit_some_stats
 
 # ============== import pages ==============#
-from page_templates import PageTemplate,PageWithoutGauge,DeviceStatsPageTemplate,NumPadPage
+from page_templates import PageTemplate,PageWithoutGauge,DeviceStatsPageTemplate#,NumPadPage
 from sdr_page import SoftwareDefinedRadioPage
 from thermal_cam_page import ThermalCamPage
 from pm25_page import PM25Page
@@ -68,6 +68,7 @@ from multimeter_page import MultimeterPage
 from object_detection_page import ObjectDetectionPage
 from fly_page import FlyPage
 # --- non sensor pages --- #
+from numpad_page import NumPadPage
 from developer_page import DeveloperPage
 from home_page import HomePage
 from sleep_page import SleepPage

@@ -357,6 +357,8 @@ blank_button=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_small.png'))
 blank_button_pressed=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_small_pressed.png'))
 BLANK_BTN=ButtonClass(0,blank_button,blank_button_pressed,310,600,name='blank')
 
-blank_square_button=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_square.png'))
-blank_square_button_pressed=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_square_pressed.png'))
-BLANK_SQUARE_BTN=ButtonClass(0,blank_square_button,blank_square_button_pressed,150,600,name='blank_square')
+
+new_res=(80,80)
+nb=pygame.transform.scale(img_ld(os.path.join(BTN_PATH,'numpad.png')),new_res)
+nb_pressed=pygame.transform.scale(img_ld(os.path.join(BTN_PATH,'numpad_pressed.png')),new_res)
+NUMPAD_BTN=ButtonClass(0,nb,nb_pressed,150,600,name='numpad')
