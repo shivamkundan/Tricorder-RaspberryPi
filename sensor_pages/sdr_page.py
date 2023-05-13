@@ -69,8 +69,6 @@ class SoftwareDefinedRadioPage(PageTemplate):
 
 
 
-
-
         FONT_FEDERATION.render_to(screen, (150, 67), 'Software Defined Radio', ORANGE,style=0,size=34)
         FONT_FEDERATION.render_to(screen, (150, 67+34+10), '24 - 1766 MHz', ORANGE,style=0,size=26)
         # FONT_FEDERATION.render_to(screen, (150, 67+34+10), 'SDR RTL2832 w/R820T', ORANGE,style=0,size=40)
