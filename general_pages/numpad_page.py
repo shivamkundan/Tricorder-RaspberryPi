@@ -36,17 +36,7 @@ class NumPadPage(PageTemplate):
 		return button_list
 
 
-	# def blit_numpad_buttons(self)
-
-	def next_frame(self,screen,curr_events,**kwargs):
-		self.next_screen_name=self.name
-
-		if 'prev_page_name' in kwargs.keys():
-			self.prev_page_name=kwargs['prev_page_name']
-
-		self.blit_all_buttons(screen)
-		pressed_button=self.handle_events(screen,curr_events)
-
+	def blit_numpad_buttons(self,screen):
 		x_spacing=170
 		y_spacing=101
 		x_start=225
@@ -60,7 +50,19 @@ class NumPadPage(PageTemplate):
 				i+=1
 			y_pos+=y_spacing
 
+	def next_frame(self,screen,curr_events,**kwargs):
+		self.next_screen_name=self.name
+
+		if 'prev_page_name' in kwargs.keys():
+			self.prev_page_name=kwargs['prev_page_name']
+
+		self.blit_all_buttons(screen)
+		pressed_button=self.handle_events(screen,curr_events)
+
+		self.blit_numpad_buttons(screen)
+
 		if pressed_button!=None:
+			
 			# This is the return button
 			if pressed_button.butt_id==10:
 				self.next_screen_name=self.prev_page_name
