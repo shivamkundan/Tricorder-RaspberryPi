@@ -4,9 +4,7 @@ from colors import ORANGE, DARK_YELLOW,  WHITE, SLATE
 from serial_manager import get_gps
 from images import SATELLITE, WORLD_MAP, ALT_ICON, SPD_ICON, DOT2, LAT_ICON
 from global_functions import my_map
-
 from pygame import draw as pdraw
-
 
 # lat/long limits for world map
 left_lim=-167.3
@@ -39,7 +37,6 @@ DOT2_W_DIV_2=10
 
 TITLE_POS = (150, 92)
 
-
 class GPSSensorPage(PageTemplate):
 	def __init__(self,name):
 		super().__init__(name)
@@ -50,7 +47,6 @@ class GPSSensorPage(PageTemplate):
 
 		self.alt_pos=(col1,row1+5)
 		self.spd_pos=(col2,row1+5)
-
 
 		self.SATELLITE_TXT_POS=(self.SATELLITE_POS[0]+55,self.SATELLITE_POS[1]+20)
 
