@@ -1,3 +1,9 @@
+'''
+Contains:
+A generic class for buttons
+Button defa for all pages
+'''
+
 import pygame
 import os
 from fonts import FONT_FEDERATION
@@ -6,6 +12,7 @@ import math  #for calculating no. of pages
 from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
 
 class ButtonClass():
+# Generic class for all buttons
 	def __init__(self,butt_id,button_img,alt_img,pos_x,pos_y,selected_img=None,selected_alt_img=None,cooldown_val=5,icon=None,text='',font=FONT_FEDERATION,style=0,font_size=16,name='',font_color=FONT_BLUE,selected=False,selected_color=GREEN,required_cooldown=10,align_left=False):
 		self.butt_id=butt_id
 		self.img=button_img
@@ -103,13 +110,12 @@ class ButtonClass():
 BTN_IMG_LIST=[]	# global list of loaded images
 
 def img_ld(input_img):
-# this function neatly summarizes/prints all images before loading
+# Neatly summarize/print all images before loading
 	# BTN_IMG_LIST.append(input_img)
 	return pygame.image.load(input_img)
 
 
-
-# --- Number pad buttons --- #
+# --------------------------- Number pad page buttons --------------------------- #
 width=170
 height=100
 numpad_button=pygame.Surface((width, height))
@@ -119,7 +125,7 @@ numpad_button_alt=pygame.Surface((width, height))
 pygame.draw.rect(numpad_button_alt,ORANGE,r)
 
 
-# --- File page buttons --- #
+# --------------------------- File page buttons --------------------------- #
 width=400
 height=50
 r=pygame.Rect(0,0,width,height)
@@ -345,3 +351,12 @@ for b_name in nav_button_vertical_names:
 	button_alt_img=img_ld(b)
 	NAV_BUTTONS_VERTICAL.append(ButtonClass(i,button_img,button_alt_img,x_pos,y[i],name=b_name))
 	i+=1
+# =======================================================================================================
+
+blank_button=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_small.png'))
+blank_button_pressed=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_small_pressed.png'))
+BLANK_BTN=ButtonClass(0,blank_button,blank_button_pressed,310,600,name='blank')
+
+blank_square_button=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_square.png'))
+blank_square_button_pressed=img_ld(os.path.join(BTN_PATH,'quick_menu_buttons/blank_square_pressed.png'))
+BLANK_SQUARE_BTN=ButtonClass(0,blank_square_button,blank_square_button_pressed,150,600,name='blank_square')

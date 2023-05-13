@@ -6,7 +6,7 @@ and other page-specific buttons, mouse/touch handling, enter and exit.
 
 import pygame
 from fonts import FONT_FEDERATION
-from colors import FONT_BLUE
+from colors import FONT_BLUE, WHITE
 from buttons import ButtonClass,\
 					button_selected_3, button_selected_3_blank, top_button_selected, \
 					MINI_BUTTONS, MINI_BUTTON_NAMES, \
@@ -56,6 +56,7 @@ class PageTemplate():
 		return butt_dict
 
 	def kwarg_handler(self,kwargs):
+		# print (kwargs.keys())
 		if 'prev_page_name' in kwargs.keys():
 			pp=kwargs['prev_page_name']
 			if pp!=self.name:
@@ -262,12 +263,14 @@ class DeviceStatsPageTemplate(PageTemplate):
 		self.button_list+=NAV_BUTTONS+NAV_BUTTONS_VERTICAL
 
 class NumPadPage(PageTemplate):
+# Implements a generic number pad for other pages, returns text in kwargs
 	def __init__(self,name):
 		super().__init__(name)
 		self.button_list+=self.init_buttons()
 		self.curr_text=''
 		self.button_text=['1','2','3','4','5','6','7','8','9','E','0','<']
-		self.prev_page_name=self.name
+		# self.prev_page_name=self.name
+		self.prev_page_name="settings_page"
 
 	def init_buttons(self):
 
@@ -293,7 +296,8 @@ class NumPadPage(PageTemplate):
 		return button_list
 
 	def next_frame(self,screen,curr_events,**kwargs):
-
+		# print("|||||||||||||||||||||||||||||||||||")
+		# print (kwargs)
 		self.next_screen_name=self.name
 
 		if 'prev_page_name' in kwargs.keys():
@@ -337,4 +341,4 @@ class NumPadPage(PageTemplate):
 		# Blit current value
 		FONT_FEDERATION.render_to(screen, (200, 100), self.curr_text, WHITE,style=1,size=48)
 
-		return self.next_screen_name,{}
+		return self.next_screen_name,{"curr_text":self.curr_text}

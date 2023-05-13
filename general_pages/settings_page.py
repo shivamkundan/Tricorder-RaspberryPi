@@ -71,6 +71,7 @@ class SettingsPage(PageTemplate):
 
 			if pressed_button.name=='Num Pad':
 				self.next_screen_name='numpad_page'
+				self.kwargs['prev_page_name']="settings_page"
 				# return self.next_screen_name,{'prev_page_name':self.name}
 
 			# if pressed_button.name=='slider':
