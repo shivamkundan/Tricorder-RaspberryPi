@@ -1,3 +1,9 @@
+'''
+Page for visualizing data from the RTL2832 w/R820T Software Defined Radio (SDR) dongle.
+Two modes of visualizing: line plot and waterfall.
+Reverse-engineered from Adafruit's FreqShow project.
+'''
+
 import pygame
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
@@ -11,7 +17,7 @@ import ui
 import logging
 
 INIT_FREQ=433.0
-WIN_SIZE=(680,720)
+WIN_SIZE=(680,720)	# leave some border for text and buttons
 
 class SoftwareDefinedRadioPage(PageTemplate):
 	def __init__(self,name):
@@ -46,7 +52,9 @@ class SoftwareDefinedRadioPage(PageTemplate):
 
 		if ("text" in kwargs.keys()):
 			print (kwargs)
-			self.fsmodel.set_center_freq(float(kwargs["text"])+1.2)  # For some reason it is off by 1.2MHz
+
+			# For some reason it is off by 1.2MHz
+			self.fsmodel.set_center_freq(float(kwargs["text"])+1.2)
 
 		self.next_screen_name=self.name
 		self.kwarg_handler(kwargs)
@@ -66,14 +74,6 @@ class SoftwareDefinedRadioPage(PageTemplate):
 			self.init_sdr()
 
 		if self.fscontroller!=None:
-			for event in pygame.event.get():
-
-				if (event.type == pygame.FINGERUP or event.type==pygame.MOUSEBUTTONUP):
-					if (event.type == pygame.FINGERUP):
-						mouse_pos=(int(event.x*screen.get_width()),int(event.y*screen.get_height()))
-					else:
-						mouse_pos=pygame.mouse.get_pos()
-					self.fscontroller.current().click(mouse_pos)
 			self.fscontroller.current().render(screen)
 
 
