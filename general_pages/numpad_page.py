@@ -1,3 +1,7 @@
+'''
+Implements a generic number pad for other pages, returns text in kwargs
+'''
+
 import pygame
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
@@ -11,11 +15,9 @@ class NumPadPage(PageTemplate):
 		self.button_list+=self.init_buttons()
 		self.curr_text=''
 		self.button_text=['1','2','3','4','5','6','7','8','9','E','0','<']
-		# self.prev_page_name=self.name
-		self.prev_page_name="settings_page"
+		self.prev_page_name=self.name
 
 	def init_buttons(self):
-
 		width=170
 		height=100
 		x_start=150
@@ -34,7 +36,6 @@ class NumPadPage(PageTemplate):
 			y_pos+=y_spacing
 
 		return button_list
-
 
 	def blit_numpad_buttons(self,screen):
 		x_spacing=170
@@ -62,7 +63,7 @@ class NumPadPage(PageTemplate):
 		self.blit_numpad_buttons(screen)
 
 		if pressed_button!=None:
-			
+
 			# This is the return button
 			if pressed_button.butt_id==10:
 				self.next_screen_name=self.prev_page_name
