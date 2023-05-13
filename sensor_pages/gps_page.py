@@ -6,7 +6,7 @@ from images import SATELLITE, WORLD_MAP, ALT_ICON, SPD_ICON, DOT2, LAT_ICON
 from global_functions import my_map
 
 from pygame import draw as pdraw
-# WORLD_MAP: 530 by 266
+
 
 # lat/long limits for world map
 left_lim=-167.3
@@ -19,6 +19,7 @@ bottom_lim=-56
 PIC_TOP=175
 PIC_LEFT=150
 
+# WORLD_MAP: 530 by 266
 PIC_W=530
 PIC_H=266
 PIC_BOTTOM=PIC_TOP+PIC_H
@@ -36,107 +37,103 @@ row2=row1+35
 
 DOT2_W_DIV_2=10
 
+TITLE_POS = (150, 92)
+
 
 class GPSSensorPage(PageTemplate):
-    def __init__(self,name):
-        super().__init__(name)
-        self.prev_page_name='menu_home_page'
+	def __init__(self,name):
+		super().__init__(name)
+		self.prev_page_name='menu_home_page'
 
-        # ------ satellite icon ------ #
-        self.SATELLITE_POS=(555,100)
+		# ------ satellite icon ------ #
+		self.SATELLITE_POS=(555,100)
 
-        self.alt_pos=(col1,row1+5)
-        self.spd_pos=(col2,row1+5)
-
-
-        self.SATELLITE_TXT_POS=(self.SATELLITE_POS[0]+55,self.SATELLITE_POS[1]+20)
-
-        self.lat=-1
-        self.long=-1
-        self.alt=-1
-        self.spd=-1
-        self.sat=-1
+		self.alt_pos=(col1,row1+5)
+		self.spd_pos=(col2,row1+5)
 
 
-    def draw_location_lines(self,screen,x,y):
-        if (self.sat>0):
-            lw=2
-            x_pos=PIC_LEFT+x-DOT2_W_DIV_2+lw/2
-            pdraw.line(screen, SLATE, (x_pos,PIC_TOP), (x_pos,PIC_BOTTOM), width=lw)
+		self.SATELLITE_TXT_POS=(self.SATELLITE_POS[0]+55,self.SATELLITE_POS[1]+20)
 
-            y_pos=PIC_TOP+y-DOT2_W_DIV_2-lw/2
-            pdraw.line(screen, SLATE, (PIC_LEFT,y_pos), (PIC_RIGHT,y_pos), width=lw)
-
-            # circle(surface, color, center, radius)
+		self.lat=-1
+		self.long=-1
+		self.alt=-1
+		self.spd=-1
+		self.sat=-1
 
 
-    def next_frame(self,screen,curr_events,**kwargs):
-        self.next_screen_name=self.name
-        self.kwarg_handler(kwargs)
-        self.blit_all_buttons(screen)
-        pressed_button=self.handle_events(screen,curr_events)
+	def draw_location_lines(self,screen,x,y):
+		if (self.sat>0):
+			lw=2
+			x_pos=PIC_LEFT+x-DOT2_W_DIV_2+lw/2
+			pdraw.line(screen, SLATE, (x_pos,PIC_TOP), (x_pos,PIC_BOTTOM), width=lw)
 
-        FONT_FEDERATION.render_to(screen, (150, 92), 'GPS', ORANGE,style=0,size=65)
+			y_pos=PIC_TOP+y-DOT2_W_DIV_2-lw/2
+			pdraw.line(screen, SLATE, (PIC_LEFT,y_pos), (PIC_RIGHT,y_pos), width=lw)
 
-        self.lat,self.long,self.alt,self.spd,self.sat=get_gps()
+			# circle(surface, color, center, radius)
 
-        screen.blit(SATELLITE,self.SATELLITE_POS)
-        screen.blit(ALT_ICON,self.alt_pos)
-        screen.blit(SPD_ICON,self.spd_pos)
+	def blit_icons(self,screen):
+		screen.blit(SATELLITE,self.SATELLITE_POS)
+		screen.blit(ALT_ICON,self.alt_pos)
+		screen.blit(SPD_ICON,self.spd_pos)
+		screen.blit(WORLD_MAP,(PIC_LEFT,PIC_TOP))
+
+	def blit_altitude_speed(self,screen):
+		# altitude
+		FONT_DIN.render_to(screen, (col3,row1), f'{round(self.alt,3)}m', WHITE,style=0,size=36)
+		FONT_DIN.render_to(screen, (col3,row2), f'{round(self.alt*3.281,1)}ft', SLATE,style=0,size=24)
+
+		# speed
+		FONT_DIN.render_to(screen, (col4,row1), f'{round(self.spd,3)}m/s', WHITE,style=0,size=36)
+		FONT_DIN.render_to(screen, (col4,row2), f'{round(self.spd*2.237,3)}mph', SLATE,style=0,size=24)
+
+	def blit_lat_long(self,screen):
+		row=610
+		col=col1
+
+		# screen.blit(LAT_ICON, (col-50,row))
+		FONT_FEDERATION.render_to(screen, (col,row-25), "LAT", ORANGE,style=1,size=20)
+		FONT_FEDERATION.render_to(screen, (col2,row-25), "LONG", ORANGE,style=1,size=20)
 
 
-        FONT_DIN.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=40)
+		FONT_DIN.render_to(screen, (col,row), f'{self.lat}°', WHITE,style=0,size=34)
 
+		minutes=str(self.lat).split('.')[1]
+		minutes=int((int(minutes)/100)*60)
 
+		FONT_DIN.render_to(screen, (col,row+40), f'{int(self.lat)}° {minutes}\"', SLATE,style=0,size=24)
 
-
-        FONT_DIN.render_to(screen, (col3,row1), f'{round(self.alt,3)}m', WHITE,style=0,size=36)
-        FONT_DIN.render_to(screen, (col3,row2), f'{round(self.alt*3.281,1)}ft', SLATE,style=0,size=24)
-
-        FONT_DIN.render_to(screen, (col4,row1), f'{round(self.spd,3)}m/s', WHITE,style=0,size=36)
-        FONT_DIN.render_to(screen, (col4,row2), f'{round(self.spd*2.237,3)}mph', SLATE,style=0,size=24)
-
-        screen.blit(WORLD_MAP,(PIC_LEFT,PIC_TOP))
-        # screen.blit(DOT2,(PIC_LEFT-DOT2_W_DIV_2,PIC_TOP-DOT2_W_DIV_2))    # this denotes where the world map starts
-        # screen.blit(DOT2,(PIC_RIGHT-DOT2_W_DIV_2,PIC_BOTTOM-DOT2_W_DIV_2))    # ends
-
-
-        row=610
-        col=col1
-
-        # screen.blit(LAT_ICON, (col-50,row))
-        FONT_FEDERATION.render_to(screen, (col,row-25), "LAT", ORANGE,style=1,size=20)
-        FONT_FEDERATION.render_to(screen, (col2,row-25), "LONG", ORANGE,style=1,size=20)
+		FONT_DIN.render_to(screen, (col2,row), f'{self.long}°', WHITE,style=0,size=34)
 
 
 
-        FONT_DIN.render_to(screen, (col,row), f'{self.lat}°', WHITE,style=0,size=34)
+	def update_gps_data(self):
+		self.lat,self.long,self.alt,self.spd,self.sat=get_gps()
 
-        minutes=str(self.lat).split('.')[1]
-        minutes=int((int(minutes)/100)*60)
+	def next_frame(self,screen,curr_events,**kwargs):
+		self.next_screen_name=self.name
+		self.kwarg_handler(kwargs)
+		self.blit_all_buttons(screen)
+		pressed_button=self.handle_events(screen,curr_events)
 
-        FONT_DIN.render_to(screen, (col,row+40), f'{int(self.lat)}° {minutes}\"', SLATE,style=0,size=24)
-
-        y=round(my_map(self.lat,top_lim,bottom_lim,0,PIC_H),0)
-        # FONT_HELVETICA_NEUE.render_to(screen, (col,row+40), f'lat px: {y}', WHITE,style=0,size=24)
-
-
-
-        FONT_DIN.render_to(screen, (col2,row), f'{self.long}°', WHITE,style=0,size=34)
-        x=round(my_map(self.long,left_lim,right_lim,0,PIC_W),0)
-        # FONT_HELVETICA_NEUE.render_to(screen, (435,595), f'long px: {x}', WHITE,style=0,size=24)
+		FONT_FEDERATION.render_to(screen, TITLE_POS, 'GPS', ORANGE,style=0,size=65)
 
 
-        self.draw_location_lines(screen,x,y)
+		self.update_gps_data()
 
-        # if (self.sat>0):
-        #     lw=2
-        #     x_pos=PIC_LEFT+x-DOT2_W_DIV_2+lw/2
-        #     pdraw.line(screen, SLATE, (x_pos,PIC_TOP), (x_pos,PIC_BOTTOM), width=lw)
+		self.blit_icons(screen)
+		self.blit_altitude_speed(screen)
+		self.blit_lat_long(screen)
 
-        #     y_pos=PIC_TOP+y-DOT2_W_DIV_2-lw/2
-        #     pdraw.line(screen, SLATE, (PIC_LEFT,y_pos), (PIC_RIGHT,y_pos), width=lw)
 
-        # screen.blit(DOT2,(PIC_LEFT+x-20,PIC_TOP+y-20))
+		FONT_DIN.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=40)
 
-        return self.next_screen_name,self.kwargs
+
+		y=round(my_map(self.lat,top_lim,bottom_lim,0,PIC_H),0)
+		# FONT_HELVETICA_NEUE.render_to(screen, (col,row+40), f'lat px: {y}', WHITE,style=0,size=24)
+		x=round(my_map(self.long,left_lim,right_lim,0,PIC_W),0)
+		self.draw_location_lines(screen,x,y)
+
+
+
+		return self.next_screen_name,self.kwargs
