@@ -200,7 +200,17 @@ class DeviceInfoClass():
 		self.read_battery(screen,frame_count)
 
 # ==================================================================== #
+
 class WindowManager():
+# ----------------------------------------- #
+# Decides which screen will be shown next.
+# Also handles:
+# 	-> screenshots
+# 	-> some display functions
+# 	-> custom user events
+# 	-> some data logging
+# 	-> some bluetooth stuff
+# ----------------------------------------- #
 	def __init__(self,fullscreen_en=False):
 
 		self.ser=ser
