@@ -1,11 +1,16 @@
+'''
+The RaspberryPi and MCU communicate by exchanging pre-determined codes over wired/bluetooth serial connections.
+Each functopm (output or input) is represented by unique identifier.
+'''
+
 import pygame
 pygame.init()
 
-# following vars are for backlight
+# Following vars are for backlight
 import pigpio
 PIGPIO=pigpio.pi()
 
-d={}	# this makes two-way referencing easier
+d={}	# This makes two-way referencing easier
 
 HELP_CODE ='H'
 VERBOSE_CODE ='B'
@@ -42,13 +47,11 @@ d['GPS_CODE']='G'
 d['BATTERY_CODE']='B'
 d['CURRENT_CODE']='c'
 
-
 MCU_SLEEP_CODE='^'
 MCU_WAKE_CODE='('
 MCU_RESET_CODE='~'
 MCU_IND_MODE_ENABLE='>'
 MCU_IND_MODE_DISABLE='<'
-
 
 # -------------- UV -------------- #
 SET_LTR390_GAIN_1='1'
