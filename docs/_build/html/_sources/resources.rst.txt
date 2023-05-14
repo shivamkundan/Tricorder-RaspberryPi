@@ -12,10 +12,10 @@ resources.custom\_user\_events module
    :undoc-members:
    :show-inheritance:
 
-resources.global\_functions module
-----------------------------------
+resources.global\_functions\_old module
+---------------------------------------
 
-.. automodule:: resources.global_functions
+.. automodule:: resources.global_functions_old
    :members:
    :undoc-members:
    :show-inheritance:

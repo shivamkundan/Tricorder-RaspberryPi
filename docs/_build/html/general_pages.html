@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="page_templates module" href="page_templates.html" />
+    <link rel="next" title="global_functions module" href="global_functions.html" />
     <link rel="prev" title="freqshow_code package" href="freqshow_code.html" /> 
 </head>
 
@@ -46,25 +46,63 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aaaa_a_fonts.html">aaaa_a_fonts module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">general_pages package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-brightness-slider-page-module">general_pages.brightness_slider_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-developer-page-module">general_pages.developer_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-device-stats-page-module">general_pages.device_stats_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-exit-page-module">general_pages.exit_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-file-browser-page-module">general_pages.file_browser_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-home-page-module">general_pages.home_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-menu-home-page-module">general_pages.menu_home_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-numpad-page-module">general_pages.numpad_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-quick-menu-page-module">general_pages.quick_menu_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-settings-page-module">general_pages.settings_page module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-pages-sleep-page-module">general_pages.sleep_page module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.brightness_slider_page">general_pages.brightness_slider_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.brightness_slider_page.BrightnessSliderPage"><code class="docutils literal notranslate"><span class="pre">BrightnessSliderPage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.brightness_slider_page.SliderClass"><code class="docutils literal notranslate"><span class="pre">SliderClass</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.developer_page">general_pages.developer_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.developer_page.DeveloperPage"><code class="docutils literal notranslate"><span class="pre">DeveloperPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.device_stats_page">general_pages.device_stats_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.device_stats_page.DeviceStatsPage"><code class="docutils literal notranslate"><span class="pre">DeviceStatsPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.exit_page">general_pages.exit_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.exit_page.ExitPage"><code class="docutils literal notranslate"><span class="pre">ExitPage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.exit_page.elapsed_time"><code class="docutils literal notranslate"><span class="pre">elapsed_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.exit_page.wrap_up"><code class="docutils literal notranslate"><span class="pre">wrap_up()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.file_browser_page">general_pages.file_browser_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.file_browser_page.FileBrowserPage"><code class="docutils literal notranslate"><span class="pre">FileBrowserPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.home_page">general_pages.home_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.home_page.HomePage"><code class="docutils literal notranslate"><span class="pre">HomePage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.menu_home_page">general_pages.menu_home_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.menu_home_page.MenuHomePageClass"><code class="docutils literal notranslate"><span class="pre">MenuHomePageClass</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.numpad_page">general_pages.numpad_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.numpad_page.NumPadPage"><code class="docutils literal notranslate"><span class="pre">NumPadPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.quick_menu_page">general_pages.quick_menu_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.quick_menu_page.QuickMenuPage"><code class="docutils literal notranslate"><span class="pre">QuickMenuPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.settings_page">general_pages.settings_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.settings_page.SettingsPage"><code class="docutils literal notranslate"><span class="pre">SettingsPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-general_pages.sleep_page">general_pages.sleep_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general_pages.sleep_page.SleepPage"><code class="docutils literal notranslate"><span class="pre">SleepPage</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-general_pages">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="global_functions.html">global_functions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
@@ -106,38 +144,458 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </div>
-<div class="section" id="general-pages-brightness-slider-page-module">
-<h2>general_pages.brightness_slider_page module<a class="headerlink" href="#general-pages-brightness-slider-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.brightness_slider_page">
+<span id="general-pages-brightness-slider-page-module"></span><h2>general_pages.brightness_slider_page module<a class="headerlink" href="#module-general_pages.brightness_slider_page" title="Permalink to this heading"></a></h2>
+<p>Brightness backlight adjustment</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.BrightnessSliderPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.brightness_slider_page.</span></span><span class="sig-name descname"><span class="pre">BrightnessSliderPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.BrightnessSliderPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>This page used for adjustubg screen brightness (i.e. backlight level) through pigpio commands</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.BrightnessSliderPage.get_current_brightness">
+<span class="sig-name descname"><span class="pre">get_current_brightness</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.BrightnessSliderPage.get_current_brightness" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve current backlight level</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.BrightnessSliderPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.BrightnessSliderPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.BrightnessSliderPage.set_brightness">
+<span class="sig-name descname"><span class="pre">set_brightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.BrightnessSliderPage.set_brightness" title="Permalink to this definition"></a></dt>
+<dd><p>Set backlight level</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.BrightnessSliderPage.transition_events">
+<span class="sig-name descname"><span class="pre">transition_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.BrightnessSliderPage.transition_events" title="Permalink to this definition"></a></dt>
+<dd><p>To handle sliding on slider</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.SliderClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.brightness_slider_page.</span></span><span class="sig-name descname"><span class="pre">SliderClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">249</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.SliderClass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for implementing slide switches</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.SliderClass.blit_slider">
+<span class="sig-name descname"><span class="pre">blit_slider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.SliderClass.blit_slider" title="Permalink to this definition"></a></dt>
+<dd><p>Blit slider to screen</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.SliderClass.compute_percentage">
+<span class="sig-name descname"><span class="pre">compute_percentage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.SliderClass.compute_percentage" title="Permalink to this definition"></a></dt>
+<dd><p>Convert from slider length/pos to percentage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.SliderClass.initialize_button">
+<span class="sig-name descname"><span class="pre">initialize_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.SliderClass.initialize_button" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the slider control button</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.brightness_slider_page.SliderClass.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.brightness_slider_page.SliderClass.map" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-developer-page-module">
-<h2>general_pages.developer_page module<a class="headerlink" href="#general-pages-developer-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.developer_page">
+<span id="general-pages-developer-page-module"></span><h2>general_pages.developer_page module<a class="headerlink" href="#module-general_pages.developer_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.developer_page.DeveloperPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.developer_page.</span></span><span class="sig-name descname"><span class="pre">DeveloperPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.developer_page.DeveloperPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.developer_page.DeveloperPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.developer_page.DeveloperPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-device-stats-page-module">
-<h2>general_pages.device_stats_page module<a class="headerlink" href="#general-pages-device-stats-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.device_stats_page">
+<span id="general-pages-device-stats-page-module"></span><h2>general_pages.device_stats_page module<a class="headerlink" href="#module-general_pages.device_stats_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.device_stats_page.</span></span><span class="sig-name descname"><span class="pre">DeviceStatsPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.DeviceStatsPageTemplate" title="page_templates.DeviceStatsPageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeviceStatsPageTemplate</span></code></a></p>
+<p>Shows statistics about the RaspberryPi and the running application</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.blit_page_num">
+<span class="sig-name descname"><span class="pre">blit_page_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.blit_page_num" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.get_curr_freq">
+<span class="sig-name descname"><span class="pre">get_curr_freq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.get_curr_freq" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve current clock frequency in MHz</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.get_curr_governor">
+<span class="sig-name descname"><span class="pre">get_curr_governor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.get_curr_governor" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve current dvfs policy</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.get_mem_use">
+<span class="sig-name descname"><span class="pre">get_mem_use</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.get_mem_use" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.update_cpu_stats">
+<span class="sig-name descname"><span class="pre">update_cpu_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.update_cpu_stats" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve CPU load percentage and temperature</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.update_other_stats">
+<span class="sig-name descname"><span class="pre">update_other_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.update_other_stats" title="Permalink to this definition"></a></dt>
+<dd><p>Returns amount of time spent in each governer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.device_stats_page.DeviceStatsPage.update_up_time">
+<span class="sig-name descname"><span class="pre">update_up_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.device_stats_page.DeviceStatsPage.update_up_time" title="Permalink to this definition"></a></dt>
+<dd><p>Returns up time of tricoder.py application</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-exit-page-module">
-<h2>general_pages.exit_page module<a class="headerlink" href="#general-pages-exit-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.exit_page">
+<span id="general-pages-exit-page-module"></span><h2>general_pages.exit_page module<a class="headerlink" href="#module-general_pages.exit_page" title="Permalink to this heading"></a></h2>
+<p>Dummy page for ensuring clean exit.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.exit_page.ExitPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.exit_page.</span></span><span class="sig-name descname"><span class="pre">ExitPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.exit_page.ExitPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>Faux page for clean exit</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.exit_page.ExitPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.exit_page.ExitPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="general_pages.exit_page.elapsed_time">
+<span class="sig-prename descclassname"><span class="pre">general_pages.exit_page.</span></span><span class="sig-name descname"><span class="pre">elapsed_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.exit_page.elapsed_time" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates total runtime from start of program</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="general_pages.exit_page.wrap_up">
+<span class="sig-prename descclassname"><span class="pre">general_pages.exit_page.</span></span><span class="sig-name descname"><span class="pre">wrap_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.exit_page.wrap_up" title="Permalink to this definition"></a></dt>
+<dd><p>Prints a nice goodbye message and elapsed time</p>
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-file-browser-page-module">
-<h2>general_pages.file_browser_page module<a class="headerlink" href="#general-pages-file-browser-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.file_browser_page">
+<span id="general-pages-file-browser-page-module"></span><h2>general_pages.file_browser_page module<a class="headerlink" href="#module-general_pages.file_browser_page" title="Permalink to this heading"></a></h2>
+<p>Used for implementation of screenshot browsing functionality.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.file_browser_page.FileBrowserPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.file_browser_page.</span></span><span class="sig-name descname"><span class="pre">FileBrowserPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.file_browser_page.FileBrowserPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>Used for browsing files stored in the application’s folder. Mainly for screenshots</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.file_browser_page.FileBrowserPage.blit_title">
+<span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.file_browser_page.FileBrowserPage.blit_title" title="Permalink to this definition"></a></dt>
+<dd><p>Blit page title to screen</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.file_browser_page.FileBrowserPage.gruntwork">
+<span class="sig-name descname"><span class="pre">gruntwork</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.file_browser_page.FileBrowserPage.gruntwork" title="Permalink to this definition"></a></dt>
+<dd><p>Shows a preview of the selected screenshots</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.file_browser_page.FileBrowserPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.file_browser_page.FileBrowserPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.file_browser_page.FileBrowserPage.refresh_files_list">
+<span class="sig-name descname"><span class="pre">refresh_files_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.file_browser_page.FileBrowserPage.refresh_files_list" title="Permalink to this definition"></a></dt>
+<dd><p>Reload list of files in screenshot directory</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-home-page-module">
-<h2>general_pages.home_page module<a class="headerlink" href="#general-pages-home-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.home_page">
+<span id="general-pages-home-page-module"></span><h2>general_pages.home_page module<a class="headerlink" href="#module-general_pages.home_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.home_page.</span></span><span class="sig-name descname"><span class="pre">HomePage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>A page to show many different readings from many different sensors</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_humid">
+<span class="sig-name descname"><span class="pre">blit_humid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_humid" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_pressure">
+<span class="sig-name descname"><span class="pre">blit_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_pressure" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_spectrometer">
+<span class="sig-name descname"><span class="pre">blit_spectrometer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_spectrometer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_temp">
+<span class="sig-name descname"><span class="pre">blit_temp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_temp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_tvoc_eco2">
+<span class="sig-name descname"><span class="pre">blit_tvoc_eco2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_tvoc_eco2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_uv">
+<span class="sig-name descname"><span class="pre">blit_uv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_uv" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_vis_ir">
+<span class="sig-name descname"><span class="pre">blit_vis_ir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_vis_ir" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.blit_wrapper">
+<span class="sig-name descname"><span class="pre">blit_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.blit_wrapper" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.display_particulate_matter">
+<span class="sig-name descname"><span class="pre">display_particulate_matter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.display_particulate_matter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.init_gauges">
+<span class="sig-name descname"><span class="pre">init_gauges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.init_gauges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.init_sensor_tics">
+<span class="sig-name descname"><span class="pre">init_sensor_tics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.init_sensor_tics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.on_enter" title="Permalink to this definition"></a></dt>
+<dd><p>Turns on relevant mosfets on entry</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.on_exit" title="Permalink to this definition"></a></dt>
+<dd><p>Turns off relevant mosfets on exit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.print_message">
+<span class="sig-name descname"><span class="pre">print_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.print_message" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.home_page.HomePage.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.home_page.HomePage.scale" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-menu-home-page-module">
-<h2>general_pages.menu_home_page module<a class="headerlink" href="#general-pages-menu-home-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.menu_home_page">
+<span id="general-pages-menu-home-page-module"></span><h2>general_pages.menu_home_page module<a class="headerlink" href="#module-general_pages.menu_home_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.menu_home_page.</span></span><span class="sig-name descname"><span class="pre">MenuHomePageClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>Implementation of a classic smart phone style home/menu page with icons and subpages</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.animate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.blit_page_num">
+<span class="sig-name descname"><span class="pre">blit_page_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.blit_page_num" title="Permalink to this definition"></a></dt>
+<dd><p>Show sub page num on top left of screen</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.decrement_subpage">
+<span class="sig-name descname"><span class="pre">decrement_subpage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.decrement_subpage" title="Permalink to this definition"></a></dt>
+<dd><p>Show previous set of icons</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.draw_rectangle">
+<span class="sig-name descname"><span class="pre">draw_rectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.draw_rectangle" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.get_sidebar_stats">
+<span class="sig-name descname"><span class="pre">get_sidebar_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.get_sidebar_stats" title="Permalink to this definition"></a></dt>
+<dd><p>Okudagrams showing device/program stats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.increment_subpage">
+<span class="sig-name descname"><span class="pre">increment_subpage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.increment_subpage" title="Permalink to this definition"></a></dt>
+<dd><p>Show next set of icons</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.reset_subpage">
+<span class="sig-name descname"><span class="pre">reset_subpage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.reset_subpage" title="Permalink to this definition"></a></dt>
+<dd><p>Show first set of icons</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.transition_events">
+<span class="sig-name descname"><span class="pre">transition_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.transition_events" title="Permalink to this definition"></a></dt>
+<dd><p>Used for handling swiping motion</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.menu_home_page.MenuHomePageClass.transitions">
+<span class="sig-name descname"><span class="pre">transitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.menu_home_page.MenuHomePageClass.transitions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-numpad-page-module">
-<h2>general_pages.numpad_page module<a class="headerlink" href="#general-pages-numpad-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.numpad_page">
+<span id="general-pages-numpad-page-module"></span><h2>general_pages.numpad_page module<a class="headerlink" href="#module-general_pages.numpad_page" title="Permalink to this heading"></a></h2>
+<p>Implements a generic number pad for other pages, returns text in kwargs</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.numpad_page.NumPadPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.numpad_page.</span></span><span class="sig-name descname"><span class="pre">NumPadPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.numpad_page.NumPadPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>Implements a generic number pad for other pages, returns text in kwargs</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.numpad_page.NumPadPage.blit_numpad_buttons">
+<span class="sig-name descname"><span class="pre">blit_numpad_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.numpad_page.NumPadPage.blit_numpad_buttons" title="Permalink to this definition"></a></dt>
+<dd><p>Blits simple buttons overlayed with numbers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.numpad_page.NumPadPage.init_buttons">
+<span class="sig-name descname"><span class="pre">init_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.numpad_page.NumPadPage.init_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.numpad_page.NumPadPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.numpad_page.NumPadPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-quick-menu-page-module">
-<h2>general_pages.quick_menu_page module<a class="headerlink" href="#general-pages-quick-menu-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.quick_menu_page">
+<span id="general-pages-quick-menu-page-module"></span><h2>general_pages.quick_menu_page module<a class="headerlink" href="#module-general_pages.quick_menu_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.quick_menu_page.QuickMenuPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.quick_menu_page.</span></span><span class="sig-name descname"><span class="pre">QuickMenuPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.quick_menu_page.QuickMenuPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.quick_menu_page.QuickMenuPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.quick_menu_page.QuickMenuPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-settings-page-module">
-<h2>general_pages.settings_page module<a class="headerlink" href="#general-pages-settings-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.settings_page">
+<span id="general-pages-settings-page-module"></span><h2>general_pages.settings_page module<a class="headerlink" href="#module-general_pages.settings_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.settings_page.SettingsPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.settings_page.</span></span><span class="sig-name descname"><span class="pre">SettingsPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.settings_page.SettingsPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>Meant for changing device settings</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.settings_page.SettingsPage.handle_events_custom">
+<span class="sig-name descname"><span class="pre">handle_events_custom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.settings_page.SettingsPage.handle_events_custom" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.settings_page.SettingsPage.init_buttons">
+<span class="sig-name descname"><span class="pre">init_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.settings_page.SettingsPage.init_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.settings_page.SettingsPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.settings_page.SettingsPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="general-pages-sleep-page-module">
-<h2>general_pages.sleep_page module<a class="headerlink" href="#general-pages-sleep-page-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-general_pages.sleep_page">
+<span id="general-pages-sleep-page-module"></span><h2>general_pages.sleep_page module<a class="headerlink" href="#module-general_pages.sleep_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="general_pages.sleep_page.SleepPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">general_pages.sleep_page.</span></span><span class="sig-name descname"><span class="pre">SleepPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.sleep_page.SleepPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>A dummy page for low-power sleep mode</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.sleep_page.SleepPage.handle_events">
+<span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.sleep_page.SleepPage.handle_events" title="Permalink to this definition"></a></dt>
+<dd><p>Handles basic touch/mouse events</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.sleep_page.SleepPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.sleep_page.SleepPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.sleep_page.SleepPage.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.sleep_page.SleepPage.on_enter" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the backlight level before going to sleep. Backlight will be restored to this level at wake up</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="general_pages.sleep_page.SleepPage.wake_from_sleep">
+<span class="sig-name descname"><span class="pre">wake_from_sleep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#general_pages.sleep_page.SleepPage.wake_from_sleep" title="Permalink to this definition"></a></dt>
+<dd><p>Resets backlight level, wakes MCU, flushes serial connection</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-general_pages">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-general_pages" title="Permalink to this heading"></a></h2>
@@ -149,7 +607,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="freqshow_code.html" class="btn btn-neutral float-left" title="freqshow_code package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="page_templates.html" class="btn btn-neutral float-right" title="page_templates module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="global_functions.html" class="btn btn-neutral float-right" title="global_functions module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,3 +1,5 @@
+'''Retrieve battery percentage/voltage data from file and make line plot'''
+
 import pygame
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION

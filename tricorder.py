@@ -2,6 +2,7 @@
 import pygame
 pygame.init()
 import pygame.freetype
+from aaaa_a_fonts import *
 import sys
 import os
 import time, datetime
@@ -48,6 +49,7 @@ from custom_user_events import TOGGLE_SCREEN, SET_BACKLIGHT, GET_BACKLIGHT_QUICK
 from global_functions import get_wifi_name, update_cpu_stats, get_date_time, blit_some_stats
 
 # ============== import pages ==============#
+
 from page_templates import PageTemplate,PageWithoutGauge,DeviceStatsPageTemplate#,NumPadPage
 from sdr_page import SoftwareDefinedRadioPage
 from thermal_cam_page import ThermalCamPage
@@ -81,6 +83,7 @@ from brightness_slider_page import BrightnessSliderPage
 from menu_home_page import MenuHomePageClass
 from quick_menu_page import QuickMenuPage
 from file_browser_page import FileBrowserPage
+
 
 # ===================== Helper Classes =============================== #
 class thread_with_trace(threading.Thread):

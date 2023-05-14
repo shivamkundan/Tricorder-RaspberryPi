@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="paths_and_utils module" href="paths_and_utils.html" />
-    <link rel="prev" title="general_pages package" href="general_pages.html" /> 
+    <link rel="prev" title="global_functions module" href="global_functions.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,11 +46,33 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aaaa_a_fonts.html">aaaa_a_fonts module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">page_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_functions.html">global_functions module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">page_templates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#page_templates.DeviceStatsPageTemplate"><code class="docutils literal notranslate"><span class="pre">DeviceStatsPageTemplate</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#page_templates.PageTemplate"><code class="docutils literal notranslate"><span class="pre">PageTemplate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.blit_all_buttons"><code class="docutils literal notranslate"><span class="pre">PageTemplate.blit_all_buttons()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.blit_basic_buttons"><code class="docutils literal notranslate"><span class="pre">PageTemplate.blit_basic_buttons()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.blit_some_buttons"><code class="docutils literal notranslate"><span class="pre">PageTemplate.blit_some_buttons()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.handle_events"><code class="docutils literal notranslate"><span class="pre">PageTemplate.handle_events()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.init_home_button"><code class="docutils literal notranslate"><span class="pre">PageTemplate.init_home_button()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.kwarg_handler"><code class="docutils literal notranslate"><span class="pre">PageTemplate.kwarg_handler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.make_dictionary"><code class="docutils literal notranslate"><span class="pre">PageTemplate.make_dictionary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.on_enter"><code class="docutils literal notranslate"><span class="pre">PageTemplate.on_enter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageTemplate.on_exit"><code class="docutils literal notranslate"><span class="pre">PageTemplate.on_exit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#page_templates.PageWithoutGauge"><code class="docutils literal notranslate"><span class="pre">PageWithoutGauge</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageWithoutGauge.flip_button"><code class="docutils literal notranslate"><span class="pre">PageWithoutGauge.flip_button()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page_templates.PageWithoutGauge.next_frame_base"><code class="docutils literal notranslate"><span class="pre">PageWithoutGauge.next_frame_base()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html">resources package</a></li>
@@ -86,15 +108,98 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="page-templates-module">
-<h1>page_templates module<a class="headerlink" href="#page-templates-module" title="Permalink to this heading"></a></h1>
+  <div class="section" id="module-page_templates">
+<span id="page-templates-module"></span><h1>page_templates module<a class="headerlink" href="#module-page_templates" title="Permalink to this heading"></a></h1>
+<p>This file contains templates for pages.</p>
+<p>PageTemplate is the base class which handles blitting the home button</p>
+<p>and other page-specific buttons, mouse/touch handling, enter and exit.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="page_templates.DeviceStatsPageTemplate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">page_templates.</span></span><span class="sig-name descname"><span class="pre">DeviceStatsPageTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.DeviceStatsPageTemplate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>For viewing RPi stats</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="page_templates.PageTemplate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">page_templates.</span></span><span class="sig-name descname"><span class="pre">PageTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the base class for all pages</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.blit_all_buttons">
+<span class="sig-name descname"><span class="pre">blit_all_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.blit_all_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.blit_basic_buttons">
+<span class="sig-name descname"><span class="pre">blit_basic_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.blit_basic_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.blit_some_buttons">
+<span class="sig-name descname"><span class="pre">blit_some_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.blit_some_buttons" title="Permalink to this definition"></a></dt>
+<dd><p>Blit only specific buttons</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.handle_events">
+<span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.handle_events" title="Permalink to this definition"></a></dt>
+<dd><p>Handles basic touch/mouse events</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.init_home_button">
+<span class="sig-name descname"><span class="pre">init_home_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.init_home_button" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.kwarg_handler">
+<span class="sig-name descname"><span class="pre">kwarg_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.kwarg_handler" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.make_dictionary">
+<span class="sig-name descname"><span class="pre">make_dictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.make_dictionary" title="Permalink to this definition"></a></dt>
+<dd><p>A dictionary of all buttons of a page</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.on_enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageTemplate.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.on_exit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="page_templates.PageWithoutGauge">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">page_templates.</span></span><span class="sig-name descname"><span class="pre">PageWithoutGauge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageWithoutGauge" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>For more complex pages</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageWithoutGauge.flip_button">
+<span class="sig-name descname"><span class="pre">flip_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressed_button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageWithoutGauge.flip_button" title="Permalink to this definition"></a></dt>
+<dd><p>For releasing/unselecting the non-selected buttons</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="page_templates.PageWithoutGauge.next_frame_base">
+<span class="sig-name descname"><span class="pre">next_frame_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_vals</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageWithoutGauge.next_frame_base" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="general_pages.html" class="btn btn-neutral float-left" title="general_pages package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="global_functions.html" class="btn btn-neutral float-left" title="global_functions module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="paths_and_utils.html" class="btn btn-neutral float-right" title="paths_and_utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

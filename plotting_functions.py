@@ -1,6 +1,16 @@
 '''
-This file contains functions used or graphiing.
+This file contains functions used for graphiing.
 '''
+
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/freqshow_code')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
 from pygame import image
 import numpy as np
 from colors import BLACK

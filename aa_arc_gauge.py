@@ -2,8 +2,20 @@
 '''
 Contains implementation of circular Anti-Aliased ("AA") gauges with gradient coloring
 '''
-
 import pygame,sys,time
+import pygame.freetype
+pygame.init()
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/freqshow_code')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
+
+# import pygame.freetype
 # from enum import Enum
 # from pygame.sprite import Sprite
 import pygame.gfxdraw
@@ -13,6 +25,15 @@ from global_functions import get_text_dimensions
 from fonts import FONT_DIN, FONT_HELVETICA_NEUE,FONT_FEDERATION
 import numpy as np
 import logging
+
+# ====================================================== #
+HOME_DIR="/home/pi/Sensor_Scripts/pygame_code/tricorder/"
+FONTS_DIR=HOME_DIR+"assets/saved_fonts/"
+
+
+number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,\
+                pygame.K_5,pygame.K_6,pygame.K_7,pygame.K_8,pygame.K_9]
+
 
 # ---- arc parameters ---- #
 radius=35

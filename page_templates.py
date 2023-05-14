@@ -4,6 +4,16 @@ PageTemplate is the base class which handles blitting the home button\n
 and other page-specific buttons, mouse/touch handling, enter and exit.
 '''
 
+
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/freqshow_code')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
 import pygame
 from fonts import FONT_FEDERATION
 from colors import FONT_BLUE, WHITE

@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="assets package" href="assets.html" />
+    <link rel="next" title="aaaa_a_fonts module" href="aaaa_a_fonts.html" />
     <link rel="prev" title="tricorder" href="modules.html" /> 
 </head>
 
@@ -45,11 +45,29 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">aa_arc_gauge module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">aa_arc_gauge module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge"><code class="docutils literal notranslate"><span class="pre">AA_Gauge</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.adjust_gauge_lims"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.adjust_gauge_lims()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.blit_gauge"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.blit_gauge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.init_origin"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.init_origin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.init_radius"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.init_radius()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.set_origin"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.set_origin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.set_radius"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.set_radius()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.update_boundries"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.update_boundries()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.update_val"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.update_val()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.fps_manager"><code class="docutils literal notranslate"><span class="pre">fps_manager()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.handle_events"><code class="docutils literal notranslate"><span class="pre">handle_events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.my_map"><code class="docutils literal notranslate"><span class="pre">my_map()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aaaa_a_fonts.html">aaaa_a_fonts module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_functions.html">global_functions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
@@ -86,8 +104,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="aa-arc-gauge-module">
-<h1>aa_arc_gauge module<a class="headerlink" href="#aa-arc-gauge-module" title="Permalink to this heading"></a></h1>
+  <div class="section" id="module-aa_arc_gauge">
+<span id="aa-arc-gauge-module"></span><h1>aa_arc_gauge module<a class="headerlink" href="#module-aa_arc_gauge" title="Permalink to this heading"></a></h1>
+<p>Contains implementation of circular Anti-Aliased (“AA”) gauges with gradient coloring</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">AA_Gauge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(50,</span> <span class="pre">50)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_arc_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(96,</span> <span class="pre">96,</span> <span class="pre">96)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CURR_FONT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Font('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/HelveticaNeue.ttc')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">28</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FONT_COLOR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_bg_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(63,</span> <span class="pre">63,</span> <span class="pre">63)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Font('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/HelveticaNeue.ttc')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solid_bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_empty_arc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">18</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Font('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/Federation.ttf')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_font_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(144,</span> <span class="pre">144,</span> <span class="pre">144)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_lims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for an anti-aliased circular gauge with gradient coloring</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.adjust_gauge_lims">
+<span class="sig-name descname"><span class="pre">adjust_gauge_lims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.adjust_gauge_lims" title="Permalink to this definition"></a></dt>
+<dd><p>Sets min/max limits to nearest round numbers</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.blit_gauge">
+<span class="sig-name descname"><span class="pre">blit_gauge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.blit_gauge" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.init_origin">
+<span class="sig-name descname"><span class="pre">init_origin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.init_origin" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.init_radius">
+<span class="sig-name descname"><span class="pre">init_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.init_radius" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.set_origin">
+<span class="sig-name descname"><span class="pre">set_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_xy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.set_origin" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.set_radius">
+<span class="sig-name descname"><span class="pre">set_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.set_radius" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.update_boundries">
+<span class="sig-name descname"><span class="pre">update_boundries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.update_boundries" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.update_val">
+<span class="sig-name descname"><span class="pre">update_val</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.update_val" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="aa_arc_gauge.fps_manager">
+<span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">fps_manager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.fps_manager" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="aa_arc_gauge.handle_events">
+<span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.handle_events" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="aa_arc_gauge.my_map">
+<span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">my_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.my_map" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -95,7 +177,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="modules.html" class="btn btn-neutral float-left" title="tricorder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="assets.html" class="btn btn-neutral float-right" title="assets package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="aaaa_a_fonts.html" class="btn btn-neutral float-right" title="aaaa_a_fonts module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

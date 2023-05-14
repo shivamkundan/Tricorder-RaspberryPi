@@ -1,3 +1,4 @@
+'''Display barometric pressure, temperature, and est altitude readings'''
 import pygame.event as e
 from buttons import ButtonClass, slide_switch_blank,simple_button_short,simple_button_short_alt
 from aa_arc_gauge import AA_Gauge

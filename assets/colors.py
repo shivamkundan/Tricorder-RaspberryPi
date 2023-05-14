@@ -1,3 +1,4 @@
+'''This is where colors are defined'''
 import pygame
 # ----------------- Colors ----------------- #
 WHITE = (255, 255, 255)

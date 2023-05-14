@@ -1,3 +1,4 @@
+'''Visualize data from BNO055 9DOF Inertial Measurement Unit'''
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
 from colors import DARK_YELLOW,SLATE,WHITE,ORANGE
@@ -32,6 +33,7 @@ POS_Y=(510,215)
 POS_Z=(330,518)
 
 def blitRotate2(surf, image, topleft, angle):
+    '''Rotate image around central point'''
 
     rotated_image = pygame.transform.rotate(image, angle)
     new_rect = rotated_image.get_rect(center = image.get_rect(topleft = topleft).center)
@@ -40,6 +42,7 @@ def blitRotate2(surf, image, topleft, angle):
     # pygame.draw.rect(surf, (255, 0, 0), new_rect, 2)
 
 class IMUSensorPage(PageTemplate):
+    '''Multi-page visualization of IMU data'''
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
@@ -75,16 +78,18 @@ class IMUSensorPage(PageTemplate):
         self.grav_z=-1
 
     def on_enter(self):
+        '''Disconnects TSL2591's SCL connection. Both sensors won't work at the same time'''
         logging.info(f"entering {self.__class__.__name__}")
         set_tsl_scl_disconnect()
 
     def blit_page_num(self,screen):
+        '''Show subpage number'''
         FONT_FEDERATION.render_to(screen, (30, 100), str(self.curr_subpage+1)+'/'+str(self.num_pages), SLATE,style=0,size=28)
         FONT_FEDERATION.render_to(screen, (370, 640), str(self.curr_subpage+1)+'/'+str(self.num_pages), DARK_YELLOW,style=0,size=18)
 
 
     def blit_orientation(self,screen):
-
+        '''Display roll, pitch, and heading graphics'''
 
         self.heading,self.pitch,self.roll=get_imu_orientation()
 
@@ -102,7 +107,7 @@ class IMUSensorPage(PageTemplate):
         FONT_HELVETICA_NEUE.render_to(screen, (362,566+30), f'{self.roll}°', WHITE,style=0,size=26)
 
     def blit_linear_acc(self,screen):
-
+        '''Display linear acceleration data'''
         self.lin_acc_x,self.lin_acc_y,self.lin_acc_z=get_imu_lin_acc()
 
         FONT_HELVETICA_NEUE.render_to(screen, (260,160+30), f'{self.lin_acc_x}', WHITE,style=0,size=26)
@@ -120,7 +125,7 @@ class IMUSensorPage(PageTemplate):
 
 
     def blit_angular_velocity(self,screen):
-
+        '''Display angular velocity graphics'''
         self.ang_vel_x,self.ang_vel_y,self.ang_vel_z=get_imu_ang_vel()
 
         FONT_HELVETICA_NEUE.render_to(screen, POS_X, f'{self.ang_vel_x}rad/s', WHITE,style=0,size=26)
@@ -131,7 +136,7 @@ class IMUSensorPage(PageTemplate):
         screen.blit(XYZ_3D_ROT,(180,180))
 
     def blit_gravity(self,screen):
-
+        '''Display adjusted gravity graphics'''
         # e.post(REQUEST_IMU_GRAV)
         self.grav_x,self.grav_y,self.grav_z=get_imu_grav()
 
@@ -142,8 +147,8 @@ class IMUSensorPage(PageTemplate):
 
 
     def blit_accelerometer(self,screen):
-
-        self.acc_x,self.acc_y,self.acc_z=get_imu_acc()
+        '''Display magnetometer graphics'''
+        self.acc_x,accelerometer.acc_y,self.acc_z=get_imu_acc()
 
         FONT_HELVETICA_NEUE.render_to(screen, POS_X, f'{self.acc_x}m/s', WHITE,style=0,size=26)
         FONT_HELVETICA_NEUE.render_to(screen, POS_Y, f'{self.acc_y}m/s', WHITE,style=0,size=26)
@@ -151,7 +156,7 @@ class IMUSensorPage(PageTemplate):
         screen.blit(XYZ_3D, (180, 180))
 
     def blit_magnetometer(self,screen):
-
+        '''Display magnetometer graphics'''
         self.mag_x,self.mag_y,self.mag_z=get_imu_mag()
 
         FONT_HELVETICA_NEUE.render_to(screen, POS_X, f'{self.mag_x}μT', WHITE,style=0,size=26)
@@ -161,9 +166,11 @@ class IMUSensorPage(PageTemplate):
 
 
     def increment_subpage(self):
+        '''Go to next subpage'''
         if self.curr_subpage<self.num_pages:
             self.curr_subpage+=1
     def decrement_subpage(self):
+        '''Go to previous subpage'''
         if self.curr_subpage>0:
             self.curr_subpage-=1
 

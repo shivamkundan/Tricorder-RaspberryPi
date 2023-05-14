@@ -19,6 +19,7 @@ INIT_FREQ=433.0 	# Starting frequency
 WIN_SIZE=(680,720)	# Leave some top & bottom border for text and buttons
 
 class SoftwareDefinedRadioPage(PageTemplate):
+	'''For visualizing data from RTL2832 SDR dongle'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.prev_page_name='menu_home_page'
@@ -34,6 +35,7 @@ class SoftwareDefinedRadioPage(PageTemplate):
 			logging.error ('could not set freq')
 
 	def init_sdr(self):
+		'''Initialize the RTL2832 SDR lib'''
 		try:
 			fsmodel = model.FreqShowModel(WIN_SIZE[0],WIN_SIZE[1])
 			fscontroller = controller.FreqShowController(fsmodel)
@@ -45,6 +47,7 @@ class SoftwareDefinedRadioPage(PageTemplate):
 		return fscontroller, fsmodel
 
 	def set_freq_manual(self,new_freq):
+		'''Manually set a specific frequency'''
 		try:
 			# For some reason it is off by 1.2MHz
 			self.fsmodel.set_center_freq(float(new_freq)+1.2)
@@ -52,6 +55,7 @@ class SoftwareDefinedRadioPage(PageTemplate):
 			logging.error(f"error tried to set: {new_freq}")
 
 	def blit_title(self,screen):
+		'''Display page title'''
 		FONT_FEDERATION.render_to(screen, (150, 67), 'Software Defined Radio', ORANGE,style=0,size=34)
 		FONT_FEDERATION.render_to(screen, (150, 67+34+10), '24 - 1766 MHz', ORANGE,style=0,size=26)
 

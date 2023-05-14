@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="bluetooth package" href="bluetooth.html" />
-    <link rel="prev" title="aa_arc_gauge module" href="aa_arc_gauge.html" /> 
+    <link rel="prev" title="aaaa_a_fonts module" href="aaaa_a_fonts.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,11 +46,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aaaa_a_fonts.html">aaaa_a_fonts module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">assets package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#assets-buttons-module">assets.buttons module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-assets.buttons">assets.buttons module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#assets.buttons.ButtonClass"><code class="docutils literal notranslate"><span class="pre">ButtonClass</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assets.buttons.img_ld"><code class="docutils literal notranslate"><span class="pre">img_ld()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-assets.colors">assets.colors module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#assets-fonts-module">assets.fonts module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-assets.fonts">assets.fonts module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-assets.images">assets.images module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#assets.images.img_ld"><code class="docutils literal notranslate"><span class="pre">img_ld()</span></code></a></li>
 </ul>
@@ -61,6 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_functions.html">global_functions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
@@ -102,14 +108,62 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </div>
-<div class="section" id="assets-buttons-module">
-<h2>assets.buttons module<a class="headerlink" href="#assets-buttons-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-assets.buttons">
+<span id="assets-buttons-module"></span><h2>assets.buttons module<a class="headerlink" href="#module-assets.buttons" title="Permalink to this heading"></a></h2>
+<p>This file contains:</p>
+<p>-&gt; A generic class for buttons</p>
+<p>-&gt; Button definitions for all pages</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">assets.buttons.</span></span><span class="sig-name descname"><span class="pre">ButtonClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">butt_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_alt_img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Font('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/Federation.ttf')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(20,</span> <span class="pre">48,</span> <span class="pre">69,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">255,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required_cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generic class for all buttons</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass.blit_button">
+<span class="sig-name descname"><span class="pre">blit_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.blit_button" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass.press">
+<span class="sig-name descname"><span class="pre">press</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.press" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.release" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass.reset_position">
+<span class="sig-name descname"><span class="pre">reset_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.reset_position" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass.update_position">
+<span class="sig-name descname"><span class="pre">update_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos_x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.update_position" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="assets.buttons.ButtonClass.update_y_pos">
+<span class="sig-name descname"><span class="pre">update_y_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.update_y_pos" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="assets.buttons.img_ld">
+<span class="sig-prename descclassname"><span class="pre">assets.buttons.</span></span><span class="sig-name descname"><span class="pre">img_ld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.img_ld" title="Permalink to this definition"></a></dt>
+<dd><p>Neatly summarize/print all images before loading</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-assets.colors">
 <span id="assets-colors-module"></span><h2>assets.colors module<a class="headerlink" href="#module-assets.colors" title="Permalink to this heading"></a></h2>
+<p>This is where colors are defined</p>
 </div>
-<div class="section" id="assets-fonts-module">
-<h2>assets.fonts module<a class="headerlink" href="#assets-fonts-module" title="Permalink to this heading"></a></h2>
+<div class="section" id="module-assets.fonts">
+<span id="assets-fonts-module"></span><h2>assets.fonts module<a class="headerlink" href="#module-assets.fonts" title="Permalink to this heading"></a></h2>
+<p>This is where fonts are defined</p>
 </div>
 <div class="section" id="module-assets.images">
 <span id="assets-images-module"></span><h2>assets.images module<a class="headerlink" href="#module-assets.images" title="Permalink to this heading"></a></h2>
@@ -129,7 +183,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="aa_arc_gauge.html" class="btn btn-neutral float-left" title="aa_arc_gauge module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aaaa_a_fonts.html" class="btn btn-neutral float-left" title="aaaa_a_fonts module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="bluetooth.html" class="btn btn-neutral float-right" title="bluetooth package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

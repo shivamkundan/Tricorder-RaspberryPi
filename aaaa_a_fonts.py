@@ -2,6 +2,8 @@
 
 import sys, os
 import pygame
+pygame.init()
+import pygame.freetype
 # from paths_and_utils import
 
 HOME_DIR="/home/pi/Sensor_Scripts/pygame_code/tricorder/"

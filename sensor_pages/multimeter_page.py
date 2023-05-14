@@ -1,3 +1,5 @@
+'''Read and plot values of current, voltage, and power from the current sensor.'''
+
 import pygame
 from page_templates import PageTemplate
 from fonts import FONT_DIN, FONT_HELVETICA_NEUE

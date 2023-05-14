@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+'''
 # This code is from the following github user:
 # -------------------------------------------------------------------------------
 #                                                                               -
@@ -16,13 +17,14 @@
 #  https://en.wikipedia.org/wiki/ANSI_escape_code#Colors                        -
 #                                                                               -
 # -------------------------------------------------------------------------------
-
+'''
 # Imports
 import os
 import sys
 import logging
 from datetime import date
 
+from paths_and_utils import HOME_DIR
 
 class LogFormatter(logging.Formatter):
 	'''Logging formatter supporting colorized output'''
@@ -114,7 +116,7 @@ def shivams_logging(script_name="tricorder",console_log_level="debug",logfile_lo
 	if (not set_up_logging(console_log_output="stdout",
 						console_log_level=console_log_level,
 						console_log_color=True,
-						logfile_file=f"logs/{script_name}_{curr_date}.log",
+						logfile_file=f"{HOME_DIR}/logs/{script_name}_{curr_date}.log",
 						logfile_log_level=logfile_log_level,
 						logfile_log_color=False,
 						# log_line_template="%(color_on)s[%(created)d] [%(threadName)s] [%(levelname)-8s] %(message)s%(color_off)s")):

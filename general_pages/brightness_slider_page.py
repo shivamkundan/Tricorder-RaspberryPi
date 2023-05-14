@@ -1,3 +1,5 @@
+'''Brightness backlight adjustment'''
+
 import pygame
 import math
 from page_templates import PageTemplate
