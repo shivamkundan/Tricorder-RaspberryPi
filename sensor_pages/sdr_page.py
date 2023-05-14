@@ -58,14 +58,12 @@ class SoftwareDefinedRadioPage(PageTemplate):
 
 	def next_frame(self,screen,curr_events,**kwargs):
 
-
 		if ("text" in kwargs.keys()):
 			print (kwargs)
 			self.set_freq_manual(kwargs["text"])
 
 		self.next_screen_name=self.name
 		self.kwarg_handler(kwargs)
-
 		self.blit_all_buttons(screen)
 		pressed_button=self.handle_events(screen,curr_events)
 

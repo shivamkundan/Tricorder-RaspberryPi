@@ -112,7 +112,7 @@ def kill(self):
 	self.killed = True
 
 class DeviceInfoClass():
-# For holding information about the raspberry pi
+# For holding execution information about the raspberry pi
 	def __init__(self):
 		self.wifi_name=get_wifi_name()
 		# self.day,self.date,self.time=get_date_time()
@@ -143,6 +143,7 @@ class DeviceInfoClass():
 		return b_img
 
 	def read_battery(self,screen,frame_count):
+	# Read battery voltage & temperature -> display -> log to file
 		# ------ Battery ------ #
 		screen.blit(no_battery,(10,5))
 
@@ -167,6 +168,25 @@ class DeviceInfoClass():
 		except Exception as e:
 			logging.error (e)
 
+	def blit_bluetooth_count(self,screen):
+		# Show bluetooth count
+		count_txt=FONT_18.render(str(bluetooth_count),1,WHITE)
+		screen.blit(count_txt,(200,5))
+
+	def blit_write_count(self,screen):
+		# Show write count
+		txt_surf,w3,h=get_text_dimensions(text='WR: '+str(self.wr_count),font_style=FONT_OKUDA,font_color=WHITE,style=0,font_size=22)
+		screen.blit(txt_surf,(width-w-w2-w3-60,11))
+
+	def blit_backlight_level(self,screen):
+		curr_brightness_pct=str(int(round(100*(self.curr_brightness/255),0)))+"%"
+		FONT_OKUDA.render_to(screen, (500+28, 11), str(curr_brightness_pct), WHITE,style=1,size=26)
+		screen.blit(brightness_icon,(500,6))
+
+	def blit_mouse_pos(self,screen):
+		mouse_pos_txt=smallfont.render('(x,y): '+str(pygame.mouse.get_pos()), True , WHITE)
+		screen.blit(mouse_pos_txt , (180,36))
+
 	def update(self,screen,frame_count,bluetooth_count):
 
 		if frame_count%self.wifi_tics==0:
@@ -179,26 +199,17 @@ class DeviceInfoClass():
 		width=screen.get_width()	# Used for aligning text
 
 		# Mouse pos
-		mouse_pos_txt=smallfont.render('(x,y): '+str(pygame.mouse.get_pos()), True , WHITE)
-		screen.blit(mouse_pos_txt , (180,36))
+		self.blit_mouse_pos(screen)
 
 		day,date,hour_sec=get_date_time()
 
+		# Okudagrams, time, BT, and wifi
 		w,w2=blit_some_stats(screen,width,day,date,hour_sec,str(round(clock.get_fps(),2)),self.cpu_pct,self.cpu_temp,self.wifi_name,'I',self.get_bluetooth_status())
 
-		# # Show bluetooth count
-		# count_txt=FONT_18.render(str(bluetooth_count),1,WHITE)
-		# screen.blit(count_txt,(200,5))
-
-		# # Show write count
-		# txt_surf,w3,h=get_text_dimensions(text='WR: '+str(self.wr_count),font_style=FONT_OKUDA,font_color=WHITE,style=0,font_size=22)
-		# screen.blit(txt_surf,(width-w-w2-w3-60,11))
-
 		# Backlight
-		curr_brightness_pct=str(int(round(100*(self.curr_brightness/255),0)))+"%"
-		FONT_OKUDA.render_to(screen, (500+28, 11), str(curr_brightness_pct), WHITE,style=1,size=26)
-		screen.blit(brightness_icon,(500,6))
+		self.blit_backlight_level(screen)
 
+		# Battery
 		self.read_battery(screen,frame_count)
 
 # ==================================================================== #
