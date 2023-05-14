@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 import pygame,sys,time
+'''
+Contains implementation of Anti-Aliased ("AA") gauges with gradient coloring
+'''
+
 # from enum import Enum
 # from pygame.sprite import Sprite
 import pygame.gfxdraw
