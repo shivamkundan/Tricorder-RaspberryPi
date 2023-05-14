@@ -79,6 +79,7 @@ from brightness_slider_page import BrightnessSliderPage
 from menu_home_page import MenuHomePageClass
 from quick_menu_page import QuickMenuPage
 from file_browser_page import FileBrowserPage
+
 # ===================== Helper Classes =============================== #
 class thread_with_trace(threading.Thread):
 	def __init__(self, *args, **keywords):

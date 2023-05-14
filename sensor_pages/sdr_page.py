@@ -52,6 +52,10 @@ class SoftwareDefinedRadioPage(PageTemplate):
 		except ValueError:
 			logging.error(f"error tried to set: {new_freq}")
 
+	def blit_title(self,screen):
+		FONT_FEDERATION.render_to(screen, (150, 67), 'Software Defined Radio', ORANGE,style=0,size=34)
+		FONT_FEDERATION.render_to(screen, (150, 67+34+10), '24 - 1766 MHz', ORANGE,style=0,size=26)
+
 	def next_frame(self,screen,curr_events,**kwargs):
 
 
@@ -68,8 +72,6 @@ class SoftwareDefinedRadioPage(PageTemplate):
 		if pressed_button!=None:
 			if pressed_button.name=='blank':
 				self.fscontroller.toggle_main()
-
-		if pressed_button!=None:
 			if pressed_button.name=='numpad':
 				self.next_screen_name='numpad_page'
 				self.kwargs['prev_page_name']=self.name
@@ -80,11 +82,7 @@ class SoftwareDefinedRadioPage(PageTemplate):
 		if self.fscontroller!=None:
 			self.fscontroller.current().render(screen)
 
-
-
-		FONT_FEDERATION.render_to(screen, (150, 67), 'Software Defined Radio', ORANGE,style=0,size=34)
-		FONT_FEDERATION.render_to(screen, (150, 67+34+10), '24 - 1766 MHz', ORANGE,style=0,size=26)
-		# FONT_FEDERATION.render_to(screen, (150, 67+34+10), 'SDR RTL2832 w/R820T', ORANGE,style=0,size=40)
+		self.blit_title(screen)
 
 
 		return self.next_screen_name,self.kwargs
