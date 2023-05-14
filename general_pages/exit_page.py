@@ -1,3 +1,6 @@
+'''
+Dummy page for ensuring clean exit.
+'''
 import pygame
 import logging
 import time, datetime
