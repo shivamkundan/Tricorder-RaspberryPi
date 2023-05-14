@@ -1,4 +1,6 @@
-
+'''
+This file contains functions used or graphiing.
+'''
 from pygame import image
 import numpy as np
 from colors import BLACK
@@ -20,6 +22,7 @@ mpl.rcParams['ytick.color'] = COLOR
 
 # ==================== Plotting Functions ============================ #
 def plot2img(fig,ax,canvas):
+    '''Converts matplotlib plot to image'''
     ax.set_facecolor('black')
     # ax.patch.set_alpha(1)
     fig.patch.set_facecolor('black')
@@ -34,6 +37,7 @@ def plot2img(fig,ax,canvas):
     return x
 
 def pie_plot(fig,ax,canvas,color_list,pie_labels,curr_vals):
+    '''Makes pie plot'''
     ax.clear()
     COLOR = (0.75,0.75,0.75)
     mpl.rcParams['font.size'] = 12
@@ -63,6 +67,7 @@ def pie_plot(fig,ax,canvas,color_list,pie_labels,curr_vals):
     return (plot2img(fig,ax,canvas))
 
 def bar_plot(fig,ax,canvas,x_labels,color_list,curr_vals,ylabel=''):
+    '''Makes bar plot'''
     ax.clear()
     ax.cla()
     ax.set_xticks(np.arange(len(x_labels)))#, rotation=0,size=12)
@@ -76,7 +81,7 @@ def bar_plot(fig,ax,canvas,x_labels,color_list,curr_vals,ylabel=''):
     return (plot2img(fig,ax,canvas))
 
 def line_plot(fig,ax,canvas,color_list,x_array,array_dict):
-
+    '''Makes line plot'''
     ax.clear()
     ax.cla()
     top=0

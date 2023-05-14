@@ -11,18 +11,20 @@ from sys import exit
 start_time_overall=time.time()
 
 def wrap_up():
-		print ('\nLive long & prosper... bye!')
-		t=elapsed_time(print_res=True)
+	'''Prints a nice goodbye message and elapsed time'''
+	print ('\nLive long & prosper... bye!')
+	t=elapsed_time(print_res=True)
 
 def elapsed_time(print_res=False):
-		end_time=round(time.time()-start_time_overall,2)
-		elapsed_time=(datetime.timedelta(seconds=round(end_time)))
-		if (print_res):
-			logging.info (f'time elapsed: {elapsed_time} s')
-		return elapsed_time
+	'''Calculates total runtime from start of program'''
+	end_time=round(time.time()-start_time_overall,2)
+	elapsed_time=(datetime.timedelta(seconds=round(end_time)))
+	if (print_res):
+		logging.info (f'time elapsed: {elapsed_time} s')
+	return elapsed_time
 
-# Faux page for clean exit
 class ExitPage(PageTemplate):
+	'''Faux page for clean exit'''
 	def __init__(self,name):
 		super().__init__(name)
 

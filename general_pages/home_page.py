@@ -19,7 +19,9 @@ from plotting_functions import pie_plot
 
 
 class HomePage(PageTemplate):
+    '''A page to show many different readings from many different sensors'''
     def __init__(self,name):
+        '''Constructor'''
         super().__init__(name)
         self.client_sock=None
 
@@ -76,11 +78,13 @@ class HomePage(PageTemplate):
         self.prev_page_name='menu_home_page'
 
     def on_enter(self):
+        '''Turns on relevant mosfets on entry'''
         e.post(POWER_TSL_ON)
         e.post(POWER_PM25_ON)
         logging.info ("homepage enter")
 
     def on_exit(self):
+        '''Turns off relevant mosfets on exit'''
         e.post(POWER_PM25_OFF)
 
     def init_sensor_tics(self):

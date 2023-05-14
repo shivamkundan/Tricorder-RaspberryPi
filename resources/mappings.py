@@ -1,5 +1,5 @@
 '''
-The RaspberryPi and MCU communicate by exchanging pre-determined codes over wired/bluetooth serial connections.
+The RaspberryPi and MCU communicate by exchanging pre-determined codes over wired/bluetooth serial connections.\n
 Each functopm (output or input) is represented by unique identifier.
 '''
 

@@ -1,3 +1,6 @@
+'''
+This file contains paths and other definitions.
+'''
 import pygame
 clock=pygame.time.Clock()
 

@@ -1,3 +1,6 @@
+import sys, os
+sys.path.append(os.path.abspath("../"))
+
 import select
 from bluetooth import *
 import numpy as np
@@ -105,6 +108,7 @@ class ThermalCamPage(PageTemplate):
         FONT_FEDERATION.render_to(screen, (150, 117), 'MLX90640', DARK_YELLOW,style=0,size=34)
 
     def thermal_plotter(self,frame):
+        '''Works in a different way than all other sensor-MCU communication'''
         self.fig.canvas.flush_events()
 
         plt.tick_params(left=False)

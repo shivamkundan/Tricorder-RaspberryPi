@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>freqshow_code package &mdash; Tricorder-RaspberryPi 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="general_pages package" href="general_pages.html" />
+    <link rel="prev" title="bluetooth package" href="bluetooth.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Tricorder-RaspberryPi
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">freqshow_code package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-freqshow_code">freqshow_code module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freqshow-code-controller-module">freqshow_code.controller module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freqshow-code-freqshow-module">freqshow_code.freqshow module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freqshow-code-model-module">freqshow_code.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-freqshow_code.ui">freqshow_code.ui module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freqshow_code.ui.Button"><code class="docutils literal notranslate"><span class="pre">Button</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freqshow_code.ui.ButtonGrid"><code class="docutils literal notranslate"><span class="pre">ButtonGrid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freqshow_code.ui.align"><code class="docutils literal notranslate"><span class="pre">align()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freqshow_code.ui.get_font"><code class="docutils literal notranslate"><span class="pre">get_font()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freqshow_code.ui.render_text"><code class="docutils literal notranslate"><span class="pre">render_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freqshow-code-views-module">freqshow_code.views module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-0">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">resources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="screenshots.html">screenshots package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensor_pages.html">sensor_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serial_manager.html">serial_manager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tricorder.html">tricorder module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Tricorder-RaspberryPi</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">tricorder</a></li>
+      <li class="breadcrumb-item active">freqshow_code package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/freqshow_code.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="freqshow-code-package">
+<h1>freqshow_code package<a class="headerlink" href="#freqshow-code-package" title="Permalink to this heading"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-freqshow_code">
+<span id="freqshow-code-module"></span><h2>freqshow_code module<a class="headerlink" href="#module-freqshow_code" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="freqshow-code-controller-module">
+<h2>freqshow_code.controller module<a class="headerlink" href="#freqshow-code-controller-module" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="freqshow-code-freqshow-module">
+<h2>freqshow_code.freqshow module<a class="headerlink" href="#freqshow-code-freqshow-module" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="freqshow-code-model-module">
+<h2>freqshow_code.model module<a class="headerlink" href="#freqshow-code-model-module" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-freqshow_code.ui">
+<span id="freqshow-code-ui-module"></span><h2>freqshow_code.ui module<a class="headerlink" href="#module-freqshow_code.ui" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">Button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.Button" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.bg_color">
+<span class="sig-name descname"><span class="pre">bg_color</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(60,</span> <span class="pre">60,</span> <span class="pre">60,</span> <span class="pre">0)</span></em><a class="headerlink" href="#freqshow_code.ui.Button.bg_color" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.border_color">
+<span class="sig-name descname"><span class="pre">border_color</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(200,</span> <span class="pre">200,</span> <span class="pre">200)</span></em><a class="headerlink" href="#freqshow_code.ui.Button.border_color" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.border_px">
+<span class="sig-name descname"><span class="pre">border_px</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#freqshow_code.ui.Button.border_px" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.click">
+<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.Button.click" title="Permalink to this definition"></a></dt>
+<dd><p>Click handler will fire the button’s click handler if the provided
+location x, y tuple is inside the button.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.fg_color">
+<span class="sig-name descname"><span class="pre">fg_color</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></em><a class="headerlink" href="#freqshow_code.ui.Button.fg_color" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.font_size">
+<span class="sig-name descname"><span class="pre">font_size</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></em><a class="headerlink" href="#freqshow_code.ui.Button.font_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.padding_px">
+<span class="sig-name descname"><span class="pre">padding_px</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#freqshow_code.ui.Button.padding_px" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freqshow_code.ui.Button.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.Button.render" title="Permalink to this definition"></a></dt>
+<dd><p>Render the button on the provided surface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">ButtonGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid.add" title="Permalink to this definition"></a></dt>
+<dd><p>Add a Button to the grid at the specified row and col position in
+the grid.  Row and col are 0-based indexes.  Buttons can span multiple
+rows and columns by providing optional rowspan and colspan parameters.
+Any other keyword arguments are passed to the Button constructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid.click">
+<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid.click" title="Permalink to this definition"></a></dt>
+<dd><p>Handle click events at the provided location tuple (x, y) for all the
+buttons.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid.render" title="Permalink to this definition"></a></dt>
+<dd><p>Render buttons on the provided surface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freqshow_code.ui.align">
+<span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizontal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hpad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.align" title="Permalink to this definition"></a></dt>
+<dd><p>Return tuple of x, y coordinates to render the provided child rect 
+aligned inside the parent rect using the provided horizontal and vertical
+alignment.  Each alignment value can be ALIGN_LEFT, ALIGNT_TOP, ALIGN_CENTER,
+ALIGN_RIGHT, or ALIGN_BOTTOM.  Can also specify optional horizontal padding
+(hpad) and vertical padding (vpad).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freqshow_code.ui.get_font">
+<span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">get_font</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.get_font" title="Permalink to this definition"></a></dt>
+<dd><p>Get font of the specified size.  Will cache fonts internally for faster
+repeated access to them.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freqshow_code.ui.render_text">
+<span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">render_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.render_text" title="Permalink to this definition"></a></dt>
+<dd><p>Render the provided text to a surface which is returned.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="freqshow-code-views-module">
+<h2>freqshow_code.views module<a class="headerlink" href="#freqshow-code-views-module" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-0">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-0" title="Permalink to this heading"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bluetooth.html" class="btn btn-neutral float-left" title="bluetooth package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="general_pages.html" class="btn btn-neutral float-right" title="general_pages package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Shivam Kundan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
 import pygame
 from paths_and_utils import FONTS_DIR
 
@@ -7,7 +16,8 @@ number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,\
                 pygame.K_5,pygame.K_6,pygame.K_7,pygame.K_8,pygame.K_9]
 
 # ----------------- Fonts ----------------- #
-FONT = pygame.font.SysFont('HelveticaNeue', 12,bold=False)
+FONT = pygame.font.SysFont('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/HelveticaNeue.ttf', 12,bold=False)
+# FONT = pygame.font.SysFont('Helvetica', 12)
 FPS_FONT = pygame.font.SysFont('Helvetica', 27,bold=True)
 
 FONT_6 = pygame.font.SysFont('Helvetica', 6)

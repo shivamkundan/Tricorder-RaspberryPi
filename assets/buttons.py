@@ -1,8 +1,17 @@
 '''
-Contains:
-A generic class for buttons
-Button defa for all pages
+This file contains:\n
+-> A generic class for buttons\n
+-> Button definitions for all pages
 '''
+
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
 
 import pygame
 import os
@@ -12,7 +21,7 @@ import math  #for calculating no. of pages
 from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
 
 class ButtonClass():
-# Generic class for all buttons
+	'''Generic class for all buttons'''
 	def __init__(self,butt_id,button_img,alt_img,pos_x,pos_y,selected_img=None,selected_alt_img=None,cooldown_val=5,icon=None,text='',font=FONT_FEDERATION,style=0,font_size=16,name='',font_color=FONT_BLUE,selected=False,selected_color=GREEN,required_cooldown=10,align_left=False):
 		self.butt_id=butt_id
 		self.img=button_img
@@ -110,7 +119,7 @@ class ButtonClass():
 BTN_IMG_LIST=[]	# global list of loaded images
 
 def img_ld(input_img):
-# Neatly summarize/print all images before loading
+	'''Neatly summarize/print all images before loading'''
 	# BTN_IMG_LIST.append(input_img)
 	return pygame.image.load(input_img)
 

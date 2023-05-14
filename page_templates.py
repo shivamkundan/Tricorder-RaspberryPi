@@ -1,6 +1,6 @@
 '''
-This file contains templates for pages.
-PageTemplate is the base class which handles blitting the home button
+This file contains templates for pages.\n
+PageTemplate is the base class which handles blitting the home button\n
 and other page-specific buttons, mouse/touch handling, enter and exit.
 '''
 
@@ -21,7 +21,7 @@ from paths_and_utils import PERIPHERAL_MODE
 
 # ===============================Page Templates======================= #
 class PageTemplate():
-	# This is the base class for all pages
+	'''This is the base class for all pages'''
 	def __init__(self,name):
 		self.name=name
 		self.next_screen_name=self.name
@@ -46,10 +46,12 @@ class PageTemplate():
 			button.blit_button(screen)
 
 	def blit_some_buttons(self,screen,button_list):
+		'''Blit only specific buttons'''
 		for button in button_list:
 			button.blit_button(screen)
 
 	def make_dictionary(self):
+		'''A dictionary of all buttons of a page'''
 		butt_dict={}
 		for button in self.button_list:
 			butt_dict[button.name]=button
@@ -71,7 +73,7 @@ class PageTemplate():
 		logging.info(f"entering {self.__class__.__name__}")
 
 	def handle_events(self,screen,curr_events):
-
+		'''Handles basic touch/mouse events'''
 		for event in curr_events:
 			# ---------------------------- Finger / Mouse Events ---------------------------- #
 			if (event.type==pygame.FINGERDOWN or event.type==pygame.MOUSEBUTTONDOWN):
@@ -107,8 +109,9 @@ class PageTemplate():
 				return None
 
 class PageWithoutGauge(PageTemplate):
-	# For more complex pages
+	'''For more complex pages'''
 	def __init__(self,name,color_list=[],names_list=[]):
+		'''Constructor'''
 		super().__init__(name)
 		self.names_list=names_list
 		self.color_list=color_list
@@ -161,7 +164,7 @@ class PageWithoutGauge(PageTemplate):
 		self.line_surf=pygame.Surface((1,1))
 
 	def flip_button(self,pressed_button):
-		# For releasing the non selected buttons
+		'''For releasing/unselecting the non-selected buttons'''
 		if pressed_button.selected:
 			return
 		else:
@@ -258,6 +261,7 @@ class PageWithoutGauge(PageTemplate):
 		self.frame_count+=1
 
 class DeviceStatsPageTemplate(PageTemplate):
+	'''For viewing RPi stats'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.button_list+=NAV_BUTTONS+NAV_BUTTONS_VERTICAL

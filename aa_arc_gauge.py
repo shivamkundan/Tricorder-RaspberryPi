@@ -1,8 +1,17 @@
 #!/usr/bin/python3
 import pygame,sys,time
 '''
-Contains implementation of Anti-Aliased ("AA") gauges with gradient coloring
+Contains implementation of circular Anti-Aliased ("AA") gauges with gradient coloring
 '''
+
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
 
 # from enum import Enum
 # from pygame.sprite import Sprite
@@ -24,6 +33,7 @@ def my_map(x,in_min,in_max,out_min,out_max):
   return (float(x) - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 class AA_Gauge():
+    '''Class for an anti-aliased circular gauge with gradient coloring'''
     def __init__(self,
         screen,
         curr_val=None,
@@ -53,7 +63,7 @@ class AA_Gauge():
         title_font_color=LIGHT_GREY,
         auto_lims=True,
         offset=45):
-
+        '''Constructor'''
         self.screen=screen
         self.curr_val=curr_val
         self.in_min=in_min
@@ -119,6 +129,7 @@ class AA_Gauge():
         self.bounding_rect=[0,0,(d+w*2),(d+w*2)]
 
     def adjust_gauge_lims(self):
+        '''Sets min/max limits to nearest round numbers'''
         lower_lims=[0,0.1,1,10,100,1000,10000,100000]
         upper_lims=[0.1,1,10,100,1000,10000,100000,1000000]
         for low,up in zip(lower_lims,upper_lims):

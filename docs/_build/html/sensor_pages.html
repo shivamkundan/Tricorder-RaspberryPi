@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sensor_pages package &mdash; Tricorder-RaspberryPi 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="serial_manager module" href="serial_manager.html" />
+    <link rel="prev" title="screenshots package" href="screenshots.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Tricorder-RaspberryPi
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">resources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="screenshots.html">screenshots package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">sensor_pages package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.battery_page">sensor_pages.battery_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.battery_page.BatterySensorPage"><code class="docutils literal notranslate"><span class="pre">BatterySensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.fly_page">sensor_pages.fly_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.FlyPage"><code class="docutils literal notranslate"><span class="pre">FlyPage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.blit_column_txt"><code class="docutils literal notranslate"><span class="pre">blit_column_txt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.compute_positions"><code class="docutils literal notranslate"><span class="pre">compute_positions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.txt_dims"><code class="docutils literal notranslate"><span class="pre">txt_dims()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.fly_page_vars">sensor_pages.fly_page_vars module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.gps_page">sensor_pages.gps_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.gps_page.GPSSensorPage"><code class="docutils literal notranslate"><span class="pre">GPSSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.imu_page">sensor_pages.imu_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.imu_page.IMUSensorPage"><code class="docutils literal notranslate"><span class="pre">IMUSensorPage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.imu_page.blitRotate2"><code class="docutils literal notranslate"><span class="pre">blitRotate2()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.lidar_page">sensor_pages.lidar_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.lidar_page.LidarSensorPage"><code class="docutils literal notranslate"><span class="pre">LidarSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.multimeter_page">sensor_pages.multimeter_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.multimeter_page.MultimeterPage"><code class="docutils literal notranslate"><span class="pre">MultimeterPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.noise_page">sensor_pages.noise_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.noise_page.NoiseSensorPage"><code class="docutils literal notranslate"><span class="pre">NoiseSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.object_detection_page">sensor_pages.object_detection_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.object_detection_page.ObjectDetectionPage"><code class="docutils literal notranslate"><span class="pre">ObjectDetectionPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.pm25_page">sensor_pages.pm25_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.pm25_page.PM25Page"><code class="docutils literal notranslate"><span class="pre">PM25Page</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.pressure_page">sensor_pages.pressure_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.pressure_page.PressureSensorPage"><code class="docutils literal notranslate"><span class="pre">PressureSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.radiation_page">sensor_pages.radiation_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.radiation_page.GeigerCounterPage"><code class="docutils literal notranslate"><span class="pre">GeigerCounterPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-pages-sdr-page-module">sensor_pages.sdr_page module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.spectrometer_page">sensor_pages.spectrometer_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage"><code class="docutils literal notranslate"><span class="pre">SpecPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.temp_humid_page">sensor_pages.temp_humid_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.temp_humid_page.TempHumidPage"><code class="docutils literal notranslate"><span class="pre">TempHumidPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.thermal_cam_page">sensor_pages.thermal_cam_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.thermal_cam_page.ThermalCamPage"><code class="docutils literal notranslate"><span class="pre">ThermalCamPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.uv_page">sensor_pages.uv_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.uv_page.UVSensorPage"><code class="docutils literal notranslate"><span class="pre">UVSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.vis_ir_page">sensor_pages.vis_ir_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.vis_ir_page.LightSensorPage"><code class="docutils literal notranslate"><span class="pre">LightSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.voc_page">sensor_pages.voc_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.voc_page.VOCSensorPage"><code class="docutils literal notranslate"><span class="pre">VOCSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.weight_page">sensor_pages.weight_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.weight_page.WeightSensorPage"><code class="docutils literal notranslate"><span class="pre">WeightSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.wind_page">sensor_pages.wind_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.wind_page.WindSensorPage"><code class="docutils literal notranslate"><span class="pre">WindSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="serial_manager.html">serial_manager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tricorder.html">tricorder module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Tricorder-RaspberryPi</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">tricorder</a></li>
+      <li class="breadcrumb-item active">sensor_pages package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sensor_pages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="sensor-pages-package">
+<h1>sensor_pages package<a class="headerlink" href="#sensor-pages-package" title="Permalink to this heading"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-sensor_pages.battery_page">
+<span id="sensor-pages-battery-page-module"></span><h2>sensor_pages.battery_page module<a class="headerlink" href="#module-sensor_pages.battery_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.battery_page.BatterySensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.battery_page.</span></span><span class="sig-name descname"><span class="pre">BatterySensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.battery_page.BatterySensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.battery_page.BatterySensorPage.make_plot">
+<span class="sig-name descname"><span class="pre">make_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.battery_page.BatterySensorPage.make_plot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.battery_page.BatterySensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.battery_page.BatterySensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.battery_page.BatterySensorPage.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.battery_page.BatterySensorPage.on_enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.fly_page">
+<span id="sensor-pages-fly-page-module"></span><h2>sensor_pages.fly_page module<a class="headerlink" href="#module-sensor_pages.fly_page" title="Permalink to this heading"></a></h2>
+<p>This page mimics the avionics displays used in airplanes.
+Eg: garmin-xxxx</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.fly_page.</span></span><span class="sig-name descname"><span class="pre">FlyPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.blit_art_horizon">
+<span class="sig-name descname"><span class="pre">blit_art_horizon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.blit_art_horizon" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.blit_env_data">
+<span class="sig-name descname"><span class="pre">blit_env_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.blit_env_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.blit_gps_pos_data">
+<span class="sig-name descname"><span class="pre">blit_gps_pos_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.blit_gps_pos_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.blit_sensor_data">
+<span class="sig-name descname"><span class="pre">blit_sensor_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.blit_sensor_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.blit_vertical_column">
+<span class="sig-name descname"><span class="pre">blit_vertical_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rectangle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.blit_vertical_column" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.get_sensor_data">
+<span class="sig-name descname"><span class="pre">get_sensor_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.get_sensor_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.FlyPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.FlyPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.blit_column_txt">
+<span class="sig-prename descclassname"><span class="pre">sensor_pages.fly_page.</span></span><span class="sig-name descname"><span class="pre">blit_column_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.blit_column_txt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.compute_positions">
+<span class="sig-prename descclassname"><span class="pre">sensor_pages.fly_page.</span></span><span class="sig-name descname"><span class="pre">compute_positions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.compute_positions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensor_pages.fly_page.txt_dims">
+<span class="sig-prename descclassname"><span class="pre">sensor_pages.fly_page.</span></span><span class="sig-name descname"><span class="pre">txt_dims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.fly_page.txt_dims" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.fly_page_vars">
+<span id="sensor-pages-fly-page-vars-module"></span><h2>sensor_pages.fly_page_vars module<a class="headerlink" href="#module-sensor_pages.fly_page_vars" title="Permalink to this heading"></a></h2>
+<p>This file contains pre-computed vals for fly_page (to speed up execution).
+Source computation is in the comments at the end.</p>
+</div>
+<div class="section" id="module-sensor_pages.gps_page">
+<span id="sensor-pages-gps-page-module"></span><h2>sensor_pages.gps_page module<a class="headerlink" href="#module-sensor_pages.gps_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.gps_page.</span></span><span class="sig-name descname"><span class="pre">GPSSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.blit_altitude_speed">
+<span class="sig-name descname"><span class="pre">blit_altitude_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.blit_altitude_speed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.blit_icons">
+<span class="sig-name descname"><span class="pre">blit_icons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.blit_icons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.blit_lat_long">
+<span class="sig-name descname"><span class="pre">blit_lat_long</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.blit_lat_long" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.blit_num_sats">
+<span class="sig-name descname"><span class="pre">blit_num_sats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.blit_num_sats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.draw_location_lines">
+<span class="sig-name descname"><span class="pre">draw_location_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.draw_location_lines" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.gps_page.GPSSensorPage.update_gps_data">
+<span class="sig-name descname"><span class="pre">update_gps_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.gps_page.GPSSensorPage.update_gps_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.imu_page">
+<span id="sensor-pages-imu-page-module"></span><h2>sensor_pages.imu_page module<a class="headerlink" href="#module-sensor_pages.imu_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.imu_page.</span></span><span class="sig-name descname"><span class="pre">IMUSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_accelerometer">
+<span class="sig-name descname"><span class="pre">blit_accelerometer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_accelerometer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_angular_velocity">
+<span class="sig-name descname"><span class="pre">blit_angular_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_angular_velocity" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_gravity">
+<span class="sig-name descname"><span class="pre">blit_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_gravity" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_linear_acc">
+<span class="sig-name descname"><span class="pre">blit_linear_acc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_linear_acc" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_magnetometer">
+<span class="sig-name descname"><span class="pre">blit_magnetometer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_magnetometer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_orientation">
+<span class="sig-name descname"><span class="pre">blit_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_orientation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.blit_page_num">
+<span class="sig-name descname"><span class="pre">blit_page_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.blit_page_num" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.decrement_subpage">
+<span class="sig-name descname"><span class="pre">decrement_subpage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.decrement_subpage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.increment_subpage">
+<span class="sig-name descname"><span class="pre">increment_subpage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.increment_subpage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.IMUSensorPage.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.IMUSensorPage.on_enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensor_pages.imu_page.blitRotate2">
+<span class="sig-prename descclassname"><span class="pre">sensor_pages.imu_page.</span></span><span class="sig-name descname"><span class="pre">blitRotate2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topleft</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.imu_page.blitRotate2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.lidar_page">
+<span id="sensor-pages-lidar-page-module"></span><h2>sensor_pages.lidar_page module<a class="headerlink" href="#module-sensor_pages.lidar_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.lidar_page.LidarSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.lidar_page.</span></span><span class="sig-name descname"><span class="pre">LidarSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.lidar_page.LidarSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.lidar_page.LidarSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.lidar_page.LidarSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.multimeter_page">
+<span id="sensor-pages-multimeter-page-module"></span><h2>sensor_pages.multimeter_page module<a class="headerlink" href="#module-sensor_pages.multimeter_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.multimeter_page.</span></span><span class="sig-name descname"><span class="pre">MultimeterPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.array_handler">
+<span class="sig-name descname"><span class="pre">array_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.array_handler" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.blit_all">
+<span class="sig-name descname"><span class="pre">blit_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_surf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.blit_all" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.render_generic_graph">
+<span class="sig-name descname"><span class="pre">render_generic_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.render_generic_graph" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.noise_page">
+<span id="sensor-pages-noise-page-module"></span><h2>sensor_pages.noise_page module<a class="headerlink" href="#module-sensor_pages.noise_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.noise_page.NoiseSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.noise_page.</span></span><span class="sig-name descname"><span class="pre">NoiseSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.noise_page.NoiseSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.noise_page.NoiseSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.noise_page.NoiseSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.object_detection_page">
+<span id="sensor-pages-object-detection-page-module"></span><h2>sensor_pages.object_detection_page module<a class="headerlink" href="#module-sensor_pages.object_detection_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.object_detection_page.ObjectDetectionPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.object_detection_page.</span></span><span class="sig-name descname"><span class="pre">ObjectDetectionPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.object_detection_page.ObjectDetectionPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.object_detection_page.ObjectDetectionPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.object_detection_page.ObjectDetectionPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.object_detection_page.ObjectDetectionPage.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.object_detection_page.ObjectDetectionPage.on_exit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.object_detection_page.ObjectDetectionPage.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.object_detection_page.ObjectDetectionPage.run" title="Permalink to this definition"></a></dt>
+<dd><p>Continuously run inference on images acquired from the camera.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>model: Name of the TFLite object detection model.
+camera_id: The camera id to be passed to OpenCV.
+width: The width of the frame captured from the camera.
+height: The height of the frame captured from the camera.
+num_threads: The number of CPU threads to run the model.
+enable_edgetpu: True/False whether the model is a EdgeTPU model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.pm25_page">
+<span id="sensor-pages-pm25-page-module"></span><h2>sensor_pages.pm25_page module<a class="headerlink" href="#module-sensor_pages.pm25_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.pm25_page.PM25Page">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.pm25_page.</span></span><span class="sig-name descname"><span class="pre">PM25Page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pm25_page.PM25Page" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageWithoutGauge</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pm25_page.PM25Page.blit_title">
+<span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pm25_page.PM25Page.blit_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pm25_page.PM25Page.info_subpage">
+<span class="sig-name descname"><span class="pre">info_subpage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pm25_page.PM25Page.info_subpage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pm25_page.PM25Page.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pm25_page.PM25Page.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pm25_page.PM25Page.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pm25_page.PM25Page.on_enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pm25_page.PM25Page.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pm25_page.PM25Page.on_exit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.pressure_page">
+<span id="sensor-pages-pressure-page-module"></span><h2>sensor_pages.pressure_page module<a class="headerlink" href="#module-sensor_pages.pressure_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.pressure_page.</span></span><span class="sig-name descname"><span class="pre">PressureSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.blit_current_settings">
+<span class="sig-name descname"><span class="pre">blit_current_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.blit_current_settings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.blit_menu">
+<span class="sig-name descname"><span class="pre">blit_menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.blit_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.blit_title">
+<span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.blit_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.flip_selection">
+<span class="sig-name descname"><span class="pre">flip_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressed_button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.flip_selection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.init_buttons">
+<span class="sig-name descname"><span class="pre">init_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.init_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.init_gauges">
+<span class="sig-name descname"><span class="pre">init_gauges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.init_gauges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.pressure_page.PressureSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.pressure_page.PressureSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.radiation_page">
+<span id="sensor-pages-radiation-page-module"></span><h2>sensor_pages.radiation_page module<a class="headerlink" href="#module-sensor_pages.radiation_page" title="Permalink to this heading"></a></h2>
+<p>From dfrobot website:</p>
+<p>M4011 Geiger Tube
+- Operating Voltage: 380V ~ 450V
+- Background Counts: ≈25CPM
+- CPM Ratio: 153.8 CPM/(μSv/h)
+- Outline Size: Φ10mm x 88mm</p>
+<p><a class="reference external" href="https://www.hackster.io/k-gray/ionizing-radiation-detector-a0a782?utm_campaign=published_project&amp;utm_medium=email&amp;utm_source=hackster">https://www.hackster.io/k-gray/ionizing-radiation-detector-a0a782?utm_campaign=published_project&amp;utm_medium=email&amp;utm_source=hackster</a>
+<a class="reference external" href="https://github.com/Kgray44/Ionizing-Radiation-Detector">https://github.com/Kgray44/Ionizing-Radiation-Detector</a></p>
+<p>uSvh = geiger.getuSvh();</p>
+<p>int values[] =             {    1,         2,        5,          10,         40,      100,       250,          400,          1000,      10000   };
+const char* equivalent[] = { “Normal”, “Airport”, “Dental”, “Norm(1day)”, “Flight”, “X-Ray”, “NPP(1year)”, “Mammogram”,  “Gov Limit”, “CT Scan” };
+lcd.print(equivalent[nearestEqual(CPM)]);</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.radiation_page.GeigerCounterPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.radiation_page.</span></span><span class="sig-name descname"><span class="pre">GeigerCounterPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.radiation_page.GeigerCounterPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.radiation_page.GeigerCounterPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.radiation_page.GeigerCounterPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.radiation_page.GeigerCounterPage.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.radiation_page.GeigerCounterPage.on_enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.radiation_page.GeigerCounterPage.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.radiation_page.GeigerCounterPage.on_exit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="sensor-pages-sdr-page-module">
+<h2>sensor_pages.sdr_page module<a class="headerlink" href="#sensor-pages-sdr-page-module" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="module-sensor_pages.spectrometer_page">
+<span id="sensor-pages-spectrometer-page-module"></span><h2>sensor_pages.spectrometer_page module<a class="headerlink" href="#module-sensor_pages.spectrometer_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.spectrometer_page.</span></span><span class="sig-name descname"><span class="pre">SpecPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageWithoutGauge</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage.info_subpage">
+<span class="sig-name descname"><span class="pre">info_subpage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage.info_subpage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.temp_humid_page">
+<span id="sensor-pages-temp-humid-page-module"></span><h2>sensor_pages.temp_humid_page module<a class="headerlink" href="#module-sensor_pages.temp_humid_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.temp_humid_page.</span></span><span class="sig-name descname"><span class="pre">TempHumidPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.blit_current_settings">
+<span class="sig-name descname"><span class="pre">blit_current_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.blit_current_settings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.blit_menu">
+<span class="sig-name descname"><span class="pre">blit_menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.blit_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.flip_selection">
+<span class="sig-name descname"><span class="pre">flip_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressed_button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.flip_selection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.init_buttons">
+<span class="sig-name descname"><span class="pre">init_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.init_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.init_gauges">
+<span class="sig-name descname"><span class="pre">init_gauges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.init_gauges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.thermal_cam_page">
+<span id="sensor-pages-thermal-cam-page-module"></span><h2>sensor_pages.thermal_cam_page module<a class="headerlink" href="#module-sensor_pages.thermal_cam_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.thermal_cam_page.</span></span><span class="sig-name descname"><span class="pre">ThermalCamPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.blit_title">
+<span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.blit_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.increment_color_map">
+<span class="sig-name descname"><span class="pre">increment_color_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.increment_color_map" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.init_plotting_stuff">
+<span class="sig-name descname"><span class="pre">init_plotting_stuff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.init_plotting_stuff" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.recv_frame_data_usb_serial">
+<span class="sig-name descname"><span class="pre">recv_frame_data_usb_serial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.recv_frame_data_usb_serial" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.thermal_plotter">
+<span class="sig-name descname"><span class="pre">thermal_plotter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.thermal_plotter" title="Permalink to this definition"></a></dt>
+<dd><p>Works in a different way than all other sensor-MCU communication</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.uv_page">
+<span id="sensor-pages-uv-page-module"></span><h2>sensor_pages.uv_page module<a class="headerlink" href="#module-sensor_pages.uv_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.uv_page.</span></span><span class="sig-name descname"><span class="pre">UVSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage.blit_current_settings">
+<span class="sig-name descname"><span class="pre">blit_current_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage.blit_current_settings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage.blit_menu">
+<span class="sig-name descname"><span class="pre">blit_menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage.blit_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage.blit_title">
+<span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage.blit_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage.init_buttons">
+<span class="sig-name descname"><span class="pre">init_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage.init_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage.init_gauges">
+<span class="sig-name descname"><span class="pre">init_gauges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage.init_gauges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.uv_page.UVSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.uv_page.UVSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.vis_ir_page">
+<span id="sensor-pages-vis-ir-page-module"></span><h2>sensor_pages.vis_ir_page module<a class="headerlink" href="#module-sensor_pages.vis_ir_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.vis_ir_page.</span></span><span class="sig-name descname"><span class="pre">LightSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.blit_current_settings">
+<span class="sig-name descname"><span class="pre">blit_current_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.blit_current_settings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.flip_gain_buttons">
+<span class="sig-name descname"><span class="pre">flip_gain_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.flip_gain_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.init_buttons">
+<span class="sig-name descname"><span class="pre">init_buttons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.init_buttons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.init_gauges">
+<span class="sig-name descname"><span class="pre">init_gauges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.init_gauges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.on_enter">
+<span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.on_enter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.vis_ir_page.LightSensorPage.on_exit">
+<span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.vis_ir_page.LightSensorPage.on_exit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.voc_page">
+<span id="sensor-pages-voc-page-module"></span><h2>sensor_pages.voc_page module<a class="headerlink" href="#module-sensor_pages.voc_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.voc_page.VOCSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.voc_page.</span></span><span class="sig-name descname"><span class="pre">VOCSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.voc_page.VOCSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.voc_page.VOCSensorPage.blit_current_settings">
+<span class="sig-name descname"><span class="pre">blit_current_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.voc_page.VOCSensorPage.blit_current_settings" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.voc_page.VOCSensorPage.blit_title">
+<span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.voc_page.VOCSensorPage.blit_title" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.voc_page.VOCSensorPage.init_gauges">
+<span class="sig-name descname"><span class="pre">init_gauges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.voc_page.VOCSensorPage.init_gauges" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.voc_page.VOCSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.voc_page.VOCSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.weight_page">
+<span id="sensor-pages-weight-page-module"></span><h2>sensor_pages.weight_page module<a class="headerlink" href="#module-sensor_pages.weight_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.weight_page.WeightSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.weight_page.</span></span><span class="sig-name descname"><span class="pre">WeightSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.weight_page.WeightSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.weight_page.WeightSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.weight_page.WeightSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages.wind_page">
+<span id="sensor-pages-wind-page-module"></span><h2>sensor_pages.wind_page module<a class="headerlink" href="#module-sensor_pages.wind_page" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="sensor_pages.wind_page.WindSensorPage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.wind_page.</span></span><span class="sig-name descname"><span class="pre">WindSensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.wind_page.WindSensorPage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.wind_page.WindSensorPage.next_frame">
+<span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.wind_page.WindSensorPage.next_frame" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensor_pages">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sensor_pages" title="Permalink to this heading"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="screenshots.html" class="btn btn-neutral float-left" title="screenshots package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="serial_manager.html" class="btn btn-neutral float-right" title="serial_manager module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Shivam Kundan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

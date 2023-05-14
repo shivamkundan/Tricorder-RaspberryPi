@@ -5,10 +5,10 @@ from colors import ORANGE
 from custom_user_events import TOGGLE_SCREEN,GO_TO_SLEEP,SCREENSHOT_EVENT,SET_BACKLIGHT
 from pygame import event as ev
 
-# ADD: minimize window
-
 class QuickMenuPage(PageTemplate):
+	'''A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.'''
 	def __init__(self,name):
+		'''Constructor'''
 		super().__init__(name)
 		self.butt_list=QUICK_MENU_BUTTONS
 		self.button_list+=self.butt_list

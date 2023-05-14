@@ -9,7 +9,9 @@ from paths_and_utils import BACKLIGHT_PIN
 from serial_manager import ser, my_flush
 
 class SleepPage(PageTemplate):
+	'''A dummy page for low-power sleep mode'''
 	def __init__(self,name):
+		'''Constructor'''
 		super().__init__(name)
 		self.event_list=[   pg.FINGERDOWN,
 							pg.FINGERMOTION,
@@ -33,9 +35,11 @@ class SleepPage(PageTemplate):
 		return False
 
 	def on_enter(self):
+		'''Saves the backlight level before going to sleep. Backlight will be restored to this level at wake up'''
 		self.backlight_restore_level=PIGPIO.get_PWM_dutycycle(BACKLIGHT_PIN)
 
 	def wake_from_sleep(self):
+		'''Resets backlight level, wakes MCU, flushes serial connection'''
 		logging.info("WAKE_FROM_SLEEP")
 		PIGPIO.set_PWM_dutycycle(BACKLIGHT_PIN, self.backlight_restore_level)
 		ser.write(MCU_RESET_CODE.encode('utf-8'))
