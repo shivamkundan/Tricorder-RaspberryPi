@@ -25,13 +25,16 @@ class FileBrowserPage(PageTemplate):
 		self.bg.set_alpha(200)
 		self.bg.fill(WHITE)
 
-		self.curr_butt_index=0
-		print (self.file_button_list)
-		self.curr_butt=self.file_button_list[self.curr_butt_index]
-		self.curr_butt.selected=True
-		print(self.curr_butt.name)
-		self.p=pygame.image.load(self.curr_butt.name)
-		self.p=pygame.transform.scale(self.p, (300, 300))
+		try:
+			self.curr_butt_index=0
+			print (self.file_button_list)
+			self.curr_butt=self.file_button_list[self.curr_butt_index]
+			self.curr_butt.selected=True
+			print(self.curr_butt.name)
+			self.p=pygame.image.load(self.curr_butt.name)
+			self.p=pygame.transform.scale(self.p, (300, 300))
+		except:
+			pass
 
 	def refresh_files_list(self):
 		'''Reload list of files in screenshot directory'''

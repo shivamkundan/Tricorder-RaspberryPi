@@ -24,6 +24,7 @@ sys.path.insert(1,HOME_DIR+'assets/')
 sys.path.insert(1,HOME_DIR+'resources/')
 sys.path.insert(1,HOME_DIR+'sensor_pages/')
 sys.path.insert(1,HOME_DIR+'general_pages/')
+sys.path.insert(1,HOME_DIR+'bluetooth/')
 
 # set up logging
 from my_logging import shivams_logging

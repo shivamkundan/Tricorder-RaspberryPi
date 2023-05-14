@@ -13,7 +13,6 @@ tricorder
    paths_and_utils
    plotting_functions
    resources
-   screenshots
    sensor_pages
    serial_manager
    tricorder

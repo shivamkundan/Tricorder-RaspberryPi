@@ -102,6 +102,7 @@ class TempHumidPage(PageTemplate):
             i+=1
 
     def blit_current_settings(self,screen):
+        '''Show settings'''
         # x_pos,y_pos=138,440
         # txt_surf,w,h=get_text_dimensions(text='RESOLUTION',font_style=FONT_FEDERATION,font_color=ORANGE,style=1,font_size=28)
         # screen.blit(txt_surf,(120+290-w//2,y_pos))

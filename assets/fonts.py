@@ -1,13 +1,4 @@
 #!/usr/bin/python3
-
-import sys, os
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
-
 import pygame
 from paths_and_utils import FONTS_DIR
 

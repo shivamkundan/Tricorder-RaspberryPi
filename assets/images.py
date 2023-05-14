@@ -8,7 +8,7 @@ from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
 IMG_LIST=[]	# global list of loaded images
 
 def img_ld(input_img):
-# this function neatly summarizes/prints all images before loading
+	'''this function neatly summarizes/prints all images before loading'''
 	# IMG_LIST.append(input_img)
 	return pygame.image.load(os.path.join(input_img))
 

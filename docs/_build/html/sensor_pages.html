@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sensor_pages package &mdash; Tricorder-RaspberryPi 0.1 documentation</title>
+  <title>sensor_pages package &mdash; Tricorder-RaspberryPi 0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="serial_manager module" href="serial_manager.html" />
-    <link rel="prev" title="screenshots package" href="screenshots.html" /> 
+    <link rel="prev" title="resources package" href="resources.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,7 +54,6 @@
 <li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html">resources package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="screenshots.html">screenshots package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">sensor_pages package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.battery_page">sensor_pages.battery_page module</a><ul>
@@ -401,15 +400,18 @@ Source computation is in the comments at the end.</p>
 <dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.multimeter_page.</span></span><span class="sig-name descname"><span class="pre">MultimeterPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></p>
+<p>For visualizing volt/current/powerndata from current sensor</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.array_handler">
 <span class="sig-name descname"><span class="pre">array_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.array_handler" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Trims the plotting array</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.blit_all">
 <span class="sig-name descname"><span class="pre">blit_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_surf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.blit_all" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Generic function for blitting line plots</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.next_frame">
@@ -419,7 +421,8 @@ Source computation is in the comments at the end.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.multimeter_page.MultimeterPage.render_generic_graph">
 <span class="sig-name descname"><span class="pre">render_generic_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.multimeter_page.MultimeterPage.render_generic_graph" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>returns line plot as img</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -617,7 +620,8 @@ lcd.print(equivalent[nearestEqual(CPM)]);</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.blit_current_settings">
 <span class="sig-name descname"><span class="pre">blit_current_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.temp_humid_page.TempHumidPage.blit_current_settings" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Show settings</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.temp_humid_page.TempHumidPage.blit_menu">
@@ -836,7 +840,7 @@ lcd.print(equivalent[nearestEqual(CPM)]);</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="screenshots.html" class="btn btn-neutral float-left" title="screenshots package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="resources.html" class="btn btn-neutral float-left" title="resources package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="serial_manager.html" class="btn btn-neutral float-right" title="serial_manager module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

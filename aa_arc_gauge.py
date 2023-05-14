@@ -1,18 +1,9 @@
 #!/usr/bin/python3
-import pygame,sys,time
 '''
 Contains implementation of circular Anti-Aliased ("AA") gauges with gradient coloring
 '''
 
-import sys, os
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
-sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
-
-
+import pygame,sys,time
 # from enum import Enum
 # from pygame.sprite import Sprite
 import pygame.gfxdraw
