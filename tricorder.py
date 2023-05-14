@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import pygame
+pygame.init()
 import pygame.freetype
 import sys
 import os
@@ -583,6 +584,8 @@ class WindowManager():
 # ==================================================================== #
 
 if __name__=='__main__':
+
+	pygame.init()
 
 	global MODE
 

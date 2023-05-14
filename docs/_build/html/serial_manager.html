@@ -18,7 +18,9 @@
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tricorder module" href="tricorder.html" />
+    <link rel="prev" title="sensor_pages package" href="sensor_pages.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,8 +43,52 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">tricorder</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">resources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensor_pages.html">sensor_pages package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">serial_manager module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_battery"><code class="docutils literal notranslate"><span class="pre">get_battery()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_gps"><code class="docutils literal notranslate"><span class="pre">get_gps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_imu_acc"><code class="docutils literal notranslate"><span class="pre">get_imu_acc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_imu_ang_vel"><code class="docutils literal notranslate"><span class="pre">get_imu_ang_vel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_imu_grav"><code class="docutils literal notranslate"><span class="pre">get_imu_grav()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_imu_lin_acc"><code class="docutils literal notranslate"><span class="pre">get_imu_lin_acc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_imu_mag"><code class="docutils literal notranslate"><span class="pre">get_imu_mag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_imu_orientation"><code class="docutils literal notranslate"><span class="pre">get_imu_orientation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_multimeter"><code class="docutils literal notranslate"><span class="pre">get_multimeter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_noise"><code class="docutils literal notranslate"><span class="pre">get_noise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_pm25"><code class="docutils literal notranslate"><span class="pre">get_pm25()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_pressure"><code class="docutils literal notranslate"><span class="pre">get_pressure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_radiation"><code class="docutils literal notranslate"><span class="pre">get_radiation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_serial_vals"><code class="docutils literal notranslate"><span class="pre">get_serial_vals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_spectrometer"><code class="docutils literal notranslate"><span class="pre">get_spectrometer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_temp_humid"><code class="docutils literal notranslate"><span class="pre">get_temp_humid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_tvoc_eco2"><code class="docutils literal notranslate"><span class="pre">get_tvoc_eco2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_uv"><code class="docutils literal notranslate"><span class="pre">get_uv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_vis_ir"><code class="docutils literal notranslate"><span class="pre">get_vis_ir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.get_wind"><code class="docutils literal notranslate"><span class="pre">get_wind()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.my_flush"><code class="docutils literal notranslate"><span class="pre">my_flush()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_geiger_power_off"><code class="docutils literal notranslate"><span class="pre">set_geiger_power_off()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_geiger_power_on"><code class="docutils literal notranslate"><span class="pre">set_geiger_power_on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_pm25_power_off"><code class="docutils literal notranslate"><span class="pre">set_pm25_power_off()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_pm25_power_on"><code class="docutils literal notranslate"><span class="pre">set_pm25_power_on()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_tsl_gain"><code class="docutils literal notranslate"><span class="pre">set_tsl_gain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_tsl_scl_connect"><code class="docutils literal notranslate"><span class="pre">set_tsl_scl_connect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial_manager.set_tsl_scl_disconnect"><code class="docutils literal notranslate"><span class="pre">set_tsl_scl_disconnect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tricorder.html">tricorder module</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -59,6 +105,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">tricorder</a></li>
       <li class="breadcrumb-item active">serial_manager module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/serial_manager.rst.txt" rel="nofollow"> View page source</a>
@@ -254,7 +301,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sensor_pages.html" class="btn btn-neutral float-left" title="sensor_pages package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tricorder.html" class="btn btn-neutral float-right" title="tricorder module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+'''This is where fonts are defined'''
 import pygame
 from paths_and_utils import FONTS_DIR
 

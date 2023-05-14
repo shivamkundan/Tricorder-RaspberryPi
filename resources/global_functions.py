@@ -1,6 +1,17 @@
 '''
 This file contains functions invoked by several different parts of the code.
 '''
+
+
+import sys, os
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/sensor_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/general_pages')
+sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
+
+
 import pygame
 import datetime
 from subprocess import PIPE, Popen, check_output
