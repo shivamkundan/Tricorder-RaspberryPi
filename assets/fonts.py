@@ -2,8 +2,12 @@
 
 import sys, os
 import pygame
+import pygame.freetype
 # from paths_and_utils import
 
+os.environ['PYGAME_FREETYPE'] = '1'
+
+pygame.init()
 HOME_DIR="/home/pi/Sensor_Scripts/pygame_code/tricorder/"
 FONTS_DIR=HOME_DIR+"assets/saved_fonts/"
 
@@ -61,7 +65,6 @@ star_trek_fonts={}
 
 for curr_font in font_names:
     font=pygame.freetype.Font(FONTS_DIR+curr_font)
-    print (f"font:{font}")
     star_trek_fonts[curr_font.split('.')[0]]=font
 
 
@@ -71,6 +74,6 @@ FONT_OKUDA=star_trek_fonts['Okuda']
 FONT_OKUDA_BOLD=star_trek_fonts['Okuda Bold']
 FONT_DIN=star_trek_fonts['din-1451-fette-breitschrift-1936']
 
-print (star_trek_fonts.keys())
+# print (star_trek_fonts.keys())
 
 FONT_HELVETICA_NEUE=pygame.freetype.Font(FONTS_DIR+'HelveticaNeue.ttc')

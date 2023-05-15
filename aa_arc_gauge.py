@@ -4,8 +4,11 @@ Contains implementation of circular Anti-Aliased ("AA") gauges with gradient col
 '''
 import pygame,sys,time
 import pygame.freetype
+
 pygame.init()
 import sys, os
+# import os
+os.environ['PYGAME_FREETYPE'] = '1'
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/freqshow_code')
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets')

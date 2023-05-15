@@ -24,8 +24,12 @@ release = '0'
 
 extensions = ['sphinx.ext.autodoc']
 
+# extensions = ['autoapi.extension']
+
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+
+# autoapi_dirs = ['../']
 
 
 

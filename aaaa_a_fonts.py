@@ -63,7 +63,7 @@ star_trek_fonts={}
 
 for curr_font in font_names:
     font=pygame.freetype.Font(FONTS_DIR+curr_font)
-    print (f"font:{font}")
+    # print (f"font:{font}")
     star_trek_fonts[curr_font.split('.')[0]]=font
 
 

@@ -91,8 +91,8 @@ def get_date_time():
 	now = datetime.datetime.now()
 	day=now.strftime('%a')
 	date=now.strftime('%b %-d')
-	# hour_sec=now.strftime('%-I:%M:%S %p')
-	hour_sec=now.strftime('%-I:%M %p')
+	hour_sec=now.strftime('%-I:%M:%S %p')
+	# hour_sec=now.strftime('%-I:%M %p')
 	return (day,date, hour_sec)
 
 def blit_some_stats(screen,width,day,date,hour_sec,fps,cpu_pct,cpu_temp,wifi_name,wifi_symbol,bluetooth_img):

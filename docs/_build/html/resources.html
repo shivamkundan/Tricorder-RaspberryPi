@@ -58,18 +58,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">resources package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-resources.custom_user_events">resources.custom_user_events module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-resources.global_functions_old">resources.global_functions_old module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.adjust_gauge_lims"><code class="docutils literal notranslate"><span class="pre">adjust_gauge_lims()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.blitRotate2"><code class="docutils literal notranslate"><span class="pre">blitRotate2()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.blit_some_stats"><code class="docutils literal notranslate"><span class="pre">blit_some_stats()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.flip_buttons"><code class="docutils literal notranslate"><span class="pre">flip_buttons()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.get_date_time"><code class="docutils literal notranslate"><span class="pre">get_date_time()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.get_text_dimensions"><code class="docutils literal notranslate"><span class="pre">get_text_dimensions()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.get_wifi_name"><code class="docutils literal notranslate"><span class="pre">get_wifi_name()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.my_map"><code class="docutils literal notranslate"><span class="pre">my_map()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resources.global_functions_old.update_cpu_stats"><code class="docutils literal notranslate"><span class="pre">update_cpu_stats()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-resources.global_functions_old">resources.global_functions_old module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-resources.mappings">resources.mappings module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-resources.my_logging">resources.my_logging module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#resources.my_logging.LogFormatter"><code class="docutils literal notranslate"><span class="pre">LogFormatter</span></code></a></li>
@@ -125,61 +114,6 @@
 </div>
 <div class="section" id="module-resources.global_functions_old">
 <span id="resources-global-functions-old-module"></span><h2>resources.global_functions_old module<a class="headerlink" href="#module-resources.global_functions_old" title="Permalink to this heading"></a></h2>
-<p>This file contains functions invoked by several different parts of the code.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.adjust_gauge_lims">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">adjust_gauge_lims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curr_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gauge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.adjust_gauge_lims" title="Permalink to this definition"></a></dt>
-<dd><p>For circular gauges. Adjusts upper/lower limits to nearest round numbers</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.blitRotate2">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">blitRotate2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topleft</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.blitRotate2" title="Permalink to this definition"></a></dt>
-<dd><p>Rotate an image around its center</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.blit_some_stats">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">blit_some_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hour_sec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_pct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_temp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wifi_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wifi_symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bluetooth_img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.blit_some_stats" title="Permalink to this definition"></a></dt>
-<dd><p>These pieces of info are always displayed in the top bar or in the Okudagrams</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.flip_buttons">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">flip_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressed_button</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.flip_buttons" title="Permalink to this definition"></a></dt>
-<dd><p>Unselect all other buttons except the one just pressed</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.get_date_time">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">get_date_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.get_date_time" title="Permalink to this definition"></a></dt>
-<dd><p>Get formatted time for top toolbar display</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.get_text_dimensions">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">get_text_dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Font('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/din-1451-fette-breitschrift-1936.ttf')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">28</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.get_text_dimensions" title="Permalink to this definition"></a></dt>
-<dd><p>Return size of to-be-rendered text</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.get_wifi_name">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">get_wifi_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.get_wifi_name" title="Permalink to this definition"></a></dt>
-<dd><p>Check for connected wifi network. Return network name</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.my_map">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">my_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.my_map" title="Permalink to this definition"></a></dt>
-<dd><p>Standard mapping formula. Used in many places</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="resources.global_functions_old.update_cpu_stats">
-<span class="sig-prename descclassname"><span class="pre">resources.global_functions_old.</span></span><span class="sig-name descname"><span class="pre">update_cpu_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.global_functions_old.update_cpu_stats" title="Permalink to this definition"></a></dt>
-<dd><p>Get rapsberry pi usage stats</p>
-</dd></dl>
-
 </div>
 <div class="section" id="module-resources.mappings">
 <span id="resources-mappings-module"></span><h2>resources.mappings module<a class="headerlink" href="#module-resources.mappings" title="Permalink to this heading"></a></h2>

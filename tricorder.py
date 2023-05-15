@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 import pygame
 pygame.init()
+import os
+os.environ['PYGAME_FREETYPE'] = '1'
 import pygame.freetype
 from aaaa_a_fonts import *
 import sys
-import os
+# import os
 import time, datetime
 import logging
 
