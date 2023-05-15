@@ -5,12 +5,24 @@
 
 Welcome to Tricorder-RaspberryPi's documentation!
 =================================================
+Documentation for the RaspberryPi side of my functional tricorder project.
 
 .. toctree::
    :maxdepth: 7
+   :hidden:
    :caption: Contents:
 
    modules
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Sensor Pages:
+
+   tricorder.sensor_pages.battery_page module
+   sensor_pages
+
 
 
 Indices and tables

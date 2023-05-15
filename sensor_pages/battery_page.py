@@ -16,6 +16,7 @@ import logging
 
 from paths_and_utils import BATT_HIST_FILE
 class BatterySensorPage(PageTemplate):
+    '''Page class for battery sensor / fuel gauge'''
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
@@ -30,6 +31,7 @@ class BatterySensorPage(PageTemplate):
         self.make_plot()
 
     def make_plot(self):
+        '''Reads battery voltage from file and returns line plot'''
         df = pd.read_csv(BATT_HIST_FILE)#, usecols=columns)
 
         batt_voltage=df.iloc[:, 2]
