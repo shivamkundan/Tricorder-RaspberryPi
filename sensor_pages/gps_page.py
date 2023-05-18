@@ -130,9 +130,12 @@ class GPSSensorPage(PageTemplate):
 
 		self.update_gps_data()
 		self.blit_icons(screen)
-		self.blit_altitude_speed(screen)
-		self.blit_lat_long(screen)
-		self.blit_num_sats(screen)
-		self.draw_location_lines(screen)
+		try:
+			self.blit_altitude_speed(screen)
+			self.blit_lat_long(screen)
+			self.blit_num_sats(screen)
+			self.draw_location_lines(screen)
+		except Exception as e:
+			logging.error(f"GPS page: {e}")
 
 		return self.next_screen_name,self.kwargs
