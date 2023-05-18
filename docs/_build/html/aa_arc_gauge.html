@@ -51,15 +51,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.blit_gauge"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.blit_gauge()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.init_origin"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.init_origin()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.init_radius"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.init_radius()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.set_origin"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.set_origin()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.set_radius"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.set_radius()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.update_boundries"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.update_boundries()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aa_arc_gauge.AA_Gauge.update_val"><code class="docutils literal notranslate"><span class="pre">AA_Gauge.update_val()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.fps_manager"><code class="docutils literal notranslate"><span class="pre">fps_manager()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.handle_events"><code class="docutils literal notranslate"><span class="pre">handle_events()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#aa_arc_gauge.my_map"><code class="docutils literal notranslate"><span class="pre">my_map()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="aaaa_a_fonts.html">aaaa_a_fonts module</a></li>
@@ -77,6 +74,10 @@
 <li class="toctree-l2"><a class="reference internal" href="tricorder.html">tricorder module</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sensor Pages:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensor_pages.html">sensor_pages package</a></li>
 </ul>
 
         </div>
@@ -115,60 +116,52 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.adjust_gauge_lims">
 <span class="sig-name descname"><span class="pre">adjust_gauge_lims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.adjust_gauge_lims" title="Permalink to this definition"></a></dt>
-<dd><p>Sets min/max limits to nearest round numbers</p>
+<dd><p>Sets min/max limits to nearest round numbers.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.blit_gauge">
 <span class="sig-name descname"><span class="pre">blit_gauge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.blit_gauge" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Render and return gauge as surface.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.init_origin">
 <span class="sig-name descname"><span class="pre">init_origin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.init_origin" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Calculates origin (x,y) for gauge.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.init_radius">
 <span class="sig-name descname"><span class="pre">init_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.init_radius" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.set_origin">
-<span class="sig-name descname"><span class="pre">set_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_xy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.set_origin" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.set_radius">
-<span class="sig-name descname"><span class="pre">set_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.set_radius" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Saves radius and diameter for faster execution.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.update_boundries">
 <span class="sig-name descname"><span class="pre">update_boundries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.update_boundries" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Calculates bounding rectabgle.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="aa_arc_gauge.AA_Gauge.update_val">
 <span class="sig-name descname"><span class="pre">update_val</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.AA_Gauge.update_val" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Uodate current value.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="aa_arc_gauge.fps_manager">
 <span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">fps_manager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.fps_manager" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>For testing performance. Not used in normal execcution.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="aa_arc_gauge.handle_events">
 <span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.handle_events" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="aa_arc_gauge.my_map">
-<span class="sig-prename descclassname"><span class="pre">aa_arc_gauge.</span></span><span class="sig-name descname"><span class="pre">my_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aa_arc_gauge.my_map" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>For testing. Not used in normal execcution.</p>
+</dd></dl>
 
 </div>
 

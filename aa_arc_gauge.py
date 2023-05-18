@@ -6,8 +6,8 @@ import pygame,sys,time
 import pygame.freetype
 
 pygame.init()
-import sys, os
-# import os
+import sys
+import os
 os.environ['PYGAME_FREETYPE'] = '1'
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/freqshow_code')
@@ -24,7 +24,7 @@ sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/resources')
 import pygame.gfxdraw
 import pygame.freetype
 from colors import WHITE,RED,GREY,BLACK,DARK_GREY,LIGHT_GREY,YELLOW
-from global_functions import get_text_dimensions
+from global_functions import get_text_dimensions, my_map
 from fonts import FONT_DIN, FONT_HELVETICA_NEUE,FONT_FEDERATION
 import numpy as np
 import logging
@@ -41,11 +41,8 @@ number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,\
 # ---- arc parameters ---- #
 radius=35
 # offset=75
-RAD_CONSTANT=0.0174533
-# RAD_CONSTANT=0.0175
-
-def my_map(x,in_min,in_max,out_min,out_max): 
-  return (float(x) - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+# RAD_CONSTANT=0.0174533
+RAD_CONSTANT=0.0175
 
 class AA_Gauge():
     '''Class for an anti-aliased circular gauge with gradient coloring'''
@@ -116,24 +113,19 @@ class AA_Gauge():
 
 
     def init_origin(self):
+        '''Calculates origin (x,y) for gauge.'''
         self.origin_x=self.radius+self.weight
         self.origin_y=self.radius+self.weight
         self.origin= (self.origin_x,self.origin_y)
 
     def init_radius(self,new_radius):
+        '''Saves radius and diameter for faster execution.'''
         self.radius=new_radius
         self.d=self.radius*2
         # self.weight=self.gauge_radius//self.weight_ratio
 
-    def set_origin(self,new_xy):
-        self.init_origin(new_xy)
-        self.update_boundries()
-
-    def set_radius(self,new_radius):
-        self.init_radius(new_radius)
-        self.update_boundries()
-
     def update_boundries(self):
+        '''Calculates bounding rectabgle.'''
         w=self.weight
         r=self.radius
         d=self.d-1
@@ -144,7 +136,7 @@ class AA_Gauge():
         self.bounding_rect=[0,0,(d+w*2),(d+w*2)]
 
     def adjust_gauge_lims(self):
-        '''Sets min/max limits to nearest round numbers'''
+        '''Sets min/max limits to nearest round numbers.'''
         lower_lims=[0,0.1,1,10,100,1000,10000,100000]
         upper_lims=[0.1,1,10,100,1000,10000,100000,1000000]
         for low,up in zip(lower_lims,upper_lims):
@@ -152,12 +144,13 @@ class AA_Gauge():
                 self.in_max=up
 
     def update_val(self,new_val):
+        '''Uodate current value.'''
         self.curr_val=new_val
         if self.auto_lims:
             self.adjust_gauge_lims()
 
     def blit_gauge(self,new_val,print_val=None):
-
+        '''Render and return gauge as surface.'''
         try:
             # ----------------- arc params ----------------- #
             radius=self.radius
@@ -304,7 +297,7 @@ class AA_Gauge():
         return surf
 
 def fps_manager(clock,screen,fps_array):
-
+    '''For testing performance. Not used in normal execcution.'''
     curr_fps=round(clock.get_fps(),2)
 
     if curr_fps>0:
@@ -331,6 +324,7 @@ def fps_manager(clock,screen,fps_array):
     return fps_array
 
 def handle_events():
+    '''For testing. Not used in normal execcution.'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and (event.key == pygame.K_ESCAPE or event.key==ord('q'))):
             pygame.quit()
@@ -434,15 +428,6 @@ if __name__ == '__main__':
                 G.color=color_list[my_color]
                 # print ('my_color: ',my_color,color_names_list[my_color])
                 color_txt=FONT_36.render('{}'.format(color_names_list[my_color]),1,WHITE)
-
-                # if downcount:
-                #     G.weight-=10
-                #     G.update_boundries()
-                #     G.set_radius(G.radius-10)
-                # else:
-                #     G.weight+=10
-                #     G.update_boundries()
-                #     G.set_radius(G.radius+10)
 
 
             screen.blit(color_txt,(3,screen_h-100))
