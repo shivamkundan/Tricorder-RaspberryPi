@@ -9,6 +9,8 @@ sys.path.append(os.path.abspath('../assets'))
 sys.path.append(os.path.abspath('..'))
 sys.path.append(os.path.abspath('../resources'))
 sys.path.append(os.path.abspath('../general_pages'))
+sys.path.append(os.path.abspath('../sensor_pages'))
+sys.path.append(os.path.abspath('../freqshow_code'))
 
 
 # -- Project information -----------------------------------------------------

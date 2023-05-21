@@ -2,7 +2,7 @@ import sys, os
 sys.path.append(os.path.abspath("../"))
 
 import select
-from bluetooth import *
+# from bluetooth import *
 import numpy as np
 
 from pygame.image import frombuffer
@@ -41,20 +41,20 @@ import signal
 
 from serial_manager import ser
 
-import picamera
-import io
+# import picamera
+# import io
 
-# Init camera
-camera = picamera.PiCamera()
-camera.resolution = (464, 464)
-camera.crop = (0.0, 0.0, 1.0, 1.0)
-camera.rotation = 90
+# # Init camera
+# camera = picamera.PiCamera()
+# camera.resolution = (464, 464)
+# camera.crop = (0.0, 0.0, 1.0, 1.0)
+# camera.rotation = 90
 
-x=120
-y=50
+# x=120
+# y=50
 
-# Init buffer
-rgb = bytearray(camera.resolution[0] * camera.resolution[1] * 3)
+# # Init buffer
+# rgb = bytearray(camera.resolution[0] * camera.resolution[1] * 3)
 
 
 class ThermalCamPage(PageTemplate):
@@ -309,27 +309,27 @@ class ThermalCamPage(PageTemplate):
                         else:
                             self.pause=False
 
-                if not self.pause:
+                # if not self.pause:
 
-                    stream = io.BytesIO()
-                    camera.capture(stream, use_video_port=True, format='rgb')
-                    stream.seek(0)
-                    stream.readinto(rgb)
-                    stream.close()
-                    img = frombuffer(rgb[0:
-                          (camera.resolution[0] * camera.resolution[1] * 3)],
-                           camera.resolution, 'RGB')
+                #     stream = io.BytesIO()
+                #     camera.capture(stream, use_video_port=True, format='rgb')
+                #     stream.seek(0)
+                #     stream.readinto(rgb)
+                #     stream.close()
+                #     img = frombuffer(rgb[0:
+                #           (camera.resolution[0] * camera.resolution[1] * 3)],
+                #            camera.resolution, 'RGB')
 
-                    if img:
-                        # img.set_alpha(175)
-                        screen.blit(img, (x,y))
+                #     if img:
+                #         # img.set_alpha(175)
+                #         screen.blit(img, (x,y))
 
-                    if self.f_num%7==0:
-                        # self.frame=self.recv_frame_data(self.client_sock)
-                        self.frame=self.recv_frame_data_usb_serial()
-                        self.surf=self.thermal_plotter(self.frame)
-                        self.surf.set_alpha(100)
-                screen.blit(self.surf,(25,-20))
+                #     if self.f_num%7==0:
+                #         # self.frame=self.recv_frame_data(self.client_sock)
+                #         self.frame=self.recv_frame_data_usb_serial()
+                #         self.surf=self.thermal_plotter(self.frame)
+                #         self.surf.set_alpha(100)
+                # screen.blit(self.surf,(25,-20))
 
                 val_list=[np.max(self.frame),round(np.mean(self.frame),2),np.min(self.frame)]
 
