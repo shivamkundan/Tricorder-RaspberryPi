@@ -287,6 +287,8 @@
 </li>
         <li><a href="sensor_pages.html#sensor_pages.sdr_page.SoftwareDefinedRadioPage.blit_title">(sensor_pages.sdr_page.SoftwareDefinedRadioPage method)</a>
 </li>
+        <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage.blit_title">(sensor_pages.thermal_cam_page.ThermalCamPage method)</a>
+</li>
         <li><a href="sensor_pages.html#sensor_pages.uv_page.UVSensorPage.blit_title">(sensor_pages.uv_page.UVSensorPage method)</a>
 </li>
         <li><a href="sensor_pages.html#sensor_pages.voc_page.VOCSensorPage.blit_title">(sensor_pages.voc_page.VOCSensorPage method)</a>
@@ -306,13 +308,6 @@
 
       <ul>
         <li><a href="sensor_pages.html#sensor_pages.imu_page.blitRotate2">(in module sensor_pages.imu_page)</a>
-</li>
-      </ul></li>
-      <li>
-    bluetooth
-
-      <ul>
-        <li><a href="bluetooth.html#module-bluetooth">module</a>
 </li>
       </ul></li>
       <li><a href="freqshow_code.html#freqshow_code.ui.Button.border_color">border_color (freqshow_code.ui.Button attribute)</a>
@@ -726,6 +721,8 @@
       </ul></li>
       <li><a href="sensor_pages.html#sensor_pages.imu_page.IMUSensorPage">IMUSensorPage (class in sensor_pages.imu_page)</a>
 </li>
+      <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage.increment_color_map">increment_color_map() (sensor_pages.thermal_cam_page.ThermalCamPage method)</a>
+</li>
       <li><a href="general_pages.html#general_pages.menu_home_page.MenuHomePageClass.increment_subpage">increment_subpage() (general_pages.menu_home_page.MenuHomePageClass method)</a>
 
       <ul>
@@ -771,6 +768,8 @@
       <li><a href="page_templates.html#page_templates.PageTemplate.init_home_button">init_home_button() (page_templates.PageTemplate method)</a>
 </li>
       <li><a href="aa_arc_gauge.html#aa_arc_gauge.AA_Gauge.init_origin">init_origin() (aa_arc_gauge.AA_Gauge method)</a>
+</li>
+      <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage.init_plotting_stuff">init_plotting_stuff() (sensor_pages.thermal_cam_page.ThermalCamPage method)</a>
 </li>
       <li><a href="aa_arc_gauge.html#aa_arc_gauge.AA_Gauge.init_radius">init_radius() (aa_arc_gauge.AA_Gauge method)</a>
 </li>
@@ -853,8 +852,6 @@
         <li><a href="assets.html#module-assets.fonts">assets.fonts</a>
 </li>
         <li><a href="assets.html#module-assets.images">assets.images</a>
-</li>
-        <li><a href="bluetooth.html#module-bluetooth">bluetooth</a>
 </li>
         <li><a href="freqshow_code.html#module-0">freqshow_code</a>, <a href="freqshow_code.html#module-freqshow_code">[1]</a>
 </li>
@@ -942,6 +939,8 @@
 </li>
         <li><a href="sensor_pages.html#module-sensor_pages.temp_humid_page">sensor_pages.temp_humid_page</a>
 </li>
+        <li><a href="sensor_pages.html#module-sensor_pages.thermal_cam_page">sensor_pages.thermal_cam_page</a>
+</li>
         <li><a href="sensor_pages.html#module-sensor_pages.uv_page">sensor_pages.uv_page</a>
 </li>
         <li><a href="sensor_pages.html#module-sensor_pages.vis_ir_page">sensor_pages.vis_ir_page</a>
@@ -1019,6 +1018,8 @@
         <li><a href="sensor_pages.html#sensor_pages.spectrometer_page.SpecPage.next_frame">(sensor_pages.spectrometer_page.SpecPage method)</a>
 </li>
         <li><a href="sensor_pages.html#sensor_pages.temp_humid_page.TempHumidPage.next_frame">(sensor_pages.temp_humid_page.TempHumidPage method)</a>
+</li>
+        <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage.next_frame">(sensor_pages.thermal_cam_page.ThermalCamPage method)</a>
 </li>
         <li><a href="sensor_pages.html#sensor_pages.uv_page.UVSensorPage.next_frame">(sensor_pages.uv_page.UVSensorPage method)</a>
 </li>
@@ -1156,6 +1157,8 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage.recv_frame_data_usb_serial">recv_frame_data_usb_serial() (sensor_pages.thermal_cam_page.ThermalCamPage method)</a>
+</li>
       <li><a href="general_pages.html#general_pages.file_browser_page.FileBrowserPage.refresh_files_list">refresh_files_list() (general_pages.file_browser_page.FileBrowserPage method)</a>
 </li>
       <li><a href="assets.html#assets.buttons.ButtonClass.release">release() (assets.buttons.ButtonClass method)</a>
@@ -1188,10 +1191,10 @@
         <li><a href="freqshow_code.html#freqshow_code.views.WaterfallSpectrogram.render_spectrogram">(freqshow_code.views.WaterfallSpectrogram method)</a>
 </li>
       </ul></li>
-      <li><a href="freqshow_code.html#freqshow_code.ui.render_text">render_text() (in module freqshow_code.ui)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="freqshow_code.html#freqshow_code.ui.render_text">render_text() (in module freqshow_code.ui)</a>
+</li>
       <li><a href="resources.html#resources.my_logging.LogFormatter.RESET_CODE">RESET_CODE (resources.my_logging.LogFormatter attribute)</a>
 </li>
       <li><a href="assets.html#assets.buttons.ButtonClass.reset_position">reset_position() (assets.buttons.ButtonClass method)</a>
@@ -1368,6 +1371,13 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    sensor_pages.thermal_cam_page
+
+      <ul>
+        <li><a href="sensor_pages.html#module-sensor_pages.thermal_cam_page">module</a>
+</li>
+      </ul></li>
+      <li>
     sensor_pages.uv_page
 
       <ul>
@@ -1465,10 +1475,14 @@
 </li>
       <li><a href="sensor_pages.html#sensor_pages.fly_page_vars.test_func">test_func() (in module sensor_pages.fly_page_vars)</a>
 </li>
-      <li><a href="freqshow_code.html#freqshow_code.controller.FreqShowController.toggle_main">toggle_main() (freqshow_code.controller.FreqShowController method)</a>
+      <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage.thermal_plotter">thermal_plotter() (sensor_pages.thermal_cam_page.ThermalCamPage method)</a>
+</li>
+      <li><a href="sensor_pages.html#sensor_pages.thermal_cam_page.ThermalCamPage">ThermalCamPage (class in sensor_pages.thermal_cam_page)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="freqshow_code.html#freqshow_code.controller.FreqShowController.toggle_main">toggle_main() (freqshow_code.controller.FreqShowController method)</a>
+</li>
       <li><a href="general_pages.html#general_pages.brightness_slider_page.BrightnessSliderPage.transition_events">transition_events() (general_pages.brightness_slider_page.BrightnessSliderPage method)</a>
 
       <ul>

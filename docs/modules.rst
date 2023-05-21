@@ -7,7 +7,6 @@ tricorder
    aa_arc_gauge
    aaaa_a_fonts
    assets
-   bluetooth
    freqshow_code
    general_pages
    global_functions
