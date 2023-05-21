@@ -1,10 +1,12 @@
 from fonts import FONT_FEDERATION, FONT_DIN
 from colors import ORANGE,DARK_YELLOW,WHITE
 from page_templates import PageWithoutGauge
-from global_functions import get_text_dimensions
+from global_functions import get_text_dimensions, my_map
 import pygame.event as e
 from serial_manager import get_spectrometer
 import logging
+# from pygame.draw import rect
+import pygame
 
 class SpecPage(PageWithoutGauge):
     def __init__(self,name):
@@ -17,7 +19,11 @@ class SpecPage(PageWithoutGauge):
         self.flicker_detection_enabled='-1'
         self.channels=['c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','clear','nir']
         self.num_tics=5
+        self.weighted_color=(0,0,0)
+        self.scaled_color=(0,0,0)
+        self.closest_match_color=(0,0,0)
         super().__init__(name,color_list,color_labels)
+
 
     def info_subpage(self,screen,curr_vals):
         col1=170
@@ -44,6 +50,101 @@ class SpecPage(PageWithoutGauge):
 
                 uuu+=1
 
+
+    def scale_rgb(self,in_val):
+        '''Scales to 8-bit color'''
+
+        for level in [32,64,128,256,512,1024,2048,4096,8192,16384,32768,65535]:
+            if (in_val<=level):
+                max_val=level
+                break
+
+        out_val=int(round(my_map(in_val,0,max_val,0,255),0))
+        # print (f"in_val:{in_val}, out_val:{out_val}")
+        return out_val
+
+    def scale_rgb2(self,in_val):
+        '''Scales to 8-bit color'''
+        R=in_val[0]
+        G=in_val[1]
+        B=in_val[2]
+
+        for level in [32,64,128,256,512,1024,2048,4096,8192,16384,32768,65535]:
+            # if (in_val<=level):
+            #     max_val=level
+            #     break
+            if ((R <= level) and (G <= level) and (R <= level)):
+                max_val=level
+                break
+
+        # elif ((R <= L2) and (G <= L2) and (R <= L2)):
+        #     max_val=L2+1
+
+        # elif ((R <= L3) and (G <= L3) and (R <= L3)):
+        #     max_val=L3+1
+
+        # elif ((R <= L4) and (G <= L4) and (R <= L4)):
+        #     max_val=L3+1
+
+        # elif ((R <= L5) and (G <= L5) and (R <= L5)):
+        #     max_val=L5+1
+
+        out_val_R=int(round(my_map(R,0,max_val,0,255),0))
+        out_val_G=int(round(my_map(G,0,max_val,0,255),0))
+        out_val_B=int(round(my_map(B,0,max_val,0,255),0))
+
+        out_val=(out_val_R,out_val_G,out_val_B)
+
+
+        print (f"#2: in_val:{in_val}, out_val:{out_val}")
+        return out_val
+
+    def match_color(self,x,screen):
+        '''Finds closest matching color in database'''
+        try:
+            R = int(x['c_680nm']) # Red
+            G = int(x['c_555nm']) # Green
+            B = int(x['c_480nm']) # Blue
+
+            Y = int(x['c_590nm']) # Yellow
+            O = int(x['c_630nm']) # Orange
+
+
+            C = int(x['c_515nm']) # Cyan
+            I = int(x['c_445nm']) # Indigo
+
+            V = int(x['c_415nm']) # Violet
+
+
+
+            print (R,G,B)
+
+            # print(f"plain r,g,b: {self.scale_rgb(R)} {self.scale_rgb(G)} {self.scale_rgb(B)}")
+            print(f"plain r,g,b: {self.scale_rgb2((R,G,B))}")
+
+            R_p = self.scale_rgb((R+O+Y)/3)
+            G_p = self.scale_rgb(G)
+            B_p = self.scale_rgb((B+I+C+V)/4)
+
+            print (R_p,G_p,B_p)
+
+            weighted_color=(R_p,G_p,B_p)
+            print (f"weighted_color:{weighted_color}")
+
+
+            scaled_color=(self.scale_rgb(R),self.scale_rgb(G),self.scale_rgb(B))
+
+            # pygame.draw.rect(screen, pygame.Color(R_p,G_p,B_p), (160,160+80, 80, 30))
+
+            return weighted_color, scaled_color
+
+        except Exception as e:
+            print (e)
+            return (0,0,0),(0,0,0)
+
+
+
+
     def next_frame(self,screen,curr_events,**kwargs):
 
         # ----- get vals ----- #
@@ -68,6 +169,12 @@ class SpecPage(PageWithoutGauge):
                 self.clear=-1
                 self.nir=-1
                 FONT_DIN.render_to(screen, (290, 305), f'ERR: clear/nir', WHITE,style=0,size=26)
+
+            self.weighted_color, self.scaled_color=self.match_color(x,screen)
+
+        pygame.draw.rect(screen, self.scaled_color, (100,160, 80, 30))
+        pygame.draw.rect(screen, self.weighted_color, (2,160, 80, 30))
+
 
         curr_vals=[]
         for name, color_array in self.array_dict.items():

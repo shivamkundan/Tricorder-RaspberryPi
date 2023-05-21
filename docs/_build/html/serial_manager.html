@@ -92,6 +92,10 @@
 </ul>
 </li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Sensor Pages:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensor_pages.html">sensor_pages package</a></li>
+</ul>
 
         </div>
       </div>
@@ -120,16 +124,19 @@
              
   <div class="section" id="module-serial_manager">
 <span id="serial-manager-module"></span><h1>serial_manager module<a class="headerlink" href="#module-serial_manager" title="Permalink to this heading"></a></h1>
-<p>-&gt; This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.</p>
-<p>By sending data back and forth:</p>
+<dl>
+<dt>Breif:</dt><dd><p>This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.</p>
 <blockquote>
-<div><p>-&gt; Data can be requested from sensors</p>
+<div><p>-&gt; Each sensor page can import relevant functions for efficiency.</p>
+<p>-&gt; Keeping all in one place in case of changes to how I communicate with sensors.</p>
+</div></blockquote>
+</dd>
+<dt>By sending data back and forth:</dt><dd><p>-&gt; Data can be requested from sensors</p>
 <p>-&gt; Sensor-specific settings can be changed</p>
 <p>-&gt; Microcontroller operations can be changed (e.g., sleep mode)</p>
 <p>-&gt; Both of the above involves sending specific mappings from mappings.py</p>
-</div></blockquote>
-<p>-&gt; Each sensor page can import relevant functions for efficiency.</p>
-<p>-&gt; Keeping all in one place in case of changes to how I communicate with sensors.</p>
+</dd>
+</dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_battery">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_battery</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_battery" title="Permalink to this definition"></a></dt>

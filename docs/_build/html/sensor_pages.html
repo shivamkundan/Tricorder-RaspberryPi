@@ -186,7 +186,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-sensor_pages.spectrometer_page">sensor_pages.spectrometer_page module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage"><code class="docutils literal notranslate"><span class="pre">SpecPage</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage.info_subpage"><code class="docutils literal notranslate"><span class="pre">SpecPage.info_subpage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage.match_color"><code class="docutils literal notranslate"><span class="pre">SpecPage.match_color()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage.next_frame"><code class="docutils literal notranslate"><span class="pre">SpecPage.next_frame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage.scale_rgb"><code class="docutils literal notranslate"><span class="pre">SpecPage.scale_rgb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage.scale_rgb2"><code class="docutils literal notranslate"><span class="pre">SpecPage.scale_rgb2()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -290,7 +293,7 @@
 </div>
 <div class="section" id="module-sensor_pages.battery_page">
 <span id="sensor-pages-battery-page-module"></span><h2>sensor_pages.battery_page module<a class="headerlink" href="#module-sensor_pages.battery_page" title="Permalink to this heading"></a></h2>
-<p>Retrieve battery percentage/voltage data from file and make line plot</p>
+<p>Contains class definition for battery sensor / fuel gauge page</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="sensor_pages.battery_page.BatterySensorPage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.battery_page.</span></span><span class="sig-name descname"><span class="pre">BatterySensorPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.battery_page.BatterySensorPage" title="Permalink to this definition"></a></dt>
@@ -310,7 +313,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.battery_page.BatterySensorPage.on_enter">
 <span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.battery_page.BatterySensorPage.on_enter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Makes plot on enter</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -772,9 +776,27 @@ Reverse-engineered from Adafruit’s FreqShow project.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage.match_color">
+<span class="sig-name descname"><span class="pre">match_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage.match_color" title="Permalink to this definition"></a></dt>
+<dd><p>Finds closest matching color in database</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage.next_frame">
 <span class="sig-name descname"><span class="pre">next_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage.next_frame" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage.scale_rgb">
+<span class="sig-name descname"><span class="pre">scale_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage.scale_rgb" title="Permalink to this definition"></a></dt>
+<dd><p>Scales to 8-bit color</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sensor_pages.spectrometer_page.SpecPage.scale_rgb2">
+<span class="sig-name descname"><span class="pre">scale_rgb2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.spectrometer_page.SpecPage.scale_rgb2" title="Permalink to this definition"></a></dt>
+<dd><p>Scales to 8-bit color</p>
+</dd></dl>
 
 </dd></dl>
 

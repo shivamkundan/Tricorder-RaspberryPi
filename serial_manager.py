@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 
 '''
--> This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.\n
-By sending data back and forth:\n
+Brief:
+	This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.\n
+		-> Each sensor page can import relevant functions for efficiency.\n
+		-> Keeping all in one place in case of changes to how I communicate with sensors.\n
+By sending data back and forth:
 	-> Data can be requested from sensors\n
 	-> Sensor-specific settings can be changed\n
 	-> Microcontroller operations can be changed (e.g., sleep mode)\n
-	-> Both of the above involves sending specific mappings from mappings.py\n
--> Each sensor page can import relevant functions for efficiency.\n
--> Keeping all in one place in case of changes to how I communicate with sensors.
+	-> Both of the above involves sending specific mappings from mappings.py
+
 '''
 
 from mappings import d, d_inv, WIND_CODE, MCU_IND_MODE_DISABLE, \

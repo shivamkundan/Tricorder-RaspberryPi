@@ -1,4 +1,4 @@
-'''Retrieve battery percentage/voltage data from file and make line plot'''
+'''Contains class definition for battery sensor / fuel gauge page'''
 
 import pygame
 from page_templates import PageTemplate
@@ -27,6 +27,7 @@ class BatterySensorPage(PageTemplate):
         self.line_surf=pygame.Surface((1,1))
 
     def on_enter(self):
+        ''' Makes plot on enter '''
         logging.info(f"entering {self.__class__.__name__}")
         self.make_plot()
 
