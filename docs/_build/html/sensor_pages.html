@@ -43,8 +43,113 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">tricorder</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">tricorder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aa_arc_gauge.html">aa_arc_gauge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aaaa_a_fonts.html">aaaa_a_fonts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assets.html">assets package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bluetooth.html">bluetooth package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freqshow_code.html">freqshow_code package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_pages.html">general_pages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_functions.html">global_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page_templates.html">page_templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paths_and_utils.html">paths_and_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting_functions.html">plotting_functions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html">resources package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">sensor_pages package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.battery_page">sensor_pages.battery_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.battery_page.BatterySensorPage"><code class="docutils literal notranslate"><span class="pre">BatterySensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.fly_page">sensor_pages.fly_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.FlyPage"><code class="docutils literal notranslate"><span class="pre">FlyPage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.blit_column_txt"><code class="docutils literal notranslate"><span class="pre">blit_column_txt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.compute_positions"><code class="docutils literal notranslate"><span class="pre">compute_positions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page.txt_dims"><code class="docutils literal notranslate"><span class="pre">txt_dims()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.fly_page_vars">sensor_pages.fly_page_vars module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.fly_page_vars.test_func"><code class="docutils literal notranslate"><span class="pre">test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.gps_page">sensor_pages.gps_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.gps_page.GPSSensorPage"><code class="docutils literal notranslate"><span class="pre">GPSSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.imu_page">sensor_pages.imu_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.imu_page.IMUSensorPage"><code class="docutils literal notranslate"><span class="pre">IMUSensorPage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.imu_page.blitRotate2"><code class="docutils literal notranslate"><span class="pre">blitRotate2()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.lidar_page">sensor_pages.lidar_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.lidar_page.LidarSensorPage"><code class="docutils literal notranslate"><span class="pre">LidarSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.multimeter_page">sensor_pages.multimeter_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.multimeter_page.MultimeterPage"><code class="docutils literal notranslate"><span class="pre">MultimeterPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.noise_page">sensor_pages.noise_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.noise_page.NoiseSensorPage"><code class="docutils literal notranslate"><span class="pre">NoiseSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.object_detection_page">sensor_pages.object_detection_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.object_detection_page.ObjectDetectionPage"><code class="docutils literal notranslate"><span class="pre">ObjectDetectionPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.pm25_page">sensor_pages.pm25_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.pm25_page.PM25Page"><code class="docutils literal notranslate"><span class="pre">PM25Page</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.pressure_page">sensor_pages.pressure_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.pressure_page.PressureSensorPage"><code class="docutils literal notranslate"><span class="pre">PressureSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.radiation_page">sensor_pages.radiation_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.radiation_page.GeigerCounterPage"><code class="docutils literal notranslate"><span class="pre">GeigerCounterPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.sdr_page">sensor_pages.sdr_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.sdr_page.SoftwareDefinedRadioPage"><code class="docutils literal notranslate"><span class="pre">SoftwareDefinedRadioPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.spectrometer_page">sensor_pages.spectrometer_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.spectrometer_page.SpecPage"><code class="docutils literal notranslate"><span class="pre">SpecPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.temp_humid_page">sensor_pages.temp_humid_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.temp_humid_page.TempHumidPage"><code class="docutils literal notranslate"><span class="pre">TempHumidPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-pages-thermal-cam-page-module">sensor_pages.thermal_cam_page module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.uv_page">sensor_pages.uv_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.uv_page.UVSensorPage"><code class="docutils literal notranslate"><span class="pre">UVSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.vis_ir_page">sensor_pages.vis_ir_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.vis_ir_page.LightSensorPage"><code class="docutils literal notranslate"><span class="pre">LightSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.voc_page">sensor_pages.voc_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.voc_page.VOCSensorPage"><code class="docutils literal notranslate"><span class="pre">VOCSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.weight_page">sensor_pages.weight_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.weight_page.WeightSensorPage"><code class="docutils literal notranslate"><span class="pre">WeightSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages.wind_page">sensor_pages.wind_page module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sensor_pages.wind_page.WindSensorPage"><code class="docutils literal notranslate"><span class="pre">WindSensorPage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensor_pages">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="serial_manager.html">serial_manager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tricorder.html">tricorder module</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Sensor Pages:</span></p>
 <ul class="current">
