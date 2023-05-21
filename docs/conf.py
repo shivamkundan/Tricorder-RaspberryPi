@@ -17,7 +17,6 @@ sys.path.append(os.path.abspath('../general_pages'))
 project = 'Tricorder-RaspberryPi'
 copyright = '2023, Shivam Kundan'
 author = 'Shivam Kundan'
-release = '0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
