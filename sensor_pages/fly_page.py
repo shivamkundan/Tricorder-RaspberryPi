@@ -3,6 +3,12 @@ This page mimics the avionics displays used in airplanes.
 Eg: garmin-xxxx
 '''
 
+
+def another_test_func():
+	''' another test function'''
+	pass
+
+
 import os
 import time
 import logging
