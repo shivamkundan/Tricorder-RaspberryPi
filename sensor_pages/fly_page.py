@@ -40,6 +40,7 @@ def txt_dims(txt):
 	return w,h
 
 def compute_positions(x_val,curr_val):
+	''' Computes positions for icons and text'''
 	return [((x_val,h1), f"{curr_val-40}"),
 			((x_val,h2), f"{curr_val-30}"),
 			((x_val,h3), f"{curr_val-20}"),
