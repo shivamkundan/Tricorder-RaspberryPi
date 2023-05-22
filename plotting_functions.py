@@ -59,8 +59,8 @@ def pie_plot(fig,ax,canvas,color_list,pie_labels,curr_vals):
     @param ax Matplotlib axis to be used for plotting.
     @param canvas Pygame canvas to be returned as surface.
     @param color_list Colors for different series.
-    @params pie_labels Labels for each series.
-    @params curr_vals Vals for plotting pie chart.
+    @param pie_labels Labels for each series.
+    @param curr_vals Vals for plotting pie chart.
     @return Pygame surface with pie plot.
     '''
     ax.clear()

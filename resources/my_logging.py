@@ -1,7 +1,9 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+'''! Set up custom logging.'''
 
-'''
+## @file my_logging.py Contains custom logging code.
+
+
+'''!
 # This code is from the following github user:
 # -------------------------------------------------------------------------------
 #                                                                               -

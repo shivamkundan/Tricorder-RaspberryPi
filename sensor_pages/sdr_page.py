@@ -1,4 +1,4 @@
-'''!Page for visualizing data from the RTL2832 w/R820T Software Defined Radio (SDR) dongle.
+'''! Page for visualizing data from the RTL2832 w/R820T Software Defined Radio (SDR) dongle.
 Two modes of visualizing: line plot and waterfall.
 Reverse-engineered from Adafruit's FreqShow project.
 '''

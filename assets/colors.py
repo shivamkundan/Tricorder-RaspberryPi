@@ -1,4 +1,6 @@
-'''This is where colors are defined'''
+'''! @brief This is where colors are defined.
+@file colors.py Color definitions
+'''
 import pygame
 # ----------------- Colors ----------------- #
 WHITE = (255, 255, 255)

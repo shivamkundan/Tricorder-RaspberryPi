@@ -9,7 +9,7 @@ from colors import FONT_BLUE, WHITE
 from buttons import ButtonClass, numpad_button, numpad_button_alt
 
 class NumPadPage(PageTemplate):
-	'''Implements a generic number pad for other pages, returns text in kwargs'''
+	'''! Implements a generic number pad for other pages, returns text in kwargs'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.button_list+=self.init_buttons()
@@ -38,7 +38,7 @@ class NumPadPage(PageTemplate):
 		return button_list
 
 	def blit_numpad_buttons(self,screen):
-		'''Blits simple buttons overlayed with numbers'''
+		'''! Blits simple buttons overlayed with numbers'''
 		x_spacing=170
 		y_spacing=101
 		x_start=225

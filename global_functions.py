@@ -3,7 +3,7 @@ Contains functions invoked by several different parts of the code.
 '''
 
 ##
-# @file globalfunctions.py
+# @file global_functions.py
 #
 # @brief This file contains functions invoked by several different parts of the code.
 #
@@ -27,18 +27,18 @@ from colors import WHITE, ORANGE, LIGHT_BLUE
 # ================ Global functions ================================= #
 
 def my_map(x,in_min,in_max,out_min,out_max):
-	'''Standard mapping formula. Used in many places'''
+	'''! Standard mapping formula. Used in many places'''
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
   
 def blitRotate2(surf, image, topleft, angle):
-	'''Rotate an image around its center'''
+	'''! Rotate an image around its center'''
 	rotated_image = pygame.transform.rotate(image, angle)
 	new_rect = rotated_image.get_rect(center = image.get_rect(topleft = topleft).center)
 
 	surf.blit(rotated_image, new_rect.topleft)
 
 def get_text_dimensions(text='',font_style=FONT_DIN,font_color=WHITE,style=0,font_size=28):
-	'''Return size of to-be-rendered text'''
+	'''! Return size of to-be-rendered text'''
 	val_txt=font_style.render(text,fgcolor=font_color,size=font_size)
 	x=list(val_txt)
 	w=x[1][2]
@@ -47,7 +47,7 @@ def get_text_dimensions(text='',font_style=FONT_DIN,font_color=WHITE,style=0,fon
 	return surf,w,h
 
 def flip_buttons(pressed_button,button_list):
-	'''Unselect all other buttons except the one just pressed'''
+	'''! Unselect all other buttons except the one just pressed'''
 	if pressed_button.selected:
 		return
 	else:
@@ -58,7 +58,7 @@ def flip_buttons(pressed_button,button_list):
 			button.selected=False
 
 def update_cpu_stats(dt=None):
-	'''Get rapsberry pi usage stats'''
+	'''! Get rapsberry pi usage stats'''
 	process = Popen(['vcgencmd', 'measure_temp'], stdout=PIPE)
 	output, _error = process.communicate()
 	output = output.decode()
@@ -81,7 +81,7 @@ def update_cpu_stats(dt=None):
 	return cpu_pct,cpu_temp
 
 def get_wifi_name():
-	'''Check for connected wifi network. Return network name'''
+	'''! Check for connected wifi network. Return network name'''
 	try:
 		wifi_name=check_output(['iwgetid','-r']).decode('utf-8').strip('\n')
 		if wifi_name=='Wu Tang LAN':
@@ -92,7 +92,7 @@ def get_wifi_name():
 	return wifi_name
 
 def get_date_time():
-	'''Get formatted time for top toolbar display'''
+	'''! Get formatted time for top toolbar display'''
 	now = datetime.datetime.now()
 	day=now.strftime('%a')
 	date=now.strftime('%b %-d')
@@ -101,7 +101,7 @@ def get_date_time():
 	return (day,date, hour_sec)
 
 def blit_some_stats(screen,width,day,date,hour_sec,fps,cpu_pct,cpu_temp,wifi_name,wifi_symbol,bluetooth_img):
-	'''These pieces of info are always displayed in the top bar or in the Okudagrams'''
+	'''! These pieces of info are always displayed in the top bar or in the Okudagrams'''
 
 	# Day/Date
 	day,date,hour_sec=get_date_time()
@@ -141,7 +141,7 @@ def blit_some_stats(screen,width,day,date,hour_sec,fps,cpu_pct,cpu_temp,wifi_nam
 	return w,w2
 
 def adjust_gauge_lims(curr_val,gauge):
-	'''For circular gauges. Adjusts upper/lower limits to nearest round numbers'''
+	'''! For circular gauges. Adjusts upper/lower limits to nearest round numbers'''
 	lower_lims=[0,1,10,100,1000,10000,100000]
 	upper_lims=[1,10,100,1000,10000,100000,1000000]
 	for low,up in zip(lower_lims,upper_lims):

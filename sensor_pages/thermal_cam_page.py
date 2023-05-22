@@ -31,6 +31,7 @@ import matplotlib.backends.backend_agg as agg
 from matplotlib import cm
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 # -------------- Plotting stuff -------------- #
+## Default color for text, axes, and ticks.
 COLOR = (0.75,0.75,0.75)
 mpl.rcParams['font.size'] = 14
 mpl.rcParams['text.color'] = COLOR
@@ -46,23 +47,24 @@ from serial_manager import ser
 import picamera
 import io
 
-# Init camera
+## Picamera object for using ir-cut camera.
 camera = picamera.PiCamera()
 camera.resolution = (464, 464)
 camera.crop = (0.0, 0.0, 1.0, 1.0)
 camera.rotation = 90
 
-x=120
-y=50
-
-# Init buffer
+## Buffer to hold received bytes.
 rgb = bytearray(camera.resolution[0] * camera.resolution[1] * 3)
 
 
 class ThermalCamPage(PageTemplate):
-    ''' For visualizing data from MLX90640 thermal cam sensor.
-    The communication for this page works differently from all others because of the large quantity of data.'''
+    '''! @brief For visualizing data from MLX90640 thermal cam sensor.
+        @warning The communication for this page works differently from all others because of the large quantity of data.
+    '''
+
+
     def __init__(self,name):
+        '''! Constructor'''
         super().__init__(name)
         self.button_list+=[PREF_BUTTON,PLAY_BUTTON,PAUSE_BUTTON,SCALE_BUTTON,COLOR_PALETTE_BUTTON]+NAV_BUTTONS
         self.button_dict=self.make_dictionary()
@@ -88,7 +90,7 @@ class ThermalCamPage(PageTemplate):
         self.pause=False
 
     def init_plotting_stuff(self):
-        ''' Initialize for heatmap/colormap'''
+        '''! Initialize for heatmap/colormap'''
         # self.fig = plt.figure(figsize=[5,4])
         self.fig = plt.figure(figsize=[7.5,6])
         self.ax = self.fig.add_subplot(111)
@@ -109,12 +111,12 @@ class ThermalCamPage(PageTemplate):
         plt.axis('off')
 
     def blit_title(self,screen):
-        ''' Display page title'''
+        '''! Display page title'''
         FONT_FEDERATION.render_to(screen, (150, 67), 'Thermal Cam', ORANGE,style=0,size=40)
         FONT_FEDERATION.render_to(screen, (150, 117), 'MLX90640', DARK_YELLOW,style=0,size=34)
 
     def thermal_plotter(self,frame):
-        '''Works in a different way than all other sensor-MCU communication'''
+        '''! Works in a different way than all other sensor-MCU communication'''
         self.fig.canvas.flush_events()
 
         plt.tick_params(left=False)
@@ -238,7 +240,7 @@ class ThermalCamPage(PageTemplate):
     #     return xxx
 
     def recv_frame_data_usb_serial(self):
-        ''' Data needs to be read multiple times due to large quantity'''
+        '''! Data needs to be read multiple times due to large quantity'''
         temp_str=""
         xxx=np.ndarray(shape=(32,24))
         frame = [0] * 768
@@ -266,12 +268,13 @@ class ThermalCamPage(PageTemplate):
         return xxx
 
     def increment_color_map(self):
-        ''' Changes to next color mapping'''
+        '''! Changes to next color mapping'''
         if self.bluetooth_connected==True or PERIPHERAL_MODE=='serial':
             self.c_num+=1
             self.curr_cmap=self.default_cmaps[self.c_num%len(self.default_cmaps)]
 
     def next_frame(self,screen,curr_events,**kwargs):
+        '''! Main blitting function.'''
         self.next_screen_name=self.name
         self.kwarg_handler(kwargs)
 
@@ -330,7 +333,7 @@ class ThermalCamPage(PageTemplate):
 
                     if img:
                         # img.set_alpha(175)
-                        screen.blit(img, (x,y))
+                        screen.blit(img, (120,50))
 
                     if self.f_num%7==0:
                         # self.frame=self.recv_frame_data(self.client_sock)

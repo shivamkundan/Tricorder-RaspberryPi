@@ -1,4 +1,6 @@
-'''! Read and visualize data from GPS module'''
+'''! @brief Read and visualize data from GPS module
+@file gps_page.py Contains GPSSensorPage class
+'''
 
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN,FONT_HELVETICA_NEUE
@@ -41,25 +43,36 @@ TITLE_POS = (150, 92)
 
 class GPSSensorPage(PageTemplate):
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
+		## Return page
 		self.prev_page_name='menu_home_page'
+		## Next page
+		self.next_screen_name=self.name
 
-		# ------ satellite icon ------ #
+		## Satellite icon pos
 		self.SATELLITE_POS=(555,100)
-
-		self.alt_pos=(col1,row1+5)
-		self.spd_pos=(col2,row1+5)
-
+		## Num satellite text pos
 		self.SATELLITE_TXT_POS=(self.SATELLITE_POS[0]+55,self.SATELLITE_POS[1]+20)
 
+		## Altitude icon pos
+		self.alt_pos=(col1,row1+5)
+		## Speed icon pos
+		self.spd_pos=(col2,row1+5)
+
+		## Current latitude
 		self.lat=-1
+		## Current longitude
 		self.long=-1
+		## Current altitude
 		self.alt=-1
+		## Current speed
 		self.spd=-1
+		## Num of connected satellites
 		self.sat=-1
 
 	def draw_location_lines(self,screen):
-		'''Draw the cross hairs denoting current position on map'''
+		'''! Draw the cross hairs denoting current position on map'''
 		if (self.sat>0):
 			# Map gps co-ords to world-map image co-ords
 			y=round(my_map(self.lat,top_lim,bottom_lim,0,PIC_H),0)
@@ -75,13 +88,14 @@ class GPSSensorPage(PageTemplate):
 			# circle(surface, color, center, radius)
 
 	def blit_icons(self,screen):
+		'''! Display all icons.'''
 		screen.blit(SATELLITE,self.SATELLITE_POS)
 		screen.blit(ALT_ICON,self.alt_pos)
 		screen.blit(SPD_ICON,self.spd_pos)
 		screen.blit(WORLD_MAP,(PIC_LEFT,PIC_TOP))
 
 	def blit_altitude_speed(self,screen):
-		'''Display speed and estimated altitude'''
+		'''! Display speed and estimated altitude'''
 
 		# altitude
 		FONT_DIN.render_to(screen, (col3,row1), f'{round(self.alt,3)}m', WHITE,style=0,size=36)
@@ -92,7 +106,7 @@ class GPSSensorPage(PageTemplate):
 		FONT_DIN.render_to(screen, (col4,row2), f'{round(self.spd*2.237,3)}mph', SLATE,style=0,size=24)
 
 	def blit_lat_long(self,screen):
-		'''Display latitude and longitude values'''
+		'''! Display latitude and longitude values'''
 		row=610
 		col=col1
 
@@ -113,11 +127,11 @@ class GPSSensorPage(PageTemplate):
 		FONT_DIN.render_to(screen, (col2,row+40), f'{int(self.long)}° {minutes}\"', SLATE,style=0,size=24)
 
 	def update_gps_data(self):
-		'''Retrieve new data from sensor'''
+		'''! Retrieve new data from sensor'''
 		self.lat,self.long,self.alt,self.spd,self.sat=get_gps()
 
 	def blit_num_sats(self,screen):
-		'''Display number of connected satellites'''
+		'''! Display number of connected satellites'''
 		FONT_DIN.render_to(screen, self.SATELLITE_TXT_POS, f"{self.sat}", WHITE,style=0,size=40)
 
 	def next_frame(self,screen,curr_events,**kwargs):

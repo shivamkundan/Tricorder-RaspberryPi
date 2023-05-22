@@ -1,3 +1,6 @@
+'''! Contains class for a quick menu.
+@file quick_menu_page.py Contains class for a quick menu.
+'''
 from page_templates import PageTemplate
 from buttons import QUICK_MENU_BUTTONS
 from fonts import FONT_FEDERATION
@@ -6,9 +9,9 @@ from custom_user_events import TOGGLE_SCREEN,GO_TO_SLEEP,SCREENSHOT_EVENT,SET_BA
 from pygame import event as ev
 
 class QuickMenuPage(PageTemplate):
-	'''! A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.'''
+	'''! @brief A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.'''
 	def __init__(self,name):
-		'''Constructor'''
+		'''! Constructor'''
 		super().__init__(name)
 		self.butt_list=QUICK_MENU_BUTTONS
 		self.button_list+=self.butt_list

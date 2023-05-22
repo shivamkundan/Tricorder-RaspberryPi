@@ -1,4 +1,6 @@
-'''This is where fonts are defined'''
+'''! @brief This is where fonts are defined
+@file fonts.py Font definitions
+'''
 
 import sys, os
 import pygame

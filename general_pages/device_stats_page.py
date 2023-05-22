@@ -1,3 +1,7 @@
+'''! @brief Shows statistics about the RaspberryPi and the running application.
+@file device_stats_page.py Shows statistics about the RaspberryPi and the running application.
+'''
+
 from page_templates import DeviceStatsPageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN
 from colors import SLATE, DARK_YELLOW,  WHITE
@@ -8,12 +12,16 @@ from exit_page import elapsed_time
 class DeviceStatsPage(DeviceStatsPageTemplate):
 	'''! Shows statistics about the RaspberryPi and the running application.'''
 	def __init__(self,name):
-		'''Constructor'''
+		'''! Constructor'''
 		super().__init__(name)
+		## Current subpage number.
 		self.pg_id=0
 		# self.kwargs={} #reset kwargs
 		# self.button_list+=self.init_buttons()
+		## Return page.
 		self.prev_page_name='menu_home_page'
+		## Next page
+		self.next_screen_name=self.name
 
 	def update_cpu_stats(self,dt=None):
 		'''! Retrieve CPU load percentage and temperature.'''
@@ -63,6 +71,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		return output
 
 	def get_mem_use(self):
+		'''! Get mem stats.'''
 		process = Popen(['free', '-h'], stdout=PIPE)
 		output, _error = process.communicate()
 		output = output.decode().split('\n')
@@ -77,6 +86,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		# cat /proc/meminfo
 
 	def blit_page_num(self,screen):
+		'''! Blit subpage number.'''
 	    FONT_FEDERATION.render_to(screen, (30, 100), str(self.pg_id+1)+'/3', SLATE,style=0,size=28)
 	    # FONT_FEDERATION.render_to(screen, (370, 640), "3", DARK_YELLOW,style=0,size=18)
 	    FONT_FEDERATION.render_to(screen, (370, 640), str(self.pg_id+1)+'/3', DARK_YELLOW,style=0,size=18)

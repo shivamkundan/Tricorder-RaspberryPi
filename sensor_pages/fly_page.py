@@ -1,13 +1,4 @@
-'''!
-This page mimics the avionics displays used in airplanes
-Eg: garmin-xxxx
-'''
-
-
-def another_test_func():
-	''' another test function'''
-	pass
-
+'''! @file fly_page.py This file contains fly_page class.'''
 
 import os
 import time
@@ -35,18 +26,20 @@ from images import  SATELLITE, WIND_SOCK, \
 # import pre-computed variables
 from fly_page_vars import *
 
+## Rect object for altitude indicator.
 R_ALT=pygame.Rect(ALTITUDE_RECT_X_POS, ALTITUDE_RECT_Y_POS, \
 						ALTITUDE_RECT_WIDTH, ALTITUDE_RECT_HEIGHT)
+## Rect object for speed indicator.
 R_SPD=pygame.Rect(SPEED_RECT_X_POS, SPEED_RECT_Y_POS, \
 						SPEED_RECT_WIDTH, SPEED_RECT_HEIGHT)
 
 def txt_dims(txt):
-# wrapper fn
+	'''! wrapper function.'''
 	_,w,h=get_text_dimensions(text=str(txt), font_style=FONT_FEDERATION, font_color=WHITE, style=0, font_size=24)
 	return w,h
 
 def compute_positions(x_val,curr_val):
-	''' Computes positions for icons and text'''
+	'''! Computes positions for icons and text'''
 	return [((x_val,h1), f"{curr_val-40}"),
 			((x_val,h2), f"{curr_val-30}"),
 			((x_val,h3), f"{curr_val-20}"),
@@ -56,12 +49,16 @@ def compute_positions(x_val,curr_val):
 			((x_val,h7), f"{curr_val+40}")]
 
 def blit_column_txt(screen,x_val,curr_val):
+	'''! Blit text for speed and altitude indicators.'''
 	l=compute_positions(x_val,curr_val)
 	for pos in l:
 		FONT_FEDERATION.render_to(screen, pos[0], pos[1], WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
 
 class FlyPage(PageTemplate):
+	'''! @brief This page mimics the avionics displays used in airplanes Eg: garmin-xxxx
+	'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
 		self.prev_page_name='menu_home_page'
 
@@ -98,6 +95,9 @@ class FlyPage(PageTemplate):
 		self.frame_count=0
 
 	def get_sensor_data(self):
+		'''! Retrieve serial data from multiple sensors.
+			@warning This function requests data from multiple sensors.
+		'''
 		if self.frame_count%self.imu_tics==0:
 			self.heading,self.roll,self.pitch=get_imu_orientation()
 
@@ -120,6 +120,7 @@ class FlyPage(PageTemplate):
 			set_tsl_scl_disconnect()
 
 	def blit_vertical_column(self, screen, rectangle, curr_val, txt_pos, x_val):
+		'''! Blit altitude and speed indicators.'''
 		pygame.gfxdraw.box(screen, rectangle, INDICATOR_RECTS_COLOR)
 
 		w,h=txt_dims(curr_val)
@@ -136,6 +137,10 @@ class FlyPage(PageTemplate):
 		return screen
 
 	def blit_art_horizon(self,screen):
+		'''! Blit artificial horizon rectangles.
+			@warning Wonky at extreme angles.
+			@todo Requires more work for extreme angles.
+		'''
 		m=my_map(self.roll,0,45,START_Y,440)  # for 0 to 45 degrees
 		left_height=int(m)
 		right_height=START_Y
@@ -152,11 +157,17 @@ class FlyPage(PageTemplate):
 		return screen
 
 	def blit_env_data(self, screen, icon, icon_pos, txt_pos, txt, font_size=INFO_FONT_SIZE):
+		'''! Blit icon and text at specified position.
+			@param icon Icon for this sensor.
+			@param icon_pos Position for this icon.
+			@param txt_pos Position for text.
+		'''
 		screen.blit(icon,icon_pos)
 		FONT_HELVETICA_NEUE.render_to(screen, txt_pos, txt, WHITE,style=0,size=font_size)
 		return screen
 
 	def blit_sensor_data(self,screen):
+		'''! Blit icon and text for all sensors.'''
 		for item in [
 					(WIND_SOCK,     WIND_SOCK_POS,     WIND_TXT_POS,      f"{self.wind_speed}mph",   INFO_FONT_SIZE-2),\
 					(THERMOMETER,   THERM_POS,         TEMP_TXT_POS,      f"{self.temperature}°C",   INFO_FONT_SIZE),  \
@@ -170,6 +181,7 @@ class FlyPage(PageTemplate):
 		return screen
 
 	def blit_gps_pos_data(self,screen):
+		'''! Blit latitude, longitude (GPS) and roll, pitch, heading (IMU).'''
 		FONT_HELVETICA_NEUE.render_to(screen, (260,150), f"roll:{self.roll}° pitch:{self.pitch}° head:{self.heading}°", WHITE,style=0,size=INFO_FONT_SIZE)
 		FONT_HELVETICA_NEUE.render_to(screen,LAT_TXT_POS , f"{self.lat}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)
 		FONT_HELVETICA_NEUE.render_to(screen, LONG_TXT_POS, f"{self.long}", WHITE,style=0,size=LAT_LNG_TXT_SIZE)

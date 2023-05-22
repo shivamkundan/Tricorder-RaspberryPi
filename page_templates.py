@@ -1,7 +1,5 @@
 '''!
-This file contains templates for pages.\n
-PageTemplate is the base class which handles blitting the home button\n
-and other page-specific buttons, mouse/touch handling, enter and exit.
+@file page_templates.py Contains diferrent template classes for pages.
 '''
 
 
@@ -136,62 +134,95 @@ class PageTemplate():
 				return None
 
 class PageWithoutGauge(PageTemplate):
-	'''! Template for more complex pages.'''
+	'''! Template for more complex pages. Contains four subpages for bar plot, pie plot, line plot, and text display.'''
 	def __init__(self,name,color_list=[],names_list=[]):
-		'''! Constructor'''
+		'''! Constructor
+			@param name Name of the page.
+			@param color_list Class follows same color scheme for series' in bar, pie, line plots.
+			@param names_list Common names for series' in bar, pie, line plots.
+		'''
 		super().__init__(name)
+		## Names for each series.
 		self.names_list=names_list
+		## Colors for each series.
 		self.color_list=color_list
+		## Default previous page.
 		self.prev_page_name='menu_home_page'
+		## Number of samples to show.
 		self.rolling_tics=30
+		## Holds all series' data.
 		self.array_dict={}
+		## Is MCU connected by bluetooth
 		self.bluetooth_connected=False
+		## Implements pause functionality.
 		self.pause=False
+		## List for names of mini button.
 		self.b_names=MINI_BUTTON_NAMES
+		## Bluetooth vs usb serial.
 		self.PERIPHERAL_MODE=PERIPHERAL_MODE
-
+		## List of menu buttons (mini buttons)
 		self.menu_buttons=MINI_BUTTONS
+		## List of all buttons
 		self.button_list+=self.menu_buttons+ [PREF_BUTTON,EDIT_BUTTON,PLAY_BUTTON,PAUSE_BUTTON,SCALE_BUTTON,RESET_BUTTON]
 		self.some_buttons=self.menu_buttons+ [PREF_BUTTON,PLAY_BUTTON,PAUSE_BUTTON,SCALE_BUTTON,RESET_BUTTON]
+		## Dict containing name:object pairs for all buttons.
 		self.button_dict=self.make_dictionary()
-
 		PLAY_BUTTON.selected=True
+		## Initial subpage is bar chart.
 		self.button_dict['bar_chart'].selected=True
-		self.prev_subpage_name='info'  #when exiting preferences pane
+		## When exiting preferences pane.
+		self.prev_subpage_name='info'
 
 		rolling_tics=self.rolling_tics
 		for curr_name in self.names_list:
 			self.array_dict[curr_name]=[-1 for i in range(self.rolling_tics)]
 			# print (curr_name,self.array_dict[curr_name])
 
+		## For trimming arrays to rolling_tics size.
 		self.i=0
+		## This array holds the actual values.
 		self.x=[i for i in range(-self.rolling_tics,0)]
+		## Holds number of displayed frames.
 		self.frame_count=0
 
 		# # ---
 		# Plotting stuff
+		## Fig for bar chart.
 		self.fig = plt.figure(figsize=[5,4])
+		## Axis for bar chart.
 		self.ax = self.fig.add_subplot(111)
+		## Pygame canvas for bar chart surface.
 		self.canvas = agg.FigureCanvasAgg(self.fig)
 
 		# ---
+		## Fig for pie plot.
 		self.fig2 = plt.figure(figsize=(6.4/1.2,4.8/1.2))
+		## Pie plot axis
 		self.ax2 = self.fig2.add_subplot(111)
+		## Pygame canvas for pie plot surface.
 		self.canvas2 = agg.FigureCanvasAgg(self.fig2)
 
 		# ---
+		## Fig for line plot.
 		self.fig3 = plt.figure(figsize=[5,4])
+		## Line plot axis
 		self.ax3 = self.fig3.add_subplot(111)
+		## Pygame canvas for line plot surface.
 		self.canvas3 = agg.FigureCanvasAgg(self.fig3)
 		self.ax3.set_frame_on(False)
 
 		# ---
+		## Pygame surface for bar chart.
 		self.bar_surf=pygame.Surface((1,1))
+		## Pygame surface for pie plot.
 		self.pie_surf=pygame.Surface((1,1))
+		## Pygame surface for line plot.
 		self.line_surf=pygame.Surface((1,1))
 
 	def flip_button(self,pressed_button):
-		'''! For releasing/unselecting the non-selected buttons.'''
+		'''! For releasing/unselecting the non-selected buttons.
+			@param pressed_button Currently selected button.
+		'''
 		if pressed_button.selected:
 			return
 		else:
@@ -207,6 +238,7 @@ class PageWithoutGauge(PageTemplate):
 			self.pause=False
 
 	def next_frame_base(self,screen,curr_events,curr_vals,**kwargs):
+		'''! Base class for blitting everything.'''
 		self.next_screen_name=self.name
 		self.kwarg_handler(kwargs)
 		if 'text' in kwargs.keys():
@@ -290,5 +322,9 @@ class PageWithoutGauge(PageTemplate):
 class DeviceStatsPageTemplate(PageTemplate):
 	'''! For viewing RPi stats'''
 	def __init__(self,name):
+		'''! Constructor.
+		@param name Name of page.
+		'''
 		super().__init__(name)
+		'''! List of all buttons.'''
 		self.button_list+=NAV_BUTTONS+NAV_BUTTONS_VERTICAL

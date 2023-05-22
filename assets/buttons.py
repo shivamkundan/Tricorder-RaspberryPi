@@ -1,5 +1,6 @@
-'''
-This file contains:\n
+'''!
+@brief Buttons and imgs
+@file buttons.py This file contains:\n
 -> A generic class for buttons\n
 -> Button definitions for all pages
 '''
@@ -12,7 +13,7 @@ import math  #for calculating no. of pages
 from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
 
 class ButtonClass():
-	'''Generic class for all buttons'''
+	'''! Generic class for all buttons'''
 	def __init__(self,butt_id,button_img,alt_img,pos_x,pos_y,selected_img=None,selected_alt_img=None,cooldown_val=5,icon=None,text='',font=FONT_FEDERATION,style=0,font_size=16,name='',font_color=FONT_BLUE,selected=False,selected_color=GREEN,required_cooldown=10,align_left=False):
 		self.butt_id=butt_id
 		self.img=button_img
@@ -107,10 +108,11 @@ class ButtonClass():
 		# self.blit_button()
 
 # =====================================================================================================
+## Global list of loaded images, (used in testing).
 BTN_IMG_LIST=[]	# global list of loaded images
 
 def img_ld(input_img):
-	'''Neatly summarize/print all images before loading'''
+	'''! Neatly summarize/print all images before loading'''
 	# BTN_IMG_LIST.append(input_img)
 	return pygame.image.load(input_img)
 
@@ -224,6 +226,7 @@ for b_name in MINI_BUTTON_NAMES:
 	col+=x_spacing
 
 # -------------------------------- Icon Buttons ---------------------------------------------------------- #
+## Icon button names for menu page.
 icon_button_names=['home','noise','pm25',
 'pressure','spectrometer','temp_humid',
 'uv','vis_ir','wind',
