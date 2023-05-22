@@ -1,4 +1,4 @@
-'''Read and plot values of current, voltage, and power from the current sensor.'''
+'''! Read and plot values of current, voltage, and power from the current sensor.'''
 
 import pygame
 from page_templates import PageTemplate

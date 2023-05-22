@@ -1,4 +1,4 @@
-'''
+'''!
 Used for implementation of screenshot browsing functionality.
 '''
 

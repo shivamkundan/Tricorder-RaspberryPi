@@ -1,5 +1,5 @@
-'''
-This page mimics the avionics displays used in airplanes.
+'''!
+This page mimics the avionics displays used in airplanes
 Eg: garmin-xxxx
 '''
 

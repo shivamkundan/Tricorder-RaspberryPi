@@ -1,4 +1,7 @@
-'''Contains class definition for battery sensor / fuel gauge page'''
+'''! Contains class definition for battery sensor / fuel gauge page'''
+
+##
+# @package sensor_pages Contains sensor-specific page implementations.
 
 import pygame
 from page_templates import PageTemplate

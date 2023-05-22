@@ -1,17 +1,22 @@
 #!/usr/bin/python3
+"""! @brief Functions for serial comminication with MCU.
 
-'''
-Brief:
-	This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.\n
-		-> Each sensor page can import relevant functions for efficiency.\n
-		-> Keeping all in one place in case of changes to how I communicate with sensors.\n
-By sending data back and forth:
-	-> Data can be requested from sensors\n
-	-> Sensor-specific settings can be changed\n
-	-> Microcontroller operations can be changed (e.g., sleep mode)\n
-	-> Both of the above involves sending specific mappings from mappings.py
+	This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.
+		-> Each sensor page can import relevant functions for efficiency.
+		-> Keeping all in one place in case of changes to how I communicate with sensors.
+	By sending data back and forth:
+		-> Data can be requested from sensors
+		-> Sensor-specific settings can be changed
+		-> Microcontroller operations can be changed (e.g., sleep mode)
+		-> Both of the above involves sending specific mappings from mappings.py
+"""
 
-'''
+##
+# @file serial_manager.py
+#
+# @brief Contains Functions for serial comminication with MCU.
+#
+
 
 from mappings import d, d_inv, WIND_CODE, MCU_IND_MODE_DISABLE, \
 					TSL_SCL_DISCONNECT_CODE, TSL_SCL_CONNECT_CODE, \
@@ -20,9 +25,11 @@ from mappings import d, d_inv, WIND_CODE, MCU_IND_MODE_DISABLE, \
 import serial
 import logging
 
-PORT_NAME="/dev/my_esp32"	# this is the custom assigned port for esp32
+## This is the custom assigned port for esp32
+PORT_NAME="/dev/my_esp32"
 
 try:
+	## Serial communication object
 	ser = serial.Serial(
 	    port=PORT_NAME, # Change this according to connection methods, e.g. /dev/ttyUSB0
 	    baudrate = 115200,
@@ -42,7 +49,15 @@ except serial.serialutil.SerialException:
 
 # -------------------------------------------------
 def get_temp_humid():
-	'''Get temperature and humidity readings'''
+	'''
+	Dictionary keys:
+				['temperature', 'relative_humidity', 'heater', 'h_res', 't_res']
+	'''
+
+	'''! @brief Get temperature and humidity readings
+		@return if normal -> temperature, relative_humidity, h_res, t_res
+		@return if error  -> -1,-1,-1,-1
+	'''
 	try:
 		x=get_serial_vals(d['TEMP_HUMID_CODE'],['temperature','relative_humidity','heater','h_res','t_res'])
 		c_temp=float(x['temperature'])
@@ -55,7 +70,18 @@ def get_temp_humid():
 		return -1,-1,-1,-1
 
 def get_pressure():
-	'''Get barometric pressure, temperature, and est altitude readings'''
+	'''
+	Dictionary keys:
+				['pressure', 'bmp_temp', 'p_over', 't_over', 'alt']
+	'''
+
+	'''! @brief Get barometric pressure, temperature, and est altitude readings
+		@return if normal -> altitude, pressure, bmp_temp, p_oversampling, t_oversampling
+		@return if error  -> -1, -1, -1, -1, -1
+	'''
+
+
+
 	try:
 		x=get_serial_vals(d['PRESSURE_CODE'],['pressure','bmp_temp','p_over','t_over','alt'])
 		altitude=float(x['alt'])
@@ -69,7 +95,15 @@ def get_pressure():
 		return -1,-1,-1,-1,-1
 
 def get_tvoc_eco2():
-	'''Get volatile organic compound and estimated CO2 readings'''
+	'''
+	Dictionary keys:
+				['eCO2', 'TVOC', 'raw_H2', 'raw_ethanol', 'baseline_eCO2', 'baseline_TVOC']
+	'''
+
+	'''! Get volatile organic compound and estimated CO2 readings
+	@return if normal -> TVOC, eCO2, baseline_eCO2, baseline_TVOC
+	@return if error  -> -1,-1,-1,-1
+	'''
 	try:
 		x=get_serial_vals(d['TVOC_CODE'],['eCO2','TVOC','raw_H2','raw_ethanol','baseline_eCO2','baseline_TVOC'])
 		TVOC=x['TVOC']
@@ -83,7 +117,15 @@ def get_tvoc_eco2():
 
 # -------------------------------------------------
 def get_vis_ir():
-	'''Get readings for visible and infrared light'''
+	'''
+	Dictionary keys:
+				['lux', 'infrared', 'visible', 'full_spectrum', 'tsl2591_gain']
+	'''
+
+	'''! Get readings for visible and infrared light
+	@return if normal -> lux, ir, gain, visible, full_spectrum
+	@return if error  -> -1,-1,-1,-1,-1
+	'''
 	try:
 		x=get_serial_vals(d['VIS_IR_CODE'],['lux','infrared','visible','full_spectrum','tsl2591_gain'])
 		lux=float(x['lux'])
@@ -97,7 +139,15 @@ def get_vis_ir():
 		return -1,-1,-1,-1,-1
 
 def get_uv():
-	'''Get readings from UV light sensor'''
+	'''
+	Dictionary keys:
+				['uvs','light','uvi','ltr_lux','ltr_gain','ltr_res','ltr_win_fac','ltr_mdelay']
+	'''
+
+	'''! Get readings from UV light sensor
+	@return if normal -> uvs, light, uvi, ltr_lux, ltr_gain, ltr_resolution, ltr_window_factor, ltr_measurement_delay
+	@return if error  -> -1, -1, -1, -1, -1, -1, -1, -1
+	'''
 	x=get_serial_vals(d['UV_CODE'],['uvs','light','uvi','ltr_lux','ltr_gain','ltr_res','ltr_win_fac','ltr_mdelay'])
 
 	if len(x)>1:
@@ -116,7 +166,15 @@ def get_uv():
 			return -1,-1,-1,-1,-1,-1,-1,-1
 
 def get_spectrometer():
-	'''Get readings from photo spectrometer'''
+	'''
+	Dictionary keys:
+		['c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','clear','nir']
+	'''
+
+	'''! Get readings from photo spectrometer
+	@return if normal -> {'c_415nm':val, 'c_445nm':val, 'c_480nm':val, 'c_515nm':val, 'c_555nm':val, 'c_590nm':val, 'c_630nm':val, 'c_680nm':val, 'clear':val, 'nir':val}
+	@return if error  -> {'c_415nm':0,'c_445nm':0,'c_480nm':0,'c_515nm':0,'c_555nm':0,'c_590nm':0,'c_630nm':0,'c_680nm':0,'clear':0,'nir':0}
+	'''
 	try:
 		channels=['c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','clear','nir']
 		x=get_serial_vals(d['SPEC_CODE'],channels)
@@ -127,7 +185,16 @@ def get_spectrometer():
 
 # -------------------------------------------------
 def get_pm25():
-	'''Get particulate matter readings'''
+	'''
+	Dictionary keys:
+		['03um', '05um', '10um', '25um', '50um', '100um']
+	'''
+
+	'''! Get particulate matter readings
+	@return if normal -> [val, val, val, val, val, val]
+	@return if error -> [1, 1, 1, 1, 1, 1]
+	'''
+
 	try:
 		aqdata=[]
 		x=get_serial_vals(d['PM25_CODE'],['03um','05um','10um','25um','50um','100um'])
@@ -143,7 +210,14 @@ def get_pm25():
 		return [1, 1, 1, 1, 1, 1]
 
 def get_noise():
-	'''Get analog value from electret microphone'''
+	'''
+	Dictionary keys:
+		['noise_out']
+	'''
+	'''! Get analog value from electret microphone
+	@return if normal -> noise_out
+	@return if error  -> 0
+	'''
 	try:
 		x=get_serial_vals(d['NOISE_CODE'],['noise_out'])
 		return int(x['noise_out'])
@@ -152,7 +226,11 @@ def get_noise():
 		return 0
 
 def get_wind():
-	'''Read analog value from wind sensor'''
+	'''! Read analog value from wind sensor.
+	@warning This works differently from others.
+	@return if normal -> wind_val
+	@return if error  -> -1
+	'''
 	try:
 		# my_flush()
 		ser.write(WIND_CODE.encode('utf-8'))
@@ -164,7 +242,11 @@ def get_wind():
 
 # -------------------------------------------------
 def get_multimeter():
-	'''Get readings from current sensor INA219'''
+	'''! Get readings from current sensor INA219
+	@warning This works differently from others.
+	@return if normal -> current, voltage, power
+	@return if error  -> -1, -1, -1
+	'''
 	try:
 		# my_flush()
 		ser.write(d['CURRENT_CODE'].encode('utf-8'))
@@ -176,7 +258,15 @@ def get_multimeter():
 		return -1,-1,-1
 
 def get_gps():
-	'''Read data from GPS sensor'''
+	'''
+	Dictionary keys:
+		['lat', 'lng', 'alt', 'spd', 'sat']
+	'''
+
+	'''! Read data from GPS sensor
+	@return if normal -> latitude, longitude, altitude, speed, num satellites
+	@return if error  -> -1, -1, -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['GPS_CODE'],['lat','lng','alt','spd','sat'])
 		return float(x['lat']),float(x['lng']),float(x['alt']),float(x['spd']),int(x['sat'])
@@ -185,7 +275,15 @@ def get_gps():
 		return -1,-1,-1,-1,-1
 
 def get_battery():
-	'''Get battery voltage & percentage from Adafruit fuel gauge'''
+	'''
+	Dictionary keys:
+		['volt', 'pct', 'temp']
+	'''
+
+	'''! Get battery voltage & percentage from Adafruit fuel gauge
+	@return if normal -> voltage, battery pct, battery temperature
+	@return if error  -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['BATTERY_CODE'],['volt','pct','temp'])
 		return float(x['volt']),float(x['pct']),float(x['temp'])
@@ -194,7 +292,15 @@ def get_battery():
 		return -1,-1,-1
 
 def get_radiation():
-	'''Read analog value from geiger counter module'''
+	'''
+	Dictionary keys:
+		['CPM']
+	'''
+
+	'''! Read analog value from geiger counter module
+	@return if normal -> CPM
+	@return if error  -> -1
+	'''
 	try:
 		x=get_serial_vals(d['RADIATION_CODE'],['CPM'])
 		return float(x['CPM'])
@@ -204,7 +310,15 @@ def get_radiation():
 
 # --------- Inertial measurement unit --------- #
 def get_imu_orientation():
-	'''BNO055 IMU: get heading, roll, pitch'''
+	'''
+	Dictionary keys:
+		['Hd','Rl','Ph']
+	'''
+
+	'''! BNO055 IMU: get heading, roll, pitch
+	@return if normal -> heading, roll, pitch
+	@return if  error -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['IMU_ORIENTATION_CODE'],['Hd','Rl','Ph'])
 		return float(x['Hd']),float(x['Rl']),float(x['Ph'])
@@ -213,7 +327,15 @@ def get_imu_orientation():
 		return -1,-1,-1
 
 def get_imu_ang_vel():
-	'''BNO055 IMU: get x/y/z axes angular velocity'''
+	'''
+	Dictionary keys:
+		['X','Y','Z']
+	'''
+
+	'''! BNO055 IMU: get x/y/z axes angular velocity
+	@return if normal -> x, y, z
+	@return if  error -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['IMU_ANG_VEL_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
@@ -222,7 +344,15 @@ def get_imu_ang_vel():
 		return -1,-1,-1
 
 def get_imu_lin_acc():
-	'''BNO055 IMU: get x/y/z axes linear acceleration'''
+	'''
+	Dictionary keys:
+		['X','Y','Z']
+	'''
+
+	'''! BNO055 IMU: get x/y/z axes linear acceleration
+	@return if normal -> x, y, z
+	@return if  error -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['IMU_LIN_ACC_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
@@ -231,7 +361,15 @@ def get_imu_lin_acc():
 		return -1,-1,-1
 
 def get_imu_acc():
-	'''BNO055 IMU: get x/y/z axes overall acceleration'''
+	'''
+	Dictionary keys:
+		['X','Y','Z']
+	'''
+
+	'''! BNO055 IMU: get x/y/z axes overall acceleration
+	@return if normal -> x, y, z
+	@return if  error -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['IMU_ACC_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
@@ -240,7 +378,15 @@ def get_imu_acc():
 		return -1,-1,-1
 
 def get_imu_mag():
-	'''BNO055 IMU: get x/y/z axes magnetic field strength'''
+	'''
+	Dictionary keys:
+		['X','Y','Z']
+	'''
+
+	'''! BNO055 IMU: get x/y/z axes magnetic field strength
+	@return if normal -> x, y, z
+	@return if  error -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['IMU_MAG_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
@@ -249,7 +395,15 @@ def get_imu_mag():
 		return -1,-1,-1
 
 def get_imu_grav():
-	'''BNO055 IMU: get x/y/z axes readings for adjusted gravitational acceleration'''
+	'''
+	Dictionary keys:
+		['X','Y','Z']
+	'''
+
+	'''! BNO055 IMU: get x/y/z axes readings for adjusted gravitational acceleration
+	@return if normal -> x, y, z
+	@return if  error -> -1, -1, -1
+	'''
 	try:
 		x=get_serial_vals(d['IMU_GRAV_CODE'],['X','Y','Z'])
 		return float(x['X']),float(x['Y']),float(x['Z'])
@@ -259,44 +413,53 @@ def get_imu_grav():
 
 # -------------- VIS/IR light sensor  -------------- #
 def set_tsl_scl_disconnect():
-	'''Disconnect the SCL signal for TSL2591 vis/ir sensor'''
+	'''! Disconnect the SCL signal for TSL2591 vis/ir sensor'''
 	ser.write(TSL_SCL_DISCONNECT_CODE.encode('utf-8'))
 	curr_line=(ser.readline())
 
 def set_tsl_scl_connect():
-	'''Reconnect the SCL signal for TSL2591 vis/ir sensor'''
+	'''! Reconnect the SCL signal for TSL2591 vis/ir sensor'''
 	ser.write(TSL_SCL_CONNECT_CODE.encode('utf-8'))
 	curr_line=(ser.readline())
 
 def set_tsl_gain(new_gain):
-	'''Set gain of TSL2591 vis/ir sensor'''
+	'''! Set gain of TSL2591 vis/ir sensor'''
 	ser.write(new_gain.encode('utf-8'))
 	ser.readline()
 
 # ------------------- PM25 ------------------------- #
 def set_pm25_power_off():
-	'''Disconnect power to PM25 sensor by switching assigned mosfet'''
+	'''! Disconnect power to PM25 sensor by switching assigned mosfet'''
 	ser.write(PM25_PWR_OFF_CODE.encode('utf-8'))
 	curr_line=(ser.readline())
 
 def set_pm25_power_on():
-	'''Reconnect power to PM25 sensor by switching assigned mosfet'''
+	'''! Reconnect power to PM25 sensor by switching assigned mosfet'''
 	ser.write(PM25_PWR_ON_CODE.encode('utf-8'))
 	curr_line=(ser.readline())
 
 def set_geiger_power_off():
-	'''Disconnect power to geiger counter module by switching assigned mosfet'''
+	'''! Disconnect power to geiger counter module by switching assigned mosfet'''
 	ser.write(GEIGER_PWR_OFF_CODE.encode('utf-8'))
 	curr_line=(ser.readline())
 
 def set_geiger_power_on():
-	'''Reconnect power to geiger counter module by switching assigned mosfet'''
+	'''! Reconnect power to geiger counter module by switching assigned mosfet'''
 	ser.write(GEIGER_PWR_ON_CODE.encode('utf-8'))
 	curr_line=(ser.readline())
 
 # -------------------------------------------------
 def get_serial_vals(send_msg,dict_names_list):
-	'''Main function actually responsible for serial communication msg send/recv'''
+	'''! @brief Main function actually responsible for serial communication msg send/recv.
+		@param send_msg Message (i.e., code) to be sent.
+		@param dict_names_list Sensor specific names for returned name/value pairs.
+		@returns Dictionary with name-value pairs specified in dict_names_list.
+
+		@note This is a note
+
+	'''
+
+	'''More comment'''
 	recv_msg={}
 
 	for char in send_msg.rstrip(' ').split(' '):
@@ -324,7 +487,7 @@ def get_serial_vals(send_msg,dict_names_list):
 	return recv_msg
 
 def my_flush():
-	'''Dump serial vals'''
+	'''! Dump serial vals'''
 	while (len(ser.readline())>0):
 		logging.warning ('dumping serial vals')
 

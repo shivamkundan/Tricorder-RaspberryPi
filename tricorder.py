@@ -1,4 +1,27 @@
 #!/usr/bin/python3
+
+"""! @brief Execution starts from here."""
+
+
+##
+# @mainpage Tricorder Project
+# @author Shivam Kundan
+# @section description_main Description
+# An example Python program demonstrating how to use Doxygen style comments for
+# generating source code documentation with Doxygen.
+#
+# @section notes_main Notes
+# - Add special project notes here that you want to communicate to the user.
+#
+# Copyright (c) 2023 Shivam Kundan.  All rights reserved.
+# @package general_pages Contains page implementations not directly related to sensors.
+# @package freqshow_code Contains code for Adafruit's FreqShow program.
+# @package assets Contains definitions for colors, fonts, buttons, and images.
+# @package bluetooth Bluetooth-related communication code.
+# @package resources Contains custom user events, logging code, and serial comm code mappings.
+
+
+
 import pygame
 pygame.init()
 import os
@@ -119,7 +142,11 @@ def kill(self):
 	self.killed = True
 
 class DeviceInfoClass():
-	'''For holding execution information about the raspberry pi'''
+	"""! For holding execution information about the raspberry pi.
+    """
+
+
+	''' For holding execution information about the raspberry pi'''
 	def __init__(self):
 		self.wifi_name=get_wifi_name()
 		# self.day,self.date,self.time=get_date_time()
@@ -133,7 +160,7 @@ class DeviceInfoClass():
 
 		self.battery_stats_tics=600
 		self.batt_volt=-1
-		self.batt_pct=-1
+		self.batt_pct=-1 #< battery pct
 		self.batt_temp=-1
 
 	def blit_bluetooth_status(self,screen,x_pos):
@@ -143,6 +170,7 @@ class DeviceInfoClass():
 			screen.blit(bluetooth_img,(x_pos-23,4))
 
 	def get_bluetooth_status(self):
+
 		if self.bluetooth_connected:
 			b_img=bluetooth_img
 		else:
@@ -150,6 +178,8 @@ class DeviceInfoClass():
 		return b_img
 
 	def read_battery(self,screen,frame_count):
+		'''! Read battery voltage & temperature -> display text -> log to file.
+    '''
 	# Read battery voltage & temperature -> display -> log to file
 		# ------ Battery ------ #
 		screen.blit(no_battery,(10,5))

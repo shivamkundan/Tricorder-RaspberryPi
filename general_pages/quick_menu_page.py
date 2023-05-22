@@ -6,7 +6,7 @@ from custom_user_events import TOGGLE_SCREEN,GO_TO_SLEEP,SCREENSHOT_EVENT,SET_BA
 from pygame import event as ev
 
 class QuickMenuPage(PageTemplate):
-	'''A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.'''
+	'''! A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.'''
 	def __init__(self,name):
 		'''Constructor'''
 		super().__init__(name)

@@ -979,24 +979,30 @@ Reverse-engineered from Adafruit’s FreqShow project.</p>
 </div>
 <div class="section" id="module-sensor_pages.thermal_cam_page">
 <span id="sensor-pages-thermal-cam-page-module"></span><h2>sensor_pages.thermal_cam_page module<a class="headerlink" href="#module-sensor_pages.thermal_cam_page" title="Permalink to this heading"></a></h2>
+<p>This file contains a class for thermal camera display</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensor_pages.thermal_cam_page.</span></span><span class="sig-name descname"><span class="pre">ThermalCamPage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="page_templates.html#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
+<p>For visualizing data from MLX90640 thermal cam sensor.
+The communication for this page works differently from all others because of the large quantity of data.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.blit_title">
 <span class="sig-name descname"><span class="pre">blit_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.blit_title" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Display page title</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.increment_color_map">
 <span class="sig-name descname"><span class="pre">increment_color_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.increment_color_map" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Changes to next color mapping</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.init_plotting_stuff">
 <span class="sig-name descname"><span class="pre">init_plotting_stuff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.init_plotting_stuff" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Initialize for heatmap/colormap</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.next_frame">
@@ -1006,7 +1012,8 @@ Reverse-engineered from Adafruit’s FreqShow project.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.recv_frame_data_usb_serial">
 <span class="sig-name descname"><span class="pre">recv_frame_data_usb_serial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensor_pages.thermal_cam_page.ThermalCamPage.recv_frame_data_usb_serial" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Data needs to be read multiple times due to large quantity</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensor_pages.thermal_cam_page.ThermalCamPage.thermal_plotter">

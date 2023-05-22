@@ -1,4 +1,4 @@
-'''
+'''!
 Communication with the microcontroller is event based.\n
 Certain device controls are also event based.\n
 This file contains my custom defined events.

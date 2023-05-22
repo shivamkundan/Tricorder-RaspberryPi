@@ -1,4 +1,4 @@
-'''Visualize data from BNO055 9DOF Inertial Measurement Unit'''
+'''! Visualize data from BNO055 9DOF Inertial Measurement Unit'''
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
 from colors import DARK_YELLOW,SLATE,WHITE,ORANGE

@@ -4,7 +4,7 @@ from colors import ORANGE
 from buttons import ButtonClass,long_button_blue,long_button_blue_pressed
 
 class SettingsPage(PageTemplate):
-	'''Meant for changing device settings'''
+	'''! Meant for changing device settings'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.button_list+=self.init_buttons()

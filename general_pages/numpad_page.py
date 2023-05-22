@@ -1,4 +1,4 @@
-'''
+'''!
 Implements a generic number pad for other pages, returns text in kwargs
 '''
 

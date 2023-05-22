@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-'''
-Contains implementation of circular Anti-Aliased ("AA") gauges with gradient coloring
-'''
+"""! @brief Implementation of circular Anti-Aliased ("AA") gauges with gradient coloring."""
+
+##
+# @file aa_arc_gauge.py
+#
+# @brief Contains implementation of circular Anti-Aliased ("AA") gauges with gradient coloring.
+#
+
 import pygame,sys,time
 import pygame.freetype
 
@@ -39,13 +44,29 @@ number_keys=[pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,\
 
 
 # ---- arc parameters ---- #
-radius=35
+# radius=35
 # offset=75
 # RAD_CONSTANT=0.0174533
+
+## Pi/2 in radians
 RAD_CONSTANT=0.0175
 
 class AA_Gauge():
-    '''Class for an anti-aliased circular gauge with gradient coloring'''
+    """! Generic class for an anti-aliased circular gauge with gradient coloring.
+
+    @section Description
+    Defines the base class utilized by all pages.
+
+    @section Main Components
+    - Radius
+    - Range: min and max vals
+    --autolims
+    - Arc color
+    - Background arc color
+    - Weight
+    - Title
+    - Font: type, size, color
+    """
     def __init__(self,
         screen,
         curr_val=None,
@@ -75,57 +96,88 @@ class AA_Gauge():
         title_font_color=LIGHT_GREY,
         auto_lims=True,
         offset=45):
-        '''Constructor'''
+        '''! Constructor'''
+
+        ## Pygame main screen/display object
         self.screen=screen
+        ## Value to display
         self.curr_val=curr_val
+        ## Min possible input value
         self.in_min=in_min
+        ## Max possible input value
         self.in_max=in_max
+        ## Gauge thickness
         self.weight=weight
+        ## Determines the bottom clipping angle
         self.offset=offset
         self.init_radius(radius)
+        ## Outer radius
         self.gauge_radius=self.radius
         self.init_origin()
         self.update_boundries()
-        
-        self.max_val=180+2*offset
 
-
+        ## Default foreground color is red.
         self.color=color
+        ## Default foreground color is grey.
         self.empty_arc_color=empty_arc_color
+        ## To show/hide suffix for main number display.
         self.suffix=suffix
+        ## Show hide main number display.
         self.print_num=print_num
+        ## Default background is transparent.
         self.solid_bg=solid_bg
+        ## Empty arc is drawn by default.
         self.draw_empty_arc=draw_empty_arc
+        ## Default font is HELVETICA_NEUE.
         self.CURR_FONT=CURR_FONT
+        ## Font size for main numver display.
         self.main_font_size=main_font_size
+        ## Default font color is white.
         self.FONT_COLOR=FONT_COLOR
+        ## Default solid bg color is black.
         self.solid_bg_color=solid_bg_color
+        ## Determines if range is printed. Default value is True.
         self.print_range=print_range
+        ## Font for rendering range values. Default value is HELVETICA_NEUE.
         self.range_font=range_font
+        ## Font size for rendering range values. Default size is 24.
         self.range_font_size=range_font_size
+        ## Color for range font. Default color is DARK_GREY.
         self.range_color=range_color
+        ## Print title or not. Default is True.
         self.print_title=print_title
+        ## Title for gauge.
         self.title=title
+        ## Default font size for title is 18.
         self.title_font_size=title_font_size
+        ## Default title font is FONT_FEDERATION.
         self.title_font=title_font
+        ## Default title color is LIGHT_GREY.
         self.title_font_color=title_font_color
+        ## To adjust gauge limits automatically. Default is True.
         self.auto_lims=auto_lims
 
 
     def init_origin(self):
-        '''Calculates origin (x,y) for gauge.'''
+        '''! Calculates origin (x,y) for gauge.'''
+        ## Adjusted x-origin for gauge, accounting for radius and weight.
         self.origin_x=self.radius+self.weight
+        ## Adjusted y-origin for gauge, accounting for radius and weight.
         self.origin_y=self.radius+self.weight
+        ## Adjusted origin for gauge, accounting for radius and weight.
         self.origin= (self.origin_x,self.origin_y)
 
     def init_radius(self,new_radius):
-        '''Saves radius and diameter for faster execution.'''
+        '''! Saves radius and diameter for faster execution.'''
+        ## Gauge radius (outer)
         self.radius=new_radius
+        ## Gauge diameter (outer)
         self.d=self.radius*2
         # self.weight=self.gauge_radius//self.weight_ratio
 
     def update_boundries(self):
-        '''Calculates bounding rectabgle.'''
+        '''! Calculates bounding rectabgle.'''
+        ## Gauge thickness
         w=self.weight
         r=self.radius
         d=self.d-1
@@ -136,7 +188,7 @@ class AA_Gauge():
         self.bounding_rect=[0,0,(d+w*2),(d+w*2)]
 
     def adjust_gauge_lims(self):
-        '''Sets min/max limits to nearest round numbers.'''
+        '''! Sets min/max limits to nearest round numbers.'''
         lower_lims=[0,0.1,1,10,100,1000,10000,100000]
         upper_lims=[0.1,1,10,100,1000,10000,100000,1000000]
         for low,up in zip(lower_lims,upper_lims):
@@ -144,13 +196,13 @@ class AA_Gauge():
                 self.in_max=up
 
     def update_val(self,new_val):
-        '''Uodate current value.'''
+        '''! Uodate current value.'''
         self.curr_val=new_val
         if self.auto_lims:
             self.adjust_gauge_lims()
 
     def blit_gauge(self,new_val,print_val=None):
-        '''Render and return gauge as surface.'''
+        '''! Render and return gauge as surface.'''
         try:
             # ----------------- arc params ----------------- #
             radius=self.radius
@@ -297,7 +349,7 @@ class AA_Gauge():
         return surf
 
 def fps_manager(clock,screen,fps_array):
-    '''For testing performance. Not used in normal execcution.'''
+    '''! For testing performance (not used in normal execcution).'''
     curr_fps=round(clock.get_fps(),2)
 
     if curr_fps>0:
@@ -324,122 +376,122 @@ def fps_manager(clock,screen,fps_array):
     return fps_array
 
 def handle_events():
-    '''For testing. Not used in normal execcution.'''
+    '''! For testing (not used in normal execcution).'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and (event.key == pygame.K_ESCAPE or event.key==ord('q'))):
             pygame.quit()
             sys.exit()
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    # pygame initialization
-    screen_w=400
-    screen_h=400
-    pygame.init()
-    screen = pygame.display.set_mode((screen_w, screen_h),pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT)
-    clock = pygame.time.Clock()
+#     # pygame initialization
+#     screen_w=400
+#     screen_h=400
+#     pygame.init()
+#     screen = pygame.display.set_mode((screen_w, screen_h),pygame.RESIZABLE | pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.ASYNCBLIT)
+#     clock = pygame.time.Clock()
 
-    # gauge-related variables
-    origin=(screen_w//2,screen_h//2)
-    in_min=1
-    in_max=10
+#     # gauge-related variables
+#     origin=(screen_w//2,screen_h//2)
+#     in_min=1
+#     in_max=10
 
-    padding_x=0 # padding between actual bounding rect and final rect
-    padding_y=0
+#     padding_x=0 # padding between actual bounding rect and final rect
+#     padding_y=0
 
-    color_list=[RED,
-                DARK_RED,
-                YELLOW,
-                DARK_YELLOW,
-                ORANGE,
-                GREEN,
-                BLUE,
-                GRID_BLUE,
-                BLUE_GREY,
-                MISTY_BLUE,
-                PURPLE,
-                VIOLET,
-                CREAM]
+#     color_list=[RED,
+#                 DARK_RED,
+#                 YELLOW,
+#                 DARK_YELLOW,
+#                 ORANGE,
+#                 GREEN,
+#                 BLUE,
+#                 GRID_BLUE,
+#                 BLUE_GREY,
+#                 MISTY_BLUE,
+#                 PURPLE,
+#                 VIOLET,
+#                 CREAM]
 
-    color_names_list=['RED',
-                        'DARK_RED',
-                        'YELLOW',
-                        'DARK_YELLOW',
-                        'ORANGE',
-                        'GREEN',
-                        'BLUE',
-                        'GRID_BLUE',
-                        'BLUE_GREY',
-                        'MISTY_BLUE',
-                        'PURPLE',
-                        'VIOLET',
-                        'CREAM']
-
-
-    color_txt=FONT_20.render('{}'.format(color_list[0]),1,WHITE)
-
-    # other variables
-    max_fps=0
-    min_fps=100000
-    downcount=False
-    fps_array=np.array([])
-
-    # init the gauge
-    G=AA_Gauge(screen,0,radius=100,weight=8,in_max=in_max,print_num=True,solid_bg=False,solid_bg_color=YELLOW,color=RED,draw_empty_arc=True,empty_arc_color=(96,96,96,120),origin=origin,suffix='Lux',main_font_size=50)
+#     color_names_list=['RED',
+#                         'DARK_RED',
+#                         'YELLOW',
+#                         'DARK_YELLOW',
+#                         'ORANGE',
+#                         'GREEN',
+#                         'BLUE',
+#                         'GRID_BLUE',
+#                         'BLUE_GREY',
+#                         'MISTY_BLUE',
+#                         'PURPLE',
+#                         'VIOLET',
+#                         'CREAM']
 
 
-    while 1:
-        # determine range
-        if downcount:
-            my_range=reversed(range(in_min,in_max+1))
-        else:
-            my_range=range(in_min,in_max+1)
+#     color_txt=FONT_20.render('{}'.format(color_list[0]),1,WHITE)
+
+#     # other variables
+#     max_fps=0
+#     min_fps=100000
+#     downcount=False
+#     fps_array=np.array([])
+
+#     # init the gauge
+#     G=AA_Gauge(screen,0,radius=100,weight=8,in_max=in_max,print_num=True,solid_bg=False,solid_bg_color=YELLOW,color=RED,draw_empty_arc=True,empty_arc_color=(96,96,96,120),origin=origin,suffix='Lux',main_font_size=50)
 
 
-        for curr_val in my_range:
-            curr_val+=1/curr_val
-            # print (curr_val)
-            clock.tick()
-            screen.fill(BLACK)
-            handle_events()
-
-            gauge_img=G.blit_gauge(curr_val)
-
-            bounding_rect=gauge_img.get_bounding_rect()
-            # print (j)
-
-            pos=(screen_w//4-G.radius//2,screen_h//4-G.radius//2)
-
-            screen.blit(gauge_img,pos)
-
-            left=pos[0]-padding_x
-            top=pos[1]-padding_y
-            width=bounding_rect[2]+2*padding_x
-            height=bounding_rect[3]+2*padding_y
-            rekt=[left,top,width,height]
-
-            pygame.gfxdraw.rectangle(screen, rekt, WHITE)
+#     while 1:
+#         # determine range
+#         if downcount:
+#             my_range=reversed(range(in_min,in_max+1))
+#         else:
+#             my_range=range(in_min,in_max+1)
 
 
+#         for curr_val in my_range:
+#             curr_val+=1/curr_val
+#             # print (curr_val)
+#             clock.tick()
+#             screen.fill(BLACK)
+#             handle_events()
 
-            if (curr_val%25==0):
-                my_color=curr_val%len(color_list)
-                G.color=color_list[my_color]
-                # print ('my_color: ',my_color,color_names_list[my_color])
-                color_txt=FONT_36.render('{}'.format(color_names_list[my_color]),1,WHITE)
+#             gauge_img=G.blit_gauge(curr_val)
+
+#             bounding_rect=gauge_img.get_bounding_rect()
+#             # print (j)
+
+#             pos=(screen_w//4-G.radius//2,screen_h//4-G.radius//2)
+
+#             screen.blit(gauge_img,pos)
+
+#             left=pos[0]-padding_x
+#             top=pos[1]-padding_y
+#             width=bounding_rect[2]+2*padding_x
+#             height=bounding_rect[3]+2*padding_y
+#             rekt=[left,top,width,height]
+
+#             pygame.gfxdraw.rectangle(screen, rekt, WHITE)
 
 
-            screen.blit(color_txt,(3,screen_h-100))
+
+#             if (curr_val%25==0):
+#                 my_color=curr_val%len(color_list)
+#                 G.color=color_list[my_color]
+#                 # print ('my_color: ',my_color,color_names_list[my_color])
+#                 color_txt=FONT_36.render('{}'.format(color_names_list[my_color]),1,WHITE)
 
 
-            fps_array=fps_manager(clock,screen,fps_array)
-            pygame.display.update()
-            time.sleep(1)
-
-        downcount=not downcount
-        time.sleep(2)
+#             screen.blit(color_txt,(3,screen_h-100))
 
 
-    pygame.quit()
-    exit()
+#             fps_array=fps_manager(clock,screen,fps_array)
+#             pygame.display.update()
+#             time.sleep(1)
+
+#         downcount=not downcount
+#         time.sleep(2)
+
+
+#     pygame.quit()
+#     exit()

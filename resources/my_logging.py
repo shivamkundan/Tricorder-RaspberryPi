@@ -27,7 +27,7 @@ from datetime import date
 from paths_and_utils import HOME_DIR
 
 class LogFormatter(logging.Formatter):
-	'''Logging formatter supporting colorized output'''
+	'''! Logging formatter supporting colorized output'''
 
 	COLOR_CODES = {
 		logging.CRITICAL: "\033[1;35m", # bright/bold magenta
@@ -111,7 +111,7 @@ def set_up_logging(console_log_output, console_log_level, console_log_color, log
 	return True
 
 def shivams_logging(script_name="tricorder",console_log_level="debug",logfile_log_level="debug"):
-	'''My custom logging setup'''
+	'''! My custom logging setup'''
 	curr_date=date.today().strftime("%b-%d-%Y")
 	if (not set_up_logging(console_log_output="stdout",
 						console_log_level=console_log_level,

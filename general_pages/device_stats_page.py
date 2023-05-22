@@ -6,7 +6,7 @@ import psutil
 from exit_page import elapsed_time
 
 class DeviceStatsPage(DeviceStatsPageTemplate):
-	'''Shows statistics about the RaspberryPi and the running application'''
+	'''! Shows statistics about the RaspberryPi and the running application.'''
 	def __init__(self,name):
 		'''Constructor'''
 		super().__init__(name)
@@ -16,7 +16,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		self.prev_page_name='menu_home_page'
 
 	def update_cpu_stats(self,dt=None):
-		'''Retrieve CPU load percentage and temperature'''
+		'''! Retrieve CPU load percentage and temperature.'''
 		process = Popen(['vcgencmd', 'measure_temp'], stdout=PIPE)
 		output, _error = process.communicate()
 		output = output.decode()
@@ -29,7 +29,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		return cpu_pct,cpu_temp
 
 	def update_up_time(self):
-		'''Returns up time of tricoder.py application'''
+		'''! Returns up time of tricoder.py application.'''
 		process = Popen(['uptime', '-p'], stdout=PIPE)
 		output, _error = process.communicate()
 		output = output.decode().replace('up ','')
@@ -39,7 +39,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		return output
 
 	def update_other_stats(self):
-		'''Returns amount of time spent in each governer'''
+		'''! Returns amount of time spent in each governer.'''
 		process = Popen(['cpufreq-info', '-m','--stats'], stdout=PIPE)
 		output, _error = process.communicate()
 		output = output.decode().replace('\n','').replace(' ','').split(',')
@@ -47,7 +47,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		return output
 
 	def get_curr_freq(self):
-		'''Retrieve current clock frequency in MHz'''
+		'''! Retrieve current clock frequency in MHz.'''
 		process = Popen(['cpufreq-info', '-m','--hwfreq'], stdout=PIPE)
 		output, _error = process.communicate()
 		output = output.decode().replace('\n','')#.replace(' ','').split(',')
@@ -55,7 +55,7 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 		return output
 
 	def get_curr_governor(self):
-		'''Retrieve current dvfs policy'''
+		'''! Retrieve current dvfs policy.'''
 		process = Popen(['cpufreq-info', '-m','--policy'], stdout=PIPE)
 		output, _error = process.communicate()
 		output = output.decode().replace('\n','').split(' ')

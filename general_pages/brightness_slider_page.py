@@ -1,4 +1,4 @@
-'''Brightness backlight adjustment'''
+'''! Brightness backlight adjustment'''
 
 import pygame
 import math

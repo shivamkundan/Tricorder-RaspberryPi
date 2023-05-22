@@ -1,4 +1,4 @@
-'''Read and visualize data from GPS module'''
+'''! Read and visualize data from GPS module'''
 
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN,FONT_HELVETICA_NEUE

@@ -1,4 +1,4 @@
-'''
+'''!
 This file contains templates for pages.\n
 PageTemplate is the base class which handles blitting the home button\n
 and other page-specific buttons, mouse/touch handling, enter and exit.
@@ -31,43 +31,58 @@ from paths_and_utils import PERIPHERAL_MODE
 
 # ===============================Page Templates======================= #
 class PageTemplate():
-	'''This is the base class for all pages'''
+	'''! This is the base class for all pages.'''
 	def __init__(self,name):
+		'''! Constructor
+		@param name Name of page.
+		'''
+		## Page name
 		self.name=name
 		self.next_screen_name=self.name
+		## List of all buttons for this page + home & top buttons.
 		self.button_list=self.init_home_button()
+		## For adding delay/de-bouncing button presses.
 		self.COOLDOWN=False
+		## Dict of all buttons.
 		self.button_dict=self.make_dictionary()
+		## Contains home and top buttons.
 		self.basic_buttons=[self.button_dict['home_button'],self.button_dict['top_button']]
+		## For communicating with other pages.
 		self.kwargs={'prev_page_name':self.name}  #this is sent to other pages
 		self.prev_page_name=self.name             # this takes back to prev page
 
 	def init_home_button(self):
+		'''! Initializes both home and top buttons.'''
 		x=ButtonClass(-1,button_selected_3_blank,button_selected_3,2,462,name='home_button')
 		y=ButtonClass(-2,button_selected_3_blank,top_button_selected,0,35,name='top_button')
 		return [x,y]
 
 	def blit_all_buttons(self,screen):
+		'''! Blit home and top buttons + page-specific buttons.'''
 		for button in self.button_list:
 			button.blit_button(screen)
 
 	def blit_basic_buttons(self,screen):
+		'''! Blits only home and top buttons.'''
 		for button in self.basic_buttons:
 			button.blit_button(screen)
 
 	def blit_some_buttons(self,screen,button_list):
-		'''Blit only specific buttons'''
+		'''! Blit only specific buttons
+		@param button_list List of button objects to be displayed.
+		'''
 		for button in button_list:
 			button.blit_button(screen)
 
 	def make_dictionary(self):
-		'''A dictionary of all buttons of a page'''
+		'''! A dictionary of all buttons of a page.'''
 		butt_dict={}
 		for button in self.button_list:
 			butt_dict[button.name]=button
 		return butt_dict
 
 	def kwarg_handler(self,kwargs):
+		'''! Mostly used for changing prev_page name.'''
 		# print (kwargs.keys())
 		if 'prev_page_name' in kwargs.keys():
 			pp=kwargs['prev_page_name']
@@ -77,13 +92,15 @@ class PageTemplate():
 				self.kwargs['prev_page_name']=kwargs['prev_page_name']
 
 	def on_exit(self):
+		'''! Wrapper function for on_exit actions.'''
 		pass
 
 	def on_enter(self):
+		'''! Wrapper function for on_enter actions.'''
 		logging.info(f"entering {self.__class__.__name__}")
 
 	def handle_events(self,screen,curr_events):
-		'''Handles basic touch/mouse events'''
+		'''! @brief Handles basic touch/mouse events.'''
 		for event in curr_events:
 			# ---------------------------- Finger / Mouse Events ---------------------------- #
 			if (event.type==pygame.FINGERDOWN or event.type==pygame.MOUSEBUTTONDOWN):
@@ -119,9 +136,9 @@ class PageTemplate():
 				return None
 
 class PageWithoutGauge(PageTemplate):
-	'''For more complex pages'''
+	'''! Template for more complex pages.'''
 	def __init__(self,name,color_list=[],names_list=[]):
-		'''Constructor'''
+		'''! Constructor'''
 		super().__init__(name)
 		self.names_list=names_list
 		self.color_list=color_list
@@ -174,7 +191,7 @@ class PageWithoutGauge(PageTemplate):
 		self.line_surf=pygame.Surface((1,1))
 
 	def flip_button(self,pressed_button):
-		'''For releasing/unselecting the non-selected buttons'''
+		'''! For releasing/unselecting the non-selected buttons.'''
 		if pressed_button.selected:
 			return
 		else:
@@ -271,7 +288,7 @@ class PageWithoutGauge(PageTemplate):
 		self.frame_count+=1
 
 class DeviceStatsPageTemplate(PageTemplate):
-	'''For viewing RPi stats'''
+	'''! For viewing RPi stats'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.button_list+=NAV_BUTTONS+NAV_BUTTONS_VERTICAL
