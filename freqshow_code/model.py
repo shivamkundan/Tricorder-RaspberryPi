@@ -29,8 +29,9 @@ import freqshow
 
 
 class FreqShowModel(object):
+	'''! main FreqShow application model.'''
 	def __init__(self, width, height):
-		"""Create main FreqShow application model.  Must provide the width and
+		"""! Create main FreqShow application model.  Must provide the width and
 		height of the screen in pixels.
 		"""
 		# Set properties that will be used by views.
@@ -61,11 +62,11 @@ class FreqShowModel(object):
 		self.range = None
 
 	def get_center_freq(self):
-		"""Return center frequency of tuner in megahertz."""
+		"""! Return center frequency of tuner in megahertz."""
 		return self.sdr.get_center_freq()/1000000.0
 
 	def set_center_freq(self, freq_mhz):
-		"""Set tuner center frequency to provided megahertz value."""
+		"""! Set tuner center frequency to provided megahertz value."""
 		try:
 			self.sdr.set_center_freq(freq_mhz*1000000.0)
 			self._clear_intensity()
@@ -75,11 +76,11 @@ class FreqShowModel(object):
 			pass
 
 	def get_sample_rate(self):
-		"""Return sample rate of tuner in megahertz."""
+		"""! Return sample rate of tuner in megahertz."""
 		return self.sdr.get_sample_rate()/1000000.0
 
 	def set_sample_rate(self, sample_rate_mhz):
-		"""Set tuner sample rate to provided frequency in megahertz."""
+		"""! Set tuner sample rate to provided frequency in megahertz."""
 		try:
 			self.sdr.set_sample_rate(sample_rate_mhz*1000000.0)
 		except IOError:
@@ -88,7 +89,7 @@ class FreqShowModel(object):
 			pass
 
 	def get_gain(self):
-		"""Return gain of tuner.  Can be either the string 'AUTO' or a numeric
+		"""! Return gain of tuner.  Can be either the string 'AUTO' or a numeric
 		value that is the gain in decibels.
 		"""
 		if self.auto_gain:
@@ -97,7 +98,7 @@ class FreqShowModel(object):
 			return '{0:0.1f}'.format(self.sdr.get_gain())
 
 	def set_gain(self, gain_db):
-		"""Set gain of tuner.  Can be the string 'AUTO' for automatic gain
+		"""! Set gain of tuner.  Can be the string 'AUTO' for automatic gain
 		or a numeric value in decibels for fixed gain.
 		"""
 		if gain_db == 'AUTO':
@@ -115,7 +116,7 @@ class FreqShowModel(object):
 				pass
 
 	def get_min_string(self):
-		"""Return string with the appropriate minimum intensity value, either
+		"""! Return string with the appropriate minimum intensity value, either
 		'AUTO' or the min intensity in decibels (rounded to no decimals).
 		"""
 		if self.min_auto_scale:
@@ -124,7 +125,7 @@ class FreqShowModel(object):
 			return '{0:0.0f}'.format(self.min_intensity)
 
 	def set_min_intensity(self, intensity):
-		"""Set Y axis minimum intensity in decibels (i.e. dB value at bottom of 
+		"""! Set Y axis minimum intensity in decibels (i.e. dB value at bottom of
 		spectrograms).  Can also pass 'AUTO' to enable auto scaling of value.
 		"""
 		if intensity == 'AUTO':
@@ -135,7 +136,7 @@ class FreqShowModel(object):
 		self._clear_intensity()
 
 	def get_max_string(self):
-		"""Return string with the appropriate maximum intensity value, either
+		"""! Return string with the appropriate maximum intensity value, either
 		'AUTO' or the min intensity in decibels (rounded to no decimals).
 		"""
 		if self.max_auto_scale:
@@ -144,7 +145,7 @@ class FreqShowModel(object):
 			return '{0:0.0f}'.format(self.max_intensity)
 
 	def set_max_intensity(self, intensity):
-		"""Set Y axis maximum intensity in decibels (i.e. dB value at top of 
+		"""! Set Y axis maximum intensity in decibels (i.e. dB value at top of
 		spectrograms).  Can also pass 'AUTO' to enable auto scaling of value.
 		"""
 		if intensity == 'AUTO':
@@ -155,7 +156,7 @@ class FreqShowModel(object):
 		self._clear_intensity()
 
 	def get_data(self):
-		"""Get spectrogram data from the tuner.  Will return width number of
+		"""! Get spectrogram data from the tuner.  Will return width number of
 		values which are the intensities of each frequency bucket (i.e. FFT of
 		radio samples).
 		"""

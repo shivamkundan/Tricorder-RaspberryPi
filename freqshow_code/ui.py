@@ -35,7 +35,7 @@ ALIGN_BOTTOM = 1.0
 
 def align(child, parent, horizontal=ALIGN_CENTER, vertical=ALIGN_CENTER,
 	hpad=300, vpad=0):
-	"""Return tuple of x, y coordinates to render the provided child rect 
+	"""! Return tuple of x, y coordinates to render the provided child rect
 	aligned inside the parent rect using the provided horizontal and vertical
 	alignment.  Each alignment value can be ALIGN_LEFT, ALIGNT_TOP, ALIGN_CENTER,
 	ALIGN_RIGHT, or ALIGN_BOTTOM.  Can also specify optional horizontal padding
@@ -48,7 +48,7 @@ def align(child, parent, horizontal=ALIGN_CENTER, vertical=ALIGN_CENTER,
 
 font_cache = {}
 def get_font(size):
-	"""Get font of the specified size.  Will cache fonts internally for faster
+	"""! Get font of the specified size.  Will cache fonts internally for faster
 	repeated access to them.
 	"""
 	if size not in font_cache:
@@ -56,7 +56,7 @@ def get_font(size):
 	return font_cache[size]
 
 def render_text(text, size=33, fg=(255, 255, 255), bg=(0, 0, 0)):
-	"""Render the provided text to a surface which is returned."""
+	"""! Render the provided text to a surface which is returned."""
 	if bg is not None:
 		# Optimized case when the background is known.
 		return get_font(size).render(text, True, fg, bg)
@@ -66,6 +66,7 @@ def render_text(text, size=33, fg=(255, 255, 255), bg=(0, 0, 0)):
 
 
 class Button(object):
+	'''! Button class'''
 	# Default color and other button configuration.  Can override these values
 	# to change all buttons.
 	fg_color     = (255, 255, 255)
@@ -76,7 +77,7 @@ class Button(object):
 	font_size    = 33
 
 	def __init__(self, rect, text, click=None, font_size=None, bg_color=None):
-		"""Create a button at the provided rect (tuple of x, y, width, height)
+		"""! Create a button at the provided rect (tuple of x, y, width, height)
 		and with the provided text.  Can specify an optional click handler which
 		is a function that takes one parameter (the clicked button) and will be
 		executed when the button is clicked.
@@ -97,14 +98,14 @@ class Button(object):
 		# self.label_pos = align(self.label.get_rect(), self.rect)
 
 	def render(self, screen):
-		"""Render the button on the provided surface."""
+		"""! Render the button on the provided surface."""
 		# screen.fill(self.bg_color, self.rect)
 		# pygame.draw.rect(screen, self.border_color, self.rect, self.border_px)
 		# screen.blit(self.label, self.label_pos)
 		pass
 
 	def click(self, location):
-		"""Click handler will fire the button's click handler if the provided
+		"""! Click handler will fire the button's click handler if the provided
 		location x, y tuple is inside the button.
 		"""
 		# x, y, width, height = self.rect
@@ -116,8 +117,9 @@ class Button(object):
 
 
 class ButtonGrid(object):
+	'''! Button grid class'''
 	def __init__(self, width, height, cols, rows):
-		"""Create grid of buttons with the provided total width and height in
+		"""! Create grid of buttons with the provided total width and height in
 		pixels and subdivided into cols x rows equally sized buttons.
 		"""
 		self.col_size = width / cols
@@ -125,7 +127,7 @@ class ButtonGrid(object):
 		self.buttons = []
 
 	def add(self, col, row, text, rowspan=1, colspan=1, **kwargs):
-		"""Add a Button to the grid at the specified row and col position in
+		"""! Add a Button to the grid at the specified row and col position in
 		the grid.  Row and col are 0-based indexes.  Buttons can span multiple
 		rows and columns by providing optional rowspan and colspan parameters.
 		Any other keyword arguments are passed to the Button constructor.
@@ -137,14 +139,14 @@ class ButtonGrid(object):
 		self.buttons.append(Button((x,y,width,height), text, **kwargs))
 
 	def render(self, screen):
-		"""Render buttons on the provided surface."""
+		"""! Render buttons on the provided surface."""
 		# Render buttons.
 		# for button in self.buttons:
 		# 	button.render(screen)
 		pass
 
 	def click(self, location):
-		"""Handle click events at the provided location tuple (x, y) for all the
+		"""! Handle click events at the provided location tuple (x, y) for all the
 		buttons.
 		"""
 		# for button in self.buttons:

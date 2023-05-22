@@ -35,6 +35,7 @@ import ui
 
 
 # Application configuration.
+## Number of samples to grab from the radio.
 SDR_SAMPLE_SIZE = 1024	# Number of samples to grab from the radio.  Should be
 						# larger than the maximum display width.
 

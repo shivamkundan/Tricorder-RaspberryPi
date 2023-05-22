@@ -19,7 +19,7 @@ import logging
 
 from paths_and_utils import BATT_HIST_FILE
 class BatterySensorPage(PageTemplate):
-    '''Page class for battery sensor / fuel gauge'''
+    '''! Page class for battery sensor / fuel gauge'''
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
@@ -30,12 +30,12 @@ class BatterySensorPage(PageTemplate):
         self.line_surf=pygame.Surface((1,1))
 
     def on_enter(self):
-        ''' Makes plot on enter '''
+        '''! Makes plot on enter '''
         logging.info(f"entering {self.__class__.__name__}")
         self.make_plot()
 
     def make_plot(self):
-        '''Reads battery voltage from file and returns line plot'''
+        '''! Reads battery voltage from file and returns line plot'''
         df = pd.read_csv(BATT_HIST_FILE)#, usecols=columns)
 
         batt_voltage=df.iloc[:, 2]

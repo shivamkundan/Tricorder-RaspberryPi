@@ -35,19 +35,19 @@ import ui
 
 # Color and gradient interpolation functions used by waterfall spectrogram.
 def lerp(x, x0, x1, y0, y1):
-	"""Linear interpolation of value y given min and max y values (y0 and y1),
+	"""! Linear interpolation of value y given min and max y values (y0 and y1),
 	min and max x values (x0 and x1), and x value.
 	"""
 	return y0 + (y1 - y0)*((x - x0)/(x1 - x0))
 
 def rgb_lerp(x, x0, x1, c0, c1):
-	"""Linear interpolation of RGB color tuple c0 and c1."""
+	"""! Linear interpolation of RGB color tuple c0 and c1."""
 	return (math.floor(lerp(x, x0, x1, float(c0[0]), float(c1[0]))),
 			math.floor(lerp(x, x0, x1, float(c0[1]), float(c1[1]))),
 			math.floor(lerp(x, x0, x1, float(c0[2]), float(c1[2]))))
 
 def gradient_func(colors):
-	"""Build a waterfall color function from a list of RGB color tuples.  The
+	"""! Build a waterfall color function from a list of RGB color tuples.  The
 	returned function will take a numeric value from 0 to 1 and return a color
 	interpolated across the gradient of provided RGB colors.
 	"""
@@ -66,7 +66,7 @@ def gradient_func(colors):
 	return _fun
 
 def clamp(x, x0, x1):
-	"""Clamp a provided value to be between x0 and x1 (inclusive).  If value is
+	"""! Clamp a provided value to be between x0 and x1 (inclusive).  If value is
 	outside the range it will be truncated to the min/max value which is closest.
 	"""
 	if x > x1:
@@ -78,7 +78,7 @@ def clamp(x, x0, x1):
 
 
 class ViewBase(object):
-	"""Base class for simple UI view which represents all the elements drawn
+	"""! Base class for simple UI view which represents all the elements drawn
 	on the screen.  Subclasses should override the render, and click functions.
 	"""
 
@@ -90,7 +90,7 @@ class ViewBase(object):
 
 
 class MessageDialog(ViewBase):
-	"""Dialog which displays a message in the center of the screen with an OK
+	"""! Dialog which displays a message in the center of the screen with an OK
 	and optional cancel button.
 	"""
 
@@ -125,7 +125,7 @@ class MessageDialog(ViewBase):
 
 
 class NumberDialog(ViewBase):
-	"""Dialog which asks the user to enter a numeric value."""
+	"""! Dialog which asks the user to enter a numeric value."""
 
 	def __init__(self, model, label_text, unit_text, initial='0', accept=None,
 		cancel=None, has_auto=False, allow_negative=False):
@@ -247,7 +247,7 @@ class NumberDialog(ViewBase):
 
 
 class SettingsList(ViewBase):
-	"""Setting list view. Allows user to modify some model configuration."""
+	"""! Setting list view. Allows user to modify some model configuration."""
 
 	def __init__(self, model, controller):
 		self.model      = model
@@ -268,7 +268,7 @@ class SettingsList(ViewBase):
 		self.buttons.add(0, 4, 'BACK', click=self.controller.change_to_main)
 
 	def render(self, screen):
-		# Clear view and render buttons.
+		'''! Clear view and render buttons.'''
 		screen.fill(freqshow.MAIN_BG)
 		self.buttons.render(screen)
 
@@ -328,7 +328,7 @@ class SettingsList(ViewBase):
 
 
 class SpectrogramBase(ViewBase):
-	"""Base class for a spectrogram view."""
+	"""! Base class for a spectrogram view."""
 
 	def __init__(self, model, controller):
 		self.model      = model
@@ -352,13 +352,13 @@ class SpectrogramBase(ViewBase):
 		self.controller.waterfall.clear_waterfall()
 
 	def render_spectrogram(self, screen):
-		"""Subclass should implement spectorgram rendering in the provided
+		"""! Subclass should implement spectorgram rendering in the provided
 		surface.
 		"""
 		raise NotImplementedError
 
 	def render_hash(self, screen, x, size=5, padding=2):
-		"""Draw a hash mark (triangle) on the bottom row at the specified x
+		"""! Draw a hash mark (triangle) on the bottom row at the specified x
 		position.
 		"""
 		y = self.model.height - self.buttons.row_size + padding
@@ -434,7 +434,7 @@ class SpectrogramBase(ViewBase):
 
 
 class WaterfallSpectrogram(SpectrogramBase):
-	"""Scrolling waterfall plot of spectrogram data."""
+	"""! Scrolling waterfall plot of spectrogram data."""
 
 	def __init__(self, model, controller):
 		super(WaterfallSpectrogram, self).__init__(model, controller)
@@ -465,7 +465,7 @@ class WaterfallSpectrogram(SpectrogramBase):
 
 
 class InstantSpectrogram(SpectrogramBase):
-	"""Instantaneous point in time line plot of the spectrogram."""
+	"""! Instantaneous point in time line plot of the spectrogram."""
 
 	def __init__(self, model, controller):
 		super(InstantSpectrogram, self).__init__(model, controller)

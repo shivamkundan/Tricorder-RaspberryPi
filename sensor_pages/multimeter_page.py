@@ -23,7 +23,7 @@ from serial_manager import get_multimeter
 import logging
 
 class MultimeterPage(PageTemplate):
-	'''For visualizing volt/current/powerndata from current sensor'''
+	'''! For visualizing volt/current/powerndata from current sensor'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.prev_page_name='menu_home_page'
@@ -49,7 +49,7 @@ class MultimeterPage(PageTemplate):
 		self.power_line_surf=Surface((1,1))
 
 	def render_generic_graph(self,plot_array,color='r'):
-		'''returns line plot as img'''
+		'''! returns line plot as img'''
 		self.ax.clear()
 		self.ax.cla()
 		self.ax.plot(plot_array,color=color)
@@ -61,7 +61,7 @@ class MultimeterPage(PageTemplate):
 		return line_surf
 
 	def blit_all(self,screen,line_surf,curr_row,title,val):
-		'''Generic function for blitting line plots'''
+		'''! Generic function for blitting line plots'''
 		increment_val=215
 		FONT_DIN.render_to           (screen, (155,curr_row),  title,           DARK_YELLOW, style=0,size=30)
 		FONT_HELVETICA_NEUE.render_to(screen, (330,curr_row), val,  WHITE,       style=0,size=35)
@@ -70,7 +70,7 @@ class MultimeterPage(PageTemplate):
 		return curr_row
 
 	def array_handler(self,arr,new_val,color):
-		'''Trims the plotting array'''
+		'''! Trims the plotting array'''
 		if len(arr)>self.rolling_tics:
 			arr=arr[1:]
 		arr.append(new_val)
