@@ -1,12 +1,7 @@
 '''!
-Contains functions invoked by several different parts of the code.
+@brief Contains functions invoked by several different parts of the code.
+@file global_functions.py Contains functions invoked by several different parts of the code.
 '''
-
-##
-# @file global_functions.py
-#
-# @brief This file contains functions invoked by several different parts of the code.
-#
 
 import sys, os
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')

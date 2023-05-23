@@ -1,5 +1,5 @@
 '''! @brief This file contains paths and other definitions.
-@file paths_and_utils.py This file contains paths and other definitions.
+@file paths_and_utils.py Contains paths and other definitions.
 '''
 import pygame
 ## Pygame clock object.

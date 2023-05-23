@@ -1,5 +1,5 @@
 '''! @brief Contains implementation for FlyPage class.
-@file fly_page.py This file contains fly_page class.
+@file fly_page.py Contains definition for FlyPage class + supporting functions.
 '''
 
 import os

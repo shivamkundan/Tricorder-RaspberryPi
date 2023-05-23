@@ -1,5 +1,5 @@
 '''! @brief This is where colors are defined.
-@file colors.py Color definitions
+@file colors.py Contains color definitions
 '''
 import pygame
 # ----------------- Colors ----------------- #

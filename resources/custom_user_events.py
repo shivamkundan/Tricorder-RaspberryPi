@@ -1,8 +1,13 @@
-'''!
+'''! @brief  Contains user-defined events for Pygame
+@file custom_user_events.py Contains user-defined events for Pygame
+'''
+
+'''
 Communication with the microcontroller is event based.\n
 Certain device controls are also event based.\n
 This file contains my custom defined events.
 '''
+
 
 from pygame.event import Event
 from pygame import USEREVENT

@@ -1,5 +1,5 @@
 '''! @brief Shows statistics about the RaspberryPi and the running application.
-@file device_stats_page.py Shows statistics about the RaspberryPi and the running application.
+@file device_stats_page.py Contains definition for DeviceStatsPage class.
 '''
 
 from page_templates import DeviceStatsPageTemplate

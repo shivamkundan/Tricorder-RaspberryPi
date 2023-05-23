@@ -1,11 +1,6 @@
-"""! @brief  This file contains matplotlib-derived functions used for graphiing."""
-
-##
-# @file plotting_functions.py
-#
-# @brief This file contains matplotlib-derived functions used for graphiing.
-#
-
+'''! @brief  Contains matplotlib-derived functions used for graphiing.
+@file plotting_functions.py Contains matplotlib-derived functions used for graphiing.
+'''
 import sys, os
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/freqshow_code')

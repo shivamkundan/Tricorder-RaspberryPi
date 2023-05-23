@@ -1,7 +1,7 @@
 '''!
 @brief The RaspberryPi and MCU communicate by exchanging pre-determined codes over wired/bluetooth serial connections.\n
 Each functiom (output or input) is represented by unique identifier.
-@file mappings.py Mappings for serial communication
+@file mappings.py Contains mappings for serial communication
 '''
 
 import pygame
@@ -11,8 +11,10 @@ pygame.init()
 import pigpio
 PIGPIO=pigpio.pi()
 
-d={}	# This makes two-way referencing easier
+## This dict makes two-way referencing easier
+d={}
 
+## Tells MCU to print all mappings
 HELP_CODE ='H'
 VERBOSE_CODE ='B'
 
@@ -68,7 +70,7 @@ SET_LTR390_RESOLUTION_16BIT='0'
 SET_LTR390_RESOLUTION_13BIT='!'
 # -------------------------------- #
 
-# this makes logging easier
+## This dict makes logging easier
 d_inv={}
 for key, val in d.items():
 	d_inv[val]=key

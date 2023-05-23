@@ -1,5 +1,5 @@
 '''! @brief This is where fonts are loaded defined
-@file fonts.py Font definitions
+@file fonts.py Contains font definitions
 @dir saved_fonts Contains custom font files.
 '''
 
