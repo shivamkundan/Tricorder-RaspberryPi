@@ -1,3 +1,7 @@
+'''! @brief FreqShow user interface classes.
+@file ui.py Contains FreqShow user interface classes.
+'''
+
 # FreqShow user interface classes.
 # Author: Tony DiCola (tony@tonydicola.com)
 #

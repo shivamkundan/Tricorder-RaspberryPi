@@ -1,3 +1,8 @@
+'''!
+@brief For bluetooth communication with Android devices.
+@file bluetooth_android_api.py Contains code for Android bluetooth communication.
+'''
+
 # from jnius import autoclass
 
 # class AndroidBluetoothClass:

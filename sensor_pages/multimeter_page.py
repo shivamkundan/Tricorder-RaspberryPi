@@ -1,5 +1,6 @@
-'''! Read and plot values of current, voltage, and power from the current sensor.'''
-
+'''! @brief Read and plot values of current, voltage, and power from the current sensor.
+@file multimeter_page.py Contains implementation for MultimeterPage class.
+'''
 import pygame
 from page_templates import PageTemplate
 from fonts import FONT_DIN, FONT_HELVETICA_NEUE
@@ -9,6 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 mpl.use("Agg")
 mpl.rcParams['font.size'] = 10
+## Default color for text, axes, and ticks.
 COLOR = (0.75,0.75,0.75)
 mpl.rcParams['text.color'] = COLOR
 mpl.rcParams['axes.labelcolor'] = COLOR
@@ -35,6 +37,7 @@ class MultimeterPage(PageTemplate):
 		self.frame_count=0
 
 		# --- graphing stuff --- #
+		## Width (i.e., # of samples) of plotting window.
 		self.rolling_tics=50
 		self.curr_array=[]
 		self.voltage_array=[]

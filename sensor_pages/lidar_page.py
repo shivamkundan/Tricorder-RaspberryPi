@@ -1,9 +1,15 @@
+'''! @brief For displaying distance and speed data from Garmin LiDAR Lite V3 module.
+@file lidar_page.py Contains definition for LidarSensorPage class.
+'''
+
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
 
 class LidarSensorPage(PageTemplate):
+    '''! For displaying distance and speed data from Garmin LiDAR Lite V3 module.'''
     def __init__(self,name):
+        '''! Constructor'''
         super().__init__(name)
         self.prev_page_name='menu_home_page'
 

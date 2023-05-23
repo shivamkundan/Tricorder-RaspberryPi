@@ -1,5 +1,6 @@
 '''!
-Dummy page for ensuring clean exit.
+@brief Dummy page for ensuring clean exit.
+@file exit_page.py Contains definition for ExitPage class.
 '''
 import pygame
 import logging
@@ -11,12 +12,12 @@ from sys import exit
 start_time_overall=time.time()
 
 def wrap_up():
-	'''Prints a nice goodbye message and elapsed time'''
+	'''! Prints a nice goodbye message and elapsed time'''
 	print ('\nLive long & prosper... bye!')
 	t=elapsed_time(print_res=True)
 
 def elapsed_time(print_res=False):
-	'''Calculates total runtime from start of program'''
+	'''! Calculates total runtime from start of program'''
 	end_time=round(time.time()-start_time_overall,2)
 	elapsed_time=(datetime.timedelta(seconds=round(end_time)))
 	if (print_res):
@@ -24,7 +25,7 @@ def elapsed_time(print_res=False):
 	return elapsed_time
 
 class ExitPage(PageTemplate):
-	'''Faux page for clean exit'''
+	'''! Faux page for clean exit'''
 	def __init__(self,name):
 		super().__init__(name)
 

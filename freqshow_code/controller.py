@@ -1,3 +1,7 @@
+'''! @brief This owns the views and controls application movement between views.
+@file controller.py Contains FreqShow controller class.
+'''
+
 # FreqShow controller class.
 # This owns the views and controls application movement between views.
 #

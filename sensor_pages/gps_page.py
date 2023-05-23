@@ -39,9 +39,11 @@ row2=row1+35
 
 DOT2_W_DIV_2=10
 
+## Blit page title at this position
 TITLE_POS = (150, 92)
 
 class GPSSensorPage(PageTemplate):
+	'''! Visualize data from BN880 GPS module.'''
 	def __init__(self,name):
 		'''! Constructor'''
 		super().__init__(name)

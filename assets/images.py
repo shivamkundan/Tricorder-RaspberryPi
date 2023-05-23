@@ -1,18 +1,24 @@
+'''!
+@brief This is where images are loaded and defined.
+@file images.py Contains image definitions.
+'''
+
 #!/usr/bin/python3
 import pygame
 import os
 from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
 
 
-
-IMG_LIST=[]	# global list of loaded images
+## Global list of loaded images
+IMG_LIST=[]
 
 def img_ld(input_img):
-	'''this function neatly summarizes/prints all images before loading'''
+	'''! This function neatly summarizes/prints all images before loading'''
 	# IMG_LIST.append(input_img)
 	return pygame.image.load(os.path.join(input_img))
 
 # ------------------------------------ Background image ------------------------------------ #
+## Main LCARS background image
 lcars_bg= img_ld(BTN_PATH+'PIcard_LCARS_square_accent_7_resized.png')
 
 
@@ -24,6 +30,7 @@ page3_dot=img_ld(BTN_PATH+'mobile_style_icons/pdots_3.png')
 page4_dot=img_ld(BTN_PATH+'mobile_style_icons/pdots_4.png')
 page_dots_blank=img_ld(BTN_PATH+'mobile_style_icons/pdots_blank.png')
 
+## Holds page_dot images for all menu subpages.
 PAGE_DOTS={-1:page_dots_blank,1:page1_dot,2:page2_dot,3:page3_dot,4:page4_dot}
 
 # =====================================================================================================

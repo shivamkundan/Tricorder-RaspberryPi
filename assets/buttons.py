@@ -3,6 +3,8 @@
 @file buttons.py This file contains:\n
 -> A generic class for buttons\n
 -> Button definitions for all pages
+
+@dir assets Contains buttons, colors, fonts, and images.
 '''
 
 import pygame

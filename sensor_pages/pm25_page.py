@@ -1,3 +1,8 @@
+'''! @brief For visualizing PM25 sensor air quality readings.
+@file pm25_page.py Contains definition for PM25Page class.
+@warning Requires mosfet on/off control.
+'''
+
 from fonts import FONT_FEDERATION, FONT_DIN, FONT_HELVETICA_NEUE
 from colors import ORANGE, DARK_YELLOW, WHITE
 from page_templates import PageWithoutGauge
@@ -12,6 +17,7 @@ import matplotlib as mpl
 import matplotlib.backends.backend_agg as agg
 mpl.use("Agg")
 mpl.rcParams['font.size'] = 10
+## Default color for text, axes, and ticks.
 COLOR = (0.75,0.75,0.75)
 mpl.rcParams['text.color'] = COLOR
 mpl.rcParams['axes.labelcolor'] = COLOR
@@ -19,22 +25,30 @@ mpl.rcParams['xtick.color'] = COLOR
 mpl.rcParams['ytick.color'] = COLOR
 
 class PM25Page(PageWithoutGauge):
+    '''! @brief For visualizing PM25 sensor air quality readings.
+    @warning Requires mosfet on/off control.
+    '''
     def __init__(self,name):
+        '''! Constructor'''
         self.aqdata=[1, 1, 1, 1, 1, 1]
         names_list=['>0.3μm','>0.5μm','>1.0μm','>2.5μm','>5.0μm','>10μm']
         color_list=['#471337','#b13254','#ff5349','#ff7249','#ff9248','orange']
         # self.aqdata=[0,0,0,0,0,0]
 
         super().__init__(name,color_list,names_list)
+        ## Retrieved sensor data is stored here
         self.aqdata=[1, 1, 1, 1, 1, 1]
+        ## Tracks MCU connection
         self.bluetooth_connected=False
         # self.names_list=['>0.3μm','>0.5μm','>1.0μm','>2.5μm','>5.0μm','>10μm']
 
     def blit_title(self,screen):
+        '''! Display page title.'''
         FONT_FEDERATION.render_to(screen, (150, 67), 'Particulate Matter', ORANGE,style=0,size=44)
         FONT_FEDERATION.render_to(screen, (150, 117), 'PMSA003I', DARK_YELLOW,style=0,size=34)
 
     def info_subpage(self,screen,curr_vals):
+        '''! Text display for all particle sizes.'''
         col1=170
         col2=265
         row=200

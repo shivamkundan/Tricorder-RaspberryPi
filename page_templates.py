@@ -1,7 +1,6 @@
-'''!
+'''! @brief Template classes for pages.
 @file page_templates.py Contains diferrent template classes for pages.
 '''
-
 
 import sys, os
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')

@@ -1,4 +1,6 @@
-'''! Visualize data from BNO055 9DOF Inertial Measurement Unit'''
+'''! @brief Visualize data from BNO055 9DOF Inertial Measurement Unit
+@file imu_page.py Contains IMUSensorPage class and supporting functions.
+'''
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
 from colors import DARK_YELLOW,SLATE,WHITE,ORANGE

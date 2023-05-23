@@ -1,3 +1,8 @@
+'''!
+@brief A dummy page for low-power sleep mode.
+@file sleep_page.py Contains definition for SleepPage class.
+'''
+
 import pygame as pg
 import time
 import logging
@@ -9,7 +14,7 @@ from paths_and_utils import BACKLIGHT_PIN
 from serial_manager import ser, my_flush
 
 class SleepPage(PageTemplate):
-	'''! A dummy page for low-power sleep mode'''
+	'''! A dummy page for low-power sleep mode.'''
 	def __init__(self,name):
 		'''! Constructor'''
 		super().__init__(name)

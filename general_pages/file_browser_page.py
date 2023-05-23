@@ -1,5 +1,6 @@
 '''!
-Used for implementation of screenshot browsing functionality.
+@brief Used for implementation of screenshot browsing functionality.
+@file file_browser_page.py Contains definition for FileBrowserPage class.
 '''
 
 import pygame
@@ -10,8 +11,9 @@ from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE
 from colors import ORANGE, WHITE
 
 class FileBrowserPage(PageTemplate):
-	'''Used for browsing files stored in the application's folder. Mainly for screenshots'''
+	'''! Used for browsing files stored in the application's folder. Mainly for screenshots'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
 
 		self.button_list+=NAV_BUTTONS_VERTICAL
@@ -37,7 +39,7 @@ class FileBrowserPage(PageTemplate):
 			pass
 
 	def refresh_files_list(self):
-		'''Reload list of files in screenshot directory'''
+		'''! Reload list of files in screenshot directory'''
 		self.screenshot_files=[]
 		for root, dirs, files in os.walk("screenshots/", topdown=True):
 			for name in files:
@@ -59,7 +61,7 @@ class FileBrowserPage(PageTemplate):
 		self.end_y=y
 
 	def gruntwork(self):
-		'''Shows a preview of the selected screenshots'''
+		'''! Shows a preview of the selected screenshots'''
 		self.curr_butt=self.file_button_list[self.curr_butt_index]
 		self.curr_butt.selected=True
 		self.p=pygame.image.load(self.curr_butt.name)
@@ -157,5 +159,5 @@ class FileBrowserPage(PageTemplate):
 		return self.next_screen_name,self.kwargs
 
 	def blit_title(self,screen):
-		'''Blit page title to screen'''
+		'''! Blit page title to screen'''
 		FONT_FEDERATION.render_to(screen, (150, 67), 'Files', ORANGE,style=0,size=44)

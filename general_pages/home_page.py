@@ -1,3 +1,8 @@
+'''!
+@brief A page to show many different readings from many different sensors.
+@file home_page.py Contains definition for HomePage class.
+'''
+
 import pygame.event as e
 from pygame import Surface
 from pygame.draw import line
@@ -19,9 +24,9 @@ from plotting_functions import pie_plot
 
 
 class HomePage(PageTemplate):
-    '''A page to show many different readings from many different sensors'''
+    '''! A page to show many different readings from many different sensors.'''
     def __init__(self,name):
-        '''Constructor'''
+        '''! Constructor'''
         super().__init__(name)
         self.client_sock=None
 
@@ -78,16 +83,17 @@ class HomePage(PageTemplate):
         self.prev_page_name='menu_home_page'
 
     def on_enter(self):
-        '''Turns on relevant mosfets on entry'''
+        '''! Turns on relevant mosfets on entry'''
         e.post(POWER_TSL_ON)
         e.post(POWER_PM25_ON)
         logging.info ("homepage enter")
 
     def on_exit(self):
-        '''Turns off relevant mosfets on exit'''
+        '''! Turns off relevant mosfets on exit'''
         e.post(POWER_PM25_OFF)
 
     def init_sensor_tics(self):
+        '''! Init #tics for each sensor update.'''
         scale=1
         self.light_tics=int(1*scale)
         self.uv_tics=int(1*scale)
@@ -98,7 +104,7 @@ class HomePage(PageTemplate):
         self.voc_tics=int(5*scale)
 
     def init_gauges(self):
-
+        '''! Init gauges for all sensors.'''
         # --- set all counters  --- #
         gauges_start_col=150
         gauge_radius=65
@@ -152,6 +158,7 @@ class HomePage(PageTemplate):
 
     # --------------------------------------------------------------------- #
     def blit_wrapper(self,g1,g2,val1,val2):
+        '''! Wrapper function for blitting tvocGauge, eco2Gauge, vis_gauge, and ir_gauge.'''
         g1_img=g1.blit_gauge(val1)
         g2_img=g2.blit_gauge(val2)
         g1_img.set_colorkey(BLACK)
@@ -159,6 +166,7 @@ class HomePage(PageTemplate):
         return g1_img,g2_img
 
     def blit_pressure(self,screen):
+        '''! Blit barometric pressure gauge.'''
         if (self.bluetooth_count%self.pressure_tics==0):
             # print ('updating pressure')
             _,pressure,_,_,_=get_pressure()
@@ -167,7 +175,7 @@ class HomePage(PageTemplate):
         screen.blit(self.PressureGauge_img,self.pressure_gauge_origin)
 
     def blit_temp(self,screen):
-
+        '''! Blit temperature gauge.'''
         if (self.bluetooth_count%self.temp_tics==0):
             # print ('updating temp')
             self.c_temp,self.humid,_,_=get_temp_humid()
@@ -177,7 +185,7 @@ class HomePage(PageTemplate):
         screen.blit(self.TempGauge_img,self.temp_gauge_origin)
 
     def blit_humid(self,screen):
-
+        '''! Blit humidity gauge.'''
         if (self.bluetooth_count%self.temp_tics==0):
             # print ('updating humid')
             self.HumidGauge_img=self.HumidGauge.blit_gauge(self.humid)
@@ -185,6 +193,7 @@ class HomePage(PageTemplate):
         screen.blit(self.HumidGauge_img,self.humid_gauge_origin)
 
     def blit_tvoc_eco2(self,screen):
+        '''! Blit TVOC * eCO2 gauges.'''
         if (self.bluetooth_count%self.voc_tics==0):
             # print ('updating tvoc/eco2')
             eCO2,TVOC,_,_=get_tvoc_eco2()
@@ -193,6 +202,7 @@ class HomePage(PageTemplate):
         screen.blit(self.tvoc_gauge_img,self.tvoc_gauge_origin)
 
     def blit_vis_ir(self,screen):
+        '''! Blit VIS & IR gauges.'''
         try:
             if (self.bluetooth_count%self.light_tics==0):
                 # print ('updating vis/ir')
@@ -204,7 +214,7 @@ class HomePage(PageTemplate):
             print ('blit_vis_ir: ',e)
 
     def blit_uv(self,screen):
-
+        '''! Blit UV & UVI gauges.'''
         try:
             if (self.bluetooth_count%self.uv_tics==0):
 
@@ -220,6 +230,7 @@ class HomePage(PageTemplate):
             pass
 
     def blit_spectrometer(self,screen):
+        '''! Blit spectrometer pie chart.'''
         if (self.bluetooth_count%self.spectrometer_tics==0):
             color_labels=['Violet\n415nm','Indigo\n445nm/','Blue\n480nm','Cyan\n515nm','Green\n555nm','Yellow\n590nm','Orange\n630nm','Red\n680nm']
             color_list=['violet','indigo','blue','cyan','green','yellow','orange','red']
@@ -243,6 +254,7 @@ class HomePage(PageTemplate):
         screen.blit(self.spectrometer_img, (400, 420))
 
     def display_particulate_matter(self,screen):
+        '''! Blit PM25 bar chart.'''
         # screen=self.screen
         try:
             # SD=self.sensor_dict
@@ -299,6 +311,9 @@ class HomePage(PageTemplate):
             # raise (e)
 
     def scale(self,read_value):
+        '''! For scaling spectrometer values.
+        @param read_value Raw value from spectrometer channel.
+        '''
         scaled = int(round(int(read_value / 1000),0))
         return read_value
     # --------------------------------------------------------------------- #

@@ -1,3 +1,8 @@
+'''! @brief Main freqshow application model.
+@file model.py Contains main freqshow application model/state.
+@dir freqshow_code Contains code for Adafruit's FreqShow.
+'''
+
 # FreqShow main application model/state.
 # Author: Tony DiCola (tony@tonydicola.com)
 #
@@ -26,6 +31,9 @@ import numpy as np
 from rtlsdr import *
 
 import freqshow
+
+
+
 
 
 class FreqShowModel(object):

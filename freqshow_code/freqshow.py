@@ -1,3 +1,7 @@
+'''! @brief Freqshow testing, execution begins here.
+@file freqshow.py Main file for FreqShow testing.
+'''
+
 #!/usr/bin/python3
 
 # FreqShow main application and configuration.

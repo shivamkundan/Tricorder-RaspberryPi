@@ -1,4 +1,6 @@
-'''! Brightness backlight adjustment'''
+'''! @brief Display backlight brightness adjustment.
+@file brightness_slider_page.py Contains definitions for SliderClass and BrightnessSliderPage classes.
+'''
 
 import pygame
 import math
@@ -10,9 +12,9 @@ from mappings import PIGPIO
 from custom_user_events import SET_BACKLIGHT
 
 class SliderClass():
-	'''A class for implementing slide switches'''
+	'''! A class for implementing slide switches'''
 	def __init__(self,start_x,y_pos,button_width,button_height,length=100,min_val=0,max_val=249,start_val=None):
-		'''Constructor'''
+		'''! Constructor'''
 		self.start_x=start_x
 		self.y_pos=y_pos
 		self.length=length
@@ -43,7 +45,7 @@ class SliderClass():
 		self.in_max=self.start_x+self.length-self.button_width_half
 
 	def initialize_button(self):
-		'''Initialize the slider control button'''
+		'''! Initialize the slider control button'''
 		# Button image
 		w,h=self.button_width, self.button_height
 		button_surf=pygame.Surface((w,h))
@@ -54,7 +56,7 @@ class SliderClass():
 		return (button_surf, rectangle)
 
 	def blit_slider(self,screen,dx,scale=1):
-		'''Blit slider to screen'''
+		'''! Blit slider to screen'''
 		if 0<abs(dx)<200*scale:
 			dx*=scale
 
@@ -69,7 +71,7 @@ class SliderClass():
 		screen.blit(self.button_surf,(self.rectangle.left,self.rectangle.top))
 
 	def compute_percentage(self):
-		'''Convert from slider length/pos to percentage'''
+		'''! Convert from slider length/pos to percentage'''
 		pct=(((self.rectangle.left+self.button_width_half)-self.start_x)/self.length)
 
 		if pct<0:
@@ -86,6 +88,7 @@ class SliderClass():
 		return round(pct,2),num_val,log_val
 
 	def map(self,x):
+		'''! Standard range mapping function to map slider length/pos to backlight value.'''
 		out_min=self.min_val
 		out_max=self.max_val
 		in_min=self.in_min
@@ -94,7 +97,7 @@ class SliderClass():
 
 
 class BrightnessSliderPage(PageTemplate):
-	'''This page used for adjustubg screen brightness (i.e. backlight level) through pigpio commands'''
+	'''! This page used for adjustubg screen brightness (i.e. backlight level) through pigpio commands'''
 	def __init__(self,name):
 		super().__init__(name)
 
@@ -151,7 +154,7 @@ class BrightnessSliderPage(PageTemplate):
 		return self.next_screen_name,self.kwargs
 
 	def transition_events(self,screen,curr_events):
-		'''To handle sliding on slider'''
+		'''! To handle sliding on slider.'''
 		dx=0
 		scale=1
 		for event in curr_events:
@@ -184,12 +187,12 @@ class BrightnessSliderPage(PageTemplate):
 		self.slider.blit_slider(screen,dx,scale)
 
 	def get_current_brightness(self):
-		'''Retrieve current backlight level'''
+		'''! Retrieve current backlight level'''
 		x=self.gpio.get_PWM_dutycycle(self.PIN_NUM)
 		return x
 
 	def set_brightness(self,curr):
-		'''Set backlight level'''
+		'''! Set backlight level'''
 		# self.print_current_brightness(self.gpio)
 		self.gpio.set_PWM_dutycycle(self.PIN_NUM, int(curr))  #0-255, so 64 is 1/4 duty cycle
 		# self.print_current_brightness(self.gpio)

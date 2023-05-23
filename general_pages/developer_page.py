@@ -1,3 +1,8 @@
+'''! @brief For direct serial communication with MCU.
+@file developer_page.py Contains definition for DeveloperPage class.
+@todo Complete this page.
+'''
+
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW
@@ -21,7 +26,9 @@ from colors import ORANGE, DARK_YELLOW
 # -> restart
 
 class DeveloperPage(PageTemplate):
+	'''! Page for direct serial communication with MCU.'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
 		self.prev_page_name="menu_home_page"
 

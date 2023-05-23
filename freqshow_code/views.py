@@ -1,3 +1,7 @@
+'''! @brief FreqShow application views.
+@file views.py Contains majority of the application business logic.
+'''
+
 # FreqShow application views.
 # These contain the majority of the application business logic.
 # Author: Tony DiCola (tony@tonydicola.com)

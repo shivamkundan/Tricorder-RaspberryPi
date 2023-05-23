@@ -1,3 +1,7 @@
+'''! @brief For visualizing AS7341 spectrometer readings.
+@file spectrometer_page.py Contains definition for SpecPage class.
+'''
+
 from fonts import FONT_FEDERATION, FONT_DIN
 from colors import ORANGE,DARK_YELLOW,WHITE
 from page_templates import PageWithoutGauge
@@ -9,15 +13,24 @@ import logging
 import pygame
 
 class SpecPage(PageWithoutGauge):
+    '''! For visualizing AS7341 spectrometer readings.'''
     def __init__(self,name):
+        '''! Constructor'''
         color_list=['violet','indigo','blue','cyan','green','yellow','orange','red']
         color_labels=['Violet\n415nm','Indigo\n445nm/','Blue\n480nm','Cyan\n515nm','Green\n555nm','Yellow\n590nm','Orange\n630nm','Red\n680nm']
+        ## Holds integer <-> text mappings for gain settings
         self.gain_dict={'-1':'-1','0':'0.5X','1':'1X','2':'2X','3':'4X','4':'8X','5':'16X','6':'32X','7':'64X','8':'128X','9':'256X','10':'512X'}
+        ## Default gain is set to -1
         self.gain='-1'
+        ## Value for 'clear'
         self.clear=0
+        ## Value for Near-IR
         self.nir=0
+        ## Flicker detection status
         self.flicker_detection_enabled='-1'
+        ## Channel names for AS7341,
         self.channels=['c_415nm','c_445nm','c_480nm','c_515nm','c_555nm','c_590nm','c_630nm','c_680nm','clear','nir']
+        ## Number of frames between updates.
         self.num_tics=5
         self.weighted_color=(0,0,0)
         self.scaled_color=(0,0,0)
@@ -26,6 +39,7 @@ class SpecPage(PageWithoutGauge):
 
 
     def info_subpage(self,screen,curr_vals):
+        '''! Text display for all spectrometer channels.'''
         col1=170
         col2=265
         row=200
@@ -52,8 +66,9 @@ class SpecPage(PageWithoutGauge):
 
 
     def scale_rgb(self,in_val):
-        '''Scales to 8-bit color'''
-
+        '''! Scales to 8-bit color
+        @param in_val Unscaled (R,G,B) tuple.
+        '''
         for level in [32,64,128,256,512,1024,2048,4096,8192,16384,32768,65535]:
             if (in_val<=level):
                 max_val=level
@@ -64,7 +79,9 @@ class SpecPage(PageWithoutGauge):
         return out_val
 
     def scale_rgb2(self,in_val):
-        '''Scales to 8-bit color'''
+        '''! Scales to 8-bit color
+        @param in_val Unscaled (R,G,B) tuple.
+        '''
         R=in_val[0]
         G=in_val[1]
         B=in_val[2]
@@ -100,7 +117,7 @@ class SpecPage(PageWithoutGauge):
         return out_val
 
     def match_color(self,x,screen):
-        '''Finds closest matching color in database'''
+        '''! Finds closest matching color in database'''
         try:
             R = int(x['c_680nm']) # Red
             G = int(x['c_555nm']) # Green

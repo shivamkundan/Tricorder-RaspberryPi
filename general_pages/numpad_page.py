@@ -1,5 +1,6 @@
 '''!
-Implements a generic number pad for other pages, returns text in kwargs
+@brief Implements a generic number pad for other pages, returns text in kwargs
+@file numpad_page.py Contains NumPadPage class.
 '''
 
 import pygame
@@ -11,6 +12,7 @@ from buttons import ButtonClass, numpad_button, numpad_button_alt
 class NumPadPage(PageTemplate):
 	'''! Implements a generic number pad for other pages, returns text in kwargs'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
 		self.button_list+=self.init_buttons()
 		self.curr_text=''
@@ -18,6 +20,7 @@ class NumPadPage(PageTemplate):
 		self.prev_page_name=self.name
 
 	def init_buttons(self):
+		'''! Init custom numpad buttons.'''
 		width=170
 		height=100
 		x_start=150

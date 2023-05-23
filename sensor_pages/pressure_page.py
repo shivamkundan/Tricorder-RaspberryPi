@@ -1,4 +1,6 @@
-'''! Display barometric pressure, temperature, and est altitude readings'''
+'''! @brief Display barometric pressure, temperature, and est. altitude readings
+@file pressure_page.py Contains definition for PressureSensorPage class.
+'''
 import pygame.event as e
 from buttons import ButtonClass, slide_switch_blank,simple_button_short,simple_button_short_alt
 from aa_arc_gauge import AA_Gauge
@@ -10,9 +12,15 @@ from paths_and_utils import PERIPHERAL_MODE
 from serial_manager import get_pressure
 
 class PressureSensorPage(PageTemplate):
+    '''! Display barometric pressure, temperature, and est. altitude readings.'''
     def __init__(self,name):
+        '''! Constructor.'''
         super().__init__(name)
+        ## Next page
+        self.next_screen_name=self.name
+        ## Return page
         self.prev_page_name='menu_home_page'
+        ## Tracks MCU connection
         self.bluetooth_connected=False
 
         # Button stuff
@@ -22,19 +30,28 @@ class PressureSensorPage(PageTemplate):
         self.button_dict=self.make_dictionary()
         self.button_dict['pressure'].selected=True
 
+        ## Tracks number of displayed frames.
         self.frame_count=0
+        ## Number of frames between updates.
         self.num_tics=5
-
+        ## Current pressure reading
         self.pressure=-1
+        ## Current temperature reading
         self.bmp_temp=-1
+        ## Current pressure oversampling setting
         self.p_oversampling='-1'
+        ## Current temperature oversampling setting
         self.t_oversampling='-1'
+        ## Current altitude reading
         self.altitude='-1'
+        ## Used for sending settings
         self.send_code=''
+        ## Show/hide settings
         self.show_menu=False
         self.init_gauges()
 
     def init_buttons(self):
+        '''! Init buttons for this page.'''
         menu_title_buttons=[]
         menu_buttons=[]
 
@@ -64,6 +81,7 @@ class PressureSensorPage(PageTemplate):
         return menu_title_buttons, menu_buttons, settings_button
 
     def init_gauges(self):
+        '''! Init gauges for this page.'''
         gauge_radius=100
         gauges_spacing=48
         weight=8
@@ -79,12 +97,14 @@ class PressureSensorPage(PageTemplate):
         self.bmp_temp_gauge=AA_Gauge(None,(0),in_min=10,in_max=40,origin=self.bmp_temp_gauge_origin, radius=gauge_radius,weight=weight,color=YELLOW,suffix='°C',CURR_FONT=font,FONT_COLOR=f_color,empty_arc_color=DARK_GREY,solid_bg=False,title='TEMP',title_font_size=20,main_font_size=main_font_size,auto_lims=False)
 
     def blit_title(self,screen):
+        '''! Display page title.'''
         # Title
         FONT_FEDERATION.render_to(screen, (150, 67), 'Barometric', ORANGE,style=0,size=40)
         FONT_FEDERATION.render_to(screen, (150, 67+40+10), 'Pressure', ORANGE,style=0,size=40)
         FONT_FEDERATION.render_to(screen, (150, 117+40+10), 'BMP388', DARK_YELLOW,style=0,size=34)
 
     def blit_menu(self,screen):
+        '''! Display menu options for this page/sensor.'''
         self.button_dict['settings'].text='Back'
         self.blit_all_buttons(screen)
 
@@ -100,6 +120,7 @@ class PressureSensorPage(PageTemplate):
                         button.selected=False
 
     def blit_current_settings(self,screen):
+        '''! Display current settings for this page/sensor.'''
         x_pos=138
         y_pos=440
         FONT_FEDERATION.render_to(screen, (256, y_pos),'OVERSAMPLING ', ORANGE, size=28,style=1)
@@ -118,6 +139,7 @@ class PressureSensorPage(PageTemplate):
         FONT_DIN.render_to(screen, (x_pos+20, y_pos+35),str(self.altitude), SLATE, size=34)
 
     def flip_selection(self,pressed_button):
+        '''! Flip all buttons.'''
         if pressed_button.name=='pressure':
             self.button_dict['pressure'].selected=True
             self.button_dict['temperature'].selected=False

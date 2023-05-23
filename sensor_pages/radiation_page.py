@@ -1,24 +1,8 @@
 '''!
-From dfrobot website:
-
-M4011 Geiger Tube
-- Operating Voltage: 380V ~ 450V
-- Background Counts: ≈25CPM
-- CPM Ratio: 153.8 CPM/(μSv/h)
-- Outline Size: Φ10mm x 88mm
-
-https://www.hackster.io/k-gray/ionizing-radiation-detector-a0a782?utm_campaign=published_project&utm_medium=email&utm_source=hackster
-https://github.com/Kgray44/Ionizing-Radiation-Detector
-
-uSvh = geiger.getuSvh();
-
-int values[] =             {    1,         2,        5,          10,         40,      100,       250,          400,          1000,      10000   };
-const char* equivalent[] = { "Normal", "Airport", "Dental", "Norm(1day)", "Flight", "X-Ray", "NPP(1year)", "Mammogram",  "Gov Limit", "CT Scan" };
-lcd.print(equivalent[nearestEqual(CPM)]);
-
-
+@brief For visualizing ionizing radiation data (in clicks-per-minute) from DFRobot Geiger Counter module.
+@file radiation_page.py Contains definition for GeigerCounterPage class.
+@warning Requires mosfet on/off
 '''
-
 
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
@@ -36,33 +20,73 @@ import numpy as np
 import logging
 
 class GeigerCounterPage(PageTemplate):
+	'''! For visualizing ionizing radiation data (in clicks-per-minute) from DFRobot Geiger Counter module.
+	@warning Requires mosfet on/off
+	@todo Implement unit conversion <see radiation_page.py for notes>
+	'''
+
+	'''
+	From dfrobot website:
+	M4011 Geiger Tube
+	- Operating Voltage: 380V ~ 450V
+	- Background Counts: ≈25CPM
+	- CPM Ratio: 153.8 CPM/(μSv/h)
+	- Outline Size: Φ10mm x 88mm
+
+	https://www.hackster.io/k-gray/ionizing-radiation-detector-a0a782?utm_campaign=published_project&utm_medium=email&utm_source=hackster
+	https://github.com/Kgray44/Ionizing-Radiation-Detector
+
+	uSvh = geiger.getuSvh();
+
+	int values[] =             {    1,         2,        5,          10,         40,      100,       250,          400,          1000,      10000   };
+	const char* equivalent[] = { "Normal", "Airport", "Dental", "Norm(1day)", "Flight", "X-Ray", "NPP(1year)", "Mammogram",  "Gov Limit", "CT Scan" };
+	lcd.print(equivalent[nearestEqual(CPM)]);
+	'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
+		## Next page name
+		self.next_screen_name=self.name
+		## Return page
 		self.prev_page_name='menu_home_page'
-		self.wind_out=0
+		## Tracks number of displayed frames
 		self.frame_count=0
+
+		## Current clicks-per-minute reading
 		self.cpm=0
 
-
+		## Width (i.e., # of samples) of plotting window.
 		self.rolling_tics=200
+		## CPM values stored here
 		self.x=[]
+		## Avg of CPM values stored here
 		self.avg_array=[]
 
 		# ---
+		## Matplotlib figure object
 		self.fig = plt.figure(figsize=[5,4])
+		## Matplotlib axis object
 		self.ax = self.fig.add_subplot(111)
+		## Agg canvas object
 		self.canvas = agg.FigureCanvasAgg(self.fig)
 		self.ax.set_frame_on(False)
+		## Line plot pygame surface object
 		self.line_surf=Surface((1,1))
-
+		## List of all buttons
 		self.button_list+=[RESET_BUTTON,RESET5_BUTTON]
 
 	def on_enter(self):
+		'''! @brief Turns on geiger_power mosfet.
+			 @warning mosfet control
+		'''
 		logging.info(f"entering {self.__class__.__name__}")
 		set_geiger_power_on()
 
 
 	def on_exit(self):
+		'''! @brief Turns off geiger_power mosfet.
+			 @warning mosfet control
+		'''
 	    set_geiger_power_off()
 
 	def next_frame(self,screen,curr_events,**kwargs):

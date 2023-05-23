@@ -1,3 +1,7 @@
+'''! @brief Implementation of a classic smart phone style home/menu page with icons and subpages.
+@file menu_home_page.py Contains MenuHomePageClass definition.
+'''
+
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import SLATE, BLACK
@@ -12,9 +16,9 @@ import pygame
 import logging
 
 class MenuHomePageClass(PageTemplate):
-	'''Implementation of a classic smart phone style home/menu page with icons and subpages'''
+	'''! Implementation of a classic smart phone style home/menu page with icons and subpages.'''
 	def __init__(self,name):
-		'''Constructor'''
+		'''! Constructor'''
 		super().__init__(name)
 		self.bluetooth_connected=False
 
@@ -70,7 +74,7 @@ class MenuHomePageClass(PageTemplate):
 							}
 
 	def blit_page_num(self,screen):
-		'''Show sub page num on top left of screen'''
+		'''! Show sub page num on top left of screen'''
 		FONT_FEDERATION.render_to(screen, (30, 100), str(self.curr_subpage)+'/'+str(self.num_pages), SLATE,style=0,size=28)
 
 	def next_frame(self,screen,curr_events,**kwargs):
@@ -110,26 +114,26 @@ class MenuHomePageClass(PageTemplate):
 		return self.next_screen_name,self.kwargs
 
 	def increment_subpage(self,step=1):
-		'''Show next set of icons'''
+		'''! Show next set of icons'''
 		if self.curr_subpage<self.num_pages:
 			for button in self.icon_buttons_list:
 				button.update_position(button.rectangle.left-step*self.page_offset)
 			self.curr_subpage+=1*step
 
 	def decrement_subpage(self,step=1):
-		'''Show previous set of icons'''
+		'''! Show previous set of icons'''
 		if self.curr_subpage>1:
 			for button in self.icon_buttons_list:
 				button.update_position(button.rectangle.left+step*self.page_offset)
 			self.curr_subpage-=1*step
 
 	def reset_subpage(self):
-		'''Show first set of icons'''
+		'''! Show first set of icons'''
 		for button in self.icon_buttons_list:
 			button.rectangle.left=(button.orig_rectangle_left-(self.curr_subpage-1)*720)
 
 	def transition_events(self,screen,curr_events):
-		'''Used for handling swiping motion'''
+		'''! Used for handling swiping motion'''
 		transitioning= (self.transition_left or self.transition_right)
 		if not transitioning:
 			for event in curr_events:
@@ -189,6 +193,7 @@ class MenuHomePageClass(PageTemplate):
 		return self.next_screen_name,{}
 
 	def transitions(self,screen):
+		'''! For transitioning between menu sub pages.'''
 		dx_transition=60
 		if self.transition_right:
 			if self.curr_subpage!=self.num_pages:  #checking if we are already on last page
@@ -227,13 +232,14 @@ class MenuHomePageClass(PageTemplate):
 			self.transition_left=False
 
 	def draw_rectangle(self,screen):
+		'''! Used in animate() function.'''
 		surf=pygame.Surface((118, 550))
 		r=pygame.Rect(0,0,118,550)
 		pygame.draw.rect(surf,BLACK,r)
 		screen.blit(surf,(0,40))
 
 	def get_sidebar_stats(self,screen):
-		'''Okudagrams showing device/program stats'''
+		'''! Okudagrams showing device/program stats'''
 		self.wifi_name=get_wifi_name()
 		self.cpu_pct,self.cpu_temp=update_cpu_stats()
 		self.sw=screen.get_width()
@@ -244,6 +250,7 @@ class MenuHomePageClass(PageTemplate):
 			self.b_img=bluetooth_img_not_connected
 
 	def animate(self,screen):
+		'''! For screen sliding animation.'''
 		# Graphics
 		screen.fill(BLACK)
 		self.blit_all_buttons(screen)

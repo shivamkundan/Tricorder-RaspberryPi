@@ -1,8 +1,9 @@
-# #!/usr/bin/python3
-
-# '''
-# Code to handle bluetooth and usb serial connections.
-# '''
+'''!
+@brief Code to handle bluetooth serial connections.
+@file communicator.py Contains code for generic bluetooth serial communication.
+@package bluetooth Code for bluetooth serial communication.
+@dir bluetooth Code for bluetooth serial communication.
+'''
 
 # from bluetooth import *
 # from dataclasses import dataclass

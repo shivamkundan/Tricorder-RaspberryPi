@@ -4,7 +4,6 @@
 @file tricorder.py Main file, execution starts here.
 """
 
-
 ##
 # @mainpage Tricorder Project
 # @author Shivam Kundan
@@ -16,13 +15,14 @@
 # - Add special project notes here that you want to communicate to the user.
 #
 # Copyright (c) 2023 Shivam Kundan.  All rights reserved.
+#
 # @package general_pages Contains page implementations not directly related to sensors.
+# @dir general_pages Contains page implementations not directly related to sensors.
+#
 # @package freqshow_code Contains code for Adafruit's FreqShow program.
 # @package assets Contains definitions for colors, fonts, buttons, and images.
 # @package bluetooth Bluetooth-related communication code.
 # @package resources Contains custom user events, logging code, and serial comm code mappings.
-
-
 
 import pygame
 pygame.init()
@@ -114,11 +114,14 @@ from file_browser_page import FileBrowserPage
 
 # ===================== Helper Classes =============================== #
 class thread_with_trace(threading.Thread):
+	'''! Used for multithreading implementation.'''
 	def __init__(self, *args, **keywords):
+		'''! Constructor'''
 		threading.Thread.__init__(self, *args, **keywords)
 		self.killed = False
 
 def start(self):
+	'''! Start thread execution.'''
 	self.__run_backup = self.run
 	self.run = self.__run
 	threading.Thread.start(self)
@@ -141,6 +144,7 @@ def localtrace(self, frame, event, arg):
 	return self.localtrace
 
 def kill(self):
+	'''! Stop/kill thread execution.'''
 	self.killed = True
 
 class DeviceInfoClass():
@@ -254,7 +258,7 @@ class DeviceInfoClass():
 # ==================================================================== #
 
 class WindowManager():
-	'''
+	'''! @brief Main display controller.
 	Decides which screen will be shown next.\n
 	Also handles:\n
 	-> screenshots\n
@@ -264,7 +268,7 @@ class WindowManager():
 	-> some bluetooth stuff
 	'''
 	def __init__(self,fullscreen_en=False):
-
+		'''! Constructor'''
 		self.ser=ser
 		# # Set periodic event for logging to file (in ms)
 		# pygame.time.set_timer(FILE_LOG_EVENT, 20000)
@@ -330,7 +334,7 @@ class WindowManager():
 		# pygame.event.post(BLUETOOTH_CONNECTED)
 
 	def init_screen(self):
-		'''Set up the display'''
+		'''! Set up the display'''
 		pygame.display.quit()
 		pygame.display.init()
 
@@ -356,7 +360,7 @@ class WindowManager():
 		return screen
 
 	def init_pages(self):
-		'''Instantiate all pages'''
+		'''! Instantiate all pages'''
 		self.sensor_pages_list=[ThermalCamPage('thermal_cam_page'),
 					 LightSensorPage('light_sensor_page'),
 					 UVSensorPage('uv_sensor_page'),
@@ -399,14 +403,14 @@ class WindowManager():
 		return screen_dict,screen_dict['menu_home_page']
 
 	def init_screenshot_overlay(self):
-		'''Give the flash effect when taking screenshots'''
+		'''! Give the flash effect when taking screenshots'''
 		s=pygame.Surface(FULL_SCREEN_RES)
 		s.set_alpha(128) # half of max opacity
 		s.fill(WHITE)	 # white color
 		return s
 
 	def generic_event_handler(self,curr_events):
-		'''Handles everything apart from sensor events'''
+		'''! Handles everything apart from sensor events'''
 		screen=self.screen
 		for event in curr_events:
 
@@ -509,7 +513,7 @@ class WindowManager():
 		return(curr_events)
 
 	def next_frame_main(self):
-		'''The main main() function'''
+		'''! The main main() function'''
 		next_screen_name=self.curr_screen.name
 		self.curr_screen=self.next_screen
 
@@ -558,7 +562,7 @@ class WindowManager():
 
 	# ------------------------ #
 	def check_make_file(self):
-		'''Check if log file exists. Create if does not exist.'''
+		'''! Check if log file exists. Create if does not exist.'''
 		now = datetime.datetime.now()
 		date=now.strftime('%m/%d/%y')
 		hour_sec=now.strftime('%H:%M:%S')
@@ -574,7 +578,7 @@ class WindowManager():
 		return log_file
 
 	def log_to_file(self):
-		'''For logging sensor data to file'''
+		'''! For logging sensor data to file'''
 		sensor_dict=self.get_bluetooth_vals('L U T P M V S ')
 		# ser.flush()
 		# print (sensor_dict)
@@ -600,13 +604,13 @@ class WindowManager():
 			return('wr')
 
 	def minimize(self):
-		'''Minimize window'''
+		'''! Minimize window'''
 		logging.info("minimizing")
 		pygame.display.set_icon(starfleet_logo)
 		pygame.display.iconify()
 
 	def take_screenshot_func(self):
-		'''Take (and save) a screenshot'''
+		'''! Take (and save) a screenshot'''
 		rect = pygame.Rect(0, 0, self.screen.get_width(), self.screen.get_height())
 		sub = self.screen.subsurface(rect)
 		dd=get_date_time()

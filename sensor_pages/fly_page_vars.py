@@ -1,4 +1,6 @@
-'''! @file fly_page_vars.py This file contains pre-computed vals for fly_page (to speed up execution). Source computation is in the comments at the end.'''
+'''! @brief  Pre-computed vals for fly_page (to speed up execution).
+@file fly_page_vars.py This file contains pre-computed vals for fly_page (to speed up execution). Source computation is in the comments at the end.
+'''
 
 # ============================= abs params ============================= #
 

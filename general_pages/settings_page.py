@@ -1,3 +1,8 @@
+'''!
+@brief Meant for changing device settings
+@file settings_page.py Contains definition for SettingsPage class.
+'''
+
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_DIN
 from colors import ORANGE
@@ -6,6 +11,7 @@ from buttons import ButtonClass,long_button_blue,long_button_blue_pressed
 class SettingsPage(PageTemplate):
 	'''! Meant for changing device settings'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
 		self.button_list+=self.init_buttons()
 		self.button_mapping={

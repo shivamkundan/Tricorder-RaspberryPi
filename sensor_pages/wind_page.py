@@ -23,7 +23,7 @@ class WindSensorPage(PageTemplate):
 		self.color_labels=['wind']
 		self.num_tics=1
 
-
+		## Width (i.e., # of samples) of plotting window.
 		self.rolling_tics=50
 		self.x=[0]
 

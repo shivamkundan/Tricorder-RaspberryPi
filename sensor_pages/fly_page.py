@@ -1,4 +1,6 @@
-'''! @file fly_page.py This file contains fly_page class.'''
+'''! @brief Contains implementation for FlyPage class.
+@file fly_page.py This file contains fly_page class.
+'''
 
 import os
 import time
