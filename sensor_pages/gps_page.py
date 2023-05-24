@@ -1,5 +1,5 @@
 '''! @brief Read and visualize data from GPS module
-@file gps_page.py Contains GPSSensorPage class
+@file gps_page.py Contains definition for GPSSensorPage class
 '''
 
 from page_templates import PageTemplate
