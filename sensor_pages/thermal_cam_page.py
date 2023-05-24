@@ -1,4 +1,6 @@
-'''! This file contains a class for thermal camera display'''
+'''! @brief This file contains a class for thermal camera display.
+@file thermal_cam_page.py Contains definition for ThermalCamPage class
+'''
 
 import sys, os
 sys.path.append(os.path.abspath("../"))
