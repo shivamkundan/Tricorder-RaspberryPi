@@ -26,7 +26,7 @@ from colors import ORANGE, DARK_YELLOW
 # -> restart
 
 class DeveloperPage(PageTemplate):
-	'''! Page for direct serial communication with MCU.'''
+	'''! For direct serial communication with MCU.'''
 	def __init__(self,name):
 		'''! Constructor'''
 		super().__init__(name)

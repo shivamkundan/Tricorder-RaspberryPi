@@ -1,5 +1,5 @@
-'''! Contains class for a quick menu.
-@file quick_menu_page.py Contains class for a quick menu.
+'''! @brief A quickly accessible menu for setting brightness, taking screenshots, going to sleep, etc. Is always accessible from all pages by tapping top leff button.
+@file quick_menu_page.py Contains definition for QuickMenuPage class.
 '''
 from page_templates import PageTemplate
 from buttons import QUICK_MENU_BUTTONS

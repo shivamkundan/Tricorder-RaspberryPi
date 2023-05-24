@@ -1,5 +1,5 @@
 '''!
-@brief Dummy page for ensuring clean exit.
+@brief Faux page for clean exit.
 @file exit_page.py Contains definition for ExitPage class.
 '''
 import pygame
