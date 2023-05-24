@@ -1,5 +1,5 @@
 '''! @brief Display UV and UVI readings from LTR390 sensor.
-@file uv_page.py Contains definition for NoiseSensorPage class.
+@file uv_page.py Contains definition for UVSensorPage class.
 '''
 
 import pygame.event as e
