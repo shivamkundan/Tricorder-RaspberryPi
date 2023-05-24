@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['gain_1778',['gain',['../db/d9e/classsensor__pages_1_1spectrometer__page_1_1_spec_page.html#ab0eb4bfadd9eea815cd80aef56fb413b',1,'sensor_pages.spectrometer_page.SpecPage.gain()'],['../d2/d5f/classsensor__pages_1_1vis__ir__page_1_1_light_sensor_page.html#ab0eb4bfadd9eea815cd80aef56fb413b',1,'sensor_pages.vis_ir_page.LightSensorPage.gain()']]],
+  ['gain_5fbuttons_1779',['gain_buttons',['../d2/d5f/classsensor__pages_1_1vis__ir__page_1_1_light_sensor_page.html#a369eefb6512c4de727475de42fe6c0dc',1,'sensor_pages::vis_ir_page::LightSensorPage']]],
+  ['gain_5fcodes_5fdict_1780',['gain_codes_dict',['../d7/d04/classsensor__pages_1_1uv__page_1_1_u_v_sensor_page.html#ab7082832afdd8dc098f41b20ca0733f2',1,'sensor_pages.uv_page.UVSensorPage.gain_codes_dict()'],['../d2/d5f/classsensor__pages_1_1vis__ir__page_1_1_light_sensor_page.html#ab7082832afdd8dc098f41b20ca0733f2',1,'sensor_pages.vis_ir_page.LightSensorPage.gain_codes_dict()']]],
+  ['gain_5fdict_1781',['gain_dict',['../db/d9e/classsensor__pages_1_1spectrometer__page_1_1_spec_page.html#a0daec16c035e59c0749e12d524980713',1,'sensor_pages.spectrometer_page.SpecPage.gain_dict()'],['../d2/d5f/classsensor__pages_1_1vis__ir__page_1_1_light_sensor_page.html#a0daec16c035e59c0749e12d524980713',1,'sensor_pages.vis_ir_page.LightSensorPage.gain_dict()']]],
+  ['gain_5fname_5fdict_1782',['gain_name_dict',['../d7/d04/classsensor__pages_1_1uv__page_1_1_u_v_sensor_page.html#a1dc3759bde6c12de9d06fbc41e35948a',1,'sensor_pages::uv_page::UVSensorPage']]],
+  ['gauge_5fradius_1783',['gauge_radius',['../d2/d61/classaa__arc__gauge_1_1_a_a___gauge.html#a27e4f2ed64df13d6e13f25ba9090472b',1,'aa_arc_gauge.AA_Gauge.gauge_radius()'],['../d7/d04/classsensor__pages_1_1uv__page_1_1_u_v_sensor_page.html#a27e4f2ed64df13d6e13f25ba9090472b',1,'sensor_pages.uv_page.UVSensorPage.gauge_radius()'],['../de/dde/classsensor__pages_1_1voc__page_1_1_v_o_c_sensor_page.html#a27e4f2ed64df13d6e13f25ba9090472b',1,'sensor_pages.voc_page.VOCSensorPage.gauge_radius()']]],
+  ['geiger_5fpwr_5foff_5fcode_1784',['GEIGER_PWR_OFF_CODE',['../d2/d28/namespaceresources_1_1mappings.html#aad2eb60b4e835b71c8a24b20f7933127',1,'resources::mappings']]],
+  ['geiger_5fpwr_5fon_5fcode_1785',['GEIGER_PWR_ON_CODE',['../d2/d28/namespaceresources_1_1mappings.html#adf55730106d84272176fc80c6fe2a8c5',1,'resources::mappings']]],
+  ['get_5fbacklight_5fquick_5fmenu_1786',['GET_BACKLIGHT_QUICK_MENU',['../d0/df2/namespaceresources_1_1custom__user__events.html#a34f06d3041a213b7897c35483b9d4fd4',1,'resources::custom_user_events']]],
+  ['go_5fto_5fsleep_1787',['GO_TO_SLEEP',['../d0/df2/namespaceresources_1_1custom__user__events.html#abbe05f9079b13d9e23d00f2cc67d8471',1,'resources::custom_user_events']]],
+  ['gpio_1788',['gpio',['../d5/d22/classgeneral__pages_1_1brightness__slider__page_1_1_brightness_slider_page.html#a4cb4e159bd600f0674254278ca83d3ff',1,'general_pages::brightness_slider_page::BrightnessSliderPage']]],
+  ['gps_5ftics_1789',['gps_tics',['../d3/de6/classsensor__pages_1_1fly__page_1_1_fly_page.html#a8fd4f3266f0c0da75ecdfb2583e4f650',1,'sensor_pages::fly_page::FlyPage']]],
+  ['grav_5fx_1790',['grav_x',['../dc/dd7/classsensor__pages_1_1imu__page_1_1_i_m_u_sensor_page.html#ae6a50c1cd2d9e430de061aabf44c57b9',1,'sensor_pages::imu_page::IMUSensorPage']]],
+  ['grav_5fy_1791',['grav_y',['../dc/dd7/classsensor__pages_1_1imu__page_1_1_i_m_u_sensor_page.html#ad79464bd1d8729790e34d63297db6786',1,'sensor_pages::imu_page::IMUSensorPage']]],
+  ['grav_5fz_1792',['grav_z',['../dc/dd7/classsensor__pages_1_1imu__page_1_1_i_m_u_sensor_page.html#a8494edca6febfb38f545f5ab9fe82af4',1,'sensor_pages::imu_page::IMUSensorPage']]],
+  ['green_1793',['GREEN',['../d1/d44/namespaceassets_1_1colors.html#a32d982b454644d291d9571a3a6735407',1,'assets::colors']]],
+  ['grey_1794',['GREY',['../d1/d44/namespaceassets_1_1colors.html#a7fc83cc7c28697bf2b96df6a05a8e428',1,'assets::colors']]],
+  ['grid_5fblue_1795',['GRID_BLUE',['../d1/d44/namespaceassets_1_1colors.html#a358513622894bdd24eed01a6892d36dc',1,'assets::colors']]]
+];

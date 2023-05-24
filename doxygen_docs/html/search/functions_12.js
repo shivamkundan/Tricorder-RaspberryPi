@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['sample_5faccept_1487',['sample_accept',['../d9/df4/classfreqshow__code_1_1views_1_1_settings_list.html#a2fd211790a903703591f0223a3551228',1,'freqshow_code::views::SettingsList']]],
+  ['sample_5fclick_1488',['sample_click',['../d9/df4/classfreqshow__code_1_1views_1_1_settings_list.html#a36e868de6bb4fe236982ba1cb784310c',1,'freqshow_code::views::SettingsList']]],
+  ['scale_1489',['scale',['../d4/d11/classgeneral__pages_1_1home__page_1_1_home_page.html#a68748066401c7a23048dc6311a9d7c05',1,'general_pages::home_page::HomePage']]],
+  ['scale_5frgb_1490',['scale_rgb',['../db/d9e/classsensor__pages_1_1spectrometer__page_1_1_spec_page.html#adee4da8d8d0089f92892bc884c5d12b0',1,'sensor_pages::spectrometer_page::SpecPage']]],
+  ['scale_5frgb2_1491',['scale_rgb2',['../db/d9e/classsensor__pages_1_1spectrometer__page_1_1_spec_page.html#a22abeaaa75d17baf85b922be60bea23c',1,'sensor_pages::spectrometer_page::SpecPage']]],
+  ['set_5fbrightness_1492',['set_brightness',['../d5/d22/classgeneral__pages_1_1brightness__slider__page_1_1_brightness_slider_page.html#a77dc7aff7d279683ecebfc1b7e0c3348',1,'general_pages::brightness_slider_page::BrightnessSliderPage']]],
+  ['set_5fcenter_5ffreq_1493',['set_center_freq',['../d1/d74/classfreqshow__code_1_1model_1_1_freq_show_model.html#a2f8f1bf88030794144f6e2e41c504381',1,'freqshow_code::model::FreqShowModel']]],
+  ['set_5ffreq_5fmanual_1494',['set_freq_manual',['../d3/dfe/classsensor__pages_1_1sdr__page_1_1_software_defined_radio_page.html#a3cda2698f144e641fe181f9b570f1a7e',1,'sensor_pages::sdr_page::SoftwareDefinedRadioPage']]],
+  ['set_5fgain_1495',['set_gain',['../d1/d74/classfreqshow__code_1_1model_1_1_freq_show_model.html#a2f5db28dc8abcb094ca70ef1d0c16022',1,'freqshow_code::model::FreqShowModel']]],
+  ['set_5fgeiger_5fpower_5foff_1496',['set_geiger_power_off',['../d6/df9/namespaceserial__manager.html#ac25695965dd7e148cd22a8a4d3068a3f',1,'serial_manager']]],
+  ['set_5fgeiger_5fpower_5fon_1497',['set_geiger_power_on',['../d6/df9/namespaceserial__manager.html#a667def25996f00578a0ccada2c3effe6',1,'serial_manager']]],
+  ['set_5fmax_5fintensity_1498',['set_max_intensity',['../d1/d74/classfreqshow__code_1_1model_1_1_freq_show_model.html#ad8d3cad3c17c9811b42b992896caad7d',1,'freqshow_code::model::FreqShowModel']]],
+  ['set_5fmin_5fintensity_1499',['set_min_intensity',['../d1/d74/classfreqshow__code_1_1model_1_1_freq_show_model.html#a4048f050ac3c5520cb087246c15a0b6e',1,'freqshow_code::model::FreqShowModel']]],
+  ['set_5fpm25_5fpower_5foff_1500',['set_pm25_power_off',['../d6/df9/namespaceserial__manager.html#afa780e3720ae6358bad157af04868643',1,'serial_manager']]],
+  ['set_5fpm25_5fpower_5fon_1501',['set_pm25_power_on',['../d6/df9/namespaceserial__manager.html#a14440ec4ce6cc26ea29dae5960a4d2f8',1,'serial_manager']]],
+  ['set_5fsample_5frate_1502',['set_sample_rate',['../d1/d74/classfreqshow__code_1_1model_1_1_freq_show_model.html#aaa559f8805b3fb158c990e2909a3eb70',1,'freqshow_code::model::FreqShowModel']]],
+  ['set_5ftsl_5fgain_1503',['set_tsl_gain',['../d6/df9/namespaceserial__manager.html#a19c84b8a23a747ecbb4cfbef319aa8be',1,'serial_manager']]],
+  ['set_5ftsl_5fscl_5fconnect_1504',['set_tsl_scl_connect',['../d6/df9/namespaceserial__manager.html#af2aa69433803c207caa5991b6d644181',1,'serial_manager']]],
+  ['set_5ftsl_5fscl_5fdisconnect_1505',['set_tsl_scl_disconnect',['../d6/df9/namespaceserial__manager.html#a97fc09fd38905983d7ea31ccebd3c6d1',1,'serial_manager']]],
+  ['set_5fup_5flogging_1506',['set_up_logging',['../d2/d11/namespaceresources_1_1my__logging.html#a69cde4d92fe21d72f516832c41b4702c',1,'resources::my_logging']]],
+  ['shivams_5flogging_1507',['shivams_logging',['../d2/d11/namespaceresources_1_1my__logging.html#a3f45736e8863b99958e4f7a00c8a8fc3',1,'resources::my_logging']]],
+  ['start_1508',['start',['../d6/d72/namespacetricorder.html#aeed7377bbde32f8b57556e71c230fe6e',1,'tricorder']]]
+];
