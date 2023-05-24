@@ -1,7 +1,7 @@
 '''! @brief Display TVOC and eCO2 readings from SGP30 sensor.
 @file voc_page.py Contains definition for VOCSensorPage class.
 @bug fix on ESP32 end
-@todo fix sensor read
+@todo fix sensor read on ESP32 end
 '''
 
 import pygame.event as e
