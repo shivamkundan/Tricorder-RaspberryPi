@@ -1,3 +1,8 @@
+'''!
+@brief Display temperature and relative humidity readings from HTU31D sensor.
+@file temp_humid_page.py Contains definition for TempHumidPage class.
+'''
+
 import pygame.event as e
 import logging
 from buttons import ButtonClass, slide_switch_blank,simple_button_short,simple_button_short_alt
@@ -10,7 +15,9 @@ import time
 from serial_manager import get_temp_humid, ser
 
 class TempHumidPage(PageTemplate):
+    '''! Display temperature and relative humidity readings from HTU31D sensor.'''
     def __init__(self,name):
+        '''! Constructor'''
         super().__init__(name)
         self.prev_page_name='menu_home_page'
         self.bluetooth_connected=False
@@ -37,6 +44,7 @@ class TempHumidPage(PageTemplate):
 
     
     def init_buttons(self):
+        '''! Init buttons for this page.'''
         menu_title_buttons=[]
         menu_buttons=[]
 
@@ -66,6 +74,7 @@ class TempHumidPage(PageTemplate):
         return menu_title_buttons, menu_buttons, settings_button
 
     def init_gauges(self):
+        '''! Init gauges for this page.'''
         gauge_radius=100
         gauges_spacing=48
         weight=8
@@ -81,6 +90,7 @@ class TempHumidPage(PageTemplate):
         self.humid_gauge=AA_Gauge(None,(0),main_font_size=main_font_size,in_min=0,in_max=100,origin=self.humid_gauge_origin, radius=gauge_radius,weight=weight,color=YELLOW,suffix='%',CURR_FONT=font,FONT_COLOR=f_color,empty_arc_color=DARK_GREY,solid_bg=False,title='RH%',title_font_size=20)
 
     def blit_menu(self,screen):
+        '''! Show settings options for HTU31D sensor.'''
         self.button_dict['settings'].text='Back'
         self.blit_all_buttons(screen)
 
@@ -102,6 +112,7 @@ class TempHumidPage(PageTemplate):
             i+=1
 
     def blit_current_settings(self,screen):
+        '''! Show settings for HTU31D sensor.'''
         '''Show settings'''
         # x_pos,y_pos=138,440
         # txt_surf,w,h=get_text_dimensions(text='RESOLUTION',font_style=FONT_FEDERATION,font_color=ORANGE,style=1,font_size=28)
@@ -118,6 +129,7 @@ class TempHumidPage(PageTemplate):
         FONT_DIN.render_to(screen, (x_pos+40, y_pos+35),self.heater, SLATE, size=34)
 
     def flip_selection(self,pressed_button):
+        '''! Invert button selection'''
         if pressed_button.name=='humidity':
             self.button_dict['humidity'].selected=True
             self.button_dict['temperature'].selected=False
