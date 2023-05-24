@@ -1,5 +1,5 @@
 '''! @brief Visualizes noise level readings from electret mic using a line plot.
-@file noise_page.py Contains definition of NoiseSensorPage class.
+@file noise_page.py Contains definition for NoiseSensorPage class.
 '''
 
 from pygame import Surface
