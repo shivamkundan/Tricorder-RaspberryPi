@@ -1,3 +1,7 @@
+'''! @brief Display UV and UVI readings from LTR390 sensor.
+@file uv_page.py Contains definition for NoiseSensorPage class.
+'''
+
 import pygame.event as e
 from pygame import draw
 from buttons import ButtonClass, slide_switch_blank, simple_button_short, simple_button_short_alt
@@ -10,7 +14,9 @@ from serial_manager import get_uv
 from global_functions import get_text_dimensions
 
 class UVSensorPage(PageTemplate):
+    '''! Display UV and UVI readings from LTR390 sensor.'''
     def __init__(self,name):
+        '''! Constructor'''
         super().__init__(name)
         self.prev_page_name='menu_home_page'
         self.gain_codes_dict={'1x':'U_G_0','3x':'U_G_1','6x':'U_G_2','9x':'U_G_3','18x':'U_G_4'}
@@ -44,7 +50,7 @@ class UVSensorPage(PageTemplate):
         self.button_dict['gain'].selected=True
 
     def init_buttons(self):
-
+        '''! Init buttons for this page.'''
         button_w=165 #short button
         x_spacing=button_w+20
         col=150-button_w//4
@@ -79,6 +85,7 @@ class UVSensorPage(PageTemplate):
         return menu_title_buttons,menu_buttons, settings_button
 
     def init_gauges(self):
+        '''! Init gauges for this page.'''
         self.gauge_radius=100
         gauges_spacing=48
         weight=8
@@ -95,6 +102,7 @@ class UVSensorPage(PageTemplate):
         self.uvi_gauge=AA_Gauge(None,(0),main_font_size=main_font_size,in_min=0,in_max=10,origin=self.uvi_gauge_origin, radius=self.gauge_radius,weight=weight,color=PURPLE,suffix='',CURR_FONT=font,FONT_COLOR=f_color,empty_arc_color=DARK_GREY,solid_bg=False,title='UV Index',title_font_size=20)
 
     def blit_menu(self,screen):
+        '''! Show settings options for LTR390 sensor.'''
         for button in self.menu_title_buttons:
             button.blit_button(screen)
 
@@ -120,7 +128,7 @@ class UVSensorPage(PageTemplate):
         #     i+=1
 
     def blit_current_settings(self,screen):
-
+        '''! Show settings for LTR390 sensor.'''
         # Blit dividing line
         draw.line(screen, SLATE, (410, 395), (410, 645),1)
 
@@ -148,6 +156,7 @@ class UVSensorPage(PageTemplate):
         #     y_pos+=80
 
     def blit_title(self,screen):
+        '''! Display title.'''
         FONT_FEDERATION.render_to(screen, (150, 67), 'UV SENSOR', ORANGE,style=0,size=44)
         FONT_FEDERATION.render_to(screen, (150, 117), 'LTR390', DARK_YELLOW,style=0,size=34)
 
