@@ -24,6 +24,9 @@
 # @package bluetooth Bluetooth-related communication code.
 # @package resources Contains custom user events, logging code, and serial comm code mappings.
 
+
+# https://stackoverflow.com/questions/36064976/using-doxygen-in-read-the-docs
+
 import pygame
 pygame.init()
 import os
