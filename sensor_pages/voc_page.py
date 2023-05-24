@@ -1,3 +1,9 @@
+'''! @brief Display TVOC and eCO2 readings from SGP30 sensor.
+@file voc_page.py Contains definition for VOCSensorPage class.
+@bug fix on ESP32 end
+@todo fix sensor read
+'''
+
 import pygame.event as e
 from buttons import ButtonClass
 from aa_arc_gauge import AA_Gauge
@@ -7,7 +13,9 @@ from page_templates import PageTemplate
 from serial_manager import get_tvoc_eco2
 
 class VOCSensorPage(PageTemplate):
+    '''! Display TVOC and eCO2 readings from SGP30 sensor.'''
     def __init__(self,name):
+        '''! Constructor'''
         super().__init__(name)
         self.prev_page_name='menu_home_page'
         self.bluetooth_connected=False
@@ -20,10 +28,12 @@ class VOCSensorPage(PageTemplate):
         self.send_code=''
 
     def blit_title(self,screen):
+        '''! Display title'''
         FONT_FEDERATION.render_to(screen, (150, 67), 'VOC/eCO2 Sensor', ORANGE,style=0,size=44)
         FONT_FEDERATION.render_to(screen, (150, 117), 'SGP30', DARK_YELLOW,style=0,size=34)
 
     def init_gauges(self):
+        '''! Init gauges for this page.'''
         self.gauge_radius=100
         gauges_spacing=48
         weight=8
@@ -39,6 +49,7 @@ class VOCSensorPage(PageTemplate):
         self.eco2_gauge=AA_Gauge(None,(0),main_font_size=main_font_size,in_min=0,in_max=1000,origin=self.eco2_gauge_origin, radius=self.gauge_radius,weight=weight,color=GREEN,suffix='ppm',CURR_FONT=font,FONT_COLOR=f_color,empty_arc_color=DARK_GREY,solid_bg=False,title='CO2',title_font_size=20)
 
     def blit_current_settings(self,screen):
+        '''! Show settings for SGP30 sensor.'''
         x_pos=138
         y_pos=440
         FONT_FEDERATION.render_to(screen, (256, y_pos),'BASELINE ', ORANGE, size=28,style=1)
