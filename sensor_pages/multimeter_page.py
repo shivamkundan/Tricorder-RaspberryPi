@@ -1,5 +1,5 @@
 '''! @brief Read and plot values of current, voltage, and power from the current sensor.
-@file multimeter_page.py Contains implementation for MultimeterPage class.
+@file multimeter_page.py Contains definition for MultimeterPage class.
 '''
 import pygame
 from page_templates import PageTemplate
