@@ -1,3 +1,8 @@
+'''! @brief Display data from Modern Devices Rev. C wind speed sensor as line plot.
+@file wind_page.py Contains definition for WindSensorPage class.
+@todo complete this page
+'''
+
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION
 from colors import ORANGE, DARK_YELLOW, WHITE
@@ -14,7 +19,9 @@ from serial_manager import get_wind
 import numpy as np
 
 class WindSensorPage(PageTemplate):
+	'''! Display data from Modern Devices Rev. C wind speed sensor as line plot.'''
 	def __init__(self,name):
+		'''! Constructor'''
 		super().__init__(name)
 		self.prev_page_name='menu_home_page'
 		self.wind_out=0
