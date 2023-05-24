@@ -1,4 +1,4 @@
-'''! @brief This file contains a class for thermal camera display.
+'''! @brief For visualizing data from MLX90640 thermal cam sensor.
 @file thermal_cam_page.py Contains definition for ThermalCamPage class
 '''
 

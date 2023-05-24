@@ -1,4 +1,4 @@
-'''! @brief Read and plot values of current, voltage, and power from the current sensor.
+'''! @brief For visualizing volt/current/powerndata from INA260 current sensor.
 @file multimeter_page.py Contains definition for MultimeterPage class.
 '''
 import pygame
@@ -25,7 +25,7 @@ from serial_manager import get_multimeter
 import logging
 
 class MultimeterPage(PageTemplate):
-	'''! For visualizing volt/current/powerndata from current sensor'''
+	'''! For visualizing volt/current/powerndata from INA260 current sensor'''
 	def __init__(self,name):
 		super().__init__(name)
 		self.prev_page_name='menu_home_page'

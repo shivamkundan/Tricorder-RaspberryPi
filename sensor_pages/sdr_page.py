@@ -1,4 +1,4 @@
-'''! For visualizing data from the RTL2832 w/R820T Software Defined Radio (SDR) dongle.
+'''! For visualizing data from RTL2832 SDR dongle.
 Two modes of visualizing: line plot and waterfall.
 Reverse-engineered from Adafruit's FreqShow project.
 @file sdr_page.py Contains definition for SoftwareDefinedRadioPage class.

@@ -1,5 +1,5 @@
-'''! @brief Contains implementation for FlyPage class.
-@file fly_page.py Contains definition for FlyPage class + supporting functions.
+'''! @brief Mimics the avionics displays used in airplanes Eg: garmin-xxxx.
+@file fly_page.py Contains definition for FlyPage class + supporting functions + variables.
 '''
 
 import os
@@ -57,7 +57,7 @@ def blit_column_txt(screen,x_val,curr_val):
 		FONT_FEDERATION.render_to(screen, pos[0], pos[1], WHITE,style=0,size=INDICATOR_SMALL_FONT_SIZE)
 
 class FlyPage(PageTemplate):
-	'''! @brief This page mimics the avionics displays used in airplanes Eg: garmin-xxxx
+	'''! @brief Mimics the avionics displays used in airplanes Eg: garmin-xxxx
 	'''
 	def __init__(self,name):
 		'''! Constructor'''

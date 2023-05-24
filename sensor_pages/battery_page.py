@@ -1,4 +1,4 @@
-'''! @brief Contains class definition for battery sensor / fuel gauge page
+'''! @brief Display readings from LC709203F battery sensor / fuel gauge.
 @file battery_page.py Contains definition for BatterySensorPage class.
 @package sensor_pages Contains sensor-specific page implementations.
 @dir sensor_pages Contains sensor-specific page implementations.
@@ -20,7 +20,7 @@ import logging
 
 from paths_and_utils import BATT_HIST_FILE
 class BatterySensorPage(PageTemplate):
-    '''! Page class for battery sensor / fuel gauge'''
+    '''! Display readings from LC709203F battery sensor / fuel gauge'''
     def __init__(self,name):
         super().__init__(name)
         self.prev_page_name='menu_home_page'
