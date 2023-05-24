@@ -1,5 +1,5 @@
 '''! @brief Contains class definition for battery sensor / fuel gauge page
-@file battery_page.py Contains class implementation for battery page.
+@file battery_page.py Contains definition for BatterySensorPage class.
 @package sensor_pages Contains sensor-specific page implementations.
 @dir sensor_pages Contains sensor-specific page implementations.
 '''
