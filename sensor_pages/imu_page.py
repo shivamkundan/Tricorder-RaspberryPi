@@ -1,5 +1,5 @@
-'''! @brief Visualize data (multipage) from BNO055 9DOF Inertial Measurement Unit
-@file imu_page.py Contains definition for IMUSensorPage class + supporting functions + variables.
+'''
+Contains definition for IMUSensorPage class + supporting functions + variables.
 '''
 from page_templates import PageTemplate
 from fonts import FONT_FEDERATION, FONT_HELVETICA_NEUE,FONT_DIN
@@ -44,8 +44,9 @@ def blitRotate2(surf, image, topleft, angle):
     # pygame.draw.rect(surf, (255, 0, 0), new_rect, 2)
 
 class IMUSensorPage(PageTemplate):
-    '''! Visualize data (multipage) from BNO055 9DOF Inertial Measurement Unit'''
+    ''' Visualize data (multipage) from BNO055 9DOF Inertial Measurement Unit'''
     def __init__(self,name):
+        ''' Constructor'''
         super().__init__(name)
         self.prev_page_name='menu_home_page'
 
@@ -85,7 +86,13 @@ class IMUSensorPage(PageTemplate):
         set_tsl_scl_disconnect()
 
     def blit_page_num(self,screen):
-        '''! Show subpage number'''
+        '''
+        Show subpage number
+
+        :param:
+            :self: Current screen object
+            :screen: Current screen object
+        '''
         FONT_FEDERATION.render_to(screen, (30, 100), str(self.curr_subpage+1)+'/'+str(self.num_pages), SLATE,style=0,size=28)
         FONT_FEDERATION.render_to(screen, (370, 640), str(self.curr_subpage+1)+'/'+str(self.num_pages), DARK_YELLOW,style=0,size=18)
 

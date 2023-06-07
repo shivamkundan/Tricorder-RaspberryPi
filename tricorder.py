@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-
-"""!
-@brief Execution starts from here.
+'''Execution starts from here.
 @file tricorder.py Main file, execution starts here.
-"""
+'''
 
 ##
 # @mainpage Tricorder Project
@@ -517,7 +515,7 @@ class WindowManager():
 		return(curr_events)
 
 	def next_frame_main(self):
-		'''! The main main() function'''
+		'''! The main main() function. Construct/draw what should be on the next frame. Each page returns a frame.'''
 		next_screen_name=self.curr_screen.name
 		self.curr_screen=self.next_screen
 

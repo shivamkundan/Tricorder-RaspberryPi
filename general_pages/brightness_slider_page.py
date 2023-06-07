@@ -1,3 +1,12 @@
+'''
+Implements functions for backlight control.
+
+:note:
+	The project uses a Pimoroni Hyperpixel Square. The brightness is controlled through PWM.
+
+.. note::The project uses a Pimoroni Hyperpixel Square. The brightness is controlled through PWM.
+'''
+
 '''! @brief Display backlight brightness adjustment.
 @file brightness_slider_page.py Contains definitions for SliderClass and BrightnessSliderPage classes.
 '''

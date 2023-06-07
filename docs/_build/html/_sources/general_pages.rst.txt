@@ -1,8 +1,8 @@
 general\_pages package
 ======================
 
-Submodules
-----------
+Contains definitions for pages other than sensor I/O.
+
 
 general\_pages.brightness\_slider\_page module
 ----------------------------------------------

@@ -1,6 +1,8 @@
 assets package
 ==============
 
+Contains buttons, colors, fonts, and images.
+
 Submodules
 ----------
 

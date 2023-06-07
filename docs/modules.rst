@@ -5,7 +5,7 @@ tricorder
 Something about.
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 1
 
    aa_arc_gauge
    aaaa_a_fonts

@@ -1,6 +1,8 @@
 sensor\_pages package
 =====================
 
+Contains code for interacting with each sensor. 
+
 Submodules
 ----------
 
@@ -19,6 +21,7 @@ sensor\_pages.fly\_page module
    :members:
    :undoc-members:
    :show-inheritance:
+   :name: fly_page
 
 sensor\_pages.fly\_page\_vars module
 ------------------------------------

@@ -22,17 +22,20 @@ Find the corresponding ESP32 code on `github`_.
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: Contents
 
    modules
 
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Sensor Pages:
+   :caption: Packages
 
    sensor_pages
+   general_pages
+   assets
+   serial_manager
 
 Indices and tables
 ==================

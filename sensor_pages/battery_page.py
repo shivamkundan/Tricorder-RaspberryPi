@@ -1,3 +1,7 @@
+'''
+Contains definition for BatterySensorPage class.
+'''
+
 '''! @brief Display readings from LC709203F battery sensor / fuel gauge.
 @file battery_page.py Contains definition for BatterySensorPage class.
 @package sensor_pages Contains sensor-specific page implementations.

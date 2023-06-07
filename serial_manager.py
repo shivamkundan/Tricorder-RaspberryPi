@@ -1,13 +1,17 @@
 #!/usr/bin/python3
-"""! @brief Functions for serial comminication with MCU.
-
+"""
 	This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.
 		-> Each sensor page can import relevant functions for efficiency.
+
 		-> Keeping all in one place in case of changes to how I communicate with sensors.
+
 	By sending data back and forth:
 		-> Data can be requested from sensors
+
 		-> Sensor-specific settings can be changed
+
 		-> Microcontroller operations can be changed (e.g., sleep mode)
+
 		-> Both of the above involves sending specific mappings from mappings.py
 """
 
@@ -50,8 +54,10 @@ except serial.serialutil.SerialException:
 # -------------------------------------------------
 def get_temp_humid():
 	'''
-	Dictionary keys:
-				['temperature', 'relative_humidity', 'heater', 'h_res', 't_res']
+	Get temperature and humidity readings
+
+	:Dictionary keys: ['temperature', 'relative_humidity', 'heater', 'h_res', 't_res']
+	:returns: temperature, relative_humidity, h_res, t_res
 	'''
 
 	'''! @brief Get temperature and humidity readings
@@ -276,8 +282,13 @@ def get_gps():
 
 def get_battery():
 	'''
-	Dictionary keys:
-		['volt', 'pct', 'temp']
+	Get battery voltage & percentage from Adafruit fuel gauge
+
+	:Dictionary keys: ['volt', 'pct', 'temp']
+	:return:
+		:normal: voltage, battery pct, battery temperature
+		:error: -1, -1, -1
+
 	'''
 
 	'''! Get battery voltage & percentage from Adafruit fuel gauge

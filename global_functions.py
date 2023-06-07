@@ -21,7 +21,7 @@ from colors import WHITE, ORANGE, LIGHT_BLUE
 # ================ Global functions ================================= #
 
 def my_map(x,in_min,in_max,out_min,out_max):
-	'''!
+	'''
 	Standard mapping formula. Used in many places
 
 	:note: Standard formula
@@ -36,14 +36,16 @@ def my_map(x,in_min,in_max,out_min,out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
   
 def blitRotate2(surf, image, topleft, angle):
-	'''! Rotate an image around its center'''
+	''' Rotate an image around its center
+	:return: surf,w,h
+	'''
 	rotated_image = pygame.transform.rotate(image, angle)
 	new_rect = rotated_image.get_rect(center = image.get_rect(topleft = topleft).center)
 
 	surf.blit(rotated_image, new_rect.topleft)
 
 def get_text_dimensions(text='',font_style=FONT_DIN,font_color=WHITE,style=0,font_size=28):
-	'''! Return size of to-be-rendered text'''
+	''' Return size of to-be-rendered text'''
 	val_txt=font_style.render(text,fgcolor=font_color,size=font_size)
 	x=list(val_txt)
 	w=x[1][2]
@@ -52,7 +54,7 @@ def get_text_dimensions(text='',font_style=FONT_DIN,font_color=WHITE,style=0,fon
 	return surf,w,h
 
 def flip_buttons(pressed_button,button_list):
-	'''! Unselect all other buttons except the one just pressed'''
+	''' Unselect all other buttons except the one just pressed'''
 	if pressed_button.selected:
 		return
 	else:
