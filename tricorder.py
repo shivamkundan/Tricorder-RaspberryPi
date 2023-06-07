@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-"""! @brief Execution starts from here.
+"""!
+@brief Execution starts from here.
 @file tricorder.py Main file, execution starts here.
 """
 
