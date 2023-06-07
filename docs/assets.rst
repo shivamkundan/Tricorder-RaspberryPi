@@ -14,29 +14,29 @@ assets.buttons module
    :undoc-members:
    :show-inheritance:
 
-assets.colors module
---------------------
+   assets.colors module
+   --------------------
 
-.. automodule:: assets.colors
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   .. automodule:: assets.colors
+      :members:
+      :undoc-members:
+      :show-inheritance:
 
-assets.fonts module
--------------------
+   assets.fonts module
+   -------------------
 
-.. automodule:: assets.fonts
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   .. automodule:: assets.fonts
+      :members:
+      :undoc-members:
+      :show-inheritance:
 
-assets.images module
---------------------
+   assets.images module
+   --------------------
 
-.. automodule:: assets.images
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   .. automodule:: assets.images
+      :members:
+      :undoc-members:
+      :show-inheritance:
 
 Module contents
 ---------------
