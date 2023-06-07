@@ -3,8 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Tricorder-RaspberryPi's documentation!
-=================================================
+Welcome to Tricorder-RPi's documentation!
+=============================================
+
+=================
+About
+=================
+
+Welcome to my Tricorder project documentation. This is for the raspberry pi portion of the project.
+Find the code at github: `here`_.
+
+.. _here: https://github.com/shivamkundan/Tricorder-RaspberryPi
+
+
+Find the corresponding ESP32 code on `github`_.
+
+.. _github: https://github.com/shivamkundan/Tricorder-ESP32
+
 
 .. toctree::
    :maxdepth: 2

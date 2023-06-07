@@ -123,185 +123,244 @@
              
   <div class="section" id="module-serial_manager">
 <span id="serial-manager-module"></span><h1>serial_manager module<a class="headerlink" href="#module-serial_manager" title="Permalink to this heading"></a></h1>
-<dl>
-<dt>Brief:</dt><dd><p>This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.</p>
-<blockquote>
-<div><p>-&gt; Each sensor page can import relevant functions for efficiency.</p>
-<p>-&gt; Keeping all in one place in case of changes to how I communicate with sensors.</p>
-</div></blockquote>
+<p>! &#64;brief Functions for serial comminication with MCU.</p>
+<dl class="simple">
+<dt>This file contains functions for communicating over a serial usb/bluetooth link using tcp/ip sockets.</dt><dd><p>-&gt; Each sensor page can import relevant functions for efficiency.
+-&gt; Keeping all in one place in case of changes to how I communicate with sensors.</p>
 </dd>
-<dt>By sending data back and forth:</dt><dd><p>-&gt; Data can be requested from sensors</p>
-<p>-&gt; Sensor-specific settings can be changed</p>
-<p>-&gt; Microcontroller operations can be changed (e.g., sleep mode)</p>
-<p>-&gt; Both of the above involves sending specific mappings from mappings.py</p>
+<dt>By sending data back and forth:</dt><dd><p>-&gt; Data can be requested from sensors
+-&gt; Sensor-specific settings can be changed
+-&gt; Microcontroller operations can be changed (e.g., sleep mode)
+-&gt; Both of the above involves sending specific mappings from mappings.py</p>
 </dd>
 </dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_battery">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_battery</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_battery" title="Permalink to this definition"></a></dt>
-<dd><p>Get battery voltage &amp; percentage from Adafruit fuel gauge</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘volt’, ‘pct’, ‘temp’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_gps">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_gps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_gps" title="Permalink to this definition"></a></dt>
-<dd><p>Read data from GPS sensor</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘lat’, ‘lng’, ‘alt’, ‘spd’, ‘sat’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_imu_acc">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_imu_acc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_imu_acc" title="Permalink to this definition"></a></dt>
-<dd><p>BNO055 IMU: get x/y/z axes overall acceleration</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘X’,’Y’,’Z’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_imu_ang_vel">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_imu_ang_vel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_imu_ang_vel" title="Permalink to this definition"></a></dt>
-<dd><p>BNO055 IMU: get x/y/z axes angular velocity</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘X’,’Y’,’Z’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_imu_grav">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_imu_grav</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_imu_grav" title="Permalink to this definition"></a></dt>
-<dd><p>BNO055 IMU: get x/y/z axes readings for adjusted gravitational acceleration</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘X’,’Y’,’Z’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_imu_lin_acc">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_imu_lin_acc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_imu_lin_acc" title="Permalink to this definition"></a></dt>
-<dd><p>BNO055 IMU: get x/y/z axes linear acceleration</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘X’,’Y’,’Z’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_imu_mag">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_imu_mag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_imu_mag" title="Permalink to this definition"></a></dt>
-<dd><p>BNO055 IMU: get x/y/z axes magnetic field strength</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘X’,’Y’,’Z’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_imu_orientation">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_imu_orientation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_imu_orientation" title="Permalink to this definition"></a></dt>
-<dd><p>BNO055 IMU: get heading, roll, pitch</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘Hd’,’Rl’,’Ph’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_multimeter">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_multimeter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_multimeter" title="Permalink to this definition"></a></dt>
-<dd><p>Get readings from current sensor INA219</p>
+<dd><p>! Get readings from current sensor INA219
+&#64;warning This works differently from others.
+&#64;return if normal -&gt; current, voltage, power
+&#64;return if error  -&gt; -1, -1, -1</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_noise">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_noise</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_noise" title="Permalink to this definition"></a></dt>
-<dd><p>Get analog value from electret microphone</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘noise_out’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_pm25">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_pm25</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_pm25" title="Permalink to this definition"></a></dt>
-<dd><p>Get particulate matter readings</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘03um’, ‘05um’, ‘10um’, ‘25um’, ‘50um’, ‘100um’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_pressure">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_pressure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_pressure" title="Permalink to this definition"></a></dt>
-<dd><p>Get barometric pressure, temperature, and est altitude readings</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘pressure’, ‘bmp_temp’, ‘p_over’, ‘t_over’, ‘alt’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_radiation">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_radiation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_radiation" title="Permalink to this definition"></a></dt>
-<dd><p>Read analog value from geiger counter module</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘CPM’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_serial_vals">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_serial_vals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send_msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_names_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_serial_vals" title="Permalink to this definition"></a></dt>
-<dd><p>Main function actually responsible for serial communication msg send/recv</p>
+<dd><p>! &#64;brief Main function actually responsible for serial communication msg send/recv.
+&#64;param send_msg Message (i.e., code) to be sent.
+&#64;param dict_names_list Sensor specific names for returned name/value pairs.
+&#64;returns Dictionary with name-value pairs specified in dict_names_list.</p>
+<p>&#64;note This is a note</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_spectrometer">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_spectrometer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_spectrometer" title="Permalink to this definition"></a></dt>
-<dd><p>Get readings from photo spectrometer</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘c_415nm’,’c_445nm’,’c_480nm’,’c_515nm’,’c_555nm’,’c_590nm’,’c_630nm’,’c_680nm’,’clear’,’nir’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_temp_humid">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_temp_humid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_temp_humid" title="Permalink to this definition"></a></dt>
-<dd><p>Get temperature and humidity readings</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘temperature’, ‘relative_humidity’, ‘heater’, ‘h_res’, ‘t_res’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_tvoc_eco2">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_tvoc_eco2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_tvoc_eco2" title="Permalink to this definition"></a></dt>
-<dd><p>Get volatile organic compound and estimated CO2 readings</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘eCO2’, ‘TVOC’, ‘raw_H2’, ‘raw_ethanol’, ‘baseline_eCO2’, ‘baseline_TVOC’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_uv">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_uv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_uv" title="Permalink to this definition"></a></dt>
-<dd><p>Get readings from UV light sensor</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘uvs’,’light’,’uvi’,’ltr_lux’,’ltr_gain’,’ltr_res’,’ltr_win_fac’,’ltr_mdelay’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_vis_ir">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_vis_ir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_vis_ir" title="Permalink to this definition"></a></dt>
-<dd><p>Get readings for visible and infrared light</p>
+<dd><dl class="simple">
+<dt>Dictionary keys:</dt><dd><p>[‘lux’, ‘infrared’, ‘visible’, ‘full_spectrum’, ‘tsl2591_gain’]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.get_wind">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">get_wind</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.get_wind" title="Permalink to this definition"></a></dt>
-<dd><p>Read analog value from wind sensor</p>
+<dd><p>! Read analog value from wind sensor.
+&#64;warning This works differently from others.
+&#64;return if normal -&gt; wind_val
+&#64;return if error  -&gt; -1</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.my_flush">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">my_flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.my_flush" title="Permalink to this definition"></a></dt>
-<dd><p>Dump serial vals</p>
+<dd><p>! Dump serial vals</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_geiger_power_off">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_geiger_power_off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_geiger_power_off" title="Permalink to this definition"></a></dt>
-<dd><p>Disconnect power to geiger counter module by switching assigned mosfet</p>
+<dd><p>! Disconnect power to geiger counter module by switching assigned mosfet</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_geiger_power_on">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_geiger_power_on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_geiger_power_on" title="Permalink to this definition"></a></dt>
-<dd><p>Reconnect power to geiger counter module by switching assigned mosfet</p>
+<dd><p>! Reconnect power to geiger counter module by switching assigned mosfet</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_pm25_power_off">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_pm25_power_off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_pm25_power_off" title="Permalink to this definition"></a></dt>
-<dd><p>Disconnect power to PM25 sensor by switching assigned mosfet</p>
+<dd><p>! Disconnect power to PM25 sensor by switching assigned mosfet</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_pm25_power_on">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_pm25_power_on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_pm25_power_on" title="Permalink to this definition"></a></dt>
-<dd><p>Reconnect power to PM25 sensor by switching assigned mosfet</p>
+<dd><p>! Reconnect power to PM25 sensor by switching assigned mosfet</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_tsl_gain">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_tsl_gain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_gain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_tsl_gain" title="Permalink to this definition"></a></dt>
-<dd><p>Set gain of TSL2591 vis/ir sensor</p>
+<dd><p>! Set gain of TSL2591 vis/ir sensor</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_tsl_scl_connect">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_tsl_scl_connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_tsl_scl_connect" title="Permalink to this definition"></a></dt>
-<dd><p>Reconnect the SCL signal for TSL2591 vis/ir sensor</p>
+<dd><p>! Reconnect the SCL signal for TSL2591 vis/ir sensor</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="serial_manager.set_tsl_scl_disconnect">
 <span class="sig-prename descclassname"><span class="pre">serial_manager.</span></span><span class="sig-name descname"><span class="pre">set_tsl_scl_disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_manager.set_tsl_scl_disconnect" title="Permalink to this definition"></a></dt>
-<dd><p>Disconnect the SCL signal for TSL2591 vis/ir sensor</p>
+<dd><p>! Disconnect the SCL signal for TSL2591 vis/ir sensor</p>
 </dd></dl>
 
 </div>

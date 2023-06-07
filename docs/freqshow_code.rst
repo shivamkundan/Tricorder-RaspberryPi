@@ -1,6 +1,9 @@
 freqshow\_code package
 ======================
 
+Taken from Adafruit's FreqShow project. Find the code `here`_
+.. _here: https://github.com/shivamkundan/
+
 Submodules
 ----------
 

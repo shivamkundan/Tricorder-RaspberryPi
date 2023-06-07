@@ -111,40 +111,27 @@
 </div>
 <div class="section" id="module-resources.custom_user_events">
 <span id="resources-custom-user-events-module"></span><h2>resources.custom_user_events module<a class="headerlink" href="#module-resources.custom_user_events" title="Permalink to this heading"></a></h2>
-<p>Communication with the microcontroller is event based.</p>
-<p>Certain device controls are also event based.</p>
-<p>This file contains my custom defined events.</p>
+<p>! &#64;brief  Contains user-defined events for Pygame
+&#64;file custom_user_events.py Contains user-defined events for Pygame</p>
 </div>
 <div class="section" id="module-resources.global_functions_old">
 <span id="resources-global-functions-old-module"></span><h2>resources.global_functions_old module<a class="headerlink" href="#module-resources.global_functions_old" title="Permalink to this heading"></a></h2>
 </div>
 <div class="section" id="module-resources.mappings">
 <span id="resources-mappings-module"></span><h2>resources.mappings module<a class="headerlink" href="#module-resources.mappings" title="Permalink to this heading"></a></h2>
-<p>The RaspberryPi and MCU communicate by exchanging pre-determined codes over wired/bluetooth serial connections.</p>
-<p>Each functopm (output or input) is represented by unique identifier.</p>
+<p>!
+&#64;brief The RaspberryPi and MCU communicate by exchanging pre-determined codes over wired/bluetooth serial connections.</p>
+<p>Each functiom (output or input) is represented by unique identifier.
+&#64;file mappings.py Contains mappings for serial communication</p>
 </div>
 <div class="section" id="module-resources.my_logging">
 <span id="resources-my-logging-module"></span><h2>resources.my_logging module<a class="headerlink" href="#module-resources.my_logging" title="Permalink to this heading"></a></h2>
-<p># This code is from the following github user:
-# ——————————————————————————-
-#                                                                               -
-#  Python dual-logging setup (console and log file),                            -
-#  supporting different log levels and colorized output                         -
-#                                                                               -
-#  Created by Fonic &lt;<a class="reference external" href="https://github.com/fonic">https://github.com/fonic</a>&gt;                                  -
-#  Date: 04/05/20 - 02/07/23                                                    -
-#                                                                               -
-#  Based on:                                                                    -
-#  <a class="reference external" href="https://stackoverflow.com/a/13733863/1976617">https://stackoverflow.com/a/13733863/1976617</a>                                 -
-#  <a class="reference external" href="https://uran198.github.io/en/python/2016/07/12/colorful-python-logging.html">https://uran198.github.io/en/python/2016/07/12/colorful-python-logging.html</a>  -
-#  <a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors">https://en.wikipedia.org/wiki/ANSI_escape_code#Colors</a>                        -
-#                                                                               -
-# ——————————————————————————-</p>
+<p>! Set up custom logging.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="resources.my_logging.LogFormatter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">resources.my_logging.</span></span><span class="sig-name descname"><span class="pre">LogFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.my_logging.LogFormatter" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></p>
-<p>Logging formatter supporting colorized output</p>
+<p>! Logging formatter supporting colorized output</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="resources.my_logging.LogFormatter.COLOR_CODES">
 <span class="sig-name descname"><span class="pre">COLOR_CODES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{10:</span> <span class="pre">'\x1b[1;37m',</span> <span class="pre">20:</span> <span class="pre">'\x1b[1;37m',</span> <span class="pre">30:</span> <span class="pre">'\x1b[1;33m',</span> <span class="pre">40:</span> <span class="pre">'\x1b[1;31m',</span> <span class="pre">50:</span> <span class="pre">'\x1b[1;35m'}</span></em><a class="headerlink" href="#resources.my_logging.LogFormatter.COLOR_CODES" title="Permalink to this definition"></a></dt>
@@ -179,7 +166,7 @@ it is formatted using formatException() and appended to the message.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="resources.my_logging.shivams_logging">
 <span class="sig-prename descclassname"><span class="pre">resources.my_logging.</span></span><span class="sig-name descname"><span class="pre">shivams_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tricorder'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">console_log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'debug'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logfile_log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'debug'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resources.my_logging.shivams_logging" title="Permalink to this definition"></a></dt>
-<dd><p>My custom logging setup</p>
+<dd><p>! My custom logging setup</p>
 </dd></dl>
 
 </div>

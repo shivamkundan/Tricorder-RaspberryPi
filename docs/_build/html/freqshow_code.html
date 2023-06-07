@@ -129,6 +129,8 @@
              
   <div class="section" id="freqshow-code-package">
 <h1>freqshow_code package<a class="headerlink" href="#freqshow-code-package" title="Permalink to this heading"></a></h1>
+<p>Taken from Adafruit’s FreqShow project. Find the code <a href="#id1"><span class="problematic" id="id2">`here`_</span></a>
+.. _here: <a class="reference external" href="https://github.com/shivamkundan/">https://github.com/shivamkundan/</a></p>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </div>
@@ -137,67 +139,69 @@
 </div>
 <div class="section" id="module-freqshow_code.controller">
 <span id="freqshow-code-controller-module"></span><h2>freqshow_code.controller module<a class="headerlink" href="#module-freqshow_code.controller" title="Permalink to this heading"></a></h2>
+<p>! &#64;brief This owns the views and controls application movement between views.
+&#64;file controller.py Contains FreqShow controller class.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.controller.</span></span><span class="sig-name descname"><span class="pre">FreqShowController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class which controls the views shown in the application and mediates
+<p>! Class which controls the views shown in the application and mediates
 changing between views.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.change_to_instant">
 <span class="sig-name descname"><span class="pre">change_to_instant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.change_to_instant" title="Permalink to this definition"></a></dt>
-<dd><p>Change to instantaneous spectrogram view.</p>
+<dd><p>! Change to instantaneous spectrogram view.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.change_to_main">
 <span class="sig-name descname"><span class="pre">change_to_main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.change_to_main" title="Permalink to this definition"></a></dt>
-<dd><p>Change to main spectrogram view (either instant or waterfall depending
+<dd><p>! Change to main spectrogram view (either instant or waterfall depending
 on what was the last main view).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.change_to_settings">
 <span class="sig-name descname"><span class="pre">change_to_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.change_to_settings" title="Permalink to this definition"></a></dt>
-<dd><p>Change to settings list view.</p>
+<dd><p>! Change to settings list view.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.change_to_waterfall">
 <span class="sig-name descname"><span class="pre">change_to_waterfall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.change_to_waterfall" title="Permalink to this definition"></a></dt>
-<dd><p>Change to waterfall spectrogram view.</p>
+<dd><p>! Change to waterfall spectrogram view.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.change_view">
 <span class="sig-name descname"><span class="pre">change_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.change_view" title="Permalink to this definition"></a></dt>
-<dd><p>Change to specified view.</p>
+<dd><p>! Change to specified view.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.current">
 <span class="sig-name descname"><span class="pre">current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.current" title="Permalink to this definition"></a></dt>
-<dd><p>Return current view.</p>
+<dd><p>! Return current view.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.message_dialog">
 <span class="sig-name descname"><span class="pre">message_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.message_dialog" title="Permalink to this definition"></a></dt>
-<dd><p>Open a message dialog which goes back to the previous view when
+<dd><p>! Open a message dialog which goes back to the previous view when
 canceled.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.number_dialog">
 <span class="sig-name descname"><span class="pre">number_dialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_text</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.number_dialog" title="Permalink to this definition"></a></dt>
-<dd><p>Open a number dialog which goes back to the previous view when
+<dd><p>! Open a number dialog which goes back to the previous view when
 canceled.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.controller.FreqShowController.toggle_main">
 <span class="sig-name descname"><span class="pre">toggle_main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.controller.FreqShowController.toggle_main" title="Permalink to this definition"></a></dt>
-<dd><p>Switch between instantaneous and waterfall spectrogram views.</p>
+<dd><p>! Switch between instantaneous and waterfall spectrogram views.</p>
 </dd></dl>
 
 </dd></dl>
@@ -205,23 +209,29 @@ canceled.</p>
 </div>
 <div class="section" id="module-freqshow_code.freqshow">
 <span id="freqshow-code-freqshow-module"></span><h2>freqshow_code.freqshow module<a class="headerlink" href="#module-freqshow_code.freqshow" title="Permalink to this heading"></a></h2>
+<p>! &#64;brief Freqshow testing, execution begins here.
+&#64;file freqshow.py Main file for FreqShow testing.</p>
 </div>
 <div class="section" id="module-freqshow_code.model">
 <span id="freqshow-code-model-module"></span><h2>freqshow_code.model module<a class="headerlink" href="#module-freqshow_code.model" title="Permalink to this heading"></a></h2>
+<p>! &#64;brief Main freqshow application model.
+&#64;file model.py Contains main freqshow application model/state.
+&#64;dir freqshow_code Contains code for Adafruit’s FreqShow.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.model.</span></span><span class="sig-name descname"><span class="pre">FreqShowModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>! main FreqShow application model.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.get_center_freq">
 <span class="sig-name descname"><span class="pre">get_center_freq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.get_center_freq" title="Permalink to this definition"></a></dt>
-<dd><p>Return center frequency of tuner in megahertz.</p>
+<dd><p>! Return center frequency of tuner in megahertz.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.get_data">
 <span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.get_data" title="Permalink to this definition"></a></dt>
-<dd><p>Get spectrogram data from the tuner.  Will return width number of
+<dd><p>! Get spectrogram data from the tuner.  Will return width number of
 values which are the intensities of each frequency bucket (i.e. FFT of
 radio samples).</p>
 </dd></dl>
@@ -229,61 +239,61 @@ radio samples).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.get_gain">
 <span class="sig-name descname"><span class="pre">get_gain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.get_gain" title="Permalink to this definition"></a></dt>
-<dd><p>Return gain of tuner.  Can be either the string ‘AUTO’ or a numeric
+<dd><p>! Return gain of tuner.  Can be either the string ‘AUTO’ or a numeric
 value that is the gain in decibels.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.get_max_string">
 <span class="sig-name descname"><span class="pre">get_max_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.get_max_string" title="Permalink to this definition"></a></dt>
-<dd><p>Return string with the appropriate maximum intensity value, either
+<dd><p>! Return string with the appropriate maximum intensity value, either
 ‘AUTO’ or the min intensity in decibels (rounded to no decimals).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.get_min_string">
 <span class="sig-name descname"><span class="pre">get_min_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.get_min_string" title="Permalink to this definition"></a></dt>
-<dd><p>Return string with the appropriate minimum intensity value, either
+<dd><p>! Return string with the appropriate minimum intensity value, either
 ‘AUTO’ or the min intensity in decibels (rounded to no decimals).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.get_sample_rate">
 <span class="sig-name descname"><span class="pre">get_sample_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.get_sample_rate" title="Permalink to this definition"></a></dt>
-<dd><p>Return sample rate of tuner in megahertz.</p>
+<dd><p>! Return sample rate of tuner in megahertz.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.set_center_freq">
 <span class="sig-name descname"><span class="pre">set_center_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq_mhz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.set_center_freq" title="Permalink to this definition"></a></dt>
-<dd><p>Set tuner center frequency to provided megahertz value.</p>
+<dd><p>! Set tuner center frequency to provided megahertz value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.set_gain">
 <span class="sig-name descname"><span class="pre">set_gain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gain_db</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.set_gain" title="Permalink to this definition"></a></dt>
-<dd><p>Set gain of tuner.  Can be the string ‘AUTO’ for automatic gain
+<dd><p>! Set gain of tuner.  Can be the string ‘AUTO’ for automatic gain
 or a numeric value in decibels for fixed gain.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.set_max_intensity">
 <span class="sig-name descname"><span class="pre">set_max_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intensity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.set_max_intensity" title="Permalink to this definition"></a></dt>
-<dd><p>Set Y axis maximum intensity in decibels (i.e. dB value at top of 
+<dd><p>! Set Y axis maximum intensity in decibels (i.e. dB value at top of
 spectrograms).  Can also pass ‘AUTO’ to enable auto scaling of value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.set_min_intensity">
 <span class="sig-name descname"><span class="pre">set_min_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intensity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.set_min_intensity" title="Permalink to this definition"></a></dt>
-<dd><p>Set Y axis minimum intensity in decibels (i.e. dB value at bottom of 
+<dd><p>! Set Y axis minimum intensity in decibels (i.e. dB value at bottom of
 spectrograms).  Can also pass ‘AUTO’ to enable auto scaling of value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.model.FreqShowModel.set_sample_rate">
 <span class="sig-name descname"><span class="pre">set_sample_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate_mhz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.model.FreqShowModel.set_sample_rate" title="Permalink to this definition"></a></dt>
-<dd><p>Set tuner sample rate to provided frequency in megahertz.</p>
+<dd><p>! Set tuner sample rate to provided frequency in megahertz.</p>
 </dd></dl>
 
 </dd></dl>
@@ -291,10 +301,13 @@ spectrograms).  Can also pass ‘AUTO’ to enable auto scaling of value.</p>
 </div>
 <div class="section" id="module-freqshow_code.ui">
 <span id="freqshow-code-ui-module"></span><h2>freqshow_code.ui module<a class="headerlink" href="#module-freqshow_code.ui" title="Permalink to this heading"></a></h2>
+<p>! &#64;brief FreqShow user interface classes.
+&#64;file ui.py Contains FreqShow user interface classes.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="freqshow_code.ui.Button">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">Button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.Button" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>! Button class</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="freqshow_code.ui.Button.bg_color">
 <span class="sig-name descname"><span class="pre">bg_color</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(60,</span> <span class="pre">60,</span> <span class="pre">60,</span> <span class="pre">0)</span></em><a class="headerlink" href="#freqshow_code.ui.Button.bg_color" title="Permalink to this definition"></a></dt>
@@ -313,7 +326,7 @@ spectrograms).  Can also pass ‘AUTO’ to enable auto scaling of value.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.ui.Button.click">
 <span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.Button.click" title="Permalink to this definition"></a></dt>
-<dd><p>Click handler will fire the button’s click handler if the provided
+<dd><p>! Click handler will fire the button’s click handler if the provided
 location x, y tuple is inside the button.</p>
 </dd></dl>
 
@@ -335,7 +348,7 @@ location x, y tuple is inside the button.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.ui.Button.render">
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.Button.render" title="Permalink to this definition"></a></dt>
-<dd><p>Render the button on the provided surface.</p>
+<dd><p>! Render the button on the provided surface.</p>
 </dd></dl>
 
 </dd></dl>
@@ -344,10 +357,11 @@ location x, y tuple is inside the button.</p>
 <dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">ButtonGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>! Button grid class</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid.add">
 <span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colspan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid.add" title="Permalink to this definition"></a></dt>
-<dd><p>Add a Button to the grid at the specified row and col position in
+<dd><p>! Add a Button to the grid at the specified row and col position in
 the grid.  Row and col are 0-based indexes.  Buttons can span multiple
 rows and columns by providing optional rowspan and colspan parameters.
 Any other keyword arguments are passed to the Button constructor.</p>
@@ -356,14 +370,14 @@ Any other keyword arguments are passed to the Button constructor.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid.click">
 <span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid.click" title="Permalink to this definition"></a></dt>
-<dd><p>Handle click events at the provided location tuple (x, y) for all the
+<dd><p>! Handle click events at the provided location tuple (x, y) for all the
 buttons.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.ui.ButtonGrid.render">
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.ButtonGrid.render" title="Permalink to this definition"></a></dt>
-<dd><p>Render buttons on the provided surface.</p>
+<dd><p>! Render buttons on the provided surface.</p>
 </dd></dl>
 
 </dd></dl>
@@ -371,7 +385,7 @@ buttons.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.ui.align">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizontal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hpad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.align" title="Permalink to this definition"></a></dt>
-<dd><p>Return tuple of x, y coordinates to render the provided child rect 
+<dd><p>! Return tuple of x, y coordinates to render the provided child rect
 aligned inside the parent rect using the provided horizontal and vertical
 alignment.  Each alignment value can be ALIGN_LEFT, ALIGNT_TOP, ALIGN_CENTER,
 ALIGN_RIGHT, or ALIGN_BOTTOM.  Can also specify optional horizontal padding
@@ -381,28 +395,30 @@ ALIGN_RIGHT, or ALIGN_BOTTOM.  Can also specify optional horizontal padding
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.ui.get_font">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">get_font</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.get_font" title="Permalink to this definition"></a></dt>
-<dd><p>Get font of the specified size.  Will cache fonts internally for faster
+<dd><p>! Get font of the specified size.  Will cache fonts internally for faster
 repeated access to them.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.ui.render_text">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.ui.</span></span><span class="sig-name descname"><span class="pre">render_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.ui.render_text" title="Permalink to this definition"></a></dt>
-<dd><p>Render the provided text to a surface which is returned.</p>
+<dd><p>! Render the provided text to a surface which is returned.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-freqshow_code.views">
 <span id="freqshow-code-views-module"></span><h2>freqshow_code.views module<a class="headerlink" href="#module-freqshow_code.views" title="Permalink to this heading"></a></h2>
+<p>! &#64;brief FreqShow application views.
+&#64;file views.py Contains majority of the application business logic.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="freqshow_code.views.InstantSpectrogram">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">InstantSpectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.InstantSpectrogram" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#freqshow_code.views.SpectrogramBase" title="freqshow_code.views.SpectrogramBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpectrogramBase</span></code></a></p>
-<p>Instantaneous point in time line plot of the spectrogram.</p>
+<p>! Instantaneous point in time line plot of the spectrogram.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.InstantSpectrogram.render_spectrogram">
 <span class="sig-name descname"><span class="pre">render_spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.InstantSpectrogram.render_spectrogram" title="Permalink to this definition"></a></dt>
-<dd><p>Subclass should implement spectorgram rendering in the provided
+<dd><p>! Subclass should implement spectorgram rendering in the provided
 surface.</p>
 </dd></dl>
 
@@ -412,7 +428,7 @@ surface.</p>
 <dt class="sig sig-object py" id="freqshow_code.views.MessageDialog">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">MessageDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.MessageDialog" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#freqshow_code.views.ViewBase" title="freqshow_code.views.ViewBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewBase</span></code></a></p>
-<p>Dialog which displays a message in the center of the screen with an OK
+<p>! Dialog which displays a message in the center of the screen with an OK
 and optional cancel button.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.MessageDialog.accept_click">
@@ -440,7 +456,7 @@ and optional cancel button.</p>
 <dt class="sig sig-object py" id="freqshow_code.views.NumberDialog">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">NumberDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_auto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_negative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.NumberDialog" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#freqshow_code.views.ViewBase" title="freqshow_code.views.ViewBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewBase</span></code></a></p>
-<p>Dialog which asks the user to enter a numeric value.</p>
+<p>! Dialog which asks the user to enter a numeric value.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.NumberDialog.accept_click">
 <span class="sig-name descname"><span class="pre">accept_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.NumberDialog.accept_click" title="Permalink to this definition"></a></dt>
@@ -497,7 +513,7 @@ and optional cancel button.</p>
 <dt class="sig sig-object py" id="freqshow_code.views.SettingsList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">SettingsList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SettingsList" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#freqshow_code.views.ViewBase" title="freqshow_code.views.ViewBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewBase</span></code></a></p>
-<p>Setting list view. Allows user to modify some model configuration.</p>
+<p>! Setting list view. Allows user to modify some model configuration.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.SettingsList.centerfreq_accept">
 <span class="sig-name descname"><span class="pre">centerfreq_accept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SettingsList.centerfreq_accept" title="Permalink to this definition"></a></dt>
@@ -546,7 +562,8 @@ and optional cancel button.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.SettingsList.render">
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SettingsList.render" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Clear view and render buttons.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.SettingsList.sample_accept">
@@ -564,7 +581,7 @@ and optional cancel button.</p>
 <dt class="sig sig-object py" id="freqshow_code.views.SpectrogramBase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">SpectrogramBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SpectrogramBase" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#freqshow_code.views.ViewBase" title="freqshow_code.views.ViewBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewBase</span></code></a></p>
-<p>Base class for a spectrogram view.</p>
+<p>! Base class for a spectrogram view.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.SpectrogramBase.centerfreq_decrement">
 <span class="sig-name descname"><span class="pre">centerfreq_decrement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SpectrogramBase.centerfreq_decrement" title="Permalink to this definition"></a></dt>
@@ -598,14 +615,14 @@ and optional cancel button.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.SpectrogramBase.render_hash">
 <span class="sig-name descname"><span class="pre">render_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SpectrogramBase.render_hash" title="Permalink to this definition"></a></dt>
-<dd><p>Draw a hash mark (triangle) on the bottom row at the specified x
+<dd><p>! Draw a hash mark (triangle) on the bottom row at the specified x
 position.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.SpectrogramBase.render_spectrogram">
 <span class="sig-name descname"><span class="pre">render_spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.SpectrogramBase.render_spectrogram" title="Permalink to this definition"></a></dt>
-<dd><p>Subclass should implement spectorgram rendering in the provided
+<dd><p>! Subclass should implement spectorgram rendering in the provided
 surface.</p>
 </dd></dl>
 
@@ -615,7 +632,7 @@ surface.</p>
 <dt class="sig sig-object py" id="freqshow_code.views.ViewBase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">ViewBase</span></span><a class="headerlink" href="#freqshow_code.views.ViewBase" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Base class for simple UI view which represents all the elements drawn
+<p>! Base class for simple UI view which represents all the elements drawn
 on the screen.  Subclasses should override the render, and click functions.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.ViewBase.click">
@@ -633,7 +650,7 @@ on the screen.  Subclasses should override the render, and click functions.</p>
 <dt class="sig sig-object py" id="freqshow_code.views.WaterfallSpectrogram">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">WaterfallSpectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.WaterfallSpectrogram" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#freqshow_code.views.SpectrogramBase" title="freqshow_code.views.SpectrogramBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpectrogramBase</span></code></a></p>
-<p>Scrolling waterfall plot of spectrogram data.</p>
+<p>! Scrolling waterfall plot of spectrogram data.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.WaterfallSpectrogram.clear_waterfall">
 <span class="sig-name descname"><span class="pre">clear_waterfall</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.WaterfallSpectrogram.clear_waterfall" title="Permalink to this definition"></a></dt>
@@ -642,7 +659,7 @@ on the screen.  Subclasses should override the render, and click functions.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="freqshow_code.views.WaterfallSpectrogram.render_spectrogram">
 <span class="sig-name descname"><span class="pre">render_spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.WaterfallSpectrogram.render_spectrogram" title="Permalink to this definition"></a></dt>
-<dd><p>Subclass should implement spectorgram rendering in the provided
+<dd><p>! Subclass should implement spectorgram rendering in the provided
 surface.</p>
 </dd></dl>
 
@@ -651,14 +668,14 @@ surface.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.views.clamp">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">clamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.clamp" title="Permalink to this definition"></a></dt>
-<dd><p>Clamp a provided value to be between x0 and x1 (inclusive).  If value is
+<dd><p>! Clamp a provided value to be between x0 and x1 (inclusive).  If value is
 outside the range it will be truncated to the min/max value which is closest.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.views.gradient_func">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">gradient_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.gradient_func" title="Permalink to this definition"></a></dt>
-<dd><p>Build a waterfall color function from a list of RGB color tuples.  The
+<dd><p>! Build a waterfall color function from a list of RGB color tuples.  The
 returned function will take a numeric value from 0 to 1 and return a color
 interpolated across the gradient of provided RGB colors.</p>
 </dd></dl>
@@ -666,14 +683,14 @@ interpolated across the gradient of provided RGB colors.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.views.lerp">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.lerp" title="Permalink to this definition"></a></dt>
-<dd><p>Linear interpolation of value y given min and max y values (y0 and y1),
+<dd><p>! Linear interpolation of value y given min and max y values (y0 and y1),
 min and max x values (x0 and x1), and x value.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="freqshow_code.views.rgb_lerp">
 <span class="sig-prename descclassname"><span class="pre">freqshow_code.views.</span></span><span class="sig-name descname"><span class="pre">rgb_lerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freqshow_code.views.rgb_lerp" title="Permalink to this definition"></a></dt>
-<dd><p>Linear interpolation of RGB color tuple c0 and c1.</p>
+<dd><p>! Linear interpolation of RGB color tuple c0 and c1.</p>
 </dd></dl>
 
 </div>

@@ -99,29 +99,52 @@
              
   <div class="section" id="module-plotting_functions">
 <span id="plotting-functions-module"></span><h1>plotting_functions module<a class="headerlink" href="#module-plotting_functions" title="Permalink to this heading"></a></h1>
-<p>This file contains functions used for graphiing.</p>
+<p>! &#64;brief  Contains matplotlib-derived functions used for graphiing.
+&#64;file plotting_functions.py Contains matplotlib-derived functions used for graphiing.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="plotting_functions.bar_plot">
 <span class="sig-prename descclassname"><span class="pre">plotting_functions.</span></span><span class="sig-name descname"><span class="pre">bar_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotting_functions.bar_plot" title="Permalink to this definition"></a></dt>
-<dd><p>Makes bar plot</p>
+<dd><p>! Makes bar plot
+&#64;param fig Required for converting plot to surface.
+&#64;param ax Matplotlib axis to be used for plotting.
+&#64;param canvas Pygame canvas to be returned as surface.
+&#64;param color_list Colors for different series.
+&#64;param curr_vals Values for making bar plot.
+&#64;param ylabel Y-axis labels.
+&#64;return Pygame surface with bar plot.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="plotting_functions.line_plot">
 <span class="sig-prename descclassname"><span class="pre">plotting_functions.</span></span><span class="sig-name descname"><span class="pre">line_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotting_functions.line_plot" title="Permalink to this definition"></a></dt>
-<dd><p>Makes line plot</p>
+<dd><p>! Makes line plot for one or more data series.
+&#64;param fig Required for converting plot to surface.
+&#64;param ax Matplotlib axis to be used for plotting.
+&#64;param canvas Pygame canvas to be returned as surface.
+&#64;param color_list Colors for different series.
+&#64;param x_array Data to be plotted for a specific series.
+&#64;param array_dict For use with multiple data series.
+&#64;return Pygame surface with line plot.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="plotting_functions.pie_plot">
 <span class="sig-prename descclassname"><span class="pre">plotting_functions.</span></span><span class="sig-name descname"><span class="pre">pie_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pie_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotting_functions.pie_plot" title="Permalink to this definition"></a></dt>
-<dd><p>Makes pie plot</p>
+<dd><p>! Makes pie plot
+&#64;param fig Required for converting plot to surface.
+&#64;param ax Matplotlib axis to be used for plotting.
+&#64;param canvas Pygame canvas to be returned as surface.
+&#64;param color_list Colors for different series.
+&#64;param pie_labels Labels for each series.
+&#64;param curr_vals Vals for plotting pie chart.
+&#64;return Pygame surface with pie plot.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="plotting_functions.plot2img">
 <span class="sig-prename descclassname"><span class="pre">plotting_functions.</span></span><span class="sig-name descname"><span class="pre">plot2img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotting_functions.plot2img" title="Permalink to this definition"></a></dt>
-<dd><p>Converts matplotlib plot to image</p>
+<dd><p>! Converts matplotlib plot to image. Sets BG colorkey to BLACK for transparent surface.
+&#64;return Pygame surface.</p>
 </dd></dl>
 
 </div>

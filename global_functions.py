@@ -1,6 +1,5 @@
 '''!
-@brief Contains functions invoked by several different parts of the code.
-@file global_functions.py Contains functions invoked by several different parts of the code.
+Contains functions invoked by several different parts of the code.
 '''
 
 import sys, os
@@ -22,7 +21,18 @@ from colors import WHITE, ORANGE, LIGHT_BLUE
 # ================ Global functions ================================= #
 
 def my_map(x,in_min,in_max,out_min,out_max):
-	'''! Standard mapping formula. Used in many places'''
+	'''!
+	Standard mapping formula. Used in many places
+
+	:note: Standard formula
+	:custom: Custom
+	:param x: Input value to be mapped
+	:param in_min: Least possible value for input
+	:param in_max: Max possible value for input
+	:param out_min: Least possible value for output
+	:param out_max: Max possible value for output
+	:return: Scaled value
+	'''
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
   
 def blitRotate2(surf, image, topleft, angle):

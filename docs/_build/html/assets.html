@@ -113,14 +113,17 @@
 </div>
 <div class="section" id="module-assets.buttons">
 <span id="assets-buttons-module"></span><h2>assets.buttons module<a class="headerlink" href="#module-assets.buttons" title="Permalink to this heading"></a></h2>
-<p>This file contains:</p>
+<p>!
+&#64;brief Buttons and imgs
+&#64;file buttons.py This file contains:</p>
 <p>-&gt; A generic class for buttons</p>
 <p>-&gt; Button definitions for all pages</p>
+<p>&#64;dir assets Contains buttons, colors, fonts, and images.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="assets.buttons.ButtonClass">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">assets.buttons.</span></span><span class="sig-name descname"><span class="pre">ButtonClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">butt_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_alt_img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cooldown_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Font('/home/pi/Sensor_Scripts/pygame_code/tricorder/assets/saved_fonts/Federation.ttf')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(20,</span> <span class="pre">48,</span> <span class="pre">69,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">255,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required_cooldown</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Generic class for all buttons</p>
+<p>! Generic class for all buttons</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="assets.buttons.ButtonClass.blit_button">
 <span class="sig-name descname"><span class="pre">blit_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.ButtonClass.blit_button" title="Permalink to this definition"></a></dt>
@@ -156,24 +159,30 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="assets.buttons.img_ld">
 <span class="sig-prename descclassname"><span class="pre">assets.buttons.</span></span><span class="sig-name descname"><span class="pre">img_ld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.buttons.img_ld" title="Permalink to this definition"></a></dt>
-<dd><p>Neatly summarize/print all images before loading</p>
+<dd><p>! Neatly summarize/print all images before loading</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-assets.colors">
 <span id="assets-colors-module"></span><h2>assets.colors module<a class="headerlink" href="#module-assets.colors" title="Permalink to this heading"></a></h2>
-<p>This is where colors are defined</p>
+<p>! &#64;brief This is where colors are defined.
+&#64;file colors.py Contains color definitions</p>
 </div>
 <div class="section" id="module-assets.fonts">
 <span id="assets-fonts-module"></span><h2>assets.fonts module<a class="headerlink" href="#module-assets.fonts" title="Permalink to this heading"></a></h2>
-<p>This is where fonts are defined</p>
+<p>! &#64;brief This is where fonts are loaded defined
+&#64;file fonts.py Contains font definitions
+&#64;dir saved_fonts Contains custom font files.</p>
 </div>
 <div class="section" id="module-assets.images">
 <span id="assets-images-module"></span><h2>assets.images module<a class="headerlink" href="#module-assets.images" title="Permalink to this heading"></a></h2>
+<p>!
+&#64;brief This is where images are loaded and defined.
+&#64;file images.py Contains image definitions.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="assets.images.img_ld">
 <span class="sig-prename descclassname"><span class="pre">assets.images.</span></span><span class="sig-name descname"><span class="pre">img_ld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assets.images.img_ld" title="Permalink to this definition"></a></dt>
-<dd><p>this function neatly summarizes/prints all images before loading</p>
+<dd><p>! This function neatly summarizes/prints all images before loading</p>
 </dd></dl>
 
 </div>

@@ -113,68 +113,74 @@
              
   <div class="section" id="module-page_templates">
 <span id="page-templates-module"></span><h1>page_templates module<a class="headerlink" href="#module-page_templates" title="Permalink to this heading"></a></h1>
-<p>This file contains templates for pages.</p>
-<p>PageTemplate is the base class which handles blitting the home button</p>
-<p>and other page-specific buttons, mouse/touch handling, enter and exit.</p>
+<p>! &#64;brief Template classes for pages.
+&#64;file page_templates.py Contains diferrent template classes for pages.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="page_templates.DeviceStatsPageTemplate">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">page_templates.</span></span><span class="sig-name descname"><span class="pre">DeviceStatsPageTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.DeviceStatsPageTemplate" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
-<p>For viewing RPi stats</p>
+<p>! For viewing RPi stats</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="page_templates.PageTemplate">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">page_templates.</span></span><span class="sig-name descname"><span class="pre">PageTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>This is the base class for all pages</p>
+<p>! This is the base class for all pages.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.blit_all_buttons">
 <span class="sig-name descname"><span class="pre">blit_all_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.blit_all_buttons" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Blit home and top buttons + page-specific buttons.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.blit_basic_buttons">
 <span class="sig-name descname"><span class="pre">blit_basic_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.blit_basic_buttons" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Blits only home and top buttons.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.blit_some_buttons">
 <span class="sig-name descname"><span class="pre">blit_some_buttons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">button_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.blit_some_buttons" title="Permalink to this definition"></a></dt>
-<dd><p>Blit only specific buttons</p>
+<dd><p>! Blit only specific buttons
+&#64;param button_list List of button objects to be displayed.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.handle_events">
 <span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.handle_events" title="Permalink to this definition"></a></dt>
-<dd><p>Handles basic touch/mouse events</p>
+<dd><p>! &#64;brief Handles basic touch/mouse events.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.init_home_button">
 <span class="sig-name descname"><span class="pre">init_home_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.init_home_button" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Initializes both home and top buttons.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.kwarg_handler">
 <span class="sig-name descname"><span class="pre">kwarg_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.kwarg_handler" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Mostly used for changing prev_page name.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.make_dictionary">
 <span class="sig-name descname"><span class="pre">make_dictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.make_dictionary" title="Permalink to this definition"></a></dt>
-<dd><p>A dictionary of all buttons of a page</p>
+<dd><p>! A dictionary of all buttons of a page.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.on_enter">
 <span class="sig-name descname"><span class="pre">on_enter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.on_enter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Wrapper function for on_enter actions.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageTemplate.on_exit">
 <span class="sig-name descname"><span class="pre">on_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageTemplate.on_exit" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Wrapper function for on_exit actions.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -182,17 +188,19 @@
 <dt class="sig sig-object py" id="page_templates.PageWithoutGauge">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">page_templates.</span></span><span class="sig-name descname"><span class="pre">PageWithoutGauge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageWithoutGauge" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#page_templates.PageTemplate" title="page_templates.PageTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageTemplate</span></code></a></p>
-<p>For more complex pages</p>
+<p>! Template for more complex pages. Contains four subpages for bar plot, pie plot, line plot, and text display.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageWithoutGauge.flip_button">
 <span class="sig-name descname"><span class="pre">flip_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressed_button</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageWithoutGauge.flip_button" title="Permalink to this definition"></a></dt>
-<dd><p>For releasing/unselecting the non-selected buttons</p>
+<dd><p>! For releasing/unselecting the non-selected buttons.
+&#64;param pressed_button Currently selected button.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="page_templates.PageWithoutGauge.next_frame_base">
 <span class="sig-name descname"><span class="pre">next_frame_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_vals</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#page_templates.PageWithoutGauge.next_frame_base" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>! Base class for blitting everything.</p>
+</dd></dl>
 
 </dd></dl>
 
