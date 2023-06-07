@@ -1,5 +1,5 @@
-'''! @brief  Contains matplotlib-derived functions used for graphiing.
-@file plotting_functions.py Contains matplotlib-derived functions used for graphiing.
+'''
+Contains matplotlib-derived functions used for graphiing.
 '''
 import sys, os
 sys.path.append('/home/pi/Sensor_Scripts/pygame_code/tricorder/')
@@ -32,8 +32,10 @@ mpl.rcParams['ytick.color'] = COLOR
 
 # ==================== Plotting Functions ============================ #
 def plot2img(fig,ax,canvas):
-    '''! Converts matplotlib plot to image. Sets BG colorkey to BLACK for transparent surface.
-    @return Pygame surface.
+    '''
+    Converts matplotlib plot to image. Sets BG colorkey to BLACK for transparent surface.
+    
+    :return: Pygame surface.
     '''
     ax.set_facecolor('black')
     # ax.patch.set_alpha(1)
@@ -49,14 +51,16 @@ def plot2img(fig,ax,canvas):
     return x
 
 def pie_plot(fig,ax,canvas,color_list,pie_labels,curr_vals):
-    '''! Makes pie plot
-    @param fig Required for converting plot to surface.
-    @param ax Matplotlib axis to be used for plotting.
-    @param canvas Pygame canvas to be returned as surface.
-    @param color_list Colors for different series.
-    @param pie_labels Labels for each series.
-    @param curr_vals Vals for plotting pie chart.
-    @return Pygame surface with pie plot.
+    '''
+    Makes pie plot
+
+    :param fig: Required for converting plot to surface.
+    :param ax: Matplotlib axis to be used for plotting.
+    :param canvas: Pygame canvas to be returned as surface.
+    :param color_list: Colors for different series.
+    :param pie_labels: Labels for each series.
+    :param curr_vals: Vals for plotting pie chart.
+    :return: Pygame surface with pie plot.
     '''
     ax.clear()
     COLOR = (0.75,0.75,0.75)
@@ -87,14 +91,16 @@ def pie_plot(fig,ax,canvas,color_list,pie_labels,curr_vals):
     return (plot2img(fig,ax,canvas))
 
 def bar_plot(fig,ax,canvas,x_labels,color_list,curr_vals,ylabel=''):
-    '''! Makes bar plot
-    @param fig Required for converting plot to surface.
-    @param ax Matplotlib axis to be used for plotting.
-    @param canvas Pygame canvas to be returned as surface.
-    @param color_list Colors for different series.
-    @param curr_vals Values for making bar plot.
-    @param ylabel Y-axis labels.
-    @return Pygame surface with bar plot.
+    '''
+    Makes bar plot
+
+    :param fig: Required for converting plot to surface.
+    :param ax: Matplotlib axis to be used for plotting.
+    :param canvas: Pygame canvas to be returned as surface.
+    :param color_list: Colors for different series.
+    :param curr_vals: Values for making bar plot.
+    :param ylabel: Y-axis labels.
+    :return: Pygame surface with bar plot.
     '''
     ax.clear()
     ax.cla()
@@ -109,14 +115,16 @@ def bar_plot(fig,ax,canvas,x_labels,color_list,curr_vals,ylabel=''):
     return (plot2img(fig,ax,canvas))
 
 def line_plot(fig,ax,canvas,color_list,x_array,array_dict):
-    '''! Makes line plot for one or more data series.
-    @param fig Required for converting plot to surface.
-    @param ax Matplotlib axis to be used for plotting.
-    @param canvas Pygame canvas to be returned as surface.
-    @param color_list Colors for different series.
-    @param x_array Data to be plotted for a specific series.
-    @param array_dict For use with multiple data series.
-    @return Pygame surface with line plot.
+    '''
+    Makes line plot for one or more data series.
+
+    :param fig: Required for converting plot to surface.
+    :param ax: Matplotlib axis to be used for plotting.
+    :param canvas: Pygame canvas to be returned as surface.
+    :param color_list: Colors for different series.
+    :param x_array: Data to be plotted for a specific series.
+    :param array_dict: For use with multiple data series.
+    :return: Pygame surface with line plot.
     '''
     ax.clear()
     ax.cla()

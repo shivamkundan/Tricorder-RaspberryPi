@@ -1,8 +1,5 @@
-tricorder
+modules
 =========
-
-
-Something about.
 
 .. toctree::
    :maxdepth: 1

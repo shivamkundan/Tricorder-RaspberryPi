@@ -150,10 +150,6 @@ def kill(self):
 	self.killed = True
 
 class DeviceInfoClass():
-	"""! For holding execution information about the raspberry pi.
-    """
-
-
 	''' For holding execution information about the raspberry pi'''
 	def __init__(self):
 		self.wifi_name=get_wifi_name()
