@@ -6,13 +6,13 @@ Contains buttons, colors, fonts, and images.
 Submodules
 ----------
 
-assets.buttons module
----------------------
+   assets.buttons module
+   ---------------------
 
-.. automodule:: assets.buttons
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   .. automodule:: assets.buttons
+      :members:
+      :undoc-members:
+      :show-inheritance:
 
    assets.colors module
    --------------------
