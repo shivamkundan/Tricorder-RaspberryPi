@@ -87,9 +87,9 @@ class DeviceStatsPage(DeviceStatsPageTemplate):
 
 	def blit_page_num(self,screen):
 		'''! Blit subpage number.'''
-	    FONT_FEDERATION.render_to(screen, (30, 100), str(self.pg_id+1)+'/3', SLATE,style=0,size=28)
-	    # FONT_FEDERATION.render_to(screen, (370, 640), "3", DARK_YELLOW,style=0,size=18)
-	    FONT_FEDERATION.render_to(screen, (370, 640), str(self.pg_id+1)+'/3', DARK_YELLOW,style=0,size=18)
+		FONT_FEDERATION.render_to(screen, (30, 100), str(self.pg_id+1)+'/3', SLATE,style=0,size=28)
+		# FONT_FEDERATION.render_to(screen, (370, 640), "3", DARK_YELLOW,style=0,size=18)
+		FONT_FEDERATION.render_to(screen, (370, 640), str(self.pg_id+1)+'/3', DARK_YELLOW,style=0,size=18)
 
 	def next_frame(self,screen,curr_events,**kwargs):
 		self.next_screen_name=self.name

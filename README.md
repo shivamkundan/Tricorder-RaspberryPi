@@ -1,6 +1,6 @@
 # Tricorder-RaspberryPi
 The most advanced Tricorder device from Star Trek yet implemented. If you ever ask
-yourself “is the sky more red at sunset?”, “how clean is my air?”, “how bright is my TV?”, “what flower is this?”, “how hot is this object?”, “how busy are the airwaves?”, and seek the answer in real-time, beautifully visualized 18-bit color, then this is the device for you.
+yourself “is the sky more red at sunset?”, “how clean is my air?”, “how bright is my TV?”, “what flower is this?”, “how hot is this object?”, “how busy are the airwaves?”, and seek the answer in real-time, beautifully visualized 8-bit color, then this is the device for you.
 # Docs
 https://tricorder-raspberrypi.readthedocs.io/en/latest/
 
@@ -19,14 +19,14 @@ This project contains an incredible number of components. Pretty much every envi
 
 Currently, the components use through-hole pins that are soldered manually using a soldering iron. Next step is to acquire Surface Mount Device (SMD) soldering/handling hardware which will drastically reduce the size, weight, and volume of the sensors.
 
-The following is a list of parts used in the design. Note that almost every sensor senses more than one quantity, with some even having separate x,y,z channels for each (such as the IMU). This is why its difficult to say how many sensors are utilized, since the count is dependent upon the classification. 
+The following is a list of parts used in the design. Note that almost every sensor senses more than one quantity, with some even having separate x,y,z channels for each (such as the IMU). This is why its difficult to say how many sensors are utilized, since the count is dependent upon what one considers to be a sensor. 
 
 | Type                  | Model                      | # |
 |-----------------------|----------------------------|---|
 | Single board computer | RaspberryPi 4              | 1 |
 | Touchscreen display   | Pimoroni Hyperpixel Square | 1 |
 | Microprocessor w/ BT  | Adafruit ESP32 Feather V2  | 1 |
-| Aux OLEDs             | Generic                    | 2 |
+| Aux OLEDs             | Generic 128x64                   | 2 |
 | Printed Circuit Boards| JLCPCB 2-layer             | 4 |
 | Digital sensor boards | Multiple                   | 14|
 | Analog sensors        | Multiple                   | 5 |

@@ -87,9 +87,9 @@ class ObjectDetectionPage(PageTemplate):
 		while self.cap.isOpened():
 			success, image = self.cap.read()
 			if not success:
-			sys.exit(
-				'ERROR: Unable to read from webcam. Please verify your webcam settings.'
-			)
+				sys.exit(
+					'ERROR: Unable to read from webcam. Please verify your webcam settings.'
+				)
 
 			counter += 1
 			image = cv2.flip(image, 1)
@@ -110,9 +110,9 @@ class ObjectDetectionPage(PageTemplate):
 
 			# Calculate the FPS
 			if counter % fps_avg_frame_count == 0:
-			end_time = time.time()
-			fps = fps_avg_frame_count / (end_time - start_time)
-			start_time = time.time()
+				end_time = time.time()
+				fps = fps_avg_frame_count / (end_time - start_time)
+				start_time = time.time()
 
 			# Show the FPS
 			fps_text = 'FPS = {:.1f}'.format(fps)

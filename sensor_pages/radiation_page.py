@@ -87,7 +87,7 @@ class GeigerCounterPage(PageTemplate):
 		'''! @brief Turns off geiger_power mosfet.
 			 @warning mosfet control
 		'''
-	    set_geiger_power_off()
+		set_geiger_power_off()
 
 	def next_frame(self,screen,curr_events,**kwargs):
 		self.next_screen_name=self.name

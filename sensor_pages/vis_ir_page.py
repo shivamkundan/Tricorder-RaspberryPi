@@ -75,7 +75,7 @@ class LightSensorPage(PageTemplate):
         main_font_size=54
         curr_col=250-gauge_radius
         # ----
-        arc_h+=gauge_radius*2+
+        arc_h+=gauge_radius*2
         ## Origin for VIS gauge
         self.vis_gauge_origin=(curr_col,160)
         ## VIS gauge object
