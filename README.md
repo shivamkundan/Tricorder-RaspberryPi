@@ -3,6 +3,9 @@ The most advanced Tricorder device from Star Trek yet implemented. If you ever a
 yourself “is the sky more red at sunset?”, “how clean is my air?”, “how bright is my TV?”, “what flower is this?”, “how hot is this object?”, “how busy are the airwaves?”, and seek the answer in real-time, beautifully visualized 18-bit color, then this is the device for you.
 # Docs
 https://tricorder-raspberrypi.readthedocs.io/en/latest/
+
+https://shivamkundan.godaddysites.com/tricorder
+
 # Software 
 C (Arduino IDE), \
 Python, \
@@ -10,10 +13,12 @@ GUI: Pygame, \
 Machine Learning: TensorFlow \
 Linux commands and tweaks
 # Hardware 
-ESP32 Feather V2 board, \
-RaspberryPi4, \
-4x custom PCBs with 15+ sensors for environmental scanning and power management, \
-Pimoroni Hyperpixel LCD display.
+
+This project contains an incredible number of components. Pretty much every environmental sensor that is commercial off-the-shelf. 
+
+Currently, the components use through-hole pins that are soldered manually using a soldering iron. Next step is to acquire Surface Mount Device (SMD) soldering/handling hardware which will drastically reduce the size, weight, and volume of the sensors.
+
+The following is a list of parts used in the design. Note that almost every sensor senses more than one quantity, with some even having separate x,y,z channels for each (such as the IMU). This is why its difficult to say how many sensors are utilized, since the count is dependent upon the classification. 
 
 | Type                  | Model                      | # |
 |-----------------------|----------------------------|---|
