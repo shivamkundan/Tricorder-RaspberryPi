@@ -14,3 +14,26 @@ ESP32 Feather V2 board, \
 RaspberryPi4, \
 4x custom PCBs with 15+ sensors for environmental scanning and power management, \
 Pimoroni Hyperpixel LCD display.
+
+| Type                  | Model                      | # |
+|-----------------------|----------------------------|---|
+| Single board computer | RaspberryPi 4              | 1 |
+| Touchscreen display   | Pimoroni Hyperpixel Square | 1 |
+| Microprocessor w/ BT  | Adafruit ESP32 Feather V2  | 1 |
+| Aux OLEDs             | Generic                    | 2 |
+| Printed Circuit Boards| JLCPCB 2-layer             | 4 |
+| Digital sensor boards | Multiple                   | 14|
+| Analog sensors        | Multiple                   | 5 |
+| Software Defined Radio (SDR) Dongle + 'DVB-T' antenna|  RTL2832U w/ R820T tuner      | 1 |
+| I2C active extender & terminator | Adafruit LTC4311| 1 |
+| I2C bi-directional isolator| Adafruit ISO1540      | 1 |
+| IR-CUT Camera + IR blasters | Generic                   | 1 |
+| N-Channel MOSFETs        | Generic                   | 3 |
+| Bidirectional voltage shifter  | Generic                   | 2 |
+| Buck-boost convertor         | Adafruit Powerboost 1000                   | 1 |
+| Battery monitor & fuel gauge         | Adafruit LC709203                   | 1 |
+| Lithium-polymer battery (for sensors+MCU)         | Adafruit 2500mAH                   | 1 |
+| Battery bank w/ passthrough for raspberry pi  | 10,000mAH  | 1 |
+| Neopixels (i.e., RGBW LEDS)  | Adafruit Neopixel Stick 8x-5050 ~4500K  | 1 |
+| Magnet for optical/IR camera  | Adafruit magnetic pin back   | 1 |
+| Assorted resistors, switches, etc.  | ---       | 1 |

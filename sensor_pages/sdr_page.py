@@ -16,9 +16,9 @@ import model
 import ui
 import logging
 
-## Starting frequency
+#: Starting frequency
 INIT_FREQ=433.0
-## Leave some top & bottom border for text and buttons
+#: Leave some top & bottom border for text and buttons
 WIN_SIZE=(680,720)
 
 class SoftwareDefinedRadioPage(PageTemplate):

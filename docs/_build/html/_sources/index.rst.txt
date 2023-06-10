@@ -21,6 +21,10 @@ Find the corresponding ESP32 code on `github`_.
 .. _github: https://github.com/shivamkundan/Tricorder-ESP32
 
 
+.. note::
+
+   This is a note
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents

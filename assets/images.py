@@ -1,9 +1,7 @@
-'''!
-@brief This is where images are loaded and defined.
-@file images.py Contains image definitions.
-'''
-
 #!/usr/bin/python3
+'''
+This is where images are loaded and defined.
+'''
 import pygame
 import os
 from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
@@ -13,7 +11,7 @@ from paths_and_utils import IMG_PATH,BTN_PATH,ICONS_PATH
 IMG_LIST=[]
 
 def img_ld(input_img):
-	'''! This function neatly summarizes/prints all images before loading'''
+	''' This function neatly summarizes/prints all images before loading'''
 	# IMG_LIST.append(input_img)
 	return pygame.image.load(os.path.join(input_img))
 
