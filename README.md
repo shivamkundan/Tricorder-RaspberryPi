@@ -14,6 +14,7 @@ Machine Learning: TensorFlow \
 Linux commands and tweaks
 # Hardware 
 
+## List of parts
 This project contains an incredible number of components. Pretty much every environmental sensor that is commercial off-the-shelf. 
 
 Currently, the components use through-hole pins that are soldered manually using a soldering iron. Next step is to acquire Surface Mount Device (SMD) soldering/handling hardware which will drastically reduce the size, weight, and volume of the sensors.
@@ -42,3 +43,26 @@ The following is a list of parts used in the design. Note that almost every sens
 | Neopixels (i.e., RGBW LEDS)  | Adafruit Neopixel Stick 8x-5050 ~4500K  | 1 |
 | Magnet for optical/IR camera  | Adafruit magnetic pin back   | 1 |
 | Assorted resistors, switches, etc.  | ---       | 1 |
+
+## List of Sensors
+
+After much experimentation and pondering, I try to buy Adafruit's version of parts whenever possible because of their incredible libraries. 
+
+| Sensor                                                               | Type    |
+|----------------------------------------------------------------------|---------|
+| AS7341 10-channel photo spectrometer                                 | Digital |
+| LTR390 UV sensor                                                     | Digital |
+| TSL2591 infrared + visible light sensor                              | Digital |
+| HTU31D temperature + humidity sensor                                 | Digital |
+| BMP388 barometric pressure sensor                                    | Digital |
+| SGP30 volatile organic compunds + CO2 sensor                         | Digital |
+| MLX90640 IR thermal camera                                           | Digital |
+| MAX9814 electret microphone amplifier with auto gain control (noise) | Analog  |
+| Modern Devices Rev. C wind speed sensor                              | Analog  |
+| BNO055 9-DOF absolute orientation inertial measurement unit          | Digital |
+| PMSA003I particulate matter (dust) sensor                            | Digital |
+| DFRobot Geiger counter (ionizing radiation)                          | Analog  |
+| Garmin LIDAR-Lite V3 optical distance sensor                         | Digital |
+| BN880 GPS/GLONASS/Beidou positioning sensor                          | Digital |
+| INA260 voltage, current, power sensor                                | Digital |
+| Force-Sensitive Resistor (FSR) - Alpha MF02A-N-221-A01 (weight)      | Analog  |
